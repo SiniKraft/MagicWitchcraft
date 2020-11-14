@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:potion",
+      "data": 32767
+    },
+    "title": {
+      "translate": "advancements.dangerousexterminator.title"
+    },
+    "description": {
+      "translate": "advancements.dangerousexterminator.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "dangerousexterminator": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "minecraft:adventure/kill_all_mobs"
+}

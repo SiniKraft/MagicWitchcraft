@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MagicalOrb"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MagicalOrb"
+      },
+      {
+        "value": "CUSTOM:BasicMagicWand"
+      },
+      {
+        "value": "CUSTOM:MagicalOrb"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:ChunkAnalyser"
+    },
+    "name": "chunk_analyserr_ecipe",
+    "namespace": "mod"
+  }
+}

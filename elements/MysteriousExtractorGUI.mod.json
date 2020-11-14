@@ -1,0 +1,46 @@
+{
+  "_fv": 6,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 352,
+    "height": 332,
+    "renderBgLayer": true,
+    "components": [
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "color": {
+            "value": -13959411,
+            "falpha": 0.0
+          },
+          "id": 0,
+          "name": "Slot #0",
+          "x": 344,
+          "y": 142
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 1,
+          "name": "Slot #1",
+          "x": 471,
+          "y": 142
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "mysterious_log.png",
+          "name": "mysterious_log.png",
+          "x": 279,
+          "y": 142
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "magic_witchcraft:custom/mysterious_extractor",
+  "textures": {
+    "all": "magic_witchcraft:blocks/iron_block",
+    "particle": "magic_witchcraft:blocks/iron_block",
+    "0": "magic_witchcraft:blocks/iron_block",
+    "1": "magic_witchcraft:blocks/oak_planks",
+    "2": "magic_witchcraft:blocks/water_still"
+  }
+}

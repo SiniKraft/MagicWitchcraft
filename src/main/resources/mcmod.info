@@ -1,0 +1,20 @@
+[
+  {
+    "modid": "magic_witchcraft",
+    "name": "Magic Witchcraft",
+    "description": "A mysterious and magical mod !",
+    "version": "release_1.0",
+    "credits": "You aren't allowed to distribute this mod without my agreement ! See license for more infos.",
+    "logoFile": "",
+    "mcversion": "1.12.2",
+    "url": "https://mcreator.net",
+    "updateUrl": "",
+    "authorList": [
+      "SiniKraft"
+    ],
+    "dependencies": [],
+    "dependants": [],
+    "requiredMods": [],
+    "useDependencyInformation": "true"
+  }
+]

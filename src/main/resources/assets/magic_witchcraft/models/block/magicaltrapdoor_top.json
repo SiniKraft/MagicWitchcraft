@@ -1,0 +1,7 @@
+{
+  "parent": "block/trapdoor_top",
+  "textures": {
+    "texture": "magic_witchcraft:blocks/magical_block",
+    "particle": "magic_witchcraft:blocks/magical_block"
+  }
+}

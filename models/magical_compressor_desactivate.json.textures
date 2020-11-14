@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "iron_block",
+        "3": "redstone_block"
+      },
+      "name": "default"
+    }
+  }
+}

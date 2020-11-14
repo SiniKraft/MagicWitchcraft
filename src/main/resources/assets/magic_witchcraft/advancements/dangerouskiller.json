@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:skull",
+      "data": 5
+    },
+    "title": {
+      "translate": "advancements.dangerouskiller.title"
+    },
+    "description": {
+      "translate": "advancements.dangerouskiller.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "dangerouskiller": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 300
+  },
+  "parent": "magic_witchcraft:dangerousexterminator"
+}

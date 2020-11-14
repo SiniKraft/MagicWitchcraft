@@ -1,0 +1,8 @@
+{
+  "parent": "block/half_slab",
+  "textures": {
+    "bottom": "magic_witchcraft:blocks/magical_block",
+    "top": "magic_witchcraft:blocks/magical_block",
+    "side": "magic_witchcraft:blocks/magical_block"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Items.FEATHER"
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": "Items.FEATHER"
+      },
+      {
+        "value": "Blocks.DIAMOND_BLOCK"
+      },
+      {
+        "value": "Blocks.REDSTONE_BLOCK"
+      },
+      {
+        "value": "Blocks.DIAMOND_BLOCK"
+      },
+      {
+        "value": "Blocks.CARPET"
+      },
+      {
+        "value": "Blocks.CARPET"
+      },
+      {
+        "value": "Blocks.CARPET"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:MagicCarpetItem"
+    },
+    "name": "magic_carpet_item_recipe",
+    "namespace": "mod"
+  }
+}

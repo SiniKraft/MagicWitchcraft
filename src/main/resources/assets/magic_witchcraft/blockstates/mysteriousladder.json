@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:mysteriousladder"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:mysteriousladder"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:mysteriousladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:mysteriousladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:mysteriousladder",
+      "y": 270
+    }
+  }
+}

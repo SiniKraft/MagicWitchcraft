@@ -1,0 +1,77 @@
+{
+	"credit": "Made with Blockbench for SiniKraft's magic withcraft mod.",
+	"textures": {
+		"0": "grow",
+		"particle": "grow"
+	},
+	"elements": [
+		{
+			"name": "Face weast",
+			"from": [12, -1, 0],
+			"to": [12, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [19, 7, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Face east",
+			"from": [4, -1, 0],
+			"to": [4, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 7, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Face south",
+			"from": [0, -1, 12],
+			"to": [16, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 19]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Face north",
+			"from": [0, -1, 4],
+			"to": [16, 15, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 11]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.51, 0.51, 0.51]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.51, 0.51, 0.51]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"scale": [0.7, 0.7, 0.7]
+		}
+	},
+	"groups": [
+		{
+			"name": "Faces",
+			"origin": [8, 8, 8],
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

@@ -1,0 +1,52 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "magical_wheat_stage_0"
+      },
+      "name": "default"
+    },
+    "stage3": {
+      "map": {
+        "0": "magical_wheat_stage_3"
+      },
+      "name": "stage3"
+    },
+    "stage2": {
+      "map": {
+        "0": "magical_wheat_stage_2"
+      },
+      "name": "stage2"
+    },
+    "stage5": {
+      "map": {
+        "0": "magical_wheat_stage_5"
+      },
+      "name": "stage5"
+    },
+    "stage4": {
+      "map": {
+        "0": "magical_wheat_stage_4"
+      },
+      "name": "stage4"
+    },
+    "stage1": {
+      "map": {
+        "0": "magical_wheat_stage_1"
+      },
+      "name": "stage1"
+    },
+    "stage6": {
+      "map": {
+        "0": "magical_wheat_stage_6"
+      },
+      "name": "stage6"
+    },
+    "stage7": {
+      "map": {
+        "0": "magical_wheat_stage_7"
+      },
+      "name": "stage7"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "magic_wand",
+		"1": "nether_portal",
+		"2": "magic_wand_2",
+		"particle": "magic_wand"
+	},
+	"elements": [
+		{
+			"name": "baguette",
+			"from": [0, 0, 7.75],
+			"to": [16, 16, 7.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [21, 9, 15]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "truc_chelou",
+			"from": [1, 10, 7.75],
+			"to": [5, 14, 7.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9, 18, 16]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 1, 4], "texture": "#missing"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 1, 4], "texture": "#missing"},
+				"up": {"uv": [0, 0, 4, 1], "texture": "#missing"},
+				"down": {"uv": [0, 0, 4, 1], "texture": "#missing"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -180, 0],
+			"translation": [2, 0, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [0, -180, 0]
+		},
+		"head": {
+			"scale": [0.8, 0.8, 0.8]
+		}
+	},
+	"groups": [
+		{
+			"name": "modele",
+			"origin": [8, 8, 8],
+			"children": [0, 1]
+		}
+	]
+}

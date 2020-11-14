@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:mysterious_log"
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:mysterious_log"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:mysterious_log"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:mysterious_log",
+      "x": 90
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:mysterious_log",
+      "x": 90
+    },
+    "facing=up": {
+      "model": "magic_witchcraft:mysterious_log",
+      "x": 90,
+      "y": 90
+    },
+    "facing=down": {
+      "model": "magic_witchcraft:mysterious_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

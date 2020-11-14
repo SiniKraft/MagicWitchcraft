@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magic_glass",
+    "particle": "magic_witchcraft:blocks/magic_glass"
+  }
+}

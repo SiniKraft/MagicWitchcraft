@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "wireless_energy_on"
+      },
+      "name": "default"
+    },
+    "desactivate": {
+      "map": {
+        "0": "wireless_energy_off"
+      },
+      "name": "desactivate"
+    }
+  }
+}

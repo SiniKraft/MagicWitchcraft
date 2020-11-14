@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "magic_wand",
+        "1": "nether_portal",
+        "2": "magic_wand_2",
+        "missing": "magic_wand"
+      },
+      "name": "default"
+    }
+  }
+}

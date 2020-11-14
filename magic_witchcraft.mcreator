@@ -1,0 +1,2544 @@
+{
+  "id_map": {
+    "DIMENSION": 2,
+    "ENTITY": 8,
+    "GUI": 4
+  },
+  "mod_elements": [
+    {
+      "name": "MysteriousLog",
+      "type": "block",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_log"
+    },
+    {
+      "name": "MysteriousLeaves",
+      "type": "block",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_leaves"
+    },
+    {
+      "name": "MysteriousPortal",
+      "type": "block",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_portal"
+    },
+    {
+      "name": "MysteriousDimension",
+      "type": "dimension",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "1": 1
+      },
+      "registry_name": "mysterious_dimension"
+    },
+    {
+      "name": "MysteriousOrb",
+      "type": "item",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_orb"
+    },
+    {
+      "name": "MysteriousOrbOre",
+      "type": "block",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_orb_ore"
+    },
+    {
+      "name": "MysteriousExtractor",
+      "type": "block",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_extractor"
+    },
+    {
+      "name": "MysteriousExtractorGUI",
+      "type": "gui",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 1
+      },
+      "registry_name": "mysterious_extractor_gui"
+    },
+    {
+      "name": "MagicalOrb",
+      "type": "item",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "magical_orb"
+    },
+    {
+      "name": "MysteriousExtractorUpdateTick",
+      "type": "procedure",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mysterious_extractor_update_tick",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousPortalRecipe",
+      "type": "recipe",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousPortalIgniterRecipe",
+      "type": "recipe",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "FireOrb",
+      "type": "item",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "FireOrbRecipe",
+      "type": "recipe",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "BasicMagicWandRecipe",
+      "type": "recipe",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicWitchCraft",
+      "type": "tab",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "BasicMagicWand",
+      "type": "item",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "BasicMagicWandRightClickedInAir",
+      "type": "procedure",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousExtractorRecipe",
+      "type": "recipe",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicWand",
+      "type": "item",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicWandRecipe",
+      "type": "recipe",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicWandRightClickedInAir",
+      "type": "procedure",
+      "sortid": 31,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SaturationOrb",
+      "type": "item",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "SaturationOrbRecipe",
+      "type": "recipe",
+      "sortid": 32,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "FrozenOrb",
+      "type": "item",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "HealthOrb",
+      "type": "item",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "FrozenOrbRecipe",
+      "type": "recipe",
+      "sortid": 33,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "HealthOrbRecipe",
+      "type": "recipe",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DangerousWitch",
+      "type": "mob",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 2,
+        "1": 3
+      }
+    },
+    {
+      "name": "MysteriousTower",
+      "type": "structure",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousLoot",
+      "type": "block",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousLootOnBlockRightClicked",
+      "type": "procedure",
+      "sortid": 36,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CobwebOnPotionActiveTick",
+      "type": "procedure",
+      "sortid": 37,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cobweb",
+      "type": "potion",
+      "sortid": 38,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "BlockFly",
+      "type": "potion",
+      "sortid": 39,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousDimensionOnPotionActiveTick",
+      "type": "procedure",
+      "sortid": 40,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousBiome",
+      "type": "biome",
+      "sortid": 41,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousLadder",
+      "type": "block",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousLadderRecipe",
+      "type": "recipe",
+      "sortid": 42,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousCobweb",
+      "type": "block",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousCobwebEntityCollidesInTheBlock",
+      "type": "procedure",
+      "sortid": 43,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousCobwebRecipe",
+      "type": "recipe",
+      "sortid": 44,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DimensionalSwitcher",
+      "type": "item",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DimensionalSwitcherRightClickedInAir",
+      "type": "procedure",
+      "sortid": 45,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DimensionalOrb",
+      "type": "item",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DimensionalSwitcherGUI",
+      "type": "gui",
+      "sortid": 46,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 2
+      }
+    },
+    {
+      "name": "OverworldDimensionalSwitcherButton",
+      "type": "procedure",
+      "sortid": 47,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NetherDimensionalSwitcherButton",
+      "type": "procedure",
+      "sortid": 48,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EndDimensionalSwitcherButton",
+      "type": "procedure",
+      "sortid": 49,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousDimensionalSwitcherButton",
+      "type": "procedure",
+      "sortid": 50,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CloseButtonDimensionalSwitcher",
+      "type": "procedure",
+      "sortid": 51,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DimensionalOrbRecipe",
+      "type": "recipe",
+      "sortid": 52,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DangerousDragon",
+      "type": "mob",
+      "sortid": 53,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 4,
+        "1": 5
+      }
+    },
+    {
+      "name": "DangerousKiller",
+      "type": "achievement",
+      "sortid": 54,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DangerousDragonEntityDies",
+      "type": "procedure",
+      "sortid": 54,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DangerousExterminator",
+      "type": "achievement",
+      "sortid": 55,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DangerousWitchEntityDies",
+      "type": "procedure",
+      "sortid": 56,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MysteriousDimensionTraveler",
+      "type": "achievement",
+      "sortid": 57,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "OrbMaker",
+      "type": "achievement",
+      "sortid": 58,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalOrbMaker",
+      "type": "achievement",
+      "sortid": 59,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DimensionalSwitcherRecipe",
+      "type": "recipe",
+      "sortid": 60,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "DimensionalTraveler",
+      "type": "achievement",
+      "sortid": 60,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousDimensionPlayerEntersDimension",
+      "type": "procedure",
+      "sortid": 61,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicCarpet",
+      "type": "mob",
+      "sortid": 62,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 6,
+        "1": 7
+      }
+    },
+    {
+      "name": "MagicCarpetItem",
+      "type": "item",
+      "sortid": 63,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicCarpetItemRightClickedOnBlock",
+      "type": "procedure",
+      "sortid": 64,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicCarpetItemRecipe",
+      "type": "recipe",
+      "sortid": 65,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicCarpetEntityDies",
+      "type": "procedure",
+      "sortid": 66,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AutoBlockRemover",
+      "type": "block",
+      "sortid": 67,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "AutoBlockRemoverRedstoneOn",
+      "type": "procedure",
+      "sortid": 68,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AutoBlockRemoverRecipe",
+      "type": "recipe",
+      "sortid": 69,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBlock",
+      "type": "block",
+      "sortid": 70,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBlockRecipe",
+      "type": "recipe",
+      "sortid": 71,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalOrbRecipe",
+      "type": "recipe",
+      "sortid": 72,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBookshelf",
+      "type": "block",
+      "sortid": 73,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBookshelfRecipe",
+      "type": "recipe",
+      "sortid": 74,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "ChunkAnalyser",
+      "type": "item",
+      "sortid": 75,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "ChunkAnalyserRightClickedInAir",
+      "type": "procedure",
+      "sortid": 76,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChunkAnalyserRecipe",
+      "type": "recipe",
+      "sortid": 77,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "EnergyCrystalEmpty",
+      "type": "item",
+      "sortid": 78,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "EnergyCrystalEmptyRecipe",
+      "type": "recipe",
+      "sortid": 79,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "EnergyCrystal",
+      "type": "item",
+      "sortid": 80,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalGlass",
+      "type": "block",
+      "sortid": 81,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalGlassRecipe",
+      "type": "recipe",
+      "sortid": 82,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalStairs",
+      "type": "block",
+      "sortid": 83,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalStairsRecipe",
+      "type": "recipe",
+      "sortid": 84,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalSlab",
+      "type": "block",
+      "sortid": 85,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalSlabRecipe",
+      "type": "recipe",
+      "sortid": 86,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalFence",
+      "type": "block",
+      "sortid": 87,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalFenceRecipe",
+      "type": "recipe",
+      "sortid": 88,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWall",
+      "type": "block",
+      "sortid": 89,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWallRecipe",
+      "type": "recipe",
+      "sortid": 90,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalTrapdoor",
+      "type": "block",
+      "sortid": 91,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalTrapdoorRecipe",
+      "type": "recipe",
+      "sortid": 92,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MysteriousOrbOreBlockDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 93,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalLeaves",
+      "type": "block",
+      "sortid": 94,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalLeavesBlockDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 95,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalLeavesBlockDestroyedByExplosion",
+      "type": "procedure",
+      "sortid": 96,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalLeaves2",
+      "type": "block",
+      "sortid": 97,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalLeaves2UpdateTick",
+      "type": "procedure",
+      "sortid": 98,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalSapling",
+      "type": "block",
+      "sortid": 99,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalSaplingUpdateTick",
+      "type": "procedure",
+      "sortid": 100,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalSaplingOnBlockRightClicked",
+      "type": "procedure",
+      "sortid": 101,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalTree",
+      "type": "structure",
+      "sortid": 102,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalSaplingItemBlockAdded",
+      "type": "procedure",
+      "sortid": 104,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBerries",
+      "type": "food",
+      "sortid": 105,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBerriesBlockDestroyedByExplosion",
+      "type": "procedure",
+      "sortid": 106,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBerriesBlockDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 107,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBushReady",
+      "type": "plant",
+      "sortid": 108,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBushReadyPlantRightClicked",
+      "type": "procedure",
+      "sortid": 109,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBushGrowing",
+      "type": "plant",
+      "sortid": 110,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBushGrowingPlantDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 110,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBushGrowingUpdateTick",
+      "type": "procedure",
+      "sortid": 111,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBushUpdateTick",
+      "type": "procedure",
+      "sortid": 112,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBush",
+      "type": "plant",
+      "sortid": 112,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalBushPlantDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 112,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalBushReadyMobplayerCollidesWithPlant",
+      "type": "procedure",
+      "sortid": 113,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalSaplingItem",
+      "type": "plant",
+      "sortid": 114,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalSaplingItemUpdateTick",
+      "type": "procedure",
+      "sortid": 115,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalSaplingItem2",
+      "type": "procedure",
+      "sortid": 116,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SeeCoordinates",
+      "type": "keybind",
+      "sortid": 117,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "SeeCoordinatesOnKeyPressed",
+      "type": "procedure",
+      "sortid": 118,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalWheatSeeds",
+      "type": "item",
+      "sortid": 119,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatSeedsSpawning",
+      "type": "procedure",
+      "sortid": 120,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalWheatStage0",
+      "type": "block",
+      "sortid": 121,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage1",
+      "type": "block",
+      "sortid": 122,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage2",
+      "type": "block",
+      "sortid": 123,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage3",
+      "type": "block",
+      "sortid": 124,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage4",
+      "type": "block",
+      "sortid": 125,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage5",
+      "type": "block",
+      "sortid": 126,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage6",
+      "type": "block",
+      "sortid": 127,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage7",
+      "type": "block",
+      "sortid": 128,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatSeedsRightClickedOnBlock",
+      "type": "procedure",
+      "sortid": 129,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalWheat",
+      "type": "item",
+      "sortid": 130,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalWheatStage0UpdateTick",
+      "type": "procedure",
+      "sortid": 131,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalWheatStage7BlockDestroyedByPlayer",
+      "type": "procedure",
+      "sortid": 132,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalWheatStage7BlockDestroyedByExplosion",
+      "type": "procedure",
+      "sortid": 133,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalCompressor",
+      "type": "block",
+      "sortid": 134,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalCompressorActivate",
+      "type": "block",
+      "sortid": 135,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalCompressorOnBlockRightClicked",
+      "type": "procedure",
+      "sortid": 136,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalCompressorActivateUpdateTick",
+      "type": "procedure",
+      "sortid": 137,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalCompressorGUI",
+      "type": "gui",
+      "sortid": 138,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 3
+      }
+    },
+    {
+      "name": "SolarPanel",
+      "type": "block",
+      "sortid": 139,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "SolarPanelUpdateTick",
+      "type": "procedure",
+      "sortid": 140,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SolarPanelGUI",
+      "type": "gui",
+      "sortid": 141,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 4
+      }
+    },
+    {
+      "name": "MagicalLava",
+      "type": "fluid",
+      "sortid": 142,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {}
+    },
+    {
+      "name": "MagicalLavaMobplayerCollidesBlock",
+      "type": "procedure",
+      "sortid": 143,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalDimension",
+      "type": "dimension",
+      "sortid": 144,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "1": 2
+      }
+    },
+    {
+      "name": "MagicalDimensionPortal",
+      "type": "block",
+      "sortid": 145,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalDimensionPortalEntityCollidesInTheBlock",
+      "type": "procedure",
+      "sortid": 146,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalLavaUpdateTick",
+      "type": "procedure",
+      "sortid": 147,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalDimensionPortalUpdateTick",
+      "type": "procedure",
+      "sortid": 148,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagicalDimensionPlayerEntersDimension",
+      "type": "procedure",
+      "sortid": 149,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bckp",
+      "type": "procedure",
+      "sortid": 150,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MegaEnderPearl",
+      "type": "gun",
+      "sortid": 151,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 8
+      }
+    },
+    {
+      "name": "MegaEnderPearlBulletHitsBlock",
+      "type": "procedure",
+      "sortid": 152,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MegaEnderPearlRangedItemUsed",
+      "type": "procedure",
+      "sortid": 153,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MegaEnderPearlRecipe",
+      "type": "recipe",
+      "sortid": 154,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "MagicalCompressorRecipe",
+      "type": "recipe",
+      "sortid": 155,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {}
+    },
+    {
+      "name": "Magicwandrightclickcop",
+      "type": "procedure",
+      "sortid": 156,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "int"
+          },
+          {
+            "name": "y",
+            "type": "int"
+          },
+          {
+            "name": "z",
+            "type": "int"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "ismagicaldimensiongenerated",
+      "type": "logic",
+      "scope": "world",
+      "value": "false"
+    }
+  ],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {
+      "potion.effect.cobweb": "Cobweb potion",
+      "entity.dangerouswitch.name": "Dangerous witch",
+      "tile.mysterious_orb_ore.name": "Mysterious orb ore",
+      "item.healthorb.name": "Frozen orb",
+      "advancements.mysteriousdimensiontraveler.descr": "Enter in mysterious dimension.",
+      "advancements.magicalorbmaker.descr": "Make a magical orb.",
+      "tile.mysterious_log.name": "Mysterious log",
+      "potion.effect.blockfly": "Block fly potion",
+      "tile.magicalbush.name": "Magical bush",
+      "fluid.magicallava": "MagicalLava",
+      "tipped_arrow.effect.blockfly": "Arrow of block fly potion",
+      "splash_potion.effect.cobweb": "Splash cobweb potion",
+      "tile.mysteriouscobweb.name": "Mysterious cobweb",
+      "item.energycrystalempty.name": "Energy crystal (empty)",
+      "tile.magicalwheatstage6.name": "Magical wheat",
+      "item.magicalberries.name": "Magical berries",
+      "item.mysterious_dimension.name": "Mysterious dimension portal igniter",
+      "tile.magicalleaves.name": "Magical leaves",
+      "advancements.dangerouskiller.descr": "Kill a dangerous dragon.",
+      "item.energycrystal.name": "Energy crystal",
+      "tile.magicalbookshelf.name": "Magical bookshelf",
+      "advancements.magicalorbmaker.title": "Magical orb maker",
+      "advancements.dangerouskiller.title": "Dangerous killer",
+      "tile.magicalwheatstage5.name": "Magical wheat",
+      "tile.mysteriousladder.name": "Mysterious ladder",
+      "advancements.orbmaker.descr": "Create a mysterious orb.",
+      "effect.blockfly": "Block fly",
+      "tile.solarpanel.name": "Solar panel",
+      "tile.magicalbushready.name": "Magical bush",
+      "item.megaenderpearl.name": "Mega ender pearl",
+      "tile.magicalwall.name": "Magical wall",
+      "item.magicalwheatseeds.name": "Magical wheat seeds",
+      "tile.magicaldimensionportal.name": "Magical Dimension Portal",
+      "item.magiccarpetitem.name": "Magic carpet",
+      "tile.magicalbushgrowing.name": "Magical bush",
+      "item.chunkanalyser.name": "Chunk analyser",
+      "effect.cobweb": "Cobweb potion",
+      "lingering_potion.effect.cobweb": "Lingering cobweb potion",
+      "itemGroup.tabmagicwitchcraft": "Magic witchcraft",
+      "tile.magicalwheatstage0.name": "Magical wheat",
+      "tile.mysteriousloot.name": "Mysterious loot",
+      "advancements.dimensionaltraveler.title": "Dimensional traveler",
+      "entity.magiccarpet.name": "Magic carpet",
+      "tile.magicaltrapdoor.name": "Magical trapdoor",
+      "item.basicmagicwand.name": "Basic magic wand",
+      "splash_potion.effect.blockfly": "Splash block fly potion",
+      "advancements.dangerousexterminator.title": "Dangerous exterminator",
+      "item.magicaldimension.name": "Magical Dimension Portal Igniter",
+      "tile.mysterious_extractor.name": "Mysterious extractor",
+      "lingering_potion.effect.blockfly": "Lingering block fly potion",
+      "tile.magicalslab.name": "Magical slab",
+      "tile.magicallava.name": "Magical lava",
+      "tile.magicalwheatstage3.name": "Magical wheat",
+      "advancements.dangerousexterminator.descr": "Kill a dangerous witch.",
+      "tile.magicalcompressoractivate.name": "Magical compressor",
+      "item.frozenorb.name": "Frozen orb",
+      "tile.magicalleaves2.name": "Magical leaves",
+      "item.fireorb.name": "Fire orb",
+      "tile.autoblockremover.name": "Auto block remover",
+      "item.mysterious_orb.name": "Mysterious orb",
+      "tile.magicalwheatstage2.name": "Magical wheat",
+      "item.magicwand.name": "Magic wand",
+      "tile.magicalsaplingitem.name": "Magical sapling",
+      "key.mcreator.seecoordinates": "See coordinates",
+      "tile.magicalwheatstage4.name": "Magical wheat",
+      "tile.magicalwheatstage1.name": "Magical wheat",
+      "tipped_arrow.effect.cobweb": "Arrow of cobweb potion",
+      "tile.magicalwheatstage7.name": "Magical wheat",
+      "tile.mysterious_portal.name": "Mysterious portal frame",
+      "tile.mysterious_leaves.name": "Mysterious leaves",
+      "entity.dangerousdragon.name": "Dangerous dragon",
+      "tile.magicalglass.name": "Magical glass",
+      "advancements.dimensionaltraveler.descr": "Use dimensional switcher.",
+      "item.magicalwheat.name": "Magical wheat",
+      "tile.magicalcompressor.name": "Magical compressor",
+      "item.dimensionalorb.name": "Dimensional orb",
+      "tile.mysterious_dimension_portal.name": "Mysterious dimension portal",
+      "item.saturationorb.name": "Saturation orb",
+      "item.dimensionalswitcher.name": "Dimensional switcher",
+      "tile.magicalsapling.name": "Magical sapling",
+      "tile.magicalstairs.name": "Magical stairs",
+      "tile.magicalblock.name": "Magical block",
+      "advancements.mysteriousdimensiontraveler.title": "Mysterious dimension traveler",
+      "tile.magicalfence.name": "Magical Fence",
+      "item.magical_orb.name": "Magical orb",
+      "advancements.orbmaker.title": "Mysterious orb maker"
+    },
+    "fr_fr": {
+      "potion.effect.cobweb": "Potion de toile d\u0027arraignée",
+      "entity.dangerouswitch.name": "Sorcière dangereuse",
+      "tile.mysterious_orb_ore.name": "Minerai d\u0027orbe mystérieuse",
+      "item.healthorb.name": "Orbe de vie",
+      "advancements.mysteriousdimensiontraveler.descr": "Entrez dans la dimension mystérieuse.",
+      "advancements.magicalorbmaker.descr": "Fabriquez une orbe magique",
+      "tile.mysterious_log.name": "Bois mystérieux",
+      "potion.effect.blockfly": "Potion de bloc vol",
+      "tile.magicalbush.name": "Buisson magique",
+      "fluid.magicallava": "Lave magique",
+      "tipped_arrow.effect.blockfly": "Flèche de bloc vol",
+      "splash_potion.effect.cobweb": "Potion jetable de toile d\u0027arraignée",
+      "tile.mysteriouscobweb.name": "Toile d\u0027arraignée mystérieuse",
+      "item.energycrystalempty.name": "Cristal d\u0027énergie (vide)",
+      "tile.magicalwheatstage6.name": "Blé magique",
+      "item.magicalberries.name": "Baies magiques",
+      "item.mysterious_dimension.name": "Activateur de portail mystérieux",
+      "tile.magicalleaves.name": "Feuilles magiques",
+      "advancements.dangerouskiller.descr": "Tuer un dragon dangereux.",
+      "item.energycrystal.name": "Cristal d\u0027énergie",
+      "tile.magicalbookshelf.name": "Bibliothèque magique",
+      "advancements.dangerouskiller.title": "Tueur dangereux",
+      "advancements.magicalorbmaker.title": "Fabriqueur d\u0027orbe magique",
+      "tile.magicalwheatstage5.name": "Blé magique",
+      "tile.mysteriousladder.name": "Échelle mystérieuse",
+      "advancements.orbmaker.descr": "Créez une orbe mystérieuse",
+      "effect.blockfly": "Bloc vol",
+      "tile.solarpanel.name": "Panneau solaire",
+      "tile.magicalbushready.name": "Buisson magique",
+      "item.megaenderpearl.name": "Méga perle de l\u0027ender",
+      "tile.magicalwall.name": "Muret magique",
+      "item.magicalwheatseeds.name": "Graines de blé magique",
+      "tile.magicaldimensionportal.name": "Portail de la dimension mystérieuse",
+      "item.magiccarpetitem.name": "Tapis magique",
+      "tile.magicalbushgrowing.name": "Buisson magique",
+      "item.chunkanalyser.name": "Analyseur de tronçon",
+      "effect.cobweb": "Potion de toile d\u0027arraignée",
+      "lingering_potion.effect.cobweb": "Potion persistante de toile d\u0027arraignée",
+      "itemGroup.tabmagicwitchcraft": "Magic Witchcraft",
+      "tile.magicalwheatstage0.name": "Blé magique",
+      "tile.mysteriousloot.name": "Trésor mystérieux",
+      "advancements.dimensionaltraveler.title": "Voyageur entre-dimension",
+      "entity.magiccarpet.name": "Tapis magique",
+      "tile.magicaltrapdoor.name": "Trappe magique",
+      "item.basicmagicwand.name": "Baguette magique de base",
+      "splash_potion.effect.blockfly": "Potion jetable de bloc vol",
+      "advancements.dangerousexterminator.title": "Exterminateur dangereux",
+      "item.magicaldimension.name": "Activateur de portail mystérieux",
+      "tile.mysterious_extractor.name": "Extracteur mystérieux",
+      "lingering_potion.effect.blockfly": "Potion persistante de bloc vol",
+      "tile.magicalslab.name": "Dalle magique",
+      "tile.magicallava.name": "Lave magique",
+      "tile.magicalwheatstage3.name": "Blé magique",
+      "advancements.dangerousexterminator.descr": "Tuer une sorcière dangereuse.",
+      "tile.magicalcompressoractivate.name": "Compresseur magique",
+      "item.frozenorb.name": "Orbe glacée",
+      "tile.magicalleaves2.name": "Feuilles magiques",
+      "item.fireorb.name": "Orbe de feu",
+      "tile.autoblockremover.name": "Enleveur de bloc automatique",
+      "item.mysterious_orb.name": "Orbe mystérieuse",
+      "tile.magicalwheatstage2.name": "Blé magique",
+      "item.magicwand.name": "Baguette magique",
+      "tile.magicalsaplingitem.name": "Pousse magique",
+      "key.mcreator.seecoordinates": "See coordinates",
+      "tile.magicalwheatstage4.name": "Blé magique",
+      "tile.magicalwheatstage1.name": "Blé magique",
+      "tipped_arrow.effect.cobweb": "Flèche de potion de toile d\u0027arraignée",
+      "tile.magicalwheatstage7.name": "Blé magique",
+      "tile.mysterious_portal.name": "Bloc de portail mystérieux",
+      "tile.mysterious_leaves.name": "Feuilles mystérieuses",
+      "entity.dangerousdragon.name": "Dragon dangereux",
+      "tile.magicalglass.name": "Verre magique",
+      "advancements.dimensionaltraveler.descr": "Utilisez le changeur de dimension.",
+      "item.magicalwheat.name": "Blé magique",
+      "tile.magicalcompressor.name": "Compresseur magique",
+      "item.dimensionalorb.name": "Orbe dimensionelle",
+      "tile.mysterious_dimension_portal.name": "Portail de la dimension mystérieuse",
+      "item.saturationorb.name": "Orbe de saturation",
+      "item.dimensionalswitcher.name": "Changeur de dimension",
+      "tile.magicalsapling.name": "Pousse magique",
+      "tile.magicalstairs.name": "Escaliers magiques",
+      "tile.magicalblock.name": "Bloc magique",
+      "advancements.mysteriousdimensiontraveler.title": "Explorateur de la dimension mystérieuse",
+      "tile.magicalfence.name": "Clôture magique",
+      "item.magical_orb.name": "Orbe magique",
+      "advancements.orbmaker.title": "Fabriqueur d\u0027orbe mystérieuse"
+    }
+  },
+  "workspaceSettings": {
+    "modid": "magic_witchcraft",
+    "modName": "Magic Witchcraft",
+    "version": "release_1.0",
+    "description": "A mysterious and magical mod !",
+    "author": "SiniKraft",
+    "websiteURL": "https://mcreator.net",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "1.12.2",
+    "credits": "You aren\u0027t allowed to distribute this mod without my agreement ! See license for more infos.",
+    "modElementsPackage": "fr.sinikraft.magicwitchcraft",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202000214217
+}

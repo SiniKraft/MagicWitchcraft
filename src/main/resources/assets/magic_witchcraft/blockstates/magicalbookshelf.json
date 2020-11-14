@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:magicalbookshelf"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:magicalbookshelf"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:magicalbookshelf",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:magicalbookshelf",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:magicalbookshelf",
+      "y": 270
+    }
+  }
+}

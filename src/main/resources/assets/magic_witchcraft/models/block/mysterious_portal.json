@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "magic_witchcraft:blocks/mysterious_dimension_portal_frame",
+    "particle": "magic_witchcraft:blocks/mysterious_dimension_portal_frame"
+  }
+}

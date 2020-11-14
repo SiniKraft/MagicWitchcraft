@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "magic_witchcraft:blocks/auto_block_remover_side",
+    "up": "magic_witchcraft:blocks/auto_block_remover_side",
+    "north": "magic_witchcraft:blocks/auto_block_remover_front",
+    "east": "magic_witchcraft:blocks/auto_block_remover_side",
+    "south": "magic_witchcraft:blocks/auto_block_remover_side",
+    "west": "magic_witchcraft:blocks/auto_block_remover_side",
+    "particle": "magic_witchcraft:blocks/auto_block_remover_side"
+  }
+}

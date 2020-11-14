@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "magic_witchcraft:blocks/magical_bush_ready",
+    "particle": "magic_witchcraft:blocks/magical_bush_ready"
+  }
+}

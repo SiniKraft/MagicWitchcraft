@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "CUSTOM:MagicalOrb"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      },
+      {
+        "value": "Items.ENDER_PEARL"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:MegaEnderPearl"
+    },
+    "name": "mega_ender_pearl_recipe",
+    "namespace": "mod"
+  }
+}

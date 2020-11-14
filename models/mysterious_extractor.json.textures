@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "iron_block",
+        "1": "oak_planks",
+        "2": "water_still"
+      },
+      "name": "default"
+    }
+  }
+}

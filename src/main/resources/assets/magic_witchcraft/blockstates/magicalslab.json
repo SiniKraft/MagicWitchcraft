@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom,variant=default": {
+      "model": "magic_witchcraft:magicalslab"
+    },
+    "half=top,variant=default": {
+      "model": "magic_witchcraft:magicalslab_top"
+    }
+  }
+}

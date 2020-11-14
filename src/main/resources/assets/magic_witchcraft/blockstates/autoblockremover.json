@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:autoblockremover"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:autoblockremover"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:autoblockremover",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:autoblockremover",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:autoblockremover",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "magic_witchcraft:autoblockremover",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "magic_witchcraft:autoblockremover",
+      "x": 90
+    }
+  }
+}

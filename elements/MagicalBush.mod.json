@@ -1,0 +1,46 @@
+{
+  "_fv": 6,
+  "_type": "plant",
+  "definition": {
+    "renderType": 12,
+    "texture": "magical_bush",
+    "customModelName": "Cross model",
+    "plantType": "normal",
+    "growapableSpawnType": "Plains",
+    "growapableMaxHeight": 3,
+    "name": "Magical bush",
+    "creativeTab": {
+      "value": "No creative tab entry"
+    },
+    "hardness": 0.0,
+    "resistance": 0.0,
+    "luminance": 0.0,
+    "unbreakable": false,
+    "soundOnStep": {
+      "value": "PLANT"
+    },
+    "customDrop": {
+      "value": "Blocks.AIR"
+    },
+    "dropAmount": 1,
+    "isReplaceable": false,
+    "colorOnMap": "DEFAULT",
+    "creativePickItem": {
+      "value": ""
+    },
+    "flammability": 100,
+    "fireSpreadSpeed": 0,
+    "frequencyOnChunks": 0,
+    "spawnWorldTypes": [],
+    "restrictionBiomes": [],
+    "onTickUpdate": {
+      "name": "MagicalBushUpdateTick"
+    },
+    "onDestroyedByPlayer": {
+      "name": "MagicalBushPlantDestroyedByPlayer"
+    },
+    "onEntityCollides": {
+      "name": "MagicalBushReadyMobplayerCollidesWithPlant"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "magic_witchcraft:custom/solar_panel",
+  "textures": {
+    "all": "magic_witchcraft:blocks/solar_panel",
+    "particle": "magic_witchcraft:blocks/solar_panel",
+    "0": "magic_witchcraft:blocks/iron_block",
+    "1": "magic_witchcraft:blocks/solar_panel"
+  }
+}

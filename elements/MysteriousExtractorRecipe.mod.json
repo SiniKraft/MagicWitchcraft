@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.PLANKS"
+      },
+      {
+        "value": "Items.WATER_BUCKET"
+      },
+      {
+        "value": "Items.IRON_INGOT"
+      },
+      {
+        "value": "Blocks.PLANKS"
+      },
+      {
+        "value": "Blocks.PLANKS"
+      },
+      {
+        "value": "Items.IRON_INGOT"
+      },
+      {
+        "value": "Blocks.HOPPER"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Items.IRON_INGOT"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:MysteriousExtractor"
+    },
+    "name": "mysterious_extractor_recipe",
+    "namespace": "mod"
+  }
+}

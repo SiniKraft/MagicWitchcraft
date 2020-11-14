@@ -1,0 +1,43 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:iron_ingot"
+    },
+    "1": {
+      "item": "minecraft:gold_ingot"
+    },
+    "2": {
+      "item": "minecraft:iron_ingot"
+    },
+    "3": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "4": {
+      "item": "minecraft:emerald"
+    },
+    "5": {
+      "item": "minecraft:diamond"
+    },
+    "6": {
+      "item": "minecraft:iron_ingot"
+    },
+    "7": {
+      "item": "minecraft:gold_ingot"
+    },
+    "8": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:mysterious_portal",
+    "count": 1
+  }
+}

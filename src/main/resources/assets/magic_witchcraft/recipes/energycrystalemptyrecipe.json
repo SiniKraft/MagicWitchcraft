@@ -1,0 +1,34 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:stained_glass",
+      "data": 32767
+    },
+    "3": {
+      "item": "minecraft:stained_glass",
+      "data": 32767
+    },
+    "4": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "5": {
+      "item": "minecraft:stained_glass",
+      "data": 32767
+    },
+    "7": {
+      "item": "minecraft:stained_glass",
+      "data": 32767
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:energycrystalempty",
+    "count": 1
+  }
+}

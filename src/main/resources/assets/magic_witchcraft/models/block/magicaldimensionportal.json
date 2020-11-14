@@ -1,0 +1,8 @@
+{
+  "parent": "magic_witchcraft:custom/magical_dimension_portal",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magical_portal",
+    "particle": "magic_witchcraft:blocks/magical_portal",
+    "0": "magic_witchcraft:blocks/magical_portal"
+  }
+}

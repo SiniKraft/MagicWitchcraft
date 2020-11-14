@@ -1,0 +1,42 @@
+{
+  "_fv": 6,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 352,
+    "height": 332,
+    "renderBgLayer": true,
+    "components": [
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "id": 0,
+          "name": "Slot #0",
+          "x": 351,
+          "y": 142
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 1,
+          "name": "Slot #1",
+          "x": 462,
+          "y": 142
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "energy_cystal_empty.png",
+          "name": "energy_cystal_empty.png",
+          "x": 321,
+          "y": 144
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 4,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "CUSTOM:MagicalBlock"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:MagicalFence"
+    },
+    "name": "magical_fence_recipe",
+    "namespace": "mod"
+  }
+}

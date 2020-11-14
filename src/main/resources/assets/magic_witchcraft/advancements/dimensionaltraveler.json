@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:dimensionalswitcher"
+    },
+    "title": {
+      "translate": "advancements.dimensionaltraveler.title"
+    },
+    "description": {
+      "translate": "advancements.dimensionaltraveler.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "dimensionaltraveler": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "magic_witchcraft:magicalorbmaker"
+}

@@ -1,0 +1,27 @@
+{
+  "_fv": 6,
+  "_type": "fluid",
+  "definition": {
+    "name": "MagicalLava",
+    "textureStill": "magical_lava_still",
+    "textureFlowing": "magical_lava_flow",
+    "luminosity": 16,
+    "density": 2000,
+    "viscosity": 1000,
+    "isGas": false,
+    "type": "LAVA",
+    "generateBucket": true,
+    "creativeTab": {
+      "value": "CUSTOM:MagicWitchCraft"
+    },
+    "spawnWorldTypes": [
+      "CUSTOM:MysteriousDimension"
+    ],
+    "onTickUpdate": {
+      "name": "MagicalLavaUpdateTick"
+    },
+    "onEntityCollides": {
+      "name": "MagicalLavaMobplayerCollidesBlock"
+    }
+  }
+}

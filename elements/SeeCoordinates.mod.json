@@ -1,0 +1,11 @@
+{
+  "_fv": 6,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "FUNCTION",
+    "keyBindingName": "See coordinates",
+    "onKeyPressed": {
+      "name": "SeeCoordinatesOnKeyPressed"
+    }
+  }
+}

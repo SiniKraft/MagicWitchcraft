@@ -1,0 +1,8 @@
+{
+  "parent": "magic_witchcraft:custom/grow",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magical_wheat_stage_3",
+    "particle": "magic_witchcraft:blocks/magical_wheat_stage_3",
+    "0": "magic_witchcraft:blocks/magical_wheat_stage_3"
+  }
+}

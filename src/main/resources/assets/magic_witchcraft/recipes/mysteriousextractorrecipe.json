@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "6 8"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:planks",
+      "data": 32767
+    },
+    "1": {
+      "item": "minecraft:water_bucket"
+    },
+    "2": {
+      "item": "minecraft:iron_ingot"
+    },
+    "3": {
+      "item": "minecraft:planks",
+      "data": 32767
+    },
+    "4": {
+      "item": "minecraft:planks",
+      "data": 32767
+    },
+    "5": {
+      "item": "minecraft:iron_ingot"
+    },
+    "6": {
+      "item": "minecraft:hopper"
+    },
+    "8": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:mysterious_extractor",
+    "count": 1
+  }
+}

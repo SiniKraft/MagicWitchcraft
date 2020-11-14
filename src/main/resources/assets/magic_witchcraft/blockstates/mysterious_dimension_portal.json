@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "magic_witchcraft:mysterious_dimension_portal_ew"
+    },
+    "axis=x": {
+      "model": "magic_witchcraft:mysterious_dimension_portal_ns"
+    },
+    "inventory": {
+      "model": "magic_witchcraft:mysterious_dimension_portal_ns"
+    }
+  }
+}

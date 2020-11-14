@@ -1,0 +1,9 @@
+{
+  "parent": "magic_witchcraft:custom/magical_compressor_activate",
+  "textures": {
+    "all": "magic_witchcraft:blocks/iron_block",
+    "particle": "magic_witchcraft:blocks/iron_block",
+    "1": "magic_witchcraft:blocks/iron_block",
+    "3": "magic_witchcraft:blocks/redstone_block"
+  }
+}

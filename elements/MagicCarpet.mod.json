@@ -1,0 +1,108 @@
+{
+  "_fv": 6,
+  "_type": "mob",
+  "definition": {
+    "mobName": "Magic carpet",
+    "mobLabel": "Magic carpet",
+    "mobModelTexture": "magic_carpet.png",
+    "mobModelName": "Model_magic_carpet",
+    "modelWidth": 1.0,
+    "modelHeight": 0.001,
+    "modelShadowSize": 0.5,
+    "armorBaseValue": 0.0,
+    "hasSpawnEgg": true,
+    "spawnEggBaseColor": {
+      "value": -65536,
+      "falpha": 0.0
+    },
+    "spawnEggDotColor": {
+      "value": -256,
+      "falpha": 0.0
+    },
+    "creativeTab": {
+      "value": "CUSTOM:MagicWitchCraft"
+    },
+    "isBoss": false,
+    "bossBarColor": "PINK",
+    "bossBarType": "PROGRESS",
+    "equipmentMainHand": {
+      "value": ""
+    },
+    "equipmentOffHand": {
+      "value": ""
+    },
+    "equipmentHelmet": {
+      "value": ""
+    },
+    "equipmentBody": {
+      "value": ""
+    },
+    "equipmentLeggings": {
+      "value": ""
+    },
+    "equipmentBoots": {
+      "value": ""
+    },
+    "mobBehaviourType": "Creature",
+    "mobCreatureType": "UNDEFINED",
+    "attackStrength": 0,
+    "movementSpeed": 1.0,
+    "trackingRange": 64,
+    "health": 1,
+    "xpAmount": 0,
+    "waterMob": false,
+    "flyingMob": true,
+    "disableCollisions": false,
+    "ridable": true,
+    "canControlForward": true,
+    "canControlStrafe": true,
+    "immuneToFire": false,
+    "immuneToArrows": false,
+    "immuneToFallDamage": true,
+    "immuneToCactus": true,
+    "immuneToDrowning": true,
+    "immuneToLightning": false,
+    "immuneToPotions": true,
+    "immuneToPlayer": false,
+    "mobDrop": {
+      "value": ""
+    },
+    "livingSound": {
+      "value": ""
+    },
+    "hurtSound": {
+      "value": ""
+    },
+    "deathSound": {
+      "value": ""
+    },
+    "spawnParticles": false,
+    "particleToSpawn": {
+      "value": "EXPLOSION_NORMAL"
+    },
+    "particleSpawningShape": "Spread",
+    "particleSpawningRadious": 0.5,
+    "particleAmount": 4,
+    "particleSpawningCondition": "ALWAYS",
+    "whenMobDies": {
+      "name": "MagicCarpetEntityDies"
+    },
+    "hasAI": true,
+    "aiBase": "(none)",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"wander\"><field name=\"speed\">0</field><next><block type=\"follow_item_in_hands\"><field name=\"speed\">1</field><field name=\"scared\">FALSE</field><value name=\"item\"><block type=\"mcitem_all\"><field name=\"value\">Items.DIAMOND</field></block></value></block></next></block></next></block></xml>",
+    "breedable": false,
+    "breedTriggerItems": [],
+    "ranged": false,
+    "rangedAttackItem": {
+      "value": ""
+    },
+    "spawnThisMob": false,
+    "doesDespawnWhenIdle": false,
+    "spawningProbability": 20,
+    "mobSpawningType": "ambient",
+    "minNumberOfMobsPerGroup": 1,
+    "maxNumberOfMobsPerGroup": 1,
+    "restrictionBiomes": [],
+    "spawnInDungeons": false
+  }
+}

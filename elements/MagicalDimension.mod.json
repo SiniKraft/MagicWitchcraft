@@ -1,0 +1,69 @@
+{
+  "_fv": 6,
+  "_type": "dimension",
+  "definition": {
+    "portalFrame": {
+      "value": ""
+    },
+    "portalParticles": {
+      "value": "PORTAL"
+    },
+    "portalLuminance": 0.0,
+    "portalSound": {
+      "value": "block.portal.ambient"
+    },
+    "igniterName": "Magical Dimension Portal Igniter",
+    "igniterTab": {
+      "value": "TOOLS"
+    },
+    "texture": "",
+    "portalTexture": "",
+    "enablePortal": false,
+    "biomesInDimension": [
+      {
+        "value": "void"
+      }
+    ],
+    "worldGenType": "Normal world gen",
+    "mainFillerBlock": {
+      "value": "Blocks.AIR"
+    },
+    "secondaryFillerBlock": {
+      "value": "Blocks.AIR"
+    },
+    "tertiaryFillerBlock": {
+      "value": "Blocks.AIR"
+    },
+    "fluidBlock": {
+      "value": "Blocks.AIR"
+    },
+    "airColor": {
+      "value": -4138753,
+      "frgbvalue": [
+        0.753,
+        0.847,
+        1.0
+      ],
+      "fvalue": [
+        0.753,
+        0.847,
+        1.0
+      ],
+      "falpha": 1.0
+    },
+    "canRespawnHere": false,
+    "hasFog": true,
+    "hasWeather": false,
+    "isDark": false,
+    "doesWaterVaporize": false,
+    "sleepResult": "BED_EXPLODES",
+    "hasSkyLight": true,
+    "imitateOverworldBehaviour": true,
+    "dimensionMusic": {
+      "value": ""
+    },
+    "onPlayerEntersDimension": {
+      "name": "MagicalDimensionPlayerEntersDimension"
+    }
+  }
+}
