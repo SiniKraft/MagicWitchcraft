@@ -6,5 +6,5 @@ It requires [Minecraft Forge](http://files.minecraftforge.net/maven/net/minecraf
 Put the mod in your mods folder and start the game.  
 Download the releases here :
 - [1.12.2 ](https://github.com/SiniKraft/MagicWitchcraft/raw/master/releases/%5B1.12.2%5DMagicWitchcraft-release_1.0.jar)
-# Credits and licence.
+# Credits and licence
 You can redistribute your own modifications of my mod only if you say that it's me who created this mod.
