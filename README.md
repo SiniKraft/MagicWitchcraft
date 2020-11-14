@@ -3,7 +3,7 @@ Magic Witchcraft is a Minecraft Forge mod that adds mysterious things ...
 Magic Witchcraft is avaible (or will be avaible) in 1.12.2, 1.14.4 and 1.15.2.
 # Installation
 It requires Minecraft Forge 14.23.5.2768 or higher. It's recommended to use the latest version of Forge.  
-Put the mod in your mods folder and start the game.
+Put the mod in your mods folder and start the game.  
 Download the releases here :
 - 1.12.2 
 # Credits and licence.
