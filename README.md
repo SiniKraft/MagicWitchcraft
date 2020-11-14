@@ -1,4 +1,4 @@
-# Magic Witchcraft
+# About
 Magic Witchcraft is a [Minecraft Forge](http://files.minecraftforge.net/) mod that adds mysterious things ...  
 Magic Witchcraft is avaible (or will be avaible) in 1.12.2, 1.14.4 and 1.15.2.
 # Installation
