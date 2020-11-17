@@ -27,6 +27,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.Block;
 
+import java.util.Random;
+
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureMysteriousLeavesBlockDestroyedByPlayer;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -114,6 +117,29 @@ public class BlockMysteriousLeaves extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 			return false;
+		}
+
+		@Override
+		public int quantityDropped(Random random) {
+			return 0;
+		}
+
+		@Override
+		public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer entity, boolean willHarvest) {
+			boolean retval = super.removedByPlayer(state, world, pos, entity, willHarvest);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureMysteriousLeavesBlockDestroyedByPlayer.executeProcedure($_dependencies);
+			}
+			return retval;
 		}
 	}
 }

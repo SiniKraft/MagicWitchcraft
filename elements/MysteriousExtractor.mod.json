@@ -22,7 +22,7 @@
     "faceShape": "UNDEFINED",
     "name": "Mysterious extractor",
     "specialInfo": [
-      "Use this block to transform mysterious things..."
+      "tile.mysteriousextractor.descr"
     ],
     "hardness": 3.0,
     "resistance": 10.0,

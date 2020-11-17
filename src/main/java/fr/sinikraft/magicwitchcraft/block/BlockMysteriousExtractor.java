@@ -96,7 +96,7 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 		@Override
 		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
 			super.addInformation(itemstack, world, list, flag);
-			list.add("Use this block to transform mysterious things...");
+			list.add("tile.mysteriousextractor.descr");
 		}
 
 		@SideOnly(Side.CLIENT)

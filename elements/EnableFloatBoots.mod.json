@@ -1,0 +1,11 @@
+{
+  "_fv": 6,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "BACK",
+    "keyBindingName": "Enable/Disable float boots",
+    "onKeyPressed": {
+      "name": "EnableFloatBootsOnKeyPressed"
+    }
+  }
+}

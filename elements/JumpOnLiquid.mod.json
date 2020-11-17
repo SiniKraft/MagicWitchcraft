@@ -1,0 +1,8 @@
+{
+  "_fv": 6,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "N",
+    "keyBindingName": "Jump On Liquid"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_fv": 6,
+  "_type": "fluid",
+  "definition": {
+    "name": "TrollWater",
+    "textureStill": "troll_water",
+    "textureFlowing": "troll_water",
+    "luminosity": 0,
+    "density": 10000,
+    "viscosity": 100,
+    "isGas": true,
+    "type": "WATER",
+    "generateBucket": true,
+    "creativeTab": {
+      "value": "CUSTOM:MagicWitchCraft"
+    },
+    "spawnWorldTypes": [],
+    "onEntityCollides": {
+      "name": "TrollWaterMobplayerCollidesBlock"
+    }
+  }
+}
