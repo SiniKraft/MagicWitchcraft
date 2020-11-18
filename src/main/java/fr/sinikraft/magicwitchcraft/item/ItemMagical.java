@@ -17,31 +17,32 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureFloatBootsBootsTickEvent;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalHelmetTickEvent;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class ItemFloatBoots extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:floatbootshelmet")
+public class ItemMagical extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:magicalhelmet")
 	public static final Item helmet = null;
-	@GameRegistry.ObjectHolder("magic_witchcraft:floatbootsbody")
+	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbody")
 	public static final Item body = null;
-	@GameRegistry.ObjectHolder("magic_witchcraft:floatbootslegs")
+	@GameRegistry.ObjectHolder("magic_witchcraft:magicallegs")
 	public static final Item legs = null;
-	@GameRegistry.ObjectHolder("magic_witchcraft:floatbootsboots")
+	@GameRegistry.ObjectHolder("magic_witchcraft:magicalboots")
 	public static final Item boots = null;
-	public ItemFloatBoots(ElementsMagicWitchcraft instance) {
-		super(instance, 160);
+	public ItemMagical(ElementsMagicWitchcraft instance) {
+		super(instance, 166);
 	}
 
 	@Override
 	public void initElements() {
-		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("FLOATBOOTS", "magic_witchcraft:floatboots", 50, new int[]{4, 10, 12, 4}, 18,
-				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("")), 2f);
-		elements.items.add(() -> new ItemArmor(enuma, 0, EntityEquipmentSlot.FEET) {
+		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("MAGICAL", "magic_witchcraft:magical_helmet", 50, new int[]{4, 10, 12, 4}, 18,
+				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("block.slime.place")), 3f);
+		elements.items.add(() -> new ItemArmor(enuma, 0, EntityEquipmentSlot.HEAD) {
 			@Override
 			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemstack) {
+				super.onArmorTick(world, entity, itemstack);
 				int x = (int) entity.posX;
 				int y = (int) entity.posY;
 				int z = (int) entity.posZ;
@@ -52,15 +53,15 @@ public class ItemFloatBoots extends ElementsMagicWitchcraft.ModElement {
 					$_dependencies.put("y", y);
 					$_dependencies.put("z", z);
 					$_dependencies.put("world", world);
-					ProcedureFloatBootsBootsTickEvent.executeProcedure($_dependencies);
+					ProcedureMagicalHelmetTickEvent.executeProcedure($_dependencies);
 				}
 			}
-		}.setUnlocalizedName("floatbootsboots").setRegistryName("floatbootsboots").setCreativeTab(TabMagicWitchCraft.tab));
+		}.setUnlocalizedName("magicalhelmet").setRegistryName("magicalhelmet").setCreativeTab(TabMagicWitchCraft.tab));
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
-		ModelLoader.setCustomModelResourceLocation(boots, 0, new ModelResourceLocation("magic_witchcraft:floatbootsboots", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(helmet, 0, new ModelResourceLocation("magic_witchcraft:magicalhelmet", "inventory"));
 	}
 }

@@ -2,25 +2,25 @@
   "_fv": 6,
   "_type": "armor",
   "definition": {
-    "enableHelmet": false,
-    "textureHelmet": "",
+    "enableHelmet": true,
+    "textureHelmet": "magical_helmet",
     "enableBody": false,
     "textureBody": "",
     "enableLeggings": false,
     "textureLeggings": "",
-    "enableBoots": true,
-    "textureBoots": "floatboots_boots",
-    "onBootsTick": {
-      "name": "FloatBootsBootsTickEvent"
+    "enableBoots": false,
+    "textureBoots": "",
+    "onHelmetTick": {
+      "name": "MagicalHelmetTickEvent"
     },
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
     },
-    "armorTextureFile": "floatboots",
-    "helmetName": "",
+    "armorTextureFile": "magical_helmet",
+    "helmetName": "Magical helmet",
     "bodyName": "",
     "leggingsName": "",
-    "bootsName": "Float boots",
+    "bootsName": "",
     "helmetModelName": "Default",
     "helmetModelPart": "Helmet",
     "helmetModelTexture": "From armor",
@@ -41,10 +41,14 @@
     "damageValueLeggings": 10,
     "damageValueBoots": 4,
     "enchantability": 18,
-    "toughness": 2.0,
+    "toughness": 3.0,
     "equipSound": {
-      "value": ""
+      "value": "block.slime.place"
     },
-    "repairItems": []
+    "repairItems": [
+      {
+        "value": "CUSTOM:MagicalBlock"
+      }
+    ]
   }
 }

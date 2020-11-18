@@ -9,11 +9,11 @@
     "enableLeggings": false,
     "textureLeggings": "",
     "enableBoots": true,
-    "textureBoots": "dimensional_orb",
+    "textureBoots": "floatboots_boots",
     "creativeTab": {
       "value": "No creative tab entry"
     },
-    "armorTextureFile": "tmp",
+    "armorTextureFile": "floatboots",
     "helmetName": "",
     "bodyName": "",
     "leggingsName": "",
