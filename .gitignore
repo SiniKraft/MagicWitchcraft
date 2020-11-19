@@ -11,3 +11,6 @@ build/
 
 # Minecraft client/server files
 run/
+
+# Mcreator file
+magic_witchcraft.mcreator
