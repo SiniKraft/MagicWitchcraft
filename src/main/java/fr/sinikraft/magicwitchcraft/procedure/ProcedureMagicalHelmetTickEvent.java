@@ -48,7 +48,7 @@ public class ProcedureMagicalHelmetTickEvent extends ElementsMagicWitchcraft.Mod
 				|| ((world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z))).getBlock() == BlockMagicalBlock.block.getDefaultState()
 						.getBlock()))) {
 			if (entity instanceof EntityLivingBase)
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) 1, (int) 1, (false), (false)));
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) 1, (int) 2, (false), (false)));
 		}
 	}
 }

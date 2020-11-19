@@ -1,0 +1,9 @@
+{
+  "parent": "magic_witchcraft:custom/magic_wand",
+  "textures": {
+    "0": "magic_witchcraft:blocks/magic_wand",
+    "1": "magic_witchcraft:blocks/nether_portal",
+    "2": "magic_witchcraft:blocks/magic_wand_2",
+    "missing": "magic_witchcraft:blocks/magic_wand"
+  }
+}

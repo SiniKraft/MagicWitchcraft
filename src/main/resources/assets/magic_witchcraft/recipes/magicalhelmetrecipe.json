@@ -1,0 +1,29 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "3 5"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "1": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "2": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalhelmet",
+    "count": 1
+  }
+}
