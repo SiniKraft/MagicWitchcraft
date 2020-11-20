@@ -1,0 +1,8 @@
+{
+  "parent": "magic_witchcraft:custom/atomic_fusioner",
+  "textures": {
+    "all": "magic_witchcraft:blocks/iron_block",
+    "particle": "magic_witchcraft:blocks/iron_block",
+    "0": "magic_witchcraft:blocks/iron_block"
+  }
+}

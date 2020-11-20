@@ -49,6 +49,7 @@ import fr.sinikraft.magicwitchcraft.gui.GuiSolarPanelGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMagicalCompressorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiDimensionalSwitcherGUI;
+import fr.sinikraft.magicwitchcraft.gui.GuiAtomicFusionerGUI;
 
 public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 	public final List<ModElement> elements = new ArrayList<>();
@@ -138,6 +139,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiMagicalCompressorGUI.GuiContainerMod(world, x, y, z, player);
 			if (id == GuiSolarPanelGUI.GUIID)
 				return new GuiSolarPanelGUI.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiAtomicFusionerGUI.GUIID)
+				return new GuiAtomicFusionerGUI.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
@@ -151,6 +154,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiMagicalCompressorGUI.GuiWindow(world, x, y, z, player);
 			if (id == GuiSolarPanelGUI.GUIID)
 				return new GuiSolarPanelGUI.GuiWindow(world, x, y, z, player);
+			if (id == GuiAtomicFusionerGUI.GUIID)
+				return new GuiAtomicFusionerGUI.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

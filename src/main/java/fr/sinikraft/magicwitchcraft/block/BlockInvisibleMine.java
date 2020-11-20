@@ -103,12 +103,11 @@ public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
 			return false;
 		}
 
-// Item glowing effect
-
-		@SideOnly(Side.CLIENT)
-		public boolean hasEffect(ItemStack itemstack) {
-			return true;
+		@Override
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			return new AxisAlignedBB(0D, 0D, 0D, 1D, 0.062D, 1D);
 		}
+
 
 		@Override
 		public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {

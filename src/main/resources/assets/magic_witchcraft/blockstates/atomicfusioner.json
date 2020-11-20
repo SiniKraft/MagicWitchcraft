@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:atomicfusioner"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:atomicfusioner"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:atomicfusioner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:atomicfusioner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:atomicfusioner",
+      "y": 270
+    }
+  }
+}
