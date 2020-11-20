@@ -42,10 +42,10 @@
     "material": {
       "value": "IRON"
     },
-    "tickRate": 10,
+    "tickRate": 100,
     "tickRandomly": false,
     "isReplaceable": false,
-    "colorOnMap": "DEFAULT",
+    "colorOnMap": "IRON",
     "creativePickItem": {
       "value": ""
     },
@@ -79,6 +79,9 @@
     "inventoryOutSlotIDs": [
       3
     ],
+    "onTickUpdate": {
+      "name": "AtomicFusionerUpdateTick"
+    },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
     "blocksToReplace": [

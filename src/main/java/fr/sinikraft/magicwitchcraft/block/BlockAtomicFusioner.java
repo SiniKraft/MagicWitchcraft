@@ -38,11 +38,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.Block;
 
+import java.util.Random;
+
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureAtomicFusionerUpdateTick;
 import fr.sinikraft.magicwitchcraft.gui.GuiAtomicFusionerGUI;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
@@ -117,6 +121,11 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
+		public int tickRate(World world) {
+			return 100;
+		}
+
+		@Override
 		protected net.minecraft.block.state.BlockStateContainer createBlockState() {
 			return new net.minecraft.block.state.BlockStateContainer(this, new IProperty[]{FACING});
 		}
@@ -150,6 +159,11 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public boolean isOpaqueCube(IBlockState state) {
 			return false;
+		}
+
+		@Override
+		public MapColor getMapColor(IBlockState state, IBlockAccess blockAccess, BlockPos pos) {
+			return MapColor.IRON;
 		}
 
 		@Override
@@ -195,6 +209,32 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 				return Container.calcRedstoneFromInventory((TileEntityCustom) tileentity);
 			else
 				return 0;
+		}
+
+		@Override
+		public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+			super.onBlockAdded(world, pos, state);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
+		}
+
+		@Override
+		public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+			super.updateTick(world, pos, state, random);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureAtomicFusionerUpdateTick.executeProcedure($_dependencies);
+			}
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
 		}
 
 		@Override

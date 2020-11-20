@@ -282,7 +282,7 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/capturer 2.png"));
 			this.drawTexturedModalRect(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256);
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.drawTexturedModalRect(this.guiLeft + 70, this.guiTop + 25, 0, 0, 256, 256);
+			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
 		}
 
 		@Override
