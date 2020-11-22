@@ -1,5 +1,5 @@
 {
-  "credit": "Made with Blockbench",
+  "credit": "Made with Blockbench for SiniKraft's Magic witchcraft mod",
   "elements": [
     {
       "name": "Spectral_power_infuser",
@@ -154,9 +154,9 @@
         0
       ],
       "scale": [
-        0.8,
-        0.8,
-        0.8
+        0.6,
+        0.6,
+        0.6
       ]
     },
     "head": {

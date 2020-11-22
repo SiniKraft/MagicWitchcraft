@@ -9,37 +9,37 @@
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": "CUSTOM:SolidTrollWater"
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       },
       {
-        "value": ""
+        "value": "Items.POTIONITEM"
       },
       {
-        "value": ""
+        "value": "Blocks.WEB"
       }
     ],
     "recipeReturnStack": {
-      "value": "Items.BUCKET"
+      "value": "Items.POTIONITEM"
     },
-    "name": "troll_water_recipe",
+    "name": "cobweb_potion_recipe",
     "namespace": "mod"
   }
 }

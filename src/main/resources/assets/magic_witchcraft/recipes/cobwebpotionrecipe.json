@@ -1,0 +1,44 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:web"
+    },
+    "1": {
+      "item": "minecraft:web"
+    },
+    "2": {
+      "item": "minecraft:web"
+    },
+    "3": {
+      "item": "minecraft:web"
+    },
+    "4": {
+      "item": "minecraft:web"
+    },
+    "5": {
+      "item": "minecraft:web"
+    },
+    "6": {
+      "item": "minecraft:web"
+    },
+    "7": {
+      "item": "minecraft:potion",
+      "data": 32767
+    },
+    "8": {
+      "item": "minecraft:web"
+    }
+  },
+  "result": {
+    "item": "minecraft:potion",
+    "data": 32767,
+    "count": 1
+  }
+}
