@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "magic_witchcraft:blocks/tnt_top",
+    "up": "magic_witchcraft:blocks/tnt_top",
+    "north": "magic_witchcraft:blocks/tnt_side",
+    "east": "magic_witchcraft:blocks/tnt_side",
+    "south": "magic_witchcraft:blocks/tnt_side",
+    "west": "magic_witchcraft:blocks/tnt_side",
+    "particle": "magic_witchcraft:blocks/tnt_top"
+  }
+}

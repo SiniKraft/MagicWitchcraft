@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "spectral_power_infuser_side",
+        "1": "spectral_power_infuser_top",
+        "2": "spectral_power_infuser_bottom"
+      },
+      "name": "default"
+    }
+  }
+}

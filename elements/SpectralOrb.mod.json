@@ -19,8 +19,7 @@
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
     "specialInfo": [
-      "A magical orb",
-      "but with mysterious powers."
+      "A magical orb,but with mysterious powers."
     ],
     "hasGlow": true
   }

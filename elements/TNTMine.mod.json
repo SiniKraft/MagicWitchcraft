@@ -2,33 +2,33 @@
   "_fv": 6,
   "_type": "block",
   "definition": {
-    "texture": "iron_block",
-    "textureTop": "",
-    "textureLeft": "",
-    "textureFront": "",
-    "textureRight": "",
-    "textureBack": "",
-    "renderType": 2,
-    "customModelName": "atomic_fusioner:default",
-    "rotationMode": 1,
+    "texture": "tnt_top",
+    "textureTop": "tnt_top",
+    "textureLeft": "tnt_side",
+    "textureFront": "tnt_side",
+    "textureRight": "tnt_side",
+    "textureBack": "tnt_side",
+    "renderType": 10,
+    "customModelName": "Normal",
+    "rotationMode": 0,
     "hasTransparency": true,
-    "transparencyType": "CUTOUT_MIPPED",
+    "transparencyType": "SOLID",
     "mx": 0.0,
     "my": 0.0,
-    "mz": 0.0625,
+    "mz": 0.0,
     "Mx": 1.0,
-    "My": 1.0,
-    "Mz": 0.875,
+    "My": 0.125,
+    "Mz": 1.0,
     "faceShape": "SOLID",
-    "name": "Atomic fusioner",
+    "name": "TNT mine",
     "specialInfo": [],
-    "hardness": 3.0,
-    "resistance": 30.0,
+    "hardness": 1.0,
+    "resistance": 10.0,
     "hasGravity": false,
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
     },
-    "destroyTool": "pickaxe",
+    "destroyTool": "Not specified",
     "affectedBySilkTouch": false,
     "customDrop": {
       "value": ""
@@ -40,12 +40,12 @@
     "canProvidePower": false,
     "lightOpacity": 0,
     "material": {
-      "value": "IRON"
+      "value": "TNT"
     },
-    "tickRate": 100,
+    "tickRate": 10,
     "tickRandomly": false,
     "isReplaceable": false,
-    "colorOnMap": "IRON",
+    "colorOnMap": "TNT",
     "creativePickItem": {
       "value": ""
     },
@@ -54,9 +54,9 @@
     "isLadder": false,
     "slipperiness": 0.6,
     "reactionToPushing": "NORMAL",
-    "isNotColidable": false,
+    "isNotColidable": true,
     "soundOnStep": {
-      "value": "METAL"
+      "value": "PLANT"
     },
     "luminance": 0.0,
     "unbreakable": false,
@@ -69,19 +69,16 @@
     "particleSpawningRadious": 0.5,
     "particleAmount": 4,
     "particleSpawningCondition": "ALWAYS",
-    "hasInventory": true,
-    "guiBoundTo": "AtomicFusionerGUI",
-    "openGUIOnRightClick": true,
-    "inventorySize": 5,
+    "hasInventory": false,
+    "guiBoundTo": "<NONE>",
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
-    "inventoryOutSlotIDs": [
-      3,
-      4
-    ],
-    "onTickUpdate": {
-      "name": "AtomicFusionerUpdateTick"
+    "inventoryOutSlotIDs": [],
+    "onEntityCollides": {
+      "name": "TNTMineUpdateTick"
     },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],

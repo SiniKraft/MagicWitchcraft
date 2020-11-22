@@ -4,6 +4,7 @@
 |You MUST NOT delete this license.                                                         |
 |This mod can ONLY be free.                                                                |
 |If you redistribute this mod, you MUST say I created it and put this text in your license.|
+|For more infos, please refer to "LICENSE" file.                                           |
 |Magic Witchcraft (original mod) created by Sinikraft.                                     |
 |END OF LICENSE.                                                                           |
 --------------------------------------------------------------------------------------------

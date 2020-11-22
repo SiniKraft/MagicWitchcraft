@@ -2,28 +2,30 @@
   "_fv": 6,
   "_type": "block",
   "definition": {
-    "texture": "iron_block",
+    "texture": "spectral_power_infuser_side",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "atomic_fusioner:default",
+    "customModelName": "spectral_power_infuser:default",
     "rotationMode": 1,
     "hasTransparency": true,
     "transparencyType": "CUTOUT_MIPPED",
     "mx": 0.0,
     "my": 0.0,
-    "mz": 0.0625,
+    "mz": 0.0,
     "Mx": 1.0,
-    "My": 1.0,
-    "Mz": 0.875,
+    "My": 0.8125,
+    "Mz": 1.0,
     "faceShape": "SOLID",
-    "name": "Atomic fusioner",
-    "specialInfo": [],
+    "name": "Spectral power infuser",
+    "specialInfo": [
+      "This machine has spectral powers ..."
+    ],
     "hardness": 3.0,
-    "resistance": 30.0,
+    "resistance": 10.0,
     "hasGravity": false,
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
@@ -40,12 +42,12 @@
     "canProvidePower": false,
     "lightOpacity": 0,
     "material": {
-      "value": "IRON"
+      "value": "ROCK"
     },
-    "tickRate": 100,
+    "tickRate": 5,
     "tickRandomly": false,
     "isReplaceable": false,
-    "colorOnMap": "IRON",
+    "colorOnMap": "DEFAULT",
     "creativePickItem": {
       "value": ""
     },
@@ -56,21 +58,21 @@
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
     "soundOnStep": {
-      "value": "METAL"
+      "value": "STONE"
     },
     "luminance": 0.0,
     "unbreakable": false,
     "breakHarvestLevel": 1,
-    "spawnParticles": false,
+    "spawnParticles": true,
     "particleToSpawn": {
-      "value": "EXPLOSION_NORMAL"
+      "value": "ENCHANTMENT_TABLE"
     },
-    "particleSpawningShape": "Spread",
+    "particleSpawningShape": "Top",
     "particleSpawningRadious": 0.5,
-    "particleAmount": 4,
+    "particleAmount": 1,
     "particleSpawningCondition": "ALWAYS",
     "hasInventory": true,
-    "guiBoundTo": "AtomicFusionerGUI",
+    "guiBoundTo": "SpectralPowerInterface",
     "openGUIOnRightClick": true,
     "inventorySize": 5,
     "inventoryStackSize": 64,
@@ -81,7 +83,7 @@
       4
     ],
     "onTickUpdate": {
-      "name": "AtomicFusionerUpdateTick"
+      "name": "SpectralPowerInfuserUpdateTick"
     },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],

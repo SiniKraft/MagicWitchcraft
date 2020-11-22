@@ -1,0 +1,8 @@
+{
+  "parent": "magic_witchcraft:custom/magical_block",
+  "textures": {
+    "all": "magic_witchcraft:blocks/spectral_block",
+    "particle": "magic_witchcraft:blocks/spectral_block",
+    "0": "magic_witchcraft:blocks/spectral_block"
+  }
+}

@@ -2,33 +2,33 @@
   "_fv": 6,
   "_type": "block",
   "definition": {
-    "texture": "iron_block",
+    "texture": "spectral_block",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "atomic_fusioner:default",
+    "customModelName": "magical_block:spectral",
     "rotationMode": 1,
     "hasTransparency": true,
-    "transparencyType": "CUTOUT_MIPPED",
+    "transparencyType": "TRANSLUCENT",
     "mx": 0.0,
     "my": 0.0,
-    "mz": 0.0625,
+    "mz": 0.0,
     "Mx": 1.0,
     "My": 1.0,
-    "Mz": 0.875,
+    "Mz": 1.0,
     "faceShape": "SOLID",
-    "name": "Atomic fusioner",
+    "name": "Spectral block",
     "specialInfo": [],
-    "hardness": 3.0,
-    "resistance": 30.0,
+    "hardness": 1.0,
+    "resistance": 10.0,
     "hasGravity": false,
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
     },
-    "destroyTool": "pickaxe",
+    "destroyTool": "Not specified",
     "affectedBySilkTouch": false,
     "customDrop": {
       "value": ""
@@ -40,23 +40,23 @@
     "canProvidePower": false,
     "lightOpacity": 0,
     "material": {
-      "value": "IRON"
+      "value": "SPONGE"
     },
-    "tickRate": 100,
+    "tickRate": 10,
     "tickRandomly": false,
     "isReplaceable": false,
-    "colorOnMap": "IRON",
+    "colorOnMap": "DEFAULT",
     "creativePickItem": {
       "value": ""
     },
     "flammability": 0,
     "fireSpreadSpeed": 0,
     "isLadder": false,
-    "slipperiness": 0.6,
+    "slipperiness": 0.8,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
     "soundOnStep": {
-      "value": "METAL"
+      "value": "SLIME"
     },
     "luminance": 0.0,
     "unbreakable": false,
@@ -69,20 +69,14 @@
     "particleSpawningRadious": 0.5,
     "particleAmount": 4,
     "particleSpawningCondition": "ALWAYS",
-    "hasInventory": true,
-    "guiBoundTo": "AtomicFusionerGUI",
-    "openGUIOnRightClick": true,
-    "inventorySize": 5,
+    "hasInventory": false,
+    "guiBoundTo": "<NONE>",
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
-    "inventoryOutSlotIDs": [
-      3,
-      4
-    ],
-    "onTickUpdate": {
-      "name": "AtomicFusionerUpdateTick"
-    },
+    "inventoryOutSlotIDs": [],
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
     "blocksToReplace": [

@@ -5,6 +5,12 @@
         "0": "magical_block"
       },
       "name": "default"
+    },
+    "spectral": {
+      "map": {
+        "0": "spectral_block"
+      },
+      "name": "spectral"
     }
   }
 }

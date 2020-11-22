@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SpectralBlock"
+    },
+    "name": "spectral_block_recipe",
+    "namespace": "mod"
+  }
+}

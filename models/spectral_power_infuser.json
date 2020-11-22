@@ -1,0 +1,66 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "spectral_power_infuser_side",
+		"1": "spectral_power_infuser_top",
+		"2": "spectral_power_infuser_bottom",
+		"particle": "spectral_power_infuser_side"
+	},
+	"elements": [
+		{
+			"name": "Spectral_power_infuser",
+			"from": [0, 0, 0],
+			"to": [16, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 3, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 3, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 3, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 3, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [10, -45, 170],
+			"translation": [0, 1.5, -2.5],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [10, -45, 170],
+			"translation": [0, 1.5, -2.5],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"firstperson_righthand": {
+			"rotation": [10, -45, 170],
+			"translation": [0, 1.5, -2.5],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"firstperson_lefthand": {
+			"rotation": [10, -45, 170],
+			"translation": [0, 1.5, -2.5],
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"ground": {
+			"scale": [0.38, 0.38, 0.38]
+		},
+		"gui": {
+			"rotation": [26, -45, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"head": {
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"fixed": {
+			"scale": [0.7, 0.7, 0.7]
+		}
+	},
+	"groups": [
+		{
+			"name": "Spectral_power_infuser",
+			"origin": [8, 8, 8],
+			"children": [0]
+		}
+	]
+}

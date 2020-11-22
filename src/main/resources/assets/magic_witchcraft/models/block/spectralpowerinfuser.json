@@ -1,0 +1,10 @@
+{
+  "parent": "magic_witchcraft:custom/spectral_power_infuser",
+  "textures": {
+    "all": "magic_witchcraft:blocks/spectral_power_infuser_side",
+    "particle": "magic_witchcraft:blocks/spectral_power_infuser_side",
+    "0": "magic_witchcraft:blocks/spectral_power_infuser_side",
+    "1": "magic_witchcraft:blocks/spectral_power_infuser_top",
+    "2": "magic_witchcraft:blocks/spectral_power_infuser_bottom"
+  }
+}

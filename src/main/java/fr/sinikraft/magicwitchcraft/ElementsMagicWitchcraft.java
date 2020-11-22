@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Retention;
 
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiSolarPanelGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMagicalCompressorGUI;
@@ -141,6 +142,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiSolarPanelGUI.GuiContainerMod(world, x, y, z, player);
 			if (id == GuiAtomicFusionerGUI.GUIID)
 				return new GuiAtomicFusionerGUI.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralPowerInterface.GUIID)
+				return new GuiSpectralPowerInterface.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
@@ -156,6 +159,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiSolarPanelGUI.GuiWindow(world, x, y, z, player);
 			if (id == GuiAtomicFusionerGUI.GUIID)
 				return new GuiAtomicFusionerGUI.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralPowerInterface.GUIID)
+				return new GuiSpectralPowerInterface.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

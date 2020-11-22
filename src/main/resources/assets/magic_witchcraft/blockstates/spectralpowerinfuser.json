@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:spectralpowerinfuser"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:spectralpowerinfuser"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:spectralpowerinfuser",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:spectralpowerinfuser",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:spectralpowerinfuser",
+      "y": 270
+    }
+  }
+}

@@ -27,10 +27,10 @@
         "type": "inputslot",
         "data": {
           "inputLimit": {
-            "value": "CUSTOM:MagicalOrb"
+            "value": "CUSTOM:SpectralOrb"
           },
           "color": {
-            "value": -3669854,
+            "value": -16775681,
             "falpha": 0.0
           },
           "id": 1,
@@ -43,11 +43,7 @@
         "type": "inputslot",
         "data": {
           "inputLimit": {
-            "value": "Items.DIAMOND"
-          },
-          "color": {
-            "value": -16725295,
-            "falpha": 0.0
+            "value": ""
           },
           "id": 2,
           "name": "Slot #2",
@@ -56,38 +52,25 @@
         }
       },
       {
-        "type": "outputslot",
-        "data": {
-          "color": {
-            "value": -16775681,
-            "falpha": 0.0
-          },
-          "id": 3,
-          "name": "Slot #3",
-          "x": 480,
-          "y": 132
-        }
-      },
-      {
         "type": "label",
         "data": {
-          "text": "Atomic fusioner",
+          "text": "Spectral power infuser",
           "color": {
             "value": -1,
             "falpha": 0.0
           },
-          "name": "Atomic fusioner",
-          "x": 358,
-          "y": 77
+          "name": "Spectral power infuser",
+          "x": 328,
+          "y": 75
         }
       },
       {
-        "type": "image",
+        "type": "outputslot",
         "data": {
-          "image": "capturer 2.png",
-          "name": "capturer 2.png",
-          "x": 251,
-          "y": 74
+          "id": 3,
+          "name": "Slot #3",
+          "x": 480,
+          "y": 132
         }
       },
       {
@@ -106,6 +89,15 @@
           "name": "arrow_gui.png",
           "x": 408,
           "y": 132
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "icons_gui_spectral_power_infuser.png",
+          "name": "icons_gui_spectral_power_infuser.png",
+          "x": 251,
+          "y": 74
         }
       }
     ]

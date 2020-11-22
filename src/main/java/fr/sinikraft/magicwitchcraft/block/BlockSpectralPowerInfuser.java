@@ -15,6 +15,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.Mirror;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumBlockRenderType;
@@ -33,63 +34,71 @@ import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.Minecraft;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.Block;
 
 import java.util.Random;
+import java.util.List;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureAtomicFusionerUpdateTick;
-import fr.sinikraft.magicwitchcraft.gui.GuiAtomicFusionerGUI;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralPowerInfuserUpdateTick;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInterface;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:atomicfusioner")
+public class BlockSpectralPowerInfuser extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:spectralpowerinfuser")
 	public static final Block block = null;
-	public BlockAtomicFusioner(ElementsMagicWitchcraft instance) {
-		super(instance, 171);
+	public BlockSpectralPowerInfuser(ElementsMagicWitchcraft instance) {
+		super(instance, 177);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("atomicfusioner"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("spectralpowerinfuser"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		GameRegistry.registerTileEntity(TileEntityCustom.class, "magic_witchcraft:tileentityatomicfusioner");
+		GameRegistry.registerTileEntity(TileEntityCustom.class, "magic_witchcraft:tileentityspectralpowerinfuser");
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:atomicfusioner", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:spectralpowerinfuser", "inventory"));
 	}
 	public static class BlockCustom extends Block implements ITileEntityProvider {
 		public static final PropertyDirection FACING = BlockHorizontal.FACING;
 		public BlockCustom() {
-			super(Material.IRON);
-			setUnlocalizedName("atomicfusioner");
-			setSoundType(SoundType.METAL);
+			super(Material.ROCK);
+			setUnlocalizedName("spectralpowerinfuser");
+			setSoundType(SoundType.STONE);
 			setHarvestLevel("pickaxe", 1);
 			setHardness(3F);
-			setResistance(30F);
+			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);
 			setCreativeTab(TabMagicWitchCraft.tab);
 			this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		}
+
+		@Override
+		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
+			super.addInformation(itemstack, world, list, flag);
+			list.add("This machine has spectral powers ...");
 		}
 
 		@SideOnly(Side.CLIENT)
@@ -110,19 +119,19 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 				case DOWN :
 				case SOUTH :
 				default :
-					return new AxisAlignedBB(1D, 0D, 0.9375D, 0D, 1D, 0.125D);
+					return new AxisAlignedBB(1D, 0D, 1D, 0D, 0.8125D, 0D);
 				case NORTH :
-					return new AxisAlignedBB(0D, 0D, 0.0625D, 1D, 1D, 0.875D);
+					return new AxisAlignedBB(0D, 0D, 0D, 1D, 0.8125D, 1D);
 				case WEST :
-					return new AxisAlignedBB(0.0625D, 0D, 1D, 0.875D, 1D, 0D);
+					return new AxisAlignedBB(0D, 0D, 1D, 1D, 0.8125D, 0D);
 				case EAST :
-					return new AxisAlignedBB(0.9375D, 0D, 0D, 0.125D, 1D, 1D);
+					return new AxisAlignedBB(1D, 0D, 0D, 0D, 0.8125D, 1D);
 			}
 		}
 
 		@Override
 		public int tickRate(World world) {
-			return 100;
+			return 5;
 		}
 
 		@Override
@@ -159,11 +168,6 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public boolean isOpaqueCube(IBlockState state) {
 			return false;
-		}
-
-		@Override
-		public MapColor getMapColor(IBlockState state, IBlockAccess blockAccess, BlockPos pos) {
-			return MapColor.IRON;
 		}
 
 		@Override
@@ -232,9 +236,29 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
-				ProcedureAtomicFusionerUpdateTick.executeProcedure($_dependencies);
+				ProcedureSpectralPowerInfuserUpdateTick.executeProcedure($_dependencies);
 			}
 			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random) {
+			super.randomDisplayTick(state, world, pos, random);
+			EntityPlayer entity = Minecraft.getMinecraft().player;
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			int i = x;
+			int j = y;
+			int k = z;
+			if (true)
+				for (int l = 0; l < 1; ++l) {
+					double d0 = (double) ((float) i + 0.5) + (double) (random.nextFloat() - 0.5) * 0.5D;
+					double d1 = ((double) ((float) j + 0.7) + (double) (random.nextFloat() - 0.5) * 0.5D) + 0.5;
+					double d2 = (double) ((float) k + 0.5) + (double) (random.nextFloat() - 0.5) * 0.5D;
+					world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, d0, d1, d2, 0, 0, 0);
+				}
 		}
 
 		@Override
@@ -245,7 +269,7 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 			int y = pos.getY();
 			int z = pos.getZ();
 			if (entity instanceof EntityPlayer) {
-				((EntityPlayer) entity).openGui(MagicWitchcraft.instance, GuiAtomicFusionerGUI.GUIID, world, x, y, z);
+				((EntityPlayer) entity).openGui(MagicWitchcraft.instance, GuiSpectralPowerInterface.GUIID, world, x, y, z);
 			}
 			return true;
 		}
@@ -282,7 +306,7 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public String getName() {
-			return "container.atomicfusioner";
+			return "container.spectralpowerinfuser";
 		}
 
 		@Override
@@ -328,12 +352,12 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public String getGuiID() {
-			return "magic_witchcraft:atomicfusioner";
+			return "magic_witchcraft:spectralpowerinfuser";
 		}
 
 		@Override
 		public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-			return new GuiAtomicFusionerGUI.GuiContainerMod(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(),
+			return new GuiSpectralPowerInterface.GuiContainerMod(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(),
 					playerIn);
 		}
 
