@@ -39,7 +39,7 @@
     "recipeReturnStack": {
       "value": "Items.POTIONITEM"
     },
-    "name": "cobweb_potion_recipe",
+    "name": "cobwebsplashpotionrecipe",
     "namespace": "mod"
   }
 }

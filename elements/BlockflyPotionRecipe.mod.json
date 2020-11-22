@@ -9,22 +9,22 @@
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": ""
+        "value": "Items.ENDER_PEARL"
       },
       {
-        "value": ""
+        "value": "Items.ENDER_PEARL"
       },
       {
-        "value": ""
+        "value": "Items.ENDER_PEARL"
       },
       {
-        "value": ""
+        "value": "Blocks.PISTON"
       },
       {
-        "value": "Blocks.WEB"
+        "value": "Blocks.PISTON"
       },
       {
-        "value": ""
+        "value": "Blocks.PISTON"
       },
       {
         "value": ""
@@ -39,7 +39,7 @@
     "recipeReturnStack": {
       "value": "Items.POTIONITEM"
     },
-    "name": "cobweb_potion_recipe",
+    "name": "block_fly_potion_recipe",
     "namespace": "mod"
   }
 }

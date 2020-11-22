@@ -1,0 +1,40 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:ender_pearl"
+    },
+    "1": {
+      "item": "minecraft:ender_pearl"
+    },
+    "2": {
+      "item": "minecraft:ender_pearl"
+    },
+    "3": {
+      "item": "minecraft:piston"
+    },
+    "4": {
+      "item": "minecraft:piston"
+    },
+    "5": {
+      "item": "minecraft:piston"
+    },
+    "7": {
+      "item": "minecraft:splash_potion",
+      "data": 32767
+    }
+  },
+  "result": {
+  "type": "minecraft:item_nbt",
+  "item": "minecraft:splash_potion",
+  "nbt": {
+    "Potion": "magic_witchcraft:blockfly"
+  }
+}
+}
