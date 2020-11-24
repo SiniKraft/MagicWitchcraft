@@ -24,7 +24,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureBasicMagicWandRightClickedInAir extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureBasicMagicWandRightClickedInAir(ElementsMagicWitchcraft instance) {
-		super(instance, 28);
+		super(instance, 70);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "magic_witchcraft:blocks/spectral_leaves",
+    "particle": "magic_witchcraft:blocks/spectral_leaves"
+  }
+}

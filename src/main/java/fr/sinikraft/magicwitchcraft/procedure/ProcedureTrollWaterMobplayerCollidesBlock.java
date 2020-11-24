@@ -11,7 +11,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureTrollWaterMobplayerCollidesBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureTrollWaterMobplayerCollidesBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 159);
+		super(instance, 178);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

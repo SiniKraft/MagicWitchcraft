@@ -32,7 +32,6 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 // locked elements for changing the item texture,
 // see models\items\invisiblemine.json .
-
 @ElementsMagicWitchcraft.ModElement.Tag
 public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:invisiblemine")
@@ -107,7 +106,6 @@ public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
 		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 			return new AxisAlignedBB(0D, 0D, 0D, 1D, 0.125D, 1D);
 		}
-
 
 		@Override
 		public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {

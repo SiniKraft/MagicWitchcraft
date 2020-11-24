@@ -1,0 +1,26 @@
+{
+  "_fv": 6,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "conditionxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"condition_input\" deletable=\"false\" x=\"40\" y=\"40\"><value name=\"CONDITION\"><block type=\"compare_mcitems\"><value name=\"a\"><block type=\"entity_get_armor_slot_item\"><value name=\"slotid\"><block type=\"math_number\"><field name=\"NUM\">3</field></block></value></block></value><value name=\"b\"><block type=\"mcitem_all\"><field name=\"value\">CUSTOM:Magical.helmet</field></block></value></block></value></block></xml>",
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "You're at <x> <y> <z>",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "You're at <x> <y> <z>",
+          "x": 643,
+          "y": 2
+        }
+      }
+    ],
+    "baseTexture": "",
+    "baseTextureW": 0,
+    "baseTextureH": 0
+  }
+}

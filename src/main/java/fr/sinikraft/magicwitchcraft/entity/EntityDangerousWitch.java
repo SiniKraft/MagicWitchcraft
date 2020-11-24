@@ -44,7 +44,7 @@ public class EntityDangerousWitch extends ElementsMagicWitchcraft.ModElement {
 	public static final int ENTITYID = 2;
 	public static final int ENTITYID_RANGED = 3;
 	public EntityDangerousWitch(ElementsMagicWitchcraft instance) {
-		super(instance, 18);
+		super(instance, 22);
 	}
 
 	@Override

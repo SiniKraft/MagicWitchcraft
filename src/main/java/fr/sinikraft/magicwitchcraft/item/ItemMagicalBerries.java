@@ -21,7 +21,7 @@ public class ItemMagicalBerries extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalberries")
 	public static final Item block = null;
 	public ItemMagicalBerries(ElementsMagicWitchcraft instance) {
-		super(instance, 105);
+		super(instance, 38);
 	}
 
 	@Override

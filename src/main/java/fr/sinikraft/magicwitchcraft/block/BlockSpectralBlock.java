@@ -17,6 +17,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.properties.PropertyDirection;
@@ -28,10 +29,6 @@ import net.minecraft.block.Block;
 
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
-
-import net.minecraft.world.World;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.entity.Entity;
 
 @ElementsMagicWitchcraft.ModElement.Tag
 public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
@@ -81,7 +78,7 @@ public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
 			if (entityIn.isSneaking()) {
 				super.onLanded(worldIn, entityIn);
 			} else if (entityIn.motionY < 0.0D) {
-				entityIn.motionY = -entityIn.motionY * 1.2D;
+				entityIn.motionY = -entityIn.motionY * 1.5D;
 				if (!(entityIn instanceof EntityLivingBase)) {
 					entityIn.motionY *= 0.8D;
 				}
@@ -96,7 +93,6 @@ public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		// end of Slime code.
-
 		@SideOnly(Side.CLIENT)
 		@Override
 		public BlockRenderLayer getBlockLayer() {

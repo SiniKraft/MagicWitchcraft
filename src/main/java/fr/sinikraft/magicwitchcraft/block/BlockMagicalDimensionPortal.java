@@ -36,7 +36,7 @@ public class BlockMagicalDimensionPortal extends ElementsMagicWitchcraft.ModElem
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicaldimensionportal")
 	public static final Block block = null;
 	public BlockMagicalDimensionPortal(ElementsMagicWitchcraft instance) {
-		super(instance, 145);
+		super(instance, 166);
 	}
 
 	@Override

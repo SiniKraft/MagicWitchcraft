@@ -20,7 +20,7 @@ public class ItemSaturationOrb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:saturationorb")
 	public static final Item block = null;
 	public ItemSaturationOrb(ElementsMagicWitchcraft instance) {
-		super(instance, 14);
+		super(instance, 15);
 	}
 
 	@Override

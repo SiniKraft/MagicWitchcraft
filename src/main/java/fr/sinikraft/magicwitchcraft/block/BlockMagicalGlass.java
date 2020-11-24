@@ -26,7 +26,7 @@ public class BlockMagicalGlass extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalglass")
 	public static final Block block = null;
 	public BlockMagicalGlass(ElementsMagicWitchcraft instance) {
-		super(instance, 81);
+		super(instance, 30);
 	}
 
 	@Override

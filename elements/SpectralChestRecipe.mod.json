@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:MagicalStone"
+      },
+      {
+        "value": "CUSTOM:MagicalStone"
+      },
+      {
+        "value": "CUSTOM:MagicalStone"
+      },
+      {
+        "value": "Blocks.CHEST"
+      },
+      {
+        "value": "Blocks.CHEST"
+      },
+      {
+        "value": "Blocks.CHEST"
+      },
+      {
+        "value": "CUSTOM:SpectralBlock"
+      },
+      {
+        "value": "CUSTOM:SpectralBlock"
+      },
+      {
+        "value": "CUSTOM:SpectralBlock"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SpectralChest"
+    },
+    "name": "spectral_chest_recipe",
+    "namespace": "mod"
+  }
+}

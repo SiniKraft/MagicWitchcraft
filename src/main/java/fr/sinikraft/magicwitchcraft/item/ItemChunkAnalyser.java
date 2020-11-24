@@ -27,7 +27,7 @@ public class ItemChunkAnalyser extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:chunkanalyser")
 	public static final Item block = null;
 	public ItemChunkAnalyser(ElementsMagicWitchcraft instance) {
-		super(instance, 75);
+		super(instance, 12);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 public class KeyBindingSeeCoordinates extends ElementsMagicWitchcraft.ModElement {
 	private KeyBinding keys;
 	public KeyBindingSeeCoordinates(ElementsMagicWitchcraft instance) {
-		super(instance, 117);
+		super(instance, 144);
 	}
 
 	@Override

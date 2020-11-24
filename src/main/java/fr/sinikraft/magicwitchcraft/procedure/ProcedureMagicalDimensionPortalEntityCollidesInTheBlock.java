@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalDimensionPortalEntityCollidesInTheBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalDimensionPortalEntityCollidesInTheBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 146);
+		super(instance, 167);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

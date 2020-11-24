@@ -41,7 +41,7 @@ public class GuiDimensionalSwitcherGUI extends ElementsMagicWitchcraft.ModElemen
 	public static int GUIID = 2;
 	public static HashMap guistate = new HashMap();
 	public GuiDimensionalSwitcherGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 46);
+		super(instance, 88);
 	}
 
 	@Override

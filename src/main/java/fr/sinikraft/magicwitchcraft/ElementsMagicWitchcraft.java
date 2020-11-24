@@ -46,7 +46,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Retention;
 
 import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInterface;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralChestInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiSolarPanelGUI;
+import fr.sinikraft.magicwitchcraft.gui.GuiRightClickerInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMagicalCompressorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiDimensionalSwitcherGUI;
@@ -144,6 +146,10 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiAtomicFusionerGUI.GuiContainerMod(world, x, y, z, player);
 			if (id == GuiSpectralPowerInterface.GUIID)
 				return new GuiSpectralPowerInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralChestInterface.GUIID)
+				return new GuiSpectralChestInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiRightClickerInterface.GUIID)
+				return new GuiRightClickerInterface.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
@@ -161,6 +167,10 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiAtomicFusionerGUI.GuiWindow(world, x, y, z, player);
 			if (id == GuiSpectralPowerInterface.GUIID)
 				return new GuiSpectralPowerInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralChestInterface.GUIID)
+				return new GuiSpectralChestInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiRightClickerInterface.GUIID)
+				return new GuiRightClickerInterface.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

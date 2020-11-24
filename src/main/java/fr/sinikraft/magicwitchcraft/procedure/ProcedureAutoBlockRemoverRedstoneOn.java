@@ -15,7 +15,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureAutoBlockRemoverRedstoneOn(ElementsMagicWitchcraft instance) {
-		super(instance, 68);
+		super(instance, 108);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

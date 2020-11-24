@@ -21,7 +21,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureNetherDimensionalSwitcherButton extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureNetherDimensionalSwitcherButton(ElementsMagicWitchcraft instance) {
-		super(instance, 48);
+		super(instance, 90);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -26,12 +26,15 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.ai.EntityFlyHelper;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAIFollow;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIAttackRanged;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.IRangedAttackMob;
@@ -51,6 +54,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureDangerousDragonEntityDies;
+import fr.sinikraft.magicwitchcraft.block.BlockMysteriousLoot;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
@@ -58,7 +62,7 @@ public class EntityDangerousDragon extends ElementsMagicWitchcraft.ModElement {
 	public static final int ENTITYID = 4;
 	public static final int ENTITYID_RANGED = 5;
 	public EntityDangerousDragon(ElementsMagicWitchcraft instance) {
-		super(instance, 53);
+		super(instance, 25);
 	}
 
 	@Override
@@ -101,7 +105,7 @@ public class EntityDangerousDragon extends ElementsMagicWitchcraft.ModElement {
 		public EntityCustom(World world) {
 			super(world);
 			setSize(8.2f, 0.75f);
-			experienceValue = 0;
+			experienceValue = 25;
 			this.isImmuneToFire = false;
 			setNoAI(!true);
 			enablePersistence();
@@ -167,6 +171,9 @@ public class EntityDangerousDragon extends ElementsMagicWitchcraft.ModElement {
 				}
 			});
 			this.targetTasks.addTask(6, new EntityAIHurtByTarget(this, false));
+			this.tasks.addTask(7, new EntityAIAvoidEntity(this, EntityDangerousWitch.EntityCustom.class, (float) 24, 1, 1.2));
+			this.tasks.addTask(8, new EntityAIFollow(this, (float) 1, 10, 5));
+			this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, (float) 32));
 			this.tasks.addTask(1, new EntityAIAttackRanged(this, 1.25D, 20, 10.0F));
 		}
 
@@ -182,7 +189,7 @@ public class EntityDangerousDragon extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		protected Item getDropItem() {
-			return null;
+			return new ItemStack(BlockMysteriousLoot.block, (int) (1)).getItem();
 		}
 
 		@Override
@@ -208,6 +215,13 @@ public class EntityDangerousDragon extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public void fall(float l, float d) {
+		}
+
+		@Override
+		public boolean attackEntityFrom(DamageSource source, float amount) {
+			if (source == DamageSource.FALL)
+				return false;
+			return super.attackEntityFrom(source, amount);
 		}
 
 		@Override

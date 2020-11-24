@@ -5,6 +5,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.client.EnumHelperClient;
 
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.gen.layer.GenLayerZoom;
@@ -50,6 +51,9 @@ import java.util.Random;
 import java.util.List;
 
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalDimensionPlayerEntersDimension;
+import fr.sinikraft.magicwitchcraft.block.BlockMagicalStone;
+import fr.sinikraft.magicwitchcraft.block.BlockMagicalLava;
+import fr.sinikraft.magicwitchcraft.block.BlockMagicalDirt;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
@@ -58,7 +62,7 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 	public static final boolean NETHER_TYPE = false;
 	public static DimensionType dtype;
 	public WorldMagicalDimension(ElementsMagicWitchcraft instance) {
-		super(instance, 144);
+		super(instance, 62);
 	}
 
 	@Override
@@ -97,6 +101,14 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
+		@SideOnly(Side.CLIENT)
+		public net.minecraft.client.audio.MusicTicker.MusicType getMusicType() {
+			return EnumHelperClient.addMusicType("record.cat",
+					(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation(("record.cat"))), 6000,
+					24000);
+		}
+
+		@Override
 		public DimensionType getDimensionType() {
 			return dtype;
 		}
@@ -104,7 +116,7 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Vec3d getFogColor(float par1, float par2) {
-			return new Vec3d(0.752941176471, 0.847058823529, 1);
+			return new Vec3d(0.96862745098, 0.050980392157, 0.796078431373);
 		}
 
 		@Override
@@ -144,7 +156,7 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public boolean doesWaterVaporize() {
-			return false;
+			return true;
 		}
 
 		@Override
@@ -155,19 +167,15 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 			{
 				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
 				$_dependencies.put("entity", entity);
-				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
-				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
 				ProcedureMagicalDimensionPlayerEntersDimension.executeProcedure($_dependencies);
 			}
 		}
 	}
 
 	public static class ChunkProviderModded implements IChunkGenerator {
-		private static final IBlockState STONE = Blocks.AIR.getDefaultState();
-		private static final IBlockState STONE2 = Blocks.AIR.getDefaultState();
-		private static final IBlockState FLUID = Blocks.AIR.getDefaultState();
+		private static final IBlockState STONE = BlockMagicalStone.block.getDefaultState();
+		private static final IBlockState STONE2 = BlockMagicalDirt.block.getDefaultState();
+		private static final IBlockState FLUID = BlockMagicalLava.block.getDefaultState();
 		private static final IBlockState AIR = Blocks.AIR.getDefaultState();
 		private static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
 		private static final int SEALEVEL = 63;
@@ -515,7 +523,10 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 	}
 
 	public static class GenLayerBiomesCustom extends GenLayer {
-		private Biome[] allowedBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("void")),};
+		private Biome[] allowedBiomes = {Biome.REGISTRY.getObject(new ResourceLocation("magic_witchcraft:magicalbiome")),
+				Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")), Biome.REGISTRY.getObject(new ResourceLocation("ice_mountains")),
+				Biome.REGISTRY.getObject(new ResourceLocation("mushroom_island")), Biome.REGISTRY.getObject(new ResourceLocation("ice_flats")),
+				Biome.REGISTRY.getObject(new ResourceLocation("ice_mountains")),};
 		public GenLayerBiomesCustom(long seed) {
 			super(seed);
 		}

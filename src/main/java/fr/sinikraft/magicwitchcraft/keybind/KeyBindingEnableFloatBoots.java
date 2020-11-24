@@ -30,7 +30,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 public class KeyBindingEnableFloatBoots extends ElementsMagicWitchcraft.ModElement {
 	private KeyBinding keys;
 	public KeyBindingEnableFloatBoots(ElementsMagicWitchcraft instance) {
-		super(instance, 162);
+		super(instance, 181);
 	}
 
 	@Override

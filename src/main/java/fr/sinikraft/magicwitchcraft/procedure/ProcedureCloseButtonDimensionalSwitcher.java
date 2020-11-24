@@ -8,7 +8,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureCloseButtonDimensionalSwitcher extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureCloseButtonDimensionalSwitcher(ElementsMagicWitchcraft instance) {
-		super(instance, 51);
+		super(instance, 93);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

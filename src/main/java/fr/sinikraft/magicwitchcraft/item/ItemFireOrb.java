@@ -20,7 +20,7 @@ public class ItemFireOrb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:fireorb")
 	public static final Item block = null;
 	public ItemFireOrb(ElementsMagicWitchcraft instance) {
-		super(instance, 13);
+		super(instance, 14);
 	}
 
 	@Override

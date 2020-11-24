@@ -1,0 +1,323 @@
+{
+  "_fv": 6,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 401,
+    "height": 410,
+    "renderBgLayer": true,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "Right clicker",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "Right clicker",
+          "x": 372,
+          "y": 50
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "First block",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "First block",
+          "x": 246,
+          "y": 68
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "X",
+          "width": 36,
+          "height": 40,
+          "name": "FirstBlockPosX",
+          "x": 246,
+          "y": 104
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Y",
+          "width": 36,
+          "height": 40,
+          "name": "FirstBlockPosY",
+          "x": 300,
+          "y": 104
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Z",
+          "width": 36,
+          "height": 40,
+          "name": "FirstBlockPosZ",
+          "x": 354,
+          "y": 104
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Call1",
+          "onClick": {
+            "name": "RightClickerCallOnButtonClicked"
+          },
+          "width": 80,
+          "height": 40,
+          "name": "Call1",
+          "x": 534,
+          "y": 105
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Name",
+          "width": 108,
+          "height": 40,
+          "name": "FirstBlockName",
+          "x": 408,
+          "y": 104
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Second block",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "Second block",
+          "x": 246,
+          "y": 158
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "X",
+          "width": 36,
+          "height": 40,
+          "name": "SecondBlockPosX",
+          "x": 246,
+          "y": 194
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Y",
+          "width": 36,
+          "height": 40,
+          "name": "SecondBlockPosY",
+          "x": 300,
+          "y": 194
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Z",
+          "width": 36,
+          "height": 40,
+          "name": "SecondBlockPosZ",
+          "x": 354,
+          "y": 194
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Name",
+          "width": 108,
+          "height": 40,
+          "name": "SecondBlockName",
+          "x": 408,
+          "y": 194
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Call2",
+          "onClick": {
+            "name": "RightClickerCall2OnButtonClicked"
+          },
+          "width": 80,
+          "height": 40,
+          "name": "Call2",
+          "x": 534,
+          "y": 194
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Third block",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "Third block",
+          "x": 246,
+          "y": 248
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "X",
+          "width": 36,
+          "height": 40,
+          "name": "ThirdBlockPosX",
+          "x": 246,
+          "y": 284
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Y",
+          "width": 36,
+          "height": 40,
+          "name": "ThirdBlockPosY",
+          "x": 300,
+          "y": 284
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Z",
+          "width": 36,
+          "height": 40,
+          "name": "ThirdBlockPosZ",
+          "x": 354,
+          "y": 284
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Name",
+          "width": 108,
+          "height": 40,
+          "name": "ThirdBlockName",
+          "x": 408,
+          "y": 284
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Call3",
+          "onClick": {
+            "name": "RightClickerCall3OnButtonClicked"
+          },
+          "width": 80,
+          "height": 40,
+          "name": "Call3",
+          "x": 534,
+          "y": 284
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Fourth block",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "Fourth block",
+          "x": 246,
+          "y": 338
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "X",
+          "width": 36,
+          "height": 40,
+          "name": "FourthBlockPosX",
+          "x": 246,
+          "y": 374
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Y",
+          "width": 36,
+          "height": 40,
+          "name": "FourthBlockPosY",
+          "x": 300,
+          "y": 374
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Z",
+          "width": 36,
+          "height": 40,
+          "name": "FourthBlockPosZ",
+          "x": 354,
+          "y": 374
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Name",
+          "width": 108,
+          "height": 40,
+          "name": "FourthBlockName",
+          "x": 408,
+          "y": 374
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Call4",
+          "onClick": {
+            "name": "RightClickerCall4OnButtonClicked"
+          },
+          "width": 80,
+          "height": 40,
+          "name": "Call4",
+          "x": 534,
+          "y": 374
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Save",
+          "onClick": {
+            "name": "RightClickerSaveOnButtonClicked"
+          },
+          "width": 80,
+          "height": 40,
+          "name": "Save",
+          "x": 536,
+          "y": 45
+        }
+      }
+    ]
+  }
+}

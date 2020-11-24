@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "magic_witchcraft:blocks/magical_log_top",
+    "up": "magic_witchcraft:blocks/magical_log_top",
+    "north": "magic_witchcraft:blocks/magical_log",
+    "east": "magic_witchcraft:blocks/magical_log",
+    "south": "magic_witchcraft:blocks/magical_log",
+    "west": "magic_witchcraft:blocks/magical_log",
+    "particle": "magic_witchcraft:blocks/magical_log_top"
+  }
+}

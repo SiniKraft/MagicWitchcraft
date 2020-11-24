@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureDangerousWitchEntityDies extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureDangerousWitchEntityDies(ElementsMagicWitchcraft instance) {
-		super(instance, 56);
+		super(instance, 98);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -21,7 +21,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureEndDimensionalSwitcherButton extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureEndDimensionalSwitcherButton(ElementsMagicWitchcraft instance) {
-		super(instance, 49);
+		super(instance, 91);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

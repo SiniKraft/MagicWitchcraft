@@ -23,8 +23,6 @@ import java.util.ArrayList;
 
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureCobwebOnPotionActiveTick;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
-//added
-import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
 public class PotionCobweb extends ElementsMagicWitchcraft.ModElement {
@@ -47,7 +45,8 @@ public class PotionCobweb extends ElementsMagicWitchcraft.ModElement {
 	}
 	public static class PotionTypeCustom extends PotionType {
 		public PotionTypeCustom() {
-			super(new PotionEffect[]{new PotionEffect(potion, 100)}); // int 100 changed duration
+			super(new PotionEffect[]{new PotionEffect(potion, 100)});
+			// int 100 changed duration
 			setRegistryName("cobweb");
 		}
 	}

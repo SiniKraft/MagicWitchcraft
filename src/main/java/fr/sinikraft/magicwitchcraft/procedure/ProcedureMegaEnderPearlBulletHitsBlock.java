@@ -7,7 +7,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMegaEnderPearlBulletHitsBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMegaEnderPearlBulletHitsBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 152);
+		super(instance, 172);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -28,7 +28,7 @@ public class BlockMagicalGrass extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalgrass")
 	public static final Block block = null;
 	public BlockMagicalGrass(ElementsMagicWitchcraft instance) {
-		super(instance, 191);
+		super(instance, 56);
 	}
 
 	@Override

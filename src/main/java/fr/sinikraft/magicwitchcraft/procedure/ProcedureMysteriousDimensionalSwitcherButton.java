@@ -22,7 +22,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMysteriousDimensionalSwitcherButton extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMysteriousDimensionalSwitcherButton(ElementsMagicWitchcraft instance) {
-		super(instance, 50);
+		super(instance, 92);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

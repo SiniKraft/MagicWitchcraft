@@ -38,7 +38,7 @@ public class GuiSolarPanelGUI extends ElementsMagicWitchcraft.ModElement {
 	public static int GUIID = 4;
 	public static HashMap guistate = new HashMap();
 	public GuiSolarPanelGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 141);
+		super(instance, 164);
 	}
 
 	@Override

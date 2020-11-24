@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "end_sky",
+        "1": "magical_block",
+        "missing": "magical_block"
+      },
+      "name": "default"
+    }
+  }
+}

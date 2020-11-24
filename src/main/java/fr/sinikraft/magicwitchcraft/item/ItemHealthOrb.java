@@ -20,7 +20,7 @@ public class ItemHealthOrb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:healthorb")
 	public static final Item block = null;
 	public ItemHealthOrb(ElementsMagicWitchcraft instance) {
-		super(instance, 16);
+		super(instance, 17);
 	}
 
 	@Override

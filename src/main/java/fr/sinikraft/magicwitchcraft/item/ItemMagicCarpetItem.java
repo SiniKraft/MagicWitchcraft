@@ -27,7 +27,7 @@ public class ItemMagicCarpetItem extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magiccarpetitem")
 	public static final Item block = null;
 	public ItemMagicCarpetItem(ElementsMagicWitchcraft instance) {
-		super(instance, 63);
+		super(instance, 27);
 	}
 
 	@Override

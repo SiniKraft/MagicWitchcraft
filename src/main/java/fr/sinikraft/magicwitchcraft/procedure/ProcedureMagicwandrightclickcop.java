@@ -24,7 +24,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicwandrightclickcop extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicwandrightclickcop(ElementsMagicWitchcraft instance) {
-		super(instance, 156);
+		super(instance, 176);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

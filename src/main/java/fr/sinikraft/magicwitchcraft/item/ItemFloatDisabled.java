@@ -27,7 +27,7 @@ public class ItemFloatDisabled extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:floatdisabledboots")
 	public static final Item boots = null;
 	public ItemFloatDisabled(ElementsMagicWitchcraft instance) {
-		super(instance, 161);
+		super(instance, 180);
 	}
 
 	@Override

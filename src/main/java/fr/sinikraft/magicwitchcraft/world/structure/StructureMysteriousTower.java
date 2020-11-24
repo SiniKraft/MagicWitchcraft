@@ -22,7 +22,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class StructureMysteriousTower extends ElementsMagicWitchcraft.ModElement {
 	public StructureMysteriousTower(ElementsMagicWitchcraft instance) {
-		super(instance, 35);
+		super(instance, 77);
 	}
 
 	@Override

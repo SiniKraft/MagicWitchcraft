@@ -35,7 +35,7 @@ public class BlockAutoBlockRemover extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:autoblockremover")
 	public static final Block block = null;
 	public BlockAutoBlockRemover(ElementsMagicWitchcraft instance) {
-		super(instance, 67);
+		super(instance, 28);
 	}
 
 	@Override

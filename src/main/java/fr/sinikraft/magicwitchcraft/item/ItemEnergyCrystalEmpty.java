@@ -20,7 +20,7 @@ public class ItemEnergyCrystalEmpty extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:energycrystalempty")
 	public static final Item block = null;
 	public ItemEnergyCrystalEmpty(ElementsMagicWitchcraft instance) {
-		super(instance, 78);
+		super(instance, 20);
 	}
 
 	@Override

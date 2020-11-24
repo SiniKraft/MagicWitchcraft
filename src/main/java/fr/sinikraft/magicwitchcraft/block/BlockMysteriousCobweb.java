@@ -33,7 +33,7 @@ public class BlockMysteriousCobweb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:mysteriouscobweb")
 	public static final Block block = null;
 	public BlockMysteriousCobweb(ElementsMagicWitchcraft instance) {
-		super(instance, 20);
+		super(instance, 24);
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 	public static int GUIID = 5;
 	public static HashMap guistate = new HashMap();
 	public GuiAtomicFusionerGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 173);
+		super(instance, 188);
 	}
 
 	@Override

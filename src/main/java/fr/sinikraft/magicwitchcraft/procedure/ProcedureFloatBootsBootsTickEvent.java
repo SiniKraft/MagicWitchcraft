@@ -15,7 +15,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureFloatBootsBootsTickEvent extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureFloatBootsBootsTickEvent(ElementsMagicWitchcraft instance) {
-		super(instance, 160);
+		super(instance, 179);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

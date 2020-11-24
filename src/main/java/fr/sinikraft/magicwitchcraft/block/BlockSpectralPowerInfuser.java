@@ -60,7 +60,7 @@ public class BlockSpectralPowerInfuser extends ElementsMagicWitchcraft.ModElemen
 	@GameRegistry.ObjectHolder("magic_witchcraft:spectralpowerinfuser")
 	public static final Block block = null;
 	public BlockSpectralPowerInfuser(ElementsMagicWitchcraft instance) {
-		super(instance, 177);
+		super(instance, 52);
 	}
 
 	@Override

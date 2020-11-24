@@ -24,7 +24,7 @@ public class ItemSpectralOrb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:spectralorb")
 	public static final Item block = null;
 	public ItemSpectralOrb(ElementsMagicWitchcraft instance) {
-		super(instance, 175);
+		super(instance, 19);
 	}
 
 	@Override

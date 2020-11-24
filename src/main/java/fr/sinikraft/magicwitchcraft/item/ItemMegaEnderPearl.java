@@ -43,7 +43,7 @@ public class ItemMegaEnderPearl extends ElementsMagicWitchcraft.ModElement {
 	public static final Item block = null;
 	public static final int ENTITYID = 8;
 	public ItemMegaEnderPearl(ElementsMagicWitchcraft instance) {
-		super(instance, 151);
+		super(instance, 46);
 	}
 
 	@Override

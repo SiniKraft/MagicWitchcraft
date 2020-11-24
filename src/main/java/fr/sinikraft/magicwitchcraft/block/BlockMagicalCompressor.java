@@ -54,7 +54,7 @@ public class BlockMagicalCompressor extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalcompressor")
 	public static final Block block = null;
 	public BlockMagicalCompressor(ElementsMagicWitchcraft instance) {
-		super(instance, 134);
+		super(instance, 43);
 	}
 
 	@Override

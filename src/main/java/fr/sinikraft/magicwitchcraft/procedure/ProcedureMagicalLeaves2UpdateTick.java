@@ -12,7 +12,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalLeaves2UpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalLeaves2UpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 98);
+		super(instance, 126);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

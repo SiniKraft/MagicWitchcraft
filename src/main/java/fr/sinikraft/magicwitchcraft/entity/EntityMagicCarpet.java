@@ -45,7 +45,7 @@ public class EntityMagicCarpet extends ElementsMagicWitchcraft.ModElement {
 	public static final int ENTITYID = 6;
 	public static final int ENTITYID_RANGED = 7;
 	public EntityMagicCarpet(ElementsMagicWitchcraft instance) {
-		super(instance, 62);
+		super(instance, 26);
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package fr.sinikraft.magicwitchcraft.procedure;
 
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.Blocks;
@@ -14,7 +16,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalHelmetTickEvent extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalHelmetTickEvent(ElementsMagicWitchcraft instance) {
-		super(instance, 167);
+		super(instance, 184);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {
@@ -50,5 +52,7 @@ public class ProcedureMagicalHelmetTickEvent extends ElementsMagicWitchcraft.Mod
 			if (entity instanceof EntityLivingBase)
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) 1, (int) 2, (false), (false)));
 		}
+		if (world instanceof WorldServer)
+			((WorldServer) world).spawnParticle(EnumParticleTypes.PORTAL, x, y, z, (int) 10, 1, 1.5, 1, 3, new int[0]);
 	}
 }

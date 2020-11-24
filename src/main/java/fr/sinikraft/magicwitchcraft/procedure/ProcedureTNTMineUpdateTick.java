@@ -10,7 +10,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureTNTMineUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureTNTMineUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 184);
+		super(instance, 195);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

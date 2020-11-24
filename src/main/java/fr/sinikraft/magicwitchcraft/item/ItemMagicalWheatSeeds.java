@@ -27,7 +27,7 @@ public class ItemMagicalWheatSeeds extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalwheatseeds")
 	public static final Item block = null;
 	public ItemMagicalWheatSeeds(ElementsMagicWitchcraft instance) {
-		super(instance, 119);
+		super(instance, 41);
 	}
 
 	@Override

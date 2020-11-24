@@ -1,0 +1,10 @@
+{
+  "parent": "magic_witchcraft:custom/spectral_chest",
+  "textures": {
+    "all": "magic_witchcraft:blocks/end_sky",
+    "particle": "magic_witchcraft:blocks/end_sky",
+    "0": "magic_witchcraft:blocks/end_sky",
+    "1": "magic_witchcraft:blocks/magical_block",
+    "missing": "magic_witchcraft:blocks/magical_block"
+  }
+}

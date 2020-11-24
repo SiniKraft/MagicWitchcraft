@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureDimensionalSwitcherRightClickedInAir extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureDimensionalSwitcherRightClickedInAir(ElementsMagicWitchcraft instance) {
-		super(instance, 45);
+		super(instance, 87);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

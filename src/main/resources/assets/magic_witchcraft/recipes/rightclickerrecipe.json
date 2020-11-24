@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:ender_pearl"
+    },
+    "3": {
+      "item": "minecraft:ender_pearl"
+    },
+    "4": {
+      "item": "minecraft:iron_block"
+    },
+    "5": {
+      "item": "minecraft:ender_pearl"
+    },
+    "7": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:rightclicker",
+    "count": 1
+  }
+}

@@ -20,7 +20,7 @@ public class ItemDimensionalOrb extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:dimensionalorb")
 	public static final Item block = null;
 	public ItemDimensionalOrb(ElementsMagicWitchcraft instance) {
-		super(instance, 17);
+		super(instance, 18);
 	}
 
 	@Override

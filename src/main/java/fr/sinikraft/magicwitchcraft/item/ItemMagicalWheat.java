@@ -20,7 +20,7 @@ public class ItemMagicalWheat extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalwheat")
 	public static final Item block = null;
 	public ItemMagicalWheat(ElementsMagicWitchcraft instance) {
-		super(instance, 130);
+		super(instance, 42);
 	}
 
 	@Override

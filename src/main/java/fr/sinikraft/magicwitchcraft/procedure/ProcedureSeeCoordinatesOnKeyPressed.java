@@ -10,7 +10,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureSeeCoordinatesOnKeyPressed extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureSeeCoordinatesOnKeyPressed(ElementsMagicWitchcraft instance) {
-		super(instance, 118);
+		super(instance, 145);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

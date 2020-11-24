@@ -35,7 +35,7 @@ public class BlockMysteriousLadder extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:mysteriousladder")
 	public static final Block block = null;
 	public BlockMysteriousLadder(ElementsMagicWitchcraft instance) {
-		super(instance, 19);
+		super(instance, 23);
 	}
 
 	@Override

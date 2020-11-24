@@ -32,7 +32,7 @@ public class ItemFloatBoots extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:floatbootsboots")
 	public static final Item boots = null;
 	public ItemFloatBoots(ElementsMagicWitchcraft instance) {
-		super(instance, 160);
+		super(instance, 48);
 	}
 
 	@Override

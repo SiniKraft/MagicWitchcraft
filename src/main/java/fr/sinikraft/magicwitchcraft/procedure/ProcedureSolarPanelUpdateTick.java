@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureSolarPanelUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureSolarPanelUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 140);
+		super(instance, 163);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

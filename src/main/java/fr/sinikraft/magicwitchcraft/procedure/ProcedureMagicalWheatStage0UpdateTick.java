@@ -24,7 +24,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalWheatStage0UpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalWheatStage0UpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 131);
+		super(instance, 156);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

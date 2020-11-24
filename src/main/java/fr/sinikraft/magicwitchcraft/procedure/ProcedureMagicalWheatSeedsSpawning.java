@@ -19,7 +19,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalWheatSeedsSpawning extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalWheatSeedsSpawning(ElementsMagicWitchcraft instance) {
-		super(instance, 120);
+		super(instance, 146);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

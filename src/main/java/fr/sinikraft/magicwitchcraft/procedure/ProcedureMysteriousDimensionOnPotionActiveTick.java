@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMysteriousDimensionOnPotionActiveTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMysteriousDimensionOnPotionActiveTick(ElementsMagicWitchcraft instance) {
-		super(instance, 40);
+		super(instance, 82);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {
@@ -43,12 +43,14 @@ public class ProcedureMysteriousDimensionOnPotionActiveTick extends ElementsMagi
 		int y = (int) dependencies.get("y");
 		int z = (int) dependencies.get("z");
 		World world = (World) dependencies.get("world");
-		if (((entity instanceof EntityPlayer)
-				? ((EntityPlayer) entity).inventory.hasItemStack(new ItemStack(Blocks.COBBLESTONE, (int) (1)))
-				: false)) {
+		if ((((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).inventory.hasItemStack(new ItemStack(Blocks.COBBLESTONE, (int) (1))) : false)
+				|| ((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false))) {
 			if (((world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
-				if (entity instanceof EntityPlayer)
-					((EntityPlayer) entity).inventory.clearMatchingItems(new ItemStack(Blocks.COBBLESTONE, (int) (1)).getItem(), -1, (int) 1, null);
+				if ((!((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false))) {
+					if (entity instanceof EntityPlayer)
+						((EntityPlayer) entity).inventory.clearMatchingItems(new ItemStack(Blocks.COBBLESTONE, (int) (1)).getItem(), -1, (int) 1,
+								null);
+				}
 				world.setBlockState(new BlockPos((int) x, (int) (y - 1), (int) z), Blocks.COBBLESTONE.getDefaultState(), 3);
 				world.playSound((EntityPlayer) null, x, (y - 1), z,
 						(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("block.stone.place")),

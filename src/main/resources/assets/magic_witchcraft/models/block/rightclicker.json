@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "magic_witchcraft:blocks/auto_block_remover_side",
+    "particle": "magic_witchcraft:blocks/auto_block_remover_side"
+  }
+}

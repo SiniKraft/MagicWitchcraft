@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "1": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "2": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "3": {
+      "item": "minecraft:chest"
+    },
+    "4": {
+      "item": "minecraft:chest"
+    },
+    "5": {
+      "item": "minecraft:chest"
+    },
+    "6": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "7": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "8": {
+      "item": "magic_witchcraft:spectralblock"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:spectralchest",
+    "count": 1
+  }
+}

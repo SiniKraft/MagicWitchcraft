@@ -23,7 +23,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalCompressorActivateUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalCompressorActivateUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 137);
+		super(instance, 161);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

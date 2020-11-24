@@ -15,7 +15,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMysteriousExtractorUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMysteriousExtractorUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 22);
+		super(instance, 64);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -9,7 +9,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalDimensionPortalUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalDimensionPortalUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 148);
+		super(instance, 169);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

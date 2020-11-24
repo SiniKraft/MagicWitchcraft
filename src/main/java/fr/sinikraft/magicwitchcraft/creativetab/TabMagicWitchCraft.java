@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class TabMagicWitchCraft extends ElementsMagicWitchcraft.ModElement {
 	public TabMagicWitchCraft(ElementsMagicWitchcraft instance) {
-		super(instance, 27);
+		super(instance, 69);
 	}
 
 	@Override

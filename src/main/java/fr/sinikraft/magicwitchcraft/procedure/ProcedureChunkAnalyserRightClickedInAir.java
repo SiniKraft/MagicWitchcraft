@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureChunkAnalyserRightClickedInAir extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureChunkAnalyserRightClickedInAir(ElementsMagicWitchcraft instance) {
-		super(instance, 76);
+		super(instance, 113);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {
