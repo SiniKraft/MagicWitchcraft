@@ -4,7 +4,7 @@
     "all": "magic_witchcraft:blocks/end_sky",
     "particle": "magic_witchcraft:blocks/end_sky",
     "0": "magic_witchcraft:blocks/end_sky",
-    "1": "magic_witchcraft:blocks/magical_block",
-    "missing": "magic_witchcraft:blocks/magical_block"
+    "1": "magic_witchcraft:blocks/spectral_block",
+    "missing": "magic_witchcraft:blocks/spectral_block"
   }
 }
