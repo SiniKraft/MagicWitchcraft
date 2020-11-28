@@ -1,8 +1,8 @@
 entity.dangerouswitch.name=Dangerous witch
 advancements.mysteriousdimensiontraveler.descr=Enter in mysterious dimension.
-item.saverlegs.name=Saver leggings
-tile.mysterious_log.name=Mysterious log
 advancements.magicaldimensiontraveler.descr=Enter in magical dimension.
+tile.mysterious_log.name=Mysterious log
+item.saverlegs.name=Saver leggings
 fluid.magicallava=Magical lava
 potion.effect.blockfly=Block fly potion
 tile.spectralleaves.name=Spectral leaves

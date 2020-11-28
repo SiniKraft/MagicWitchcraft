@@ -10,6 +10,9 @@
     "textureLeggings": "saver_leggings_leggings",
     "enableBoots": false,
     "textureBoots": "",
+    "onLeggingsTick": {
+      "name": "SaverLeggingsTickEvent"
+    },
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
     },

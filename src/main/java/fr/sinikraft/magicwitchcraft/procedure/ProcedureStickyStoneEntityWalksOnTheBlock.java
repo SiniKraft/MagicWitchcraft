@@ -1,5 +1,8 @@
 package fr.sinikraft.magicwitchcraft.procedure;
 
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.init.MobEffects;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
@@ -16,8 +19,7 @@ public class ProcedureStickyStoneEntityWalksOnTheBlock extends ElementsMagicWitc
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		entity.motionX = (entity.motionX);
-		entity.motionY = 0;
-		entity.motionZ = (entity.motionZ);
+		if (entity instanceof EntityLivingBase)
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) 1, (int) 4, (true), (false)));
 	}
 }

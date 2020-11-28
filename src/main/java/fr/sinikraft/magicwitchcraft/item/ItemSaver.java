@@ -8,12 +8,16 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 
+import net.minecraft.world.World;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.Item;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSaverLeggingsTickEvent;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -36,8 +40,19 @@ public class ItemSaver extends ElementsMagicWitchcraft.ModElement {
 		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("SAVER", "magic_witchcraft:saver_leggings", 50, new int[]{4, 10, 12, 4}, 18,
 				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("item.armor.equip_leather")),
 				3f);
-		elements.items.add(() -> new ItemArmor(enuma, 0, EntityEquipmentSlot.LEGS).setUnlocalizedName("saverlegs").setRegistryName("saverlegs")
-				.setCreativeTab(TabMagicWitchCraft.tab));
+		elements.items.add(() -> new ItemArmor(enuma, 0, EntityEquipmentSlot.LEGS) {
+			@Override
+			public void onArmorTick(World world, EntityPlayer entity, ItemStack itemstack) {
+				int x = (int) entity.posX;
+				int y = (int) entity.posY;
+				int z = (int) entity.posZ;
+				{
+					java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+					$_dependencies.put("entity", entity);
+					ProcedureSaverLeggingsTickEvent.executeProcedure($_dependencies);
+				}
+			}
+		}.setUnlocalizedName("saverlegs").setRegistryName("saverlegs").setCreativeTab(TabMagicWitchCraft.tab));
 	}
 
 	@SideOnly(Side.CLIENT)

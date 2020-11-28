@@ -53,6 +53,6 @@ public class ProcedureMagicalHelmetTickEvent extends ElementsMagicWitchcraft.Mod
 				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) 1, (int) 2, (false), (false)));
 		}
 		if (world instanceof WorldServer)
-			((WorldServer) world).spawnParticle(EnumParticleTypes.PORTAL, x, y, z, (int) 10, 1, 1.5, 1, 3, new int[0]);
+			((WorldServer) world).spawnParticle(EnumParticleTypes.PORTAL, x, y, z, (int) 10, 0.1, 0.15, 0.1, 3, new int[0]);
 	}
 }
