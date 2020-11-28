@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "normal": {
+      "model": "magic_witchcraft:blueobsidian"
+    },
+    "facing=north": {
+      "model": "magic_witchcraft:blueobsidian"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:blueobsidian",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:blueobsidian",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:blueobsidian",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "magic_witchcraft:blueobsidian",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "magic_witchcraft:blueobsidian",
+      "x": 90
+    }
+  }
+}

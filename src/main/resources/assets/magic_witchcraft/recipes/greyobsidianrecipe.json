@@ -1,0 +1,16 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:greyobsidian",
+    "count": 4
+  }
+}
