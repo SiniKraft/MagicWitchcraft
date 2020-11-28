@@ -6,21 +6,18 @@
     "textureHelmet": "",
     "enableBody": false,
     "textureBody": "",
-    "enableLeggings": false,
-    "textureLeggings": "",
-    "enableBoots": true,
-    "textureBoots": "floatboots_boots",
-    "onBootsTick": {
-      "name": "FloatBootsBootsTickEvent"
-    },
+    "enableLeggings": true,
+    "textureLeggings": "saver_leggings_leggings",
+    "enableBoots": false,
+    "textureBoots": "",
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"
     },
-    "armorTextureFile": "floatboots",
+    "armorTextureFile": "saver_leggings",
     "helmetName": "",
     "bodyName": "",
-    "leggingsName": "",
-    "bootsName": "Float boots",
+    "leggingsName": "Saver leggings",
+    "bootsName": "",
     "helmetModelName": "Default",
     "helmetModelPart": "Helmet",
     "helmetModelTexture": "From armor",
@@ -41,9 +38,9 @@
     "damageValueLeggings": 10,
     "damageValueBoots": 4,
     "enchantability": 18,
-    "toughness": 2.0,
+    "toughness": 3.0,
     "equipSound": {
-      "value": "item.armor.equip_chain"
+      "value": "item.armor.equip_leather"
     },
     "repairItems": []
   }

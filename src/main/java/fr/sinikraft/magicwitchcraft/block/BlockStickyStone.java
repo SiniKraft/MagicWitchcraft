@@ -12,10 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -27,20 +25,21 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.Block;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureStickyStoneEntityWalksOnTheBlock;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:spectralblock")
+public class BlockStickyStone extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:stickystone")
 	public static final Block block = null;
-	public BlockSpectralBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 178);
+	public BlockStickyStone(ElementsMagicWitchcraft instance) {
+		super(instance, 231);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("spectralblock"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("stickystone"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
@@ -48,55 +47,21 @@ public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:spectralblock", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:stickystone", "inventory"));
 	}
 	public static class BlockCustom extends Block {
 		public static final PropertyDirection FACING = BlockHorizontal.FACING;
 		public BlockCustom() {
-			super(Material.SPONGE);
-			setUnlocalizedName("spectralblock");
-			setSoundType(SoundType.SLIME);
+			super(Material.ROCK);
+			setUnlocalizedName("stickystone");
+			setSoundType(SoundType.STONE);
+			setHarvestLevel("shovel", 1);
 			setHardness(1F);
 			setResistance(10F);
 			setLightLevel(0F);
-			setLightOpacity(0);
+			setLightOpacity(255);
 			setCreativeTab(TabMagicWitchCraft.tab);
-			setDefaultSlipperiness(0.8f);
 			this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		}
-
-		// Slime code.
-		public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-			if (entityIn.isSneaking()) {
-				super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
-			} else {
-				entityIn.fall(fallDistance, 0.0F);
-			}
-		}
-
-		public void onLanded(World worldIn, Entity entityIn) {
-			if (entityIn.isSneaking()) {
-				super.onLanded(worldIn, entityIn);
-			} else if (entityIn.motionY < 0.0D) {
-				entityIn.motionY = -entityIn.motionY * 1.25D;
-				if (!(entityIn instanceof EntityLivingBase)) {
-					entityIn.motionY *= 0.8D;
-				}
-			}
-		}
-
-		@Override
-		public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-			entityIn.motionX *= 0.75D;
-			entityIn.motionZ *= 0.75D;
-			super.onEntityWalk(worldIn, pos, entityIn);
-		}
-
-		// end of Slime code.
-		@SideOnly(Side.CLIENT)
-		@Override
-		public BlockRenderLayer getBlockLayer() {
-			return BlockRenderLayer.TRANSLUCENT;
 		}
 
 		@Override
@@ -131,13 +96,16 @@ public class BlockSpectralBlock extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
-		public boolean isOpaqueCube(IBlockState state) {
-			return false;
-		}
-
-		@Override
-		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-			return false;
+		public void onEntityWalk(World world, BlockPos pos, Entity entity) {
+			super.onEntityWalk(world, pos, entity);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				ProcedureStickyStoneEntityWalksOnTheBlock.executeProcedure($_dependencies);
+			}
 		}
 	}
 }

@@ -4,42 +4,42 @@
   "definition": {
     "recipeType": "Crafting",
     "xpReward": 0.0,
-    "recipeRetstackSize": 1,
+    "recipeRetstackSize": 3,
     "group": "",
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": "CUSTOM:MagicalOrb"
-      },
-      {
-        "value": "CUSTOM:MagicalBlock"
-      },
-      {
-        "value": "CUSTOM:MagicalOrb"
-      },
-      {
-        "value": "CUSTOM:MagicalBlock"
-      },
-      {
         "value": ""
       },
       {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "CUSTOM:SpectralOrb"
       },
       {
         "value": ""
       },
       {
         "value": ""
+      },
+      {
+        "value": "Blocks.STONE"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.DIRT"
       },
       {
         "value": ""
       }
     ],
     "recipeReturnStack": {
-      "value": "CUSTOM:Magical.helmet"
+      "value": "CUSTOM:StickyStone"
     },
-    "name": "magical_helmet_recipe",
+    "name": "sticky_stone_recipe",
     "namespace": "mod"
   }
 }

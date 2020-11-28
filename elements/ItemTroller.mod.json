@@ -1,0 +1,32 @@
+{
+  "_fv": 6,
+  "_type": "item",
+  "definition": {
+    "renderType": 0,
+    "texture": "diamond",
+    "customModelName": "Normal",
+    "name": "Item troller",
+    "creativeTab": {
+      "value": "CUSTOM:MagicWitchCraft"
+    },
+    "stackSize": 64,
+    "enchantability": 0,
+    "useDuration": 0,
+    "toolType": 1.0,
+    "damageCount": 0,
+    "destroyAnyBlock": false,
+    "stayInGridWhenCrafting": false,
+    "enableMeleeDamage": false,
+    "damageVsEntity": 0.0,
+    "specialInfo": [
+      "WARNING: If any entity picks up this, it will EXPLODE !"
+    ],
+    "hasGlow": false,
+    "onCrafted": {
+      "name": "ItemTrollerItemInInventoryTick"
+    },
+    "onItemInInventoryTick": {
+      "name": "ItemTrollerWhenItemPickedUp"
+    }
+  }
+}

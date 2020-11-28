@@ -40,7 +40,7 @@
     "enchantability": 18,
     "toughness": 2.0,
     "equipSound": {
-      "value": ""
+      "value": "item.armor.equip_chain"
     },
     "repairItems": []
   }

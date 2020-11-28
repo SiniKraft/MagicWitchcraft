@@ -4,42 +4,42 @@
   "definition": {
     "recipeType": "Crafting",
     "xpReward": 0.0,
-    "recipeRetstackSize": 1,
+    "recipeRetstackSize": 2,
     "group": "",
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": "CUSTOM:MagicalOrb"
+        "value": ""
       },
       {
-        "value": "CUSTOM:MagicalBlock"
-      },
-      {
-        "value": "CUSTOM:MagicalOrb"
-      },
-      {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "Blocks.TNT"
       },
       {
         "value": ""
       },
       {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Items.DIAMOND"
+      },
+      {
+        "value": "Blocks.TNT"
       },
       {
         "value": ""
       },
       {
-        "value": ""
+        "value": "Blocks.TNT"
       },
       {
         "value": ""
       }
     ],
     "recipeReturnStack": {
-      "value": "CUSTOM:Magical.helmet"
+      "value": "CUSTOM:ItemTroller"
     },
-    "name": "magical_helmet_recipe",
+    "name": "item_troller_recipe",
     "namespace": "mod"
   }
 }

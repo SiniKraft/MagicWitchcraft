@@ -33,7 +33,7 @@ public class ItemFloatDisabled extends ElementsMagicWitchcraft.ModElement {
 	@Override
 	public void initElements() {
 		ItemArmor.ArmorMaterial enuma = EnumHelper.addArmorMaterial("FLOATDISABLED", "magic_witchcraft:floatboots", 50, new int[]{4, 10, 12, 4}, 18,
-				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("")), 2f);
+				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("item.armor.equip_chain")), 2f);
 		elements.items.add(() -> new ItemArmor(enuma, 0, EntityEquipmentSlot.FEET).setUnlocalizedName("floatdisabledboots")
 				.setRegistryName("floatdisabledboots").setCreativeTab(null));
 	}

@@ -40,7 +40,7 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 	public static int GUIID = 6;
 	public static HashMap guistate = new HashMap();
 	public GuiSpectralPowerInterface(ElementsMagicWitchcraft instance) {
-		super(instance, 181);
+		super(instance, 193);
 	}
 
 	@Override

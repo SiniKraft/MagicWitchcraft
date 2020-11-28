@@ -3,8 +3,8 @@
     "default": {
       "map": {
         "0": "end_sky",
-        "1": "magical_block",
-        "missing": "magical_block"
+        "1": "spectral_block",
+        "missing": "spectral_block"
       },
       "name": "default"
     }

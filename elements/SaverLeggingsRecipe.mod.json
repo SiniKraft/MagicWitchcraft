@@ -9,37 +9,37 @@
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": "CUSTOM:MagicalOrb"
+        "value": "CUSTOM:SpectralBlock"
       },
       {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "CUSTOM:SpectralOrb"
       },
       {
-        "value": "CUSTOM:MagicalOrb"
+        "value": "CUSTOM:SpectralBlock"
       },
       {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "CUSTOM:SpectralOrb"
       },
       {
-        "value": ""
+        "value": "Blocks.PISTON"
       },
       {
-        "value": "CUSTOM:MagicalBlock"
+        "value": "CUSTOM:SpectralOrb"
       },
       {
-        "value": ""
-      },
-      {
-        "value": ""
+        "value": "CUSTOM:SpectralOrb"
       },
       {
         "value": ""
+      },
+      {
+        "value": "CUSTOM:SpectralOrb"
       }
     ],
     "recipeReturnStack": {
-      "value": "CUSTOM:Magical.helmet"
+      "value": "CUSTOM:Saver.legs"
     },
-    "name": "magical_helmet_recipe",
+    "name": "saverleggingsrecipe",
     "namespace": "mod"
   }
 }

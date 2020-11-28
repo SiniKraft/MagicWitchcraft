@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.item.ItemStack;
@@ -34,9 +35,6 @@ import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralChestInterfaceUpO
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralChestInterfaceDownOnButtonClicked;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
-//ADDED
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.ResourceLocation;
 
 @ElementsMagicWitchcraft.ModElement.Tag
 public class GuiSpectralChestInterface extends ElementsMagicWitchcraft.ModElement {
@@ -456,10 +454,10 @@ public class GuiSpectralChestInterface extends ElementsMagicWitchcraft.ModElemen
 		public void onGuiClosed() {
 			super.onGuiClosed();
 			Keyboard.enableRepeatEvents(false);
-			//ADDED
+			// ADDED
 			world.playSound((EntityPlayer) null, x, y, z,
-				(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("block.chest.close")),
-				SoundCategory.NEUTRAL, (float) 1, (float) 1);
+					(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("block.chest.close")),
+					SoundCategory.NEUTRAL, (float) 1, (float) 1);
 		}
 
 		@Override

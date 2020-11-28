@@ -55,13 +55,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 		}.getEnumFacing(new BlockPos((int) x, (int) y, (int) z))) == EnumFacing.UP)) {
 			if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 					.canHarvestBlock((world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) z)))))) {
+				world.destroyBlock(new BlockPos((int) x, (int) (y + 1), (int) z), false);
 				if (!world.isRemote) {
 					EntityItem entityToSpawn = new EntityItem(world, x, (y + 1), z,
 							(new ItemStack((world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) z))).getBlock())));
 					entityToSpawn.setPickupDelay(10);
 					world.spawnEntity(entityToSpawn);
 				}
-				world.destroyBlock(new BlockPos((int) x, (int) (y + 1), (int) z), false);
 			}
 		} else {
 			if (((new Object() {
@@ -80,13 +80,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 			}.getEnumFacing(new BlockPos((int) x, (int) y, (int) z))) == EnumFacing.DOWN)) {
 				if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 						.canHarvestBlock((world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z)))))) {
+					world.destroyBlock(new BlockPos((int) x, (int) (y - 1), (int) z), false);
 					if (!world.isRemote) {
 						EntityItem entityToSpawn = new EntityItem(world, x, (y - 1), z,
 								(new ItemStack((world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z))).getBlock())));
 						entityToSpawn.setPickupDelay(10);
 						world.spawnEntity(entityToSpawn);
 					}
-					world.destroyBlock(new BlockPos((int) x, (int) (y - 1), (int) z), false);
 				}
 			} else {
 				if (((new Object() {
@@ -105,13 +105,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 				}.getEnumFacing(new BlockPos((int) x, (int) y, (int) z))) == EnumFacing.NORTH)) {
 					if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 							.canHarvestBlock((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z - 1))))))) {
+						world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z - 1)), false);
 						if (!world.isRemote) {
 							EntityItem entityToSpawn = new EntityItem(world, x, y, (z - 1),
 									(new ItemStack((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z - 1)))).getBlock())));
 							entityToSpawn.setPickupDelay(10);
 							world.spawnEntity(entityToSpawn);
 						}
-						world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z - 1)), false);
 					}
 				} else {
 					if (((new Object() {
@@ -132,13 +132,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 								.canHarvestBlock((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1))))))) {
 							if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 									.canHarvestBlock((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1))))))) {
+								world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z + 1)), false);
 								if (!world.isRemote) {
 									EntityItem entityToSpawn = new EntityItem(world, x, y, (z + 1),
 											(new ItemStack((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1)))).getBlock())));
 									entityToSpawn.setPickupDelay(10);
 									world.spawnEntity(entityToSpawn);
 								}
-								world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z + 1)), false);
 							}
 						}
 					} else {
@@ -158,13 +158,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 						}.getEnumFacing(new BlockPos((int) x, (int) y, (int) z))) == EnumFacing.EAST)) {
 							if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 									.canHarvestBlock((world.getBlockState(new BlockPos((int) (x + 1), (int) y, (int) z)))))) {
+								world.destroyBlock(new BlockPos((int) (x + 1), (int) y, (int) z), false);
 								if (!world.isRemote) {
 									EntityItem entityToSpawn = new EntityItem(world, (x + 1), y, z,
 											(new ItemStack((world.getBlockState(new BlockPos((int) (x + 1), (int) y, (int) z))).getBlock())));
 									entityToSpawn.setPickupDelay(10);
 									world.spawnEntity(entityToSpawn);
 								}
-								world.destroyBlock(new BlockPos((int) (x + 1), (int) y, (int) z), false);
 							}
 						} else {
 							if (((new Object() {
@@ -183,13 +183,13 @@ public class ProcedureAutoBlockRemoverRedstoneOn extends ElementsMagicWitchcraft
 							}.getEnumFacing(new BlockPos((int) x, (int) y, (int) z))) == EnumFacing.WEST)) {
 								if ((new ItemStack(Items.DIAMOND_PICKAXE, (int) (1)).getItem()
 										.canHarvestBlock((world.getBlockState(new BlockPos((int) (x - 1), (int) y, (int) z)))))) {
+									world.destroyBlock(new BlockPos((int) (x - 1), (int) y, (int) z), false);
 									if (!world.isRemote) {
 										EntityItem entityToSpawn = new EntityItem(world, (x - 1), y, z,
 												(new ItemStack((world.getBlockState(new BlockPos((int) (x - 1), (int) y, (int) z))).getBlock())));
 										entityToSpawn.setPickupDelay(10);
 										world.spawnEntity(entityToSpawn);
 									}
-									world.destroyBlock(new BlockPos((int) (x - 1), (int) y, (int) z), false);
 								}
 							}
 						}
