@@ -1,18 +1,14 @@
 {
   "group": "magic_witchcraft",
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "0 ",
-    " 3"
-  ],
-  "key": {
-    "0": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "minecraft:emerald"
     },
-    "3": {
+    {
       "item": "minecraft:diamond"
     }
-  },
+  ],
   "result": {
     "item": "magic_witchcraft:mysterious_dimension",
     "count": 1

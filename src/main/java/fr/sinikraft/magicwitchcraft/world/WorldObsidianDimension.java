@@ -147,7 +147,7 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Vec3d getFogColor(float par1, float par2) {
-			return new Vec3d(0.937254901961, 0.517647058824, 0.145098039216);
+			return new Vec3d(0.756862745098, 0.352941176471, 0);
 		}
 
 		@Override

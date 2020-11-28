@@ -21,25 +21,25 @@
         "value": ""
       },
       {
-        "value": "Items.EMERALD"
+        "value": "Blocks.OBSIDIAN"
+      },
+      {
+        "value": "CUSTOM:SolidTrollWater"
       },
       {
         "value": ""
       },
       {
-        "value": ""
+        "value": "CUSTOM:SolidTrollWater"
       },
       {
-        "value": ""
-      },
-      {
-        "value": "Items.DIAMOND"
+        "value": "CUSTOM:SpectralOrb"
       }
     ],
     "recipeReturnStack": {
-      "value": "CUSTOM:MysteriousDimension"
+      "value": "CUSTOM:ObsidianDimension"
     },
-    "name": "mysterious_portal_igniter_recipe",
+    "name": "obsidian_portal_igniter_recipe",
     "namespace": "mod"
   }
 }

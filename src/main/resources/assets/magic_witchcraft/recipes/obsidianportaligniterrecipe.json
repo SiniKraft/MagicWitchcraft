@@ -1,0 +1,22 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "magic_witchcraft:solidtrollwater"
+    },
+    {
+      "item": "magic_witchcraft:solidtrollwater"
+    },
+    {
+      "item": "magic_witchcraft:spectralorb"
+    }
+  ],
+  "result": {
+    "item": "magic_witchcraft:obsidiandimension",
+    "count": 1
+  }
+}

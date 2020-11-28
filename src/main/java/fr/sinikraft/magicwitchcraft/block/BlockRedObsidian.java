@@ -7,16 +7,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 
+import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.World;
 import net.minecraft.world.Explosion;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.properties.PropertyDirection;
@@ -27,7 +34,9 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.Block;
 
 import java.util.Random;
+import java.util.List;
 
+import fr.sinikraft.magicwitchcraft.world.WorldObsidianDimension;
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureRedObsidianBlockDestroyedByPlayer;
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureRedObsidianBlockDestroyedByExplosion;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
@@ -53,6 +62,35 @@ public class BlockRedObsidian extends ElementsMagicWitchcraft.ModElement {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
 				new ModelResourceLocation("magic_witchcraft:redobsidian", "inventory"));
 	}
+
+	@Override
+	public void generateWorld(Random random, int chunkX, int chunkZ, World world, int dimID, IChunkGenerator cg, IChunkProvider cp) {
+		boolean dimensionCriteria = false;
+		if (dimID == WorldObsidianDimension.DIMID)
+			dimensionCriteria = true;
+		if (!dimensionCriteria)
+			return;
+		boolean biomeCriteria = false;
+		Biome biome = world.getBiome(new BlockPos(chunkX, 128, chunkZ));
+		if (Biome.REGISTRY.getNameForObject(biome).equals(new ResourceLocation("magic_witchcraft:obsidianbiome")))
+			biomeCriteria = true;
+		if (!biomeCriteria)
+			return;
+		for (int i = 0; i < 6; i++) {
+			int x = chunkX + random.nextInt(16);
+			int y = random.nextInt(256) + 0;
+			int z = chunkZ + random.nextInt(16);
+			(new WorldGenMinable(block.getDefaultState(), 5, new com.google.common.base.Predicate<IBlockState>() {
+				public boolean apply(IBlockState blockAt) {
+					boolean blockCriteria = false;
+					IBlockState require;
+					if (blockAt.getBlock() == BlockGreyObsidian.block.getDefaultState().getBlock())
+						blockCriteria = true;
+					return blockCriteria;
+				}
+			})).generate(world, random, new BlockPos(x, y, z));
+		}
+	}
 	public static class BlockCustom extends Block {
 		public static final PropertyDirection FACING = BlockDirectional.FACING;
 		public BlockCustom() {
@@ -66,6 +104,12 @@ public class BlockRedObsidian extends ElementsMagicWitchcraft.ModElement {
 			setLightOpacity(255);
 			setCreativeTab(TabMagicWitchCraft.tab);
 			this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		}
+
+		@Override
+		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
+			super.addInformation(itemstack, world, list, flag);
+			list.add("Explodes when destroyed !");
 		}
 
 		@Override

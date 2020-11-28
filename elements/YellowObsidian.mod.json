@@ -21,7 +21,9 @@
     "Mz": 1.0,
     "faceShape": "SOLID",
     "name": "Yellow obsidian",
-    "specialInfo": [],
+    "specialInfo": [
+      "A classic obsidian which is mined faster."
+    ],
     "hardness": 25.0,
     "resistance": 1200.0,
     "hasGravity": false,
@@ -84,9 +86,9 @@
         "value": "Blocks.STONE"
       }
     ],
-    "frequencyPerChunks": 10,
+    "frequencyPerChunks": 12,
     "frequencyOnChunk": 16,
     "minGenerateHeight": 0,
-    "maxGenerateHeight": 64
+    "maxGenerateHeight": 256
   }
 }

@@ -60,10 +60,21 @@
     "parent": {
       "value": "No parent"
     },
-    "biomeDictionaryTypes": [],
+    "biomeDictionaryTypes": [
+      "NETHER"
+    ],
     "spawnList": [
       {
         "value": "CUSTOM:DangerousWitch"
+      },
+      {
+        "value": "EntityCreeper"
+      },
+      {
+        "value": "EntitySlime"
+      },
+      {
+        "value": "EntityGhast"
       }
     ]
   }

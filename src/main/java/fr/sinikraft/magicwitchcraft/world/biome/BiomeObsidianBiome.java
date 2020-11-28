@@ -3,9 +3,13 @@ package fr.sinikraft.magicwitchcraft.world.biome;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.common.BiomeDictionary;
 
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityCreeper;
 
 import java.util.Random;
 
@@ -28,6 +32,7 @@ public class BiomeObsidianBiome extends ElementsMagicWitchcraft.ModElement {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
+		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.NETHER);
 	}
 	static class BiomeGenCustom extends Biome {
 		public BiomeGenCustom() {
@@ -51,6 +56,9 @@ public class BiomeObsidianBiome extends ElementsMagicWitchcraft.ModElement {
 			this.spawnableWaterCreatureList.clear();
 			this.spawnableCaveCreatureList.clear();
 			this.spawnableCreatureList.add(new SpawnListEntry(EntityDangerousWitch.EntityCustom.class, 40, 1, 5));
+			this.spawnableCreatureList.add(new SpawnListEntry(EntityCreeper.class, 40, 1, 5));
+			this.spawnableCreatureList.add(new SpawnListEntry(EntitySlime.class, 40, 1, 5));
+			this.spawnableCreatureList.add(new SpawnListEntry(EntityGhast.class, 40, 1, 5));
 		}
 
 		@Override
