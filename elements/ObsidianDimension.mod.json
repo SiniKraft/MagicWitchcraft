@@ -1,0 +1,56 @@
+{
+  "_fv": 6,
+  "_type": "dimension",
+  "definition": {
+    "portalFrame": {
+      "value": "CUSTOM:SpectralBlock"
+    },
+    "portalParticles": {
+      "value": "RAIN"
+    },
+    "portalLuminance": 0.0,
+    "portalSound": {
+      "value": "entity.slime.squish"
+    },
+    "igniterName": "Spectral dimension portal igniter",
+    "igniterTab": {
+      "value": "CUSTOM:MagicWitchCraft"
+    },
+    "texture": "spectral_igniter",
+    "portalTexture": "magical_lava_still",
+    "enablePortal": true,
+    "biomesInDimension": [
+      {
+        "value": "CUSTOM:ObsidianBiome"
+      }
+    ],
+    "worldGenType": "Nether like gen",
+    "mainFillerBlock": {
+      "value": "CUSTOM:GreyObsidian"
+    },
+    "secondaryFillerBlock": {
+      "value": "CUSTOM:GreyObsidian"
+    },
+    "tertiaryFillerBlock": {
+      "value": "Blocks.OBSIDIAN"
+    },
+    "fluidBlock": {
+      "value": "CUSTOM:MagicalLava"
+    },
+    "airColor": {
+      "value": -1080283,
+      "falpha": 0.0
+    },
+    "canRespawnHere": false,
+    "hasFog": false,
+    "hasWeather": false,
+    "isDark": false,
+    "doesWaterVaporize": true,
+    "sleepResult": "BED_EXPLODES",
+    "hasSkyLight": false,
+    "imitateOverworldBehaviour": false,
+    "dimensionMusic": {
+      "value": "music.nether"
+    }
+  }
+}
