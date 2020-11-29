@@ -27,8 +27,6 @@ public class ProcedureStickyStoneEntityWalksOnTheBlock extends ElementsMagicWitc
 					.getItem() == new ItemStack(ItemSaver.legs, (int) (1)).getItem()))) {
 				if (entity instanceof EntityLivingBase)
 					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) 1, (int) 254, (true), (false)));
-				if (entity instanceof EntityLivingBase)
-					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, (int) 1, (int) 260, (true), (false)));
 			}
 		}
 	}
