@@ -44,13 +44,16 @@
     "canRespawnHere": false,
     "hasFog": false,
     "hasWeather": false,
-    "isDark": false,
+    "isDark": true,
     "doesWaterVaporize": true,
     "sleepResult": "BED_EXPLODES",
     "hasSkyLight": false,
     "imitateOverworldBehaviour": false,
     "dimensionMusic": {
       "value": "music.nether"
+    },
+    "onPlayerEntersDimension": {
+      "name": "ObsidianDimensionPlayerEntersDimension"
     }
   }
 }

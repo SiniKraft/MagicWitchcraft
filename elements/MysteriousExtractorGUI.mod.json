@@ -19,8 +19,8 @@
           },
           "id": 0,
           "name": "Slot #0",
-          "x": 344,
-          "y": 142
+          "x": 336,
+          "y": 132
         }
       },
       {
@@ -28,8 +28,8 @@
         "data": {
           "id": 1,
           "name": "Slot #1",
-          "x": 471,
-          "y": 142
+          "x": 480,
+          "y": 132
         }
       },
       {
@@ -37,8 +37,30 @@
         "data": {
           "image": "mysterious_log.png",
           "name": "mysterious_log.png",
-          "x": 279,
-          "y": 142
+          "x": 264,
+          "y": 132
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Mysterious extractor",
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "name": "Mysterious extractor",
+          "x": 328,
+          "y": 77
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "arrow_gui.png",
+          "name": "arrow_gui.png",
+          "x": 408,
+          "y": 132
         }
       }
     ]

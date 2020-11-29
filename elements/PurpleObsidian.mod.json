@@ -86,14 +86,20 @@
     "onDestroyedByExplosion": {
       "name": "PurpleObsidianBlockDestroyedByExplosion"
     },
-    "spawnWorldTypes": [],
-    "restrictionBiomes": [],
-    "blocksToReplace": [
+    "spawnWorldTypes": [
+      "CUSTOM:ObsidianDimension"
+    ],
+    "restrictionBiomes": [
       {
-        "value": "Blocks.STONE"
+        "value": "CUSTOM:ObsidianBiome"
       }
     ],
-    "frequencyPerChunks": 1,
+    "blocksToReplace": [
+      {
+        "value": "CUSTOM:GreyObsidian"
+      }
+    ],
+    "frequencyPerChunks": 3,
     "frequencyOnChunk": 3,
     "minGenerateHeight": 0,
     "maxGenerateHeight": 256

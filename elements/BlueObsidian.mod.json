@@ -85,15 +85,21 @@
     "onDestroyedByExplosion": {
       "name": "RedObsidianBlockDestroyedByPlayerBlockDestroyedByExplosion"
     },
-    "spawnWorldTypes": [],
-    "restrictionBiomes": [],
-    "blocksToReplace": [
+    "spawnWorldTypes": [
+      "CUSTOM:ObsidianDimension"
+    ],
+    "restrictionBiomes": [
       {
-        "value": "Blocks.STONE"
+        "value": "CUSTOM:ObsidianBiome"
       }
     ],
-    "frequencyPerChunks": 6,
-    "frequencyOnChunk": 5,
+    "blocksToReplace": [
+      {
+        "value": "CUSTOM:GreyObsidian"
+      }
+    ],
+    "frequencyPerChunks": 12,
+    "frequencyOnChunk": 8,
     "minGenerateHeight": 0,
     "maxGenerateHeight": 256
   }

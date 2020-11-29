@@ -1,29 +1,29 @@
 {
   "display": {
     "icon": {
-      "item": "magic_witchcraft:magical_orb"
+      "item": "magic_witchcraft:purpleobsidian"
     },
     "title": {
-      "translate": "advancements.magicalorbmaker.title"
+      "translate": "advancements.megaprotection.title"
     },
     "description": {
-      "translate": "advancements.magicalorbmaker.descr"
+      "translate": "advancements.megaprotection.descr"
     },
-    "frame": "goal",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "magicalorbmaker": {
+    "megaprotection": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "magic_witchcraft:magical_orb",
+            "item": "magic_witchcraft:purpleobsidian",
             "count": {
               "min": 1,
-              "max": 500
+              "max": 2304
             }
           }
         ]
@@ -33,5 +33,5 @@
   "rewards": {
     "experience": 100
   },
-  "parent": "magic_witchcraft:orbmaker"
+  "parent": "magic_witchcraft:obsidianmaker"
 }

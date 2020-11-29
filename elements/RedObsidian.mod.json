@@ -98,8 +98,8 @@
         "value": "CUSTOM:GreyObsidian"
       }
     ],
-    "frequencyPerChunks": 6,
-    "frequencyOnChunk": 5,
+    "frequencyPerChunks": 12,
+    "frequencyOnChunk": 8,
     "minGenerateHeight": 0,
     "maxGenerateHeight": 256
   }

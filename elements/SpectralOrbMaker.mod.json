@@ -16,7 +16,7 @@
     "rewardRecipes": [],
     "rewardFunction": "No function",
     "rewardXP": 100,
-    "achievementType": "task",
+    "achievementType": "challenge",
     "parent": {
       "value": "CUSTOM:MagicalOrbMaker"
     },

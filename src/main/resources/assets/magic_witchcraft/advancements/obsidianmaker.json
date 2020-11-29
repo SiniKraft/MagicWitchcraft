@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:redobsidian"
+    },
+    "title": {
+      "translate": "advancements.obsidianmaker.title"
+    },
+    "description": {
+      "translate": "advancements.obsidianmaker.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obsidianmaker": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "magic_witchcraft:obsidiandimensiontraveler"
+}

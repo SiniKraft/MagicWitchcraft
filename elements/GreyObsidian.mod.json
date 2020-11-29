@@ -23,7 +23,7 @@
     "name": "Grey obsidian",
     "specialInfo": [],
     "hardness": 25.0,
-    "resistance": 600.0,
+    "resistance": 100.0,
     "hasGravity": false,
     "creativeTab": {
       "value": "CUSTOM:MagicWitchCraft"

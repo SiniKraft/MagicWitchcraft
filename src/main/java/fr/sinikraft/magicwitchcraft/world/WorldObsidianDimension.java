@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.List;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureObsidianDimensionPlayerEntersDimension;
 import fr.sinikraft.magicwitchcraft.item.ItemObsidianDimension;
 import fr.sinikraft.magicwitchcraft.block.BlockSpectralBlock;
 import fr.sinikraft.magicwitchcraft.block.BlockMagicalLava;
@@ -177,17 +178,20 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
-		protected void generateLightBrightnessTable() {
-			float f = 0.5f;
-			for (int i = 0; i <= 15; ++i) {
-				float f1 = 1 - (float) i / 15f;
-				this.lightBrightnessTable[i] = (1 - f1) / (f1 * 3 + 1) * (1 - f) + f;
-			}
+		public boolean doesWaterVaporize() {
+			return true;
 		}
 
 		@Override
-		public boolean doesWaterVaporize() {
-			return true;
+		public void onPlayerAdded(EntityPlayerMP entity) {
+			int x = (int) entity.posX;
+			int y = (int) entity.posY;
+			int z = (int) entity.posZ;
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				ProcedureObsidianDimensionPlayerEntersDimension.executeProcedure($_dependencies);
+			}
 		}
 	}
 

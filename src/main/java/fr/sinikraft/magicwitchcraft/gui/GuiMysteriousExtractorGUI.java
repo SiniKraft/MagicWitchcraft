@@ -62,9 +62,9 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
 			if (ent instanceof IInventory)
 				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 48, 35) {
+			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 44, 30) {
 			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 111, 35) {
+			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 116, 30) {
 				@Override
 				public boolean isItemValid(ItemStack stack) {
 					return false;
@@ -255,7 +255,9 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/mysterious_log.png"));
-			this.drawTexturedModalRect(this.guiLeft + 14, this.guiTop + 34, 0, 0, 256, 256);
+			this.drawTexturedModalRect(this.guiLeft + 7, this.guiTop + 29, 0, 0, 256, 256);
+			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
+			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
 		}
 
 		@Override
@@ -275,6 +277,7 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+			this.fontRenderer.drawString("Mysterious extractor", 39, 2, -1);
 		}
 
 		@Override

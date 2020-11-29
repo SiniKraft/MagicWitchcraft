@@ -16,7 +16,7 @@
     "rewardRecipes": [],
     "rewardFunction": "No function",
     "rewardXP": 50,
-    "achievementType": "challenge",
+    "achievementType": "task",
     "parent": {
       "value": "adventure/kill_all_mobs"
     },

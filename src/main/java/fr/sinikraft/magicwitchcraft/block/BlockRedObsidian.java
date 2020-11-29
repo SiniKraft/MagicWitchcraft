@@ -76,11 +76,11 @@ public class BlockRedObsidian extends ElementsMagicWitchcraft.ModElement {
 			biomeCriteria = true;
 		if (!biomeCriteria)
 			return;
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 12; i++) {
 			int x = chunkX + random.nextInt(16);
 			int y = random.nextInt(256) + 0;
 			int z = chunkZ + random.nextInt(16);
-			(new WorldGenMinable(block.getDefaultState(), 5, new com.google.common.base.Predicate<IBlockState>() {
+			(new WorldGenMinable(block.getDefaultState(), 8, new com.google.common.base.Predicate<IBlockState>() {
 				public boolean apply(IBlockState blockAt) {
 					boolean blockCriteria = false;
 					IBlockState require;

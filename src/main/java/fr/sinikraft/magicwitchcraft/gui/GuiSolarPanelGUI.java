@@ -62,9 +62,9 @@ public class GuiSolarPanelGUI extends ElementsMagicWitchcraft.ModElement {
 			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
 			if (ent instanceof IInventory)
 				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 51, 35) {
+			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 53, 30) {
 			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 107, 35) {
+			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 116, 30) {
 				@Override
 				public boolean isItemValid(ItemStack stack) {
 					return false;
@@ -255,7 +255,9 @@ public class GuiSolarPanelGUI extends ElementsMagicWitchcraft.ModElement {
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/energy_cystal_empty.png"));
-			this.drawTexturedModalRect(this.guiLeft + 35, this.guiTop + 35, 0, 0, 256, 256);
+			this.drawTexturedModalRect(this.guiLeft + 34, this.guiTop + 29, 0, 0, 256, 256);
+			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
+			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
 		}
 
 		@Override
@@ -275,6 +277,7 @@ public class GuiSolarPanelGUI extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+			this.fontRenderer.drawString("Solar panel", 60, 3, -1);
 		}
 
 		@Override
