@@ -1,7 +1,0 @@
-{
-  "_fv": 6,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">No additional trigger</field><next><block type=\"controls_if\"><mutation else=\"1\"/><value name=\"IF0\"><block type=\"entity_issneaking\"/></value><statement name=\"DO0\"><block type=\"entity_open_gui\"><field name=\"guiname\">MagicalCompressorGUI</field></block></statement><statement name=\"ELSE\"><block type=\"block_replace\"><field name=\"state\">TRUE</field><field name=\"nbt\">TRUE</field><value name=\"x\"><block type=\"coord_x\"/></value><value name=\"y\"><block type=\"coord_y\"/></value><value name=\"z\"><block type=\"coord_z\"/></value><value name=\"block\"><block type=\"mcitem_allblocks\"><field name=\"value\">CUSTOM:MagicalCompressorActivate</field></block></value><next><block type=\"play_sound\"><field name=\"sound\">block.stone_button.click_on</field><value name=\"x\"><block type=\"coord_x\"/></value><value name=\"y\"><block type=\"coord_y\"/></value><value name=\"z\"><block type=\"coord_z\"/></value><value name=\"level\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><value name=\"pitch\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value></block></next></block></statement></block></next></block></xml>"
-  }
-}
