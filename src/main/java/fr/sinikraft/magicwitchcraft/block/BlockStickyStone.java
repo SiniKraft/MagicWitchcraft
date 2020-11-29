@@ -56,7 +56,7 @@ public class BlockStickyStone extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("stickystone");
 			setSoundType(SoundType.STONE);
 			setHarvestLevel("shovel", 1);
-			setHardness(1F);
+			setHardness(1.5F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

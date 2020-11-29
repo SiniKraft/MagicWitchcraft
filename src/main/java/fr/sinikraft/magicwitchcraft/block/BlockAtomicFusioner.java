@@ -84,7 +84,7 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("atomicfusioner");
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(3F);
+			setHardness(5F);
 			setResistance(30F);
 			setLightLevel(0F);
 			setLightOpacity(0);

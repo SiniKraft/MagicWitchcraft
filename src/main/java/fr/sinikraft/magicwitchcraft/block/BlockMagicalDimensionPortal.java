@@ -61,6 +61,7 @@ public class BlockMagicalDimensionPortal extends ElementsMagicWitchcraft.ModElem
 			setLightLevel(0F);
 			setLightOpacity(0);
 			setCreativeTab(null);
+			setBlockUnbreakable();
 		}
 
 		@SideOnly(Side.CLIENT)

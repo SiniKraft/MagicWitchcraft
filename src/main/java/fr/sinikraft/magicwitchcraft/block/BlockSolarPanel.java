@@ -76,7 +76,7 @@ public class BlockSolarPanel extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("solarpanel");
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(2F);
+			setHardness(5F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);

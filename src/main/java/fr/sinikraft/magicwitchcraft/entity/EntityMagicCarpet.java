@@ -50,9 +50,8 @@ public class EntityMagicCarpet extends ElementsMagicWitchcraft.ModElement {
 
 	@Override
 	public void initElements() {
-		elements.entities.add(
-				() -> EntityEntryBuilder.create().entity(EntityCustom.class).id(new ResourceLocation("magic_witchcraft", "magiccarpet"), ENTITYID)
-						.name("magiccarpet").tracker(64, 3, true).egg(-65536, -256).build());
+		elements.entities.add(() -> EntityEntryBuilder.create().entity(EntityCustom.class)
+				.id(new ResourceLocation("magic_witchcraft", "magiccarpet"), ENTITYID).name("magiccarpet").tracker(64, 3, true).build());
 	}
 
 	private Biome[] allbiomes(net.minecraft.util.registry.RegistryNamespaced<ResourceLocation, Biome> in) {

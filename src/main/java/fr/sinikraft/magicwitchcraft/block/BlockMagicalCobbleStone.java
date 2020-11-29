@@ -47,7 +47,7 @@ public class BlockMagicalCobbleStone extends ElementsMagicWitchcraft.ModElement 
 			setUnlocalizedName("magicalcobblestone");
 			setSoundType(SoundType.STONE);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(1.7F);
+			setHardness(2F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

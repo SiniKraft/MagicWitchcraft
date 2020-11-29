@@ -70,7 +70,7 @@ public class BlockSpectralChest extends ElementsMagicWitchcraft.ModElement {
 			super(Material.SPONGE);
 			setUnlocalizedName("spectralchest");
 			setSoundType(SoundType.SLIME);
-			setHardness(1F);
+			setHardness(2F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);

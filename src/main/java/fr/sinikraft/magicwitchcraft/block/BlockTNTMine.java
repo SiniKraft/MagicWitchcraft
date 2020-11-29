@@ -51,7 +51,7 @@ public class BlockTNTMine extends ElementsMagicWitchcraft.ModElement {
 			super(Material.TNT);
 			setUnlocalizedName("tntmine");
 			setSoundType(SoundType.PLANT);
-			setHardness(1F);
+			setHardness(0F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);

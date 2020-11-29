@@ -56,7 +56,7 @@ public class BlockGreyObsidian extends ElementsMagicWitchcraft.ModElement {
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 3);
 			setHardness(25F);
-			setResistance(100F);
+			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);
 			setCreativeTab(TabMagicWitchCraft.tab);

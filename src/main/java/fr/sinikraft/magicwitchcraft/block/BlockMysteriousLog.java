@@ -55,7 +55,7 @@ public class BlockMysteriousLog extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("mysterious_log");
 			setSoundType(SoundType.WOOD);
 			setHarvestLevel("axe", 1);
-			setHardness(1F);
+			setHardness(2F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

@@ -82,7 +82,7 @@ public class BlockMysteriousOrbOre extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("mysterious_orb_ore");
 			setSoundType(SoundType.STONE);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(2F);
+			setHardness(3F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

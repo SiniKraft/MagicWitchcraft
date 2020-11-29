@@ -47,7 +47,7 @@ public class BlockMysteriousPortal extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("mysterious_portal");
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(1.5F);
+			setHardness(5F);
 			setResistance(15F);
 			setLightLevel(0F);
 			setLightOpacity(255);

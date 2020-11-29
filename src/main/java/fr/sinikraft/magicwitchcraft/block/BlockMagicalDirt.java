@@ -49,7 +49,7 @@ public class BlockMagicalDirt extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("magicaldirt");
 			setSoundType(SoundType.GROUND);
 			setHarvestLevel("shovel", 1);
-			setHardness(1F);
+			setHardness(0.5F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

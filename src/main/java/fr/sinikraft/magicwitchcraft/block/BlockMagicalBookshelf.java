@@ -56,7 +56,7 @@ public class BlockMagicalBookshelf extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("magicalbookshelf");
 			setSoundType(SoundType.WOOD);
 			setHarvestLevel("axe", 1);
-			setHardness(3F);
+			setHardness(1.5F);
 			setResistance(40F);
 			setLightLevel(0F);
 			setLightOpacity(255);

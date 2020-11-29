@@ -46,7 +46,7 @@ public class BlockMagicalGlass extends ElementsMagicWitchcraft.ModElement {
 			super(Material.GLASS);
 			setUnlocalizedName("magicalglass");
 			setSoundType(SoundType.GLASS);
-			setHardness(1F);
+			setHardness(0.3F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);

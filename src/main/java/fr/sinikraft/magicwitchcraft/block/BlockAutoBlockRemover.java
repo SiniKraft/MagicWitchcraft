@@ -57,7 +57,7 @@ public class BlockAutoBlockRemover extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("autoblockremover");
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(2F);
+			setHardness(5F);
 			setResistance(50F);
 			setLightLevel(0F);
 			setLightOpacity(255);

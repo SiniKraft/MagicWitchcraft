@@ -59,7 +59,7 @@ public class BlockMysteriousLeaves extends ElementsMagicWitchcraft.ModElement {
 			super(Material.LEAVES);
 			setUnlocalizedName("mysterious_leaves");
 			setSoundType(SoundType.PLANT);
-			setHardness(0.3F);
+			setHardness(0.2F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

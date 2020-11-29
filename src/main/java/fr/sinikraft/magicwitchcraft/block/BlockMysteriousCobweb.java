@@ -53,7 +53,7 @@ public class BlockMysteriousCobweb extends ElementsMagicWitchcraft.ModElement {
 			super(Material.WEB);
 			setUnlocalizedName("mysteriouscobweb");
 			setSoundType(SoundType.CLOTH);
-			setHardness(3F);
+			setHardness(4F);
 			setResistance(15F);
 			setLightLevel(0F);
 			setLightOpacity(0);

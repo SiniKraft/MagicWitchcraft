@@ -57,7 +57,7 @@ public class BlockMysteriousLadder extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("mysteriousladder");
 			setSoundType(SoundType.LADDER);
 			setHarvestLevel("axe", 1);
-			setHardness(1.5F);
+			setHardness(0.4F);
 			setResistance(15F);
 			setLightLevel(0.05F);
 			setLightOpacity(0);

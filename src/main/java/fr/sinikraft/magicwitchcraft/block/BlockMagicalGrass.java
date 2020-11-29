@@ -49,7 +49,7 @@ public class BlockMagicalGrass extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("magicalgrass");
 			setSoundType(SoundType.GROUND);
 			setHarvestLevel("shovel", 1);
-			setHardness(1F);
+			setHardness(0.6F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);

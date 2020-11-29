@@ -81,7 +81,7 @@ public class BlockMagicalCompressor extends ElementsMagicWitchcraft.ModElement {
 			setUnlocalizedName("magicalcompressor");
 			setSoundType(SoundType.METAL);
 			setHarvestLevel("pickaxe", 1);
-			setHardness(3F);
+			setHardness(5F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(0);
