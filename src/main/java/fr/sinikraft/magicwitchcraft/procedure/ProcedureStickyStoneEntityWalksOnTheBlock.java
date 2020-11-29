@@ -1,10 +1,13 @@
 package fr.sinikraft.magicwitchcraft.procedure;
 
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.item.ItemStack;
 import net.minecraft.init.MobEffects;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 
+import fr.sinikraft.magicwitchcraft.item.ItemSaver;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
@@ -19,7 +22,14 @@ public class ProcedureStickyStoneEntityWalksOnTheBlock extends ElementsMagicWitc
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		if (entity instanceof EntityLivingBase)
-			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) 1, (int) 4, (true), (false)));
+		if ((!((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false))) {
+			if ((!(((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).inventory.armorInventory.get(1) : ItemStack.EMPTY)
+					.getItem() == new ItemStack(ItemSaver.legs, (int) (1)).getItem()))) {
+				if (entity instanceof EntityLivingBase)
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) 1, (int) 254, (true), (false)));
+				if (entity instanceof EntityLivingBase)
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, (int) 1, (int) 260, (true), (false)));
+			}
+		}
 	}
 }
