@@ -4,6 +4,7 @@ import net.minecraft.world.World;
 import net.minecraft.item.ItemStack;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Blocks;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
@@ -44,18 +45,20 @@ public class ProcedureRedObsidianBlockDestroyedByPlayer extends ElementsMagicWit
 		int y = (int) dependencies.get("y");
 		int z = (int) dependencies.get("z");
 		World world = (World) dependencies.get("world");
-		if ((((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
-				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)
-				&& (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem()
-						.canHarvestBlock(Blocks.OBSIDIAN.getDefaultState())))) {
-			if (!world.isRemote) {
-				EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(BlockRedObsidian.block, (int) (1)));
-				entityToSpawn.setPickupDelay(10);
-				world.spawnEntity(entityToSpawn);
-			}
-		} else {
-			if (!world.isRemote) {
-				world.createExplosion(null, (int) x, (int) y, (int) z, (float) 8, true);
+		if ((!((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false))) {
+			if ((((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
+					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)
+					&& (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem()
+							.canHarvestBlock(Blocks.OBSIDIAN.getDefaultState())))) {
+				if (!world.isRemote) {
+					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(BlockRedObsidian.block, (int) (1)));
+					entityToSpawn.setPickupDelay(10);
+					world.spawnEntity(entityToSpawn);
+				}
+			} else {
+				if (!world.isRemote) {
+					world.createExplosion(null, (int) x, (int) y, (int) z, (float) 8, true);
+				}
 			}
 		}
 	}
