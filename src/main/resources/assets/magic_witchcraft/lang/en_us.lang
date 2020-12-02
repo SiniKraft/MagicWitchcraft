@@ -58,6 +58,7 @@ tile.magicalglass.name=Magical glass
 key.mcreator.enablefloatboots=Enable/Disable float boots
 item.magicalwheat.name=Magical wheat
 tile.mysteriousextractor.descr=Use this block to transform mysterious things...
+tile.autoexplodetnt.name=Auto Explode TNT
 tile.magicalsapling.name=Magical sapling
 advancements.megaprotection.title=Mega protection
 advancements.magicaldimensiontraveler.title=Magical dimension traveler
