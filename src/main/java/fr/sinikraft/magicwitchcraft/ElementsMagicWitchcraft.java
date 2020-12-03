@@ -63,6 +63,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 	public final List<Supplier<Potion>> potions = new ArrayList<>();
 	public static Map<ResourceLocation, net.minecraft.util.SoundEvent> sounds = new HashMap<>();
 	public ElementsMagicWitchcraft() {
+		sounds.put(new ResourceLocation("magic_witchcraft", "honey_pops"),
+				new net.minecraft.util.SoundEvent(new ResourceLocation("magic_witchcraft", "honey_pops")));
 	}
 
 	public void preInit(FMLPreInitializationEvent event) {
