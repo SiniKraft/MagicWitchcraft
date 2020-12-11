@@ -32,7 +32,7 @@ public class BlockSpectralLeaves extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:spectralleaves")
 	public static final Block block = null;
 	public BlockSpectralLeaves(ElementsMagicWitchcraft instance) {
-		super(instance, 61);
+		super(instance, 62);
 	}
 
 	@Override

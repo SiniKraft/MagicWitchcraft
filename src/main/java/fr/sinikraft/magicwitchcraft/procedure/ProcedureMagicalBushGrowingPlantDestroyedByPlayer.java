@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalBushGrowingPlantDestroyedByPlayer extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalBushGrowingPlantDestroyedByPlayer(ElementsMagicWitchcraft instance) {
-		super(instance, 136);
+		super(instance, 151);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

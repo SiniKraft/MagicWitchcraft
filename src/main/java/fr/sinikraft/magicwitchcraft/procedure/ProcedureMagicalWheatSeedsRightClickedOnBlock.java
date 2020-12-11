@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalWheatSeedsRightClickedOnBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalWheatSeedsRightClickedOnBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 155);
+		super(instance, 170);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

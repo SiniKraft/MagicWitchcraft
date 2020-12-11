@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureRightClickerOnBlockRightClicked extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureRightClickerOnBlockRightClicked(ElementsMagicWitchcraft instance) {
-		super(instance, 224);
+		super(instance, 237);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

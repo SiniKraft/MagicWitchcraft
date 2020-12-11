@@ -11,7 +11,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalBushReadyMobplayerCollidesWithPlant extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalBushReadyMobplayerCollidesWithPlant(ElementsMagicWitchcraft instance) {
-		super(instance, 141);
+		super(instance, 156);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

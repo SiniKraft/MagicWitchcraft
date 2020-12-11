@@ -20,7 +20,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureSpectralPowerInfuserUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 194);
+		super(instance, 209);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureStickyStoneEntityWalksOnTheBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureStickyStoneEntityWalksOnTheBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 232);
+		super(instance, 244);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

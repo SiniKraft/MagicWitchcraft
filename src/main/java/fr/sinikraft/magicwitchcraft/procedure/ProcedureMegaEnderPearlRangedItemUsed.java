@@ -12,7 +12,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMegaEnderPearlRangedItemUsed extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMegaEnderPearlRangedItemUsed(ElementsMagicWitchcraft instance) {
-		super(instance, 173);
+		super(instance, 188);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

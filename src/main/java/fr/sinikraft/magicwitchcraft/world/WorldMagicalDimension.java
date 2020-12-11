@@ -62,7 +62,7 @@ public class WorldMagicalDimension extends ElementsMagicWitchcraft.ModElement {
 	public static final boolean NETHER_TYPE = false;
 	public static DimensionType dtype;
 	public WorldMagicalDimension(ElementsMagicWitchcraft instance) {
-		super(instance, 62);
+		super(instance, 63);
 	}
 
 	@Override

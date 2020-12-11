@@ -57,7 +57,7 @@ public class BlockAtomicFusioner extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:atomicfusioner")
 	public static final Block block = null;
 	public BlockAtomicFusioner(ElementsMagicWitchcraft instance) {
-		super(instance, 51);
+		super(instance, 52);
 	}
 
 	@Override

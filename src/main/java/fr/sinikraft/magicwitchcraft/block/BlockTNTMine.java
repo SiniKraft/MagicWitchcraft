@@ -31,7 +31,7 @@ public class BlockTNTMine extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:tntmine")
 	public static final Block block = null;
 	public BlockTNTMine(ElementsMagicWitchcraft instance) {
-		super(instance, 54);
+		super(instance, 55);
 	}
 
 	@Override

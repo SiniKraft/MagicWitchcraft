@@ -28,7 +28,7 @@ public class BlockMagicalDirt extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicaldirt")
 	public static final Block block = null;
 	public BlockMagicalDirt(ElementsMagicWitchcraft instance) {
-		super(instance, 57);
+		super(instance, 58);
 	}
 
 	@Override

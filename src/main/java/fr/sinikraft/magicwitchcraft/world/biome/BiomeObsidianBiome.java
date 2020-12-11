@@ -22,7 +22,7 @@ public class BiomeObsidianBiome extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:obsidianbiome")
 	public static final BiomeGenCustom biome = null;
 	public BiomeObsidianBiome(ElementsMagicWitchcraft instance) {
-		super(instance, 253);
+		super(instance, 259);
 	}
 
 	@Override

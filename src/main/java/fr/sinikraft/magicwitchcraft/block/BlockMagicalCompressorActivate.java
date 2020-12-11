@@ -52,7 +52,7 @@ public class BlockMagicalCompressorActivate extends ElementsMagicWitchcraft.ModE
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalcompressoractivate")
 	public static final Block block = null;
 	public BlockMagicalCompressorActivate(ElementsMagicWitchcraft instance) {
-		super(instance, 159);
+		super(instance, 174);
 	}
 
 	@Override

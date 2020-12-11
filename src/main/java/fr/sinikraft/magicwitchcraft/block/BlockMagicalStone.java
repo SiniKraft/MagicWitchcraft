@@ -27,7 +27,7 @@ public class BlockMagicalStone extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalstone")
 	public static final Block block = null;
 	public BlockMagicalStone(ElementsMagicWitchcraft instance) {
-		super(instance, 58);
+		super(instance, 59);
 	}
 
 	@Override

@@ -66,7 +66,7 @@ import java.util.List;
 
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureObsidianDimensionPlayerEntersDimension;
 import fr.sinikraft.magicwitchcraft.item.ItemObsidianDimension;
-import fr.sinikraft.magicwitchcraft.block.BlockSpectralBlock;
+import fr.sinikraft.magicwitchcraft.block.BlockSpectralLeaves;
 import fr.sinikraft.magicwitchcraft.block.BlockMagicalLava;
 import fr.sinikraft.magicwitchcraft.block.BlockGreyObsidian;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
@@ -81,7 +81,7 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 	public static final BlockCustomPortal portal = null;
 	public static DimensionType dtype;
 	public WorldObsidianDimension(ElementsMagicWitchcraft instance) {
-		super(instance, 254);
+		super(instance, 75);
 	}
 
 	@Override
@@ -330,7 +330,7 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 							int k11 = k6 + (l7 - 1) * i3 - j7 * l6;
 							boolean flag = k8 < 0;
 							this.world.setBlockState(new BlockPos(k9, k10, k11),
-									flag ? BlockSpectralBlock.block.getDefaultState().getBlock().getDefaultState() : Blocks.AIR.getDefaultState());
+									flag ? BlockSpectralLeaves.block.getDefaultState().getBlock().getDefaultState() : Blocks.AIR.getDefaultState());
 						}
 					}
 				}
@@ -344,7 +344,7 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 						int k12 = k6 + (l8 - 1) * i3;
 						boolean flag1 = l8 == 0 || l8 == 3 || l9 == -1 || l9 == 3;
 						this.world.setBlockState(new BlockPos(l10, l11, k12),
-								flag1 ? BlockSpectralBlock.block.getDefaultState().getBlock().getDefaultState() : iblockstate, 2);
+								flag1 ? BlockSpectralLeaves.block.getDefaultState().getBlock().getDefaultState() : iblockstate, 2);
 					}
 				}
 				for (int i9 = 0; i9 < 4; ++i9) {
@@ -381,7 +381,7 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 							int k2 = k + k1 * 0 - j1 * 1;
 							boolean flag = l1 < 0;
 							this.world.setBlockState(new BlockPos(i2, j2, k2),
-									flag ? BlockSpectralBlock.block.getDefaultState().getBlock().getDefaultState() : Blocks.AIR.getDefaultState());
+									flag ? BlockSpectralLeaves.block.getDefaultState().getBlock().getDefaultState() : Blocks.AIR.getDefaultState());
 						}
 					}
 				}
@@ -676,12 +676,12 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 				for (i = 0; i < 22; ++i) {
 					BlockPos blockpos = p_180120_1_.offset(p_180120_2_, i);
 					if (!this.isEmptyBlock(this.world.getBlockState(blockpos).getBlock())
-							|| this.world.getBlockState(blockpos.down()).getBlock() != BlockSpectralBlock.block.getDefaultState().getBlock()) {
+							|| this.world.getBlockState(blockpos.down()).getBlock() != BlockSpectralLeaves.block.getDefaultState().getBlock()) {
 						break;
 					}
 				}
 				Block block = this.world.getBlockState(p_180120_1_.offset(p_180120_2_, i)).getBlock();
-				return block == BlockSpectralBlock.block.getDefaultState().getBlock() ? i : 0;
+				return block == BlockSpectralLeaves.block.getDefaultState().getBlock() ? i : 0;
 			}
 
 			public int getHeight() {
@@ -705,19 +705,19 @@ public class WorldObsidianDimension extends ElementsMagicWitchcraft.ModElement {
 						}
 						if (i == 0) {
 							block = this.world.getBlockState(blockpos.offset(this.leftDir)).getBlock();
-							if (block != BlockSpectralBlock.block.getDefaultState().getBlock()) {
+							if (block != BlockSpectralLeaves.block.getDefaultState().getBlock()) {
 								break label56;
 							}
 						} else if (i == this.width - 1) {
 							block = this.world.getBlockState(blockpos.offset(this.rightDir)).getBlock();
-							if (block != BlockSpectralBlock.block.getDefaultState().getBlock()) {
+							if (block != BlockSpectralLeaves.block.getDefaultState().getBlock()) {
 								break label56;
 							}
 						}
 					}
 				}
 				for (int j = 0; j < this.width; ++j) {
-					if (this.world.getBlockState(this.bottomLeft.offset(this.rightDir, j).up(this.height)).getBlock() != BlockSpectralBlock.block
+					if (this.world.getBlockState(this.bottomLeft.offset(this.rightDir, j).up(this.height)).getBlock() != BlockSpectralLeaves.block
 							.getDefaultState().getBlock()) {
 						this.height = 0;
 						break;

@@ -10,7 +10,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalLavaMobplayerCollidesBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalLavaMobplayerCollidesBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 165);
+		super(instance, 180);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -33,7 +33,7 @@ public class BlockGreyObsidian extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:greyobsidian")
 	public static final Block block = null;
 	public BlockGreyObsidian(ElementsMagicWitchcraft instance) {
-		super(instance, 235);
+		super(instance, 69);
 	}
 
 	@Override

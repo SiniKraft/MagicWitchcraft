@@ -45,7 +45,7 @@ public class BlockSpectralChest extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:spectralchest")
 	public static final Block block = null;
 	public BlockSpectralChest(ElementsMagicWitchcraft instance) {
-		super(instance, 209);
+		super(instance, 64);
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class BlockMagicalCobbleStone extends ElementsMagicWitchcraft.ModElement 
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalcobblestone")
 	public static final Block block = null;
 	public BlockMagicalCobbleStone(ElementsMagicWitchcraft instance) {
-		super(instance, 59);
+		super(instance, 60);
 	}
 
 	@Override

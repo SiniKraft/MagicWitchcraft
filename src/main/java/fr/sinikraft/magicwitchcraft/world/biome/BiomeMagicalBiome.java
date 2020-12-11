@@ -44,7 +44,7 @@ public class BiomeMagicalBiome extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbiome")
 	public static final BiomeGenCustom biome = null;
 	public BiomeMagicalBiome(ElementsMagicWitchcraft instance) {
-		super(instance, 201);
+		super(instance, 216);
 	}
 
 	@Override

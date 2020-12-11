@@ -21,7 +21,7 @@ public class ItemHoneyPops extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:honeypops")
 	public static final Item block = null;
 	public ItemHoneyPops(ElementsMagicWitchcraft instance) {
-		super(instance, 264);
+		super(instance, 77);
 	}
 
 	@Override

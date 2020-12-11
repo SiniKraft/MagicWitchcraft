@@ -42,7 +42,7 @@ public class GuiRightClickerInterface extends ElementsMagicWitchcraft.ModElement
 	public static int GUIID = 8;
 	public static HashMap guistate = new HashMap();
 	public GuiRightClickerInterface(ElementsMagicWitchcraft instance) {
-		super(instance, 218);
+		super(instance, 231);
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class GuiRightClickerInterface extends ElementsMagicWitchcraft.ModElement
 			this.z = z;
 			this.entity = entity;
 			this.xSize = 201;
-			this.ySize = 205;
+			this.ySize = 239;
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/rightclickerinterface.png");
 		@Override
@@ -235,23 +235,23 @@ public class GuiRightClickerInterface extends ElementsMagicWitchcraft.ModElement
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-			this.fontRenderer.drawString("Right clicker", 73, 8, -1);
-			this.fontRenderer.drawString("First block", 10, 17, -1);
+			this.fontRenderer.drawString("Right clicker", 73, 25, -1);
+			this.fontRenderer.drawString("First block", 10, 34, -1);
 			FirstBlockPosX.drawTextBox();
 			FirstBlockPosY.drawTextBox();
 			FirstBlockPosZ.drawTextBox();
 			FirstBlockName.drawTextBox();
-			this.fontRenderer.drawString("Second block", 10, 62, -1);
+			this.fontRenderer.drawString("Second block", 10, 79, -1);
 			SecondBlockPosX.drawTextBox();
 			SecondBlockPosY.drawTextBox();
 			SecondBlockPosZ.drawTextBox();
 			SecondBlockName.drawTextBox();
-			this.fontRenderer.drawString("Third block", 10, 107, -1);
+			this.fontRenderer.drawString("Third block", 10, 124, -1);
 			ThirdBlockPosX.drawTextBox();
 			ThirdBlockPosY.drawTextBox();
 			ThirdBlockPosZ.drawTextBox();
 			ThirdBlockName.drawTextBox();
-			this.fontRenderer.drawString("Fourth block", 10, 152, -1);
+			this.fontRenderer.drawString("Fourth block", 10, 169, -1);
 			FourthBlockPosX.drawTextBox();
 			FourthBlockPosY.drawTextBox();
 			FourthBlockPosZ.drawTextBox();
@@ -268,78 +268,78 @@ public class GuiRightClickerInterface extends ElementsMagicWitchcraft.ModElement
 		public void initGui() {
 			super.initGui();
 			this.guiLeft = (this.width - 201) / 2;
-			this.guiTop = (this.height - 205) / 2;
+			this.guiTop = (this.height - 239) / 2;
 			Keyboard.enableRepeatEvents(true);
 			this.buttonList.clear();
-			FirstBlockPosX = new GuiTextField(0, this.fontRenderer, 10, 35, 18, 20);
+			FirstBlockPosX = new GuiTextField(0, this.fontRenderer, 10, 52, 18, 20);
 			guistate.put("text:FirstBlockPosX", FirstBlockPosX);
 			FirstBlockPosX.setMaxStringLength(32767);
 			FirstBlockPosX.setText("X");
-			FirstBlockPosY = new GuiTextField(1, this.fontRenderer, 37, 35, 18, 20);
+			FirstBlockPosY = new GuiTextField(1, this.fontRenderer, 37, 52, 18, 20);
 			guistate.put("text:FirstBlockPosY", FirstBlockPosY);
 			FirstBlockPosY.setMaxStringLength(32767);
 			FirstBlockPosY.setText("Y");
-			FirstBlockPosZ = new GuiTextField(2, this.fontRenderer, 64, 35, 18, 20);
+			FirstBlockPosZ = new GuiTextField(2, this.fontRenderer, 64, 52, 18, 20);
 			guistate.put("text:FirstBlockPosZ", FirstBlockPosZ);
 			FirstBlockPosZ.setMaxStringLength(32767);
 			FirstBlockPosZ.setText("Z");
-			this.buttonList.add(new GuiButton(0, this.guiLeft + 154, this.guiTop + 35, 40, 20, "Call1"));
-			FirstBlockName = new GuiTextField(3, this.fontRenderer, 91, 35, 54, 20);
+			this.buttonList.add(new GuiButton(0, this.guiLeft + 154, this.guiTop + 52, 40, 20, "Call1"));
+			FirstBlockName = new GuiTextField(3, this.fontRenderer, 91, 52, 54, 20);
 			guistate.put("text:FirstBlockName", FirstBlockName);
 			FirstBlockName.setMaxStringLength(32767);
 			FirstBlockName.setText("Name");
-			SecondBlockPosX = new GuiTextField(4, this.fontRenderer, 10, 80, 18, 20);
+			SecondBlockPosX = new GuiTextField(4, this.fontRenderer, 10, 97, 18, 20);
 			guistate.put("text:SecondBlockPosX", SecondBlockPosX);
 			SecondBlockPosX.setMaxStringLength(32767);
 			SecondBlockPosX.setText("X");
-			SecondBlockPosY = new GuiTextField(5, this.fontRenderer, 37, 80, 18, 20);
+			SecondBlockPosY = new GuiTextField(5, this.fontRenderer, 37, 97, 18, 20);
 			guistate.put("text:SecondBlockPosY", SecondBlockPosY);
 			SecondBlockPosY.setMaxStringLength(32767);
 			SecondBlockPosY.setText("Y");
-			SecondBlockPosZ = new GuiTextField(6, this.fontRenderer, 64, 80, 18, 20);
+			SecondBlockPosZ = new GuiTextField(6, this.fontRenderer, 64, 97, 18, 20);
 			guistate.put("text:SecondBlockPosZ", SecondBlockPosZ);
 			SecondBlockPosZ.setMaxStringLength(32767);
 			SecondBlockPosZ.setText("Z");
-			SecondBlockName = new GuiTextField(7, this.fontRenderer, 91, 80, 54, 20);
+			SecondBlockName = new GuiTextField(7, this.fontRenderer, 91, 97, 54, 20);
 			guistate.put("text:SecondBlockName", SecondBlockName);
 			SecondBlockName.setMaxStringLength(32767);
 			SecondBlockName.setText("Name");
-			this.buttonList.add(new GuiButton(1, this.guiLeft + 154, this.guiTop + 80, 40, 20, "Call2"));
-			ThirdBlockPosX = new GuiTextField(8, this.fontRenderer, 10, 125, 18, 20);
+			this.buttonList.add(new GuiButton(1, this.guiLeft + 154, this.guiTop + 97, 40, 20, "Call2"));
+			ThirdBlockPosX = new GuiTextField(8, this.fontRenderer, 10, 142, 18, 20);
 			guistate.put("text:ThirdBlockPosX", ThirdBlockPosX);
 			ThirdBlockPosX.setMaxStringLength(32767);
 			ThirdBlockPosX.setText("X");
-			ThirdBlockPosY = new GuiTextField(9, this.fontRenderer, 37, 125, 18, 20);
+			ThirdBlockPosY = new GuiTextField(9, this.fontRenderer, 37, 142, 18, 20);
 			guistate.put("text:ThirdBlockPosY", ThirdBlockPosY);
 			ThirdBlockPosY.setMaxStringLength(32767);
 			ThirdBlockPosY.setText("Y");
-			ThirdBlockPosZ = new GuiTextField(10, this.fontRenderer, 64, 125, 18, 20);
+			ThirdBlockPosZ = new GuiTextField(10, this.fontRenderer, 64, 142, 18, 20);
 			guistate.put("text:ThirdBlockPosZ", ThirdBlockPosZ);
 			ThirdBlockPosZ.setMaxStringLength(32767);
 			ThirdBlockPosZ.setText("Z");
-			ThirdBlockName = new GuiTextField(11, this.fontRenderer, 91, 125, 54, 20);
+			ThirdBlockName = new GuiTextField(11, this.fontRenderer, 91, 142, 54, 20);
 			guistate.put("text:ThirdBlockName", ThirdBlockName);
 			ThirdBlockName.setMaxStringLength(32767);
 			ThirdBlockName.setText("Name");
-			this.buttonList.add(new GuiButton(2, this.guiLeft + 154, this.guiTop + 125, 40, 20, "Call3"));
-			FourthBlockPosX = new GuiTextField(12, this.fontRenderer, 10, 170, 18, 20);
+			this.buttonList.add(new GuiButton(2, this.guiLeft + 154, this.guiTop + 142, 40, 20, "Call3"));
+			FourthBlockPosX = new GuiTextField(12, this.fontRenderer, 10, 187, 18, 20);
 			guistate.put("text:FourthBlockPosX", FourthBlockPosX);
 			FourthBlockPosX.setMaxStringLength(32767);
 			FourthBlockPosX.setText("X");
-			FourthBlockPosY = new GuiTextField(13, this.fontRenderer, 37, 170, 18, 20);
+			FourthBlockPosY = new GuiTextField(13, this.fontRenderer, 37, 187, 18, 20);
 			guistate.put("text:FourthBlockPosY", FourthBlockPosY);
 			FourthBlockPosY.setMaxStringLength(32767);
 			FourthBlockPosY.setText("Y");
-			FourthBlockPosZ = new GuiTextField(14, this.fontRenderer, 64, 170, 18, 20);
+			FourthBlockPosZ = new GuiTextField(14, this.fontRenderer, 64, 187, 18, 20);
 			guistate.put("text:FourthBlockPosZ", FourthBlockPosZ);
 			FourthBlockPosZ.setMaxStringLength(32767);
 			FourthBlockPosZ.setText("Z");
-			FourthBlockName = new GuiTextField(15, this.fontRenderer, 91, 170, 54, 20);
+			FourthBlockName = new GuiTextField(15, this.fontRenderer, 91, 187, 54, 20);
 			guistate.put("text:FourthBlockName", FourthBlockName);
 			FourthBlockName.setMaxStringLength(32767);
 			FourthBlockName.setText("Name");
-			this.buttonList.add(new GuiButton(3, this.guiLeft + 154, this.guiTop + 170, 40, 20, "Call4"));
-			this.buttonList.add(new GuiButton(4, this.guiLeft + 155, this.guiTop + 5, 40, 20, "Save"));
+			this.buttonList.add(new GuiButton(3, this.guiLeft + 154, this.guiTop + 187, 40, 20, "Call4"));
+			this.buttonList.add(new GuiButton(4, this.guiLeft + 155, this.guiTop + 22, 40, 20, "Save"));
 		}
 
 		@Override

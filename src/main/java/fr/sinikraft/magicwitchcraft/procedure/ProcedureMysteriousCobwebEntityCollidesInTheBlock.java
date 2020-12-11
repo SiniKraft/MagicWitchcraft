@@ -7,7 +7,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMysteriousCobwebEntityCollidesInTheBlock extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMysteriousCobwebEntityCollidesInTheBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 85);
+		super(instance, 100);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -9,7 +9,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureItemTrollerItemInInventoryTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureItemTrollerItemInInventoryTick(ElementsMagicWitchcraft instance) {
-		super(instance, 226);
+		super(instance, 238);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

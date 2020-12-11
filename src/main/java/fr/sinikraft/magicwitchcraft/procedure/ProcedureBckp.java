@@ -21,7 +21,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureBckp extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureBckp(ElementsMagicWitchcraft instance) {
-		super(instance, 171);
+		super(instance, 186);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

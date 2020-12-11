@@ -16,7 +16,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalBushReadyPlantRightClicked extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalBushReadyPlantRightClicked(ElementsMagicWitchcraft instance) {
-		super(instance, 134);
+		super(instance, 149);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

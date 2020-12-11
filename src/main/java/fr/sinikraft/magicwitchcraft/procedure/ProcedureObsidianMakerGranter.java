@@ -27,7 +27,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureObsidianMakerGranter extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureObsidianMakerGranter(ElementsMagicWitchcraft instance) {
-		super(instance, 259);
+		super(instance, 264);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

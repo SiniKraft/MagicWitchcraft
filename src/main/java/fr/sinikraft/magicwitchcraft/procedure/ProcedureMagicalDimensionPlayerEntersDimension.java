@@ -14,7 +14,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalDimensionPlayerEntersDimension extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalDimensionPlayerEntersDimension(ElementsMagicWitchcraft instance) {
-		super(instance, 170);
+		super(instance, 185);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

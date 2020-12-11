@@ -36,7 +36,7 @@ public class BlockMagicalSapling extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalsapling")
 	public static final Block block = null;
 	public BlockMagicalSapling(ElementsMagicWitchcraft instance) {
-		super(instance, 127);
+		super(instance, 142);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureAtomicFusionerUpdateTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureAtomicFusionerUpdateTick(ElementsMagicWitchcraft instance) {
-		super(instance, 189);
+		super(instance, 204);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

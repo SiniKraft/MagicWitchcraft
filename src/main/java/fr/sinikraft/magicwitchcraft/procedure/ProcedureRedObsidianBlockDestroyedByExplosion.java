@@ -7,7 +7,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureRedObsidianBlockDestroyedByExplosion extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureRedObsidianBlockDestroyedByExplosion(ElementsMagicWitchcraft instance) {
-		super(instance, 238);
+		super(instance, 248);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

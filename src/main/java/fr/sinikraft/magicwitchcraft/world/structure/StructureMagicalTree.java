@@ -24,7 +24,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class StructureMagicalTree extends ElementsMagicWitchcraft.ModElement {
 	public StructureMagicalTree(ElementsMagicWitchcraft instance) {
-		super(instance, 130);
+		super(instance, 145);
 	}
 
 	@Override

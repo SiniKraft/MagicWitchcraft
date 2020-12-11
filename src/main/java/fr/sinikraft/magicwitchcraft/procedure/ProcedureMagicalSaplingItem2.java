@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalSaplingItem2 extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalSaplingItem2(ElementsMagicWitchcraft instance) {
-		super(instance, 143);
+		super(instance, 158);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

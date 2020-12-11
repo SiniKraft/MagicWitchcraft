@@ -52,6 +52,7 @@ import fr.sinikraft.magicwitchcraft.gui.GuiRightClickerInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiMagicalCompressorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiDimensionalSwitcherGUI;
+import fr.sinikraft.magicwitchcraft.gui.GuiAutoBlockRemoverInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiAtomicFusionerGUI;
 
 public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
@@ -152,6 +153,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiSpectralChestInterface.GuiContainerMod(world, x, y, z, player);
 			if (id == GuiRightClickerInterface.GUIID)
 				return new GuiRightClickerInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiAutoBlockRemoverInterface.GUIID)
+				return new GuiAutoBlockRemoverInterface.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
@@ -173,6 +176,8 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiSpectralChestInterface.GuiWindow(world, x, y, z, player);
 			if (id == GuiRightClickerInterface.GUIID)
 				return new GuiRightClickerInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiAutoBlockRemoverInterface.GUIID)
+				return new GuiAutoBlockRemoverInterface.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

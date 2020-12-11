@@ -17,23 +17,26 @@ import net.minecraft.block.Block;
 
 import java.util.Random;
 
+import fr.sinikraft.magicwitchcraft.world.WorldMysteriousDimension;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
 public class StructureMysteriousTower extends ElementsMagicWitchcraft.ModElement {
 	public StructureMysteriousTower(ElementsMagicWitchcraft instance) {
-		super(instance, 77);
+		super(instance, 92);
 	}
 
 	@Override
 	public void generateWorld(Random random, int i2, int k2, World world, int dimID, IChunkGenerator cg, IChunkProvider cp) {
 		boolean dimensionCriteria = false;
 		boolean isNetherType = false;
-		if (dimID == 0)
+		if (dimID == WorldMysteriousDimension.DIMID) {
 			dimensionCriteria = true;
+			isNetherType = WorldMysteriousDimension.NETHER_TYPE;
+		}
 		if (!dimensionCriteria)
 			return;
-		if ((random.nextInt(1000000) + 1) <= 100) {
+		if ((random.nextInt(1000000) + 1) <= 1000) {
 			int count = random.nextInt(1) + 1;
 			for (int a = 0; a < count; a++) {
 				int i = i2 + random.nextInt(16) + 8;

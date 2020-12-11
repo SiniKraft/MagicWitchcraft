@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class RecipeMagicalStoneRecipe extends ElementsMagicWitchcraft.ModElement {
 	public RecipeMagicalStoneRecipe(ElementsMagicWitchcraft instance) {
-		super(instance, 211);
+		super(instance, 225);
 	}
 
 	@Override

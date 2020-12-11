@@ -10,7 +10,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureSaverLeggingsPlaceBlockOnKeyPressed extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureSaverLeggingsPlaceBlockOnKeyPressed(ElementsMagicWitchcraft instance) {
-		super(instance, 230);
+		super(instance, 242);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

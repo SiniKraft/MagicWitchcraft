@@ -38,7 +38,7 @@ public class BlockMagicalWheatStage4 extends ElementsMagicWitchcraft.ModElement 
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalwheatstage4")
 	public static final Block block = null;
 	public BlockMagicalWheatStage4(ElementsMagicWitchcraft instance) {
-		super(instance, 151);
+		super(instance, 166);
 	}
 
 	@Override

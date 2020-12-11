@@ -16,7 +16,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMagicalHelmetTickEvent extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMagicalHelmetTickEvent(ElementsMagicWitchcraft instance) {
-		super(instance, 184);
+		super(instance, 199);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

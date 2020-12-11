@@ -20,7 +20,7 @@ public class ItemSolidTrollWater extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:solidtrollwater")
 	public static final Item block = null;
 	public ItemSolidTrollWater(ElementsMagicWitchcraft instance) {
-		super(instance, 55);
+		super(instance, 56);
 	}
 
 	@Override

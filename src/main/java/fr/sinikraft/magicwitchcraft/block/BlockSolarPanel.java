@@ -50,7 +50,7 @@ public class BlockSolarPanel extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:solarpanel")
 	public static final Block block = null;
 	public BlockSolarPanel(ElementsMagicWitchcraft instance) {
-		super(instance, 44);
+		super(instance, 45);
 	}
 
 	@Override

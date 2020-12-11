@@ -12,7 +12,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureEnableFloatBootsOnKeyPressed extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureEnableFloatBootsOnKeyPressed(ElementsMagicWitchcraft instance) {
-		super(instance, 182);
+		super(instance, 197);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -29,7 +29,7 @@ public class BlockAutoExplodeTNT extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:autoexplodetnt")
 	public static final Block block = null;
 	public BlockAutoExplodeTNT(ElementsMagicWitchcraft instance) {
-		super(instance, 261);
+		super(instance, 76);
 	}
 
 	@Override

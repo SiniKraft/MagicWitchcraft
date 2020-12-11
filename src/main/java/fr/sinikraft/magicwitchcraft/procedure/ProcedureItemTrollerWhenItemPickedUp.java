@@ -11,7 +11,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureItemTrollerWhenItemPickedUp extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureItemTrollerWhenItemPickedUp(ElementsMagicWitchcraft instance) {
-		super(instance, 226);
+		super(instance, 239);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -15,7 +15,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureMysteriousLootOnBlockRightClicked extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureMysteriousLootOnBlockRightClicked(ElementsMagicWitchcraft instance) {
-		super(instance, 78);
+		super(instance, 93);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

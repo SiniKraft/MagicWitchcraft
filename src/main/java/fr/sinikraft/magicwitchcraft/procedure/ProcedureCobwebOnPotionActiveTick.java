@@ -7,7 +7,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureCobwebOnPotionActiveTick extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureCobwebOnPotionActiveTick(ElementsMagicWitchcraft instance) {
-		super(instance, 79);
+		super(instance, 94);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

@@ -38,7 +38,7 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 	public static int GUIID = 1;
 	public static HashMap guistate = new HashMap();
 	public GuiMysteriousExtractorGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 63);
+		super(instance, 78);
 	}
 
 	@Override

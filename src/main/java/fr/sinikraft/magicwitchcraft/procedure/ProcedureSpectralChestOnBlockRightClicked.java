@@ -13,7 +13,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureSpectralChestOnBlockRightClicked extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureSpectralChestOnBlockRightClicked(ElementsMagicWitchcraft instance) {
-		super(instance, 216);
+		super(instance, 229);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

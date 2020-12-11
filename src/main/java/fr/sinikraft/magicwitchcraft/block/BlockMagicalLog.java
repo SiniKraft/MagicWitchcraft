@@ -33,7 +33,7 @@ public class BlockMagicalLog extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicallog")
 	public static final Block block = null;
 	public BlockMagicalLog(ElementsMagicWitchcraft instance) {
-		super(instance, 60);
+		super(instance, 61);
 	}
 
 	@Override

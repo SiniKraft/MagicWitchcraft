@@ -10,7 +10,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 @ElementsMagicWitchcraft.ModElement.Tag
 public class ProcedureAutoExplodeTNTBlockAdded extends ElementsMagicWitchcraft.ModElement {
 	public ProcedureAutoExplodeTNTBlockAdded(ElementsMagicWitchcraft instance) {
-		super(instance, 263);
+		super(instance, 267);
 	}
 
 	public static void executeProcedure(java.util.HashMap<String, Object> dependencies) {

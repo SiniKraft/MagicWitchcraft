@@ -32,7 +32,7 @@ public class ItemSaver extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:saverboots")
 	public static final Item boots = null;
 	public ItemSaver(ElementsMagicWitchcraft instance) {
-		super(instance, 228);
+		super(instance, 67);
 	}
 
 	@Override
@@ -48,7 +48,6 @@ public class ItemSaver extends ElementsMagicWitchcraft.ModElement {
 				int z = (int) entity.posZ;
 				{
 					java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-					$_dependencies.put("entity", entity);
 					ProcedureSaverLeggingsTickEvent.executeProcedure($_dependencies);
 				}
 			}

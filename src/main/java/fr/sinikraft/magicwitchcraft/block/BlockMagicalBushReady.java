@@ -49,7 +49,7 @@ public class BlockMagicalBushReady extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbushready")
 	public static final Block block = null;
 	public BlockMagicalBushReady(ElementsMagicWitchcraft instance) {
-		super(instance, 39);
+		super(instance, 40);
 	}
 
 	@Override

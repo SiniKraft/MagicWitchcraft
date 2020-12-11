@@ -34,7 +34,7 @@ public class BlockStickyStone extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:stickystone")
 	public static final Block block = null;
 	public BlockStickyStone(ElementsMagicWitchcraft instance) {
-		super(instance, 231);
+		super(instance, 68);
 	}
 
 	@Override

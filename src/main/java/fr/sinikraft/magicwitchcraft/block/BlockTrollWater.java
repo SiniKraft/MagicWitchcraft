@@ -37,7 +37,7 @@ public class BlockTrollWater extends ElementsMagicWitchcraft.ModElement {
 	public static final Item item = null;
 	private Fluid fluid;
 	public BlockTrollWater(ElementsMagicWitchcraft instance) {
-		super(instance, 47);
+		super(instance, 48);
 		fluid = new Fluid("trollwater", new ResourceLocation("magic_witchcraft:blocks/troll_water"),
 				new ResourceLocation("magic_witchcraft:blocks/troll_water")).setLuminosity(0).setDensity(10000).setViscosity(100).setGaseous(true);
 	}

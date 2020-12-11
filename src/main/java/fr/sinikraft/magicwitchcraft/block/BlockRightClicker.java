@@ -43,7 +43,7 @@ public class BlockRightClicker extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:rightclicker")
 	public static final Block block = null;
 	public BlockRightClicker(ElementsMagicWitchcraft instance) {
-		super(instance, 212);
+		super(instance, 65);
 	}
 
 	@Override

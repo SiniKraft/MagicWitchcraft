@@ -34,7 +34,7 @@ public class BlockMagicalBookshelf extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbookshelf")
 	public static final Block block = null;
 	public BlockMagicalBookshelf(ElementsMagicWitchcraft instance) {
-		super(instance, 36);
+		super(instance, 37);
 	}
 
 	@Override

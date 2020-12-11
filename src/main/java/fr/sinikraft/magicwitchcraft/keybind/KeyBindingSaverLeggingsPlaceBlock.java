@@ -30,7 +30,7 @@ import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 public class KeyBindingSaverLeggingsPlaceBlock extends ElementsMagicWitchcraft.ModElement {
 	private KeyBinding keys;
 	public KeyBindingSaverLeggingsPlaceBlock(ElementsMagicWitchcraft instance) {
-		super(instance, 230);
+		super(instance, 243);
 	}
 
 	@Override

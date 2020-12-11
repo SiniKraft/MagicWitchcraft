@@ -32,7 +32,7 @@ public class ItemMagical extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalboots")
 	public static final Item boots = null;
 	public ItemMagical(ElementsMagicWitchcraft instance) {
-		super(instance, 49);
+		super(instance, 50);
 	}
 
 	@Override

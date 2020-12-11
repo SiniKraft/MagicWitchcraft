@@ -28,7 +28,7 @@ public class ItemItemTroller extends ElementsMagicWitchcraft.ModElement {
 	@GameRegistry.ObjectHolder("magic_witchcraft:itemtroller")
 	public static final Item block = null;
 	public ItemItemTroller(ElementsMagicWitchcraft instance) {
-		super(instance, 225);
+		super(instance, 66);
 	}
 
 	@Override

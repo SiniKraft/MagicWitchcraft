@@ -38,7 +38,7 @@ public class GuiMagicalCompressorGUI extends ElementsMagicWitchcraft.ModElement 
 	public static int GUIID = 3;
 	public static HashMap guistate = new HashMap();
 	public GuiMagicalCompressorGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 162);
+		super(instance, 177);
 	}
 
 	@Override
