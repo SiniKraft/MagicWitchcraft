@@ -44,49 +44,30 @@ public class ProcedureMysteriousOrbOreBlockDestroyedByPlayer extends ElementsMag
 		int y = (int) dependencies.get("y");
 		int z = (int) dependencies.get("z");
 		World world = (World) dependencies.get("world");
-		if (!world.isRemote) {
-			world.spawnEntity(new EntityXPOrb(world, x, y, z, (int) 2));
-		}
-		if ((Math.random() <= 0.2)) {
+		if ((!((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
+				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1))) {
 			if (!world.isRemote) {
-				EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
-				entityToSpawn.setPickupDelay(10);
-				world.spawnEntity(entityToSpawn);
+				world.spawnEntity(new EntityXPOrb(world, x, y, z, (int) 2));
 			}
-		}
-		if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
-			if ((Math.random() <= 0.5)) {
+			if ((Math.random() <= 0.2)) {
 				if (!world.isRemote) {
 					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
 					entityToSpawn.setPickupDelay(10);
 					world.spawnEntity(entityToSpawn);
 				}
 			}
-		}
-		if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
-			if (!world.isRemote) {
-				EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
-				entityToSpawn.setPickupDelay(10);
-				world.spawnEntity(entityToSpawn);
-			}
-			if ((Math.random() <= 0.3)) {
-				if (!world.isRemote) {
-					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
-					entityToSpawn.setPickupDelay(10);
-					world.spawnEntity(entityToSpawn);
+			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
+				if ((Math.random() <= 0.5)) {
+					if (!world.isRemote) {
+						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
+						entityToSpawn.setPickupDelay(10);
+						world.spawnEntity(entityToSpawn);
+					}
 				}
 			}
-		}
-		if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
-			if (!world.isRemote) {
-				EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
-				entityToSpawn.setPickupDelay(10);
-				world.spawnEntity(entityToSpawn);
-			}
-			if ((Math.random() <= 0.6)) {
+			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
 				if (!world.isRemote) {
 					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
 					entityToSpawn.setPickupDelay(10);
@@ -97,6 +78,28 @@ public class ProcedureMysteriousOrbOreBlockDestroyedByPlayer extends ElementsMag
 						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
 						entityToSpawn.setPickupDelay(10);
 						world.spawnEntity(entityToSpawn);
+					}
+				}
+			}
+			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
+				if (!world.isRemote) {
+					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
+					entityToSpawn.setPickupDelay(10);
+					world.spawnEntity(entityToSpawn);
+				}
+				if ((Math.random() <= 0.6)) {
+					if (!world.isRemote) {
+						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
+						entityToSpawn.setPickupDelay(10);
+						world.spawnEntity(entityToSpawn);
+					}
+					if ((Math.random() <= 0.3)) {
+						if (!world.isRemote) {
+							EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMysteriousOrb.block, (int) (1)));
+							entityToSpawn.setPickupDelay(10);
+							world.spawnEntity(entityToSpawn);
+						}
 					}
 				}
 			}

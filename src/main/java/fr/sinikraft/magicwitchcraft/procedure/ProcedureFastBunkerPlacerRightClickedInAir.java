@@ -49,16 +49,37 @@ public class ProcedureFastBunkerPlacerRightClickedInAir extends ElementsMagicWit
 				if (entity instanceof EntityPlayer)
 					((EntityPlayer) entity).inventory.clearMatchingItems(new ItemStack(ItemBunkerOrb.block, (int) (1)).getItem(), -1, (int) 1, null);
 			}
-			world.setBlockState(new BlockPos((int) x, (int) (y + 2), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) x, (int) (y - 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) (x + 1), (int) y, (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) (x + 1), (int) (y + 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) (x - 1), (int) y, (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) (x - 1), (int) (y + 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) x, (int) y, (int) (z + 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z + 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) x, (int) y, (int) (z - 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
-			world.setBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z - 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
+			if (((world.getBlockState(new BlockPos((int) x, (int) (y + 2), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) (y + 2), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) (y - 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) (x + 1), (int) y, (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) (x + 1), (int) y, (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) (x + 1), (int) (y + 1), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) (x + 1), (int) (y + 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) (x - 1), (int) y, (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) (x - 1), (int) y, (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) (x - 1), (int) (y + 1), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) (x - 1), (int) (y + 1), (int) z), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1)))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) y, (int) (z + 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z + 1)))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z + 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) x, (int) y, (int) (z - 1)))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) y, (int) (z - 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			if (((world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z - 1)))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {
+				world.setBlockState(new BlockPos((int) x, (int) (y + 1), (int) (z - 1)), Blocks.OBSIDIAN.getDefaultState(), 3);
+			}
+			entity.setPositionAndUpdate(x, y, z);
 		}
 	}
 }

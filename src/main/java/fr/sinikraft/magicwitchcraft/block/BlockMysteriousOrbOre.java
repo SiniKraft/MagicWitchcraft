@@ -90,11 +90,6 @@ public class BlockMysteriousOrbOre extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
-		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-			return false;
-		}
-
-		@Override
 		public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 			drops.add(new ItemStack(ItemMysteriousOrb.block, (int) (1)));
 		}

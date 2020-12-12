@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "magic_witchcraft:blocks/troll_water",
+    "up": "magic_witchcraft:blocks/troll_water",
+    "north": "magic_witchcraft:blocks/spectral_fire_layer_0",
+    "east": "magic_witchcraft:blocks/spectral_fire_layer_0",
+    "south": "magic_witchcraft:blocks/spectral_fire_layer_0",
+    "west": "magic_witchcraft:blocks/spectral_fire_layer_0",
+    "particle": "magic_witchcraft:blocks/troll_water"
+  }
+}

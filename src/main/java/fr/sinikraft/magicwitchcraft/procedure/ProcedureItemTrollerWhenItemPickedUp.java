@@ -1,6 +1,7 @@
 package fr.sinikraft.magicwitchcraft.procedure;
 
 import net.minecraft.world.World;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.Entity;
@@ -45,12 +46,22 @@ public class ProcedureItemTrollerWhenItemPickedUp extends ElementsMagicWitchcraf
 		int z = (int) dependencies.get("z");
 		ItemStack itemstack = (ItemStack) dependencies.get("itemstack");
 		World world = (World) dependencies.get("world");
-		if ((!((((itemstack).hasTagCompound() ? (itemstack).getTagCompound().getString("Owner") : ""))
-				.equals((entity.getDisplayName().getFormattedText()))))) {
-			if (entity instanceof EntityPlayer)
-				((EntityPlayer) entity).inventory.clearMatchingItems(new ItemStack(ItemItemTroller.block, (int) (1)).getItem(), -1, (int) 1, null);
-			if (!world.isRemote) {
-				world.createExplosion(null, (int) x, (int) y, (int) z, (float) 4, true);
+		if (((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false)) {
+			{
+				ItemStack _stack = (itemstack);
+				if (!_stack.hasTagCompound())
+					_stack.setTagCompound(new NBTTagCompound());
+				_stack.getTagCompound().setString("Owner", (entity.getDisplayName().getFormattedText()));
+			}
+		} else {
+			if ((!((((itemstack).hasTagCompound() ? (itemstack).getTagCompound().getString("Owner") : ""))
+					.equals((entity.getDisplayName().getFormattedText()))))) {
+				if (entity instanceof EntityPlayer)
+					((EntityPlayer) entity).inventory.clearMatchingItems(new ItemStack(ItemItemTroller.block, (int) (1)).getItem(), -1, (int) 1,
+							null);
+				if (!world.isRemote) {
+					world.createExplosion(null, (int) x, (int) y, (int) z, (float) 5, true);
+				}
 			}
 		}
 	}

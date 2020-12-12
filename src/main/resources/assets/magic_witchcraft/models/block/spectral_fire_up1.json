@@ -1,0 +1,7 @@
+{
+    "parent": "magic_witchcraft:block/spectral_fire_up",
+    "textures": {
+        "particle": "magic_witchcraft:blocks/spectral_fire_layer_1",
+        "fire": "magic_witchcraft:blocks/spectral_fire_layer_1"
+    }
+}

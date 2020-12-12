@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "1": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "2": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "4": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "6": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "7": {
+      "item": "magic_witchcraft:magicalnugget"
+    },
+    "8": {
+      "item": "magic_witchcraft:magicalnugget"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magical_orb",
+    "count": 1
+  }
+}
