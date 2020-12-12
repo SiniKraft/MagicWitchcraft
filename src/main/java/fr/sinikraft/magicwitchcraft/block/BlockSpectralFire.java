@@ -12,6 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,8 +27,6 @@ import java.util.Random;
 
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
-
-// locked blockstates files.
 
 @ElementsMagicWitchcraft.ModElement.Tag
 public class BlockSpectralFire extends ElementsMagicWitchcraft.ModElement {
@@ -53,12 +52,18 @@ public class BlockSpectralFire extends ElementsMagicWitchcraft.ModElement {
 		public BlockCustom() {
 			super(Material.FIRE);
 			setUnlocalizedName("spectralfire");
-			setSoundType(SoundType.SNOW);
+			setSoundType(SoundType.SAND);
 			setHardness(0F);
 			setResistance(0F);
 			setLightLevel(0F);
 			setLightOpacity(0);
 			setCreativeTab(TabMagicWitchCraft.tab);
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public BlockRenderLayer getBlockLayer() {
+			return BlockRenderLayer.CUTOUT_MIPPED;
 		}
 
 		@Override
@@ -75,6 +80,11 @@ public class BlockSpectralFire extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
+		}
+
+		@Override
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			return new AxisAlignedBB(0D, 0D, 0D, 1D, 0.01D, 1D);
 		}
 
 		@Override

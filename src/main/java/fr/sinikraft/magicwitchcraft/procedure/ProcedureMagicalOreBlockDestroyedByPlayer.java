@@ -3,6 +3,7 @@ package fr.sinikraft.magicwitchcraft.procedure;
 import net.minecraft.world.World;
 import net.minecraft.item.ItemStack;
 import net.minecraft.init.Enchantments;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.EntityLivingBase;
@@ -44,51 +45,31 @@ public class ProcedureMagicalOreBlockDestroyedByPlayer extends ElementsMagicWitc
 		int y = (int) dependencies.get("y");
 		int z = (int) dependencies.get("z");
 		World world = (World) dependencies.get("world");
-		if ((!((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
-				((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1))) {
-			if (!world.isRemote) {
-				world.spawnEntity(new EntityXPOrb(world, x, y, z, (int) 2));
-			}
-			if ((Math.random() <= 0.2)) {
+		if ((!((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false))) {
+			if ((!((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
+					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1))) {
 				if (!world.isRemote) {
-					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
-					entityToSpawn.setPickupDelay(10);
-					world.spawnEntity(entityToSpawn);
+					world.spawnEntity(new EntityXPOrb(world, x, y, z, (int) 2));
 				}
-			}
-			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
-				if ((Math.random() <= 0.5)) {
+				if ((Math.random() <= 0.2)) {
 					if (!world.isRemote) {
 						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
 						entityToSpawn.setPickupDelay(10);
 						world.spawnEntity(entityToSpawn);
 					}
 				}
-			}
-			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
-				if (!world.isRemote) {
-					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
-					entityToSpawn.setPickupDelay(10);
-					world.spawnEntity(entityToSpawn);
-				}
-				if ((Math.random() <= 0.3)) {
-					if (!world.isRemote) {
-						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
-						entityToSpawn.setPickupDelay(10);
-						world.spawnEntity(entityToSpawn);
+				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+						((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
+					if ((Math.random() <= 0.5)) {
+						if (!world.isRemote) {
+							EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
+							entityToSpawn.setPickupDelay(10);
+							world.spawnEntity(entityToSpawn);
+						}
 					}
 				}
-			}
-			if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-					((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
-				if (!world.isRemote) {
-					EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
-					entityToSpawn.setPickupDelay(10);
-					world.spawnEntity(entityToSpawn);
-				}
-				if ((Math.random() <= 0.6)) {
+				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+						((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
 					if (!world.isRemote) {
 						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
 						entityToSpawn.setPickupDelay(10);
@@ -99,6 +80,28 @@ public class ProcedureMagicalOreBlockDestroyedByPlayer extends ElementsMagicWitc
 							EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
 							entityToSpawn.setPickupDelay(10);
 							world.spawnEntity(entityToSpawn);
+						}
+					}
+				}
+				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
+						((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
+					if (!world.isRemote) {
+						EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
+						entityToSpawn.setPickupDelay(10);
+						world.spawnEntity(entityToSpawn);
+					}
+					if ((Math.random() <= 0.6)) {
+						if (!world.isRemote) {
+							EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
+							entityToSpawn.setPickupDelay(10);
+							world.spawnEntity(entityToSpawn);
+						}
+						if ((Math.random() <= 0.3)) {
+							if (!world.isRemote) {
+								EntityItem entityToSpawn = new EntityItem(world, x, y, z, new ItemStack(ItemMagicalNugget.block, (int) (1)));
+								entityToSpawn.setPickupDelay(10);
+								world.spawnEntity(entityToSpawn);
+							}
 						}
 					}
 				}
