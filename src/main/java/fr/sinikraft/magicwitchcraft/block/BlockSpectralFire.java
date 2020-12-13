@@ -16,6 +16,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.block.state.IBlockState;
@@ -25,6 +26,9 @@ import net.minecraft.block.Block;
 
 import java.util.Random;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralFireUpdateTick;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralFirePlayerStartsToDestroy;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralFireEntityCollidesInTheBlock;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -107,6 +111,32 @@ public class BlockSpectralFire extends ElementsMagicWitchcraft.ModElement {
 			return 0;
 		}
 
+		@Override
+		public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+			super.onBlockAdded(world, pos, state);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
+		}
+
+		@Override
+		public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+			super.updateTick(world, pos, state, random);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureSpectralFireUpdateTick.executeProcedure($_dependencies);
+			}
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
+		}
+
 		@SideOnly(Side.CLIENT)
 		@Override
 		public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random) {
@@ -125,6 +155,35 @@ public class BlockSpectralFire extends ElementsMagicWitchcraft.ModElement {
 					double d2 = (double) ((float) k + 0.5) + (double) (random.nextFloat() - 0.5) * 0.5D;
 					world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, 0, 0, 0);
 				}
+		}
+
+		@Override
+		public void onBlockClicked(World world, BlockPos pos, EntityPlayer entity) {
+			super.onBlockClicked(world, pos, entity);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureSpectralFirePlayerStartsToDestroy.executeProcedure($_dependencies);
+			}
+		}
+
+		@Override
+		public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+			super.onEntityCollidedWithBlock(world, pos, state, entity);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				ProcedureSpectralFireEntityCollidesInTheBlock.executeProcedure($_dependencies);
+			}
 		}
 	}
 }

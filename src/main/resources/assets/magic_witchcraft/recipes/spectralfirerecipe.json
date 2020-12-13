@@ -1,0 +1,24 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1",
+    "2"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "1": {
+      "item": "minecraft:netherrack"
+    },
+    "2": {
+      "item": "minecraft:flint_and_steel"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:spectralfire",
+    "count": 1
+  }
+}

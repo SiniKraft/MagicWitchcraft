@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:oneshotsword"
+    },
+    "title": {
+      "translate": "advancements.oneshoter.title"
+    },
+    "description": {
+      "translate": "advancements.oneshoter.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "oneshoter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "magic_witchcraft:oneshotsword",
+            "count": {
+              "min": 1,
+              "max": 37
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 300
+  },
+  "parent": "magic_witchcraft:extracompressor"
+}

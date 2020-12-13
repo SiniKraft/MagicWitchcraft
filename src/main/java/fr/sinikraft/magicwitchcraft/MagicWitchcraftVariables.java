@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.client.Minecraft;
 
 public class MagicWitchcraftVariables {
+	public static String Version = "1.12.2";
 	public static class MapVariables extends WorldSavedData {
 		public static final String DATA_NAME = "magic_witchcraft_mapvars";
 		public MapVariables() {
@@ -52,7 +53,6 @@ public class MagicWitchcraftVariables {
 
 	public static class WorldVariables extends WorldSavedData {
 		public static final String DATA_NAME = "magic_witchcraft_worldvars";
-		public boolean ismagicaldimensiongenerated = false;
 		public WorldVariables() {
 			super(DATA_NAME);
 		}
@@ -63,12 +63,10 @@ public class MagicWitchcraftVariables {
 
 		@Override
 		public void readFromNBT(NBTTagCompound nbt) {
-			ismagicaldimensiongenerated = nbt.getBoolean("ismagicaldimensiongenerated");
 		}
 
 		@Override
 		public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-			nbt.setBoolean("ismagicaldimensiongenerated", ismagicaldimensiongenerated);
 			return nbt;
 		}
 
