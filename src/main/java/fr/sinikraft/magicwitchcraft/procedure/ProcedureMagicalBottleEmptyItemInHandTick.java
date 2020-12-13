@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 
 import fr.sinikraft.magicwitchcraft.item.ItemMagicalBottleFilled1;
+import fr.sinikraft.magicwitchcraft.item.ItemMagicalBottleFilled0;
 import fr.sinikraft.magicwitchcraft.item.ItemMagicalBottleEmpty;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -61,7 +62,36 @@ public class ProcedureMagicalBottleEmptyItemInHandTick extends ElementsMagicWitc
 					_stack.getTagCompound().setDouble("Count", (Count));
 				}
 				itemstack.setItemDamage((int) (Count));
-				System.out.println((Count));
+			} else if ((((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+					.hasTagCompound()
+							? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+									.getTagCompound().getString("Stored")
+							: "")).equals("MagicalSap"))) {
+				Count = (double) (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+						.hasTagCompound()
+								? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+										.getTagCompound().getDouble("Count")
+								: -1);
+				if (entity instanceof EntityLivingBase) {
+					ItemStack _setstack = new ItemStack(ItemMagicalBottleFilled0.block, (int) (1));
+					_setstack.setCount(1);
+					((EntityLivingBase) entity).setHeldItem(EnumHand.MAIN_HAND, _setstack);
+					if (entity instanceof EntityPlayerMP)
+						((EntityPlayerMP) entity).inventory.markDirty();
+				}
+				{
+					ItemStack _stack = ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY);
+					if (!_stack.hasTagCompound())
+						_stack.setTagCompound(new NBTTagCompound());
+					_stack.getTagCompound().setString("Stored", "MagicalSap");
+				}
+				{
+					ItemStack _stack = ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY);
+					if (!_stack.hasTagCompound())
+						_stack.setTagCompound(new NBTTagCompound());
+					_stack.getTagCompound().setDouble("Count", (Count));
+				}
+				itemstack.setItemDamage((int) (Count));
 			}
 		} else if ((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 				.getItem() == new ItemStack(ItemMagicalBottleFilled1.block, (int) (1)).getItem())) {
@@ -69,6 +99,42 @@ public class ProcedureMagicalBottleEmptyItemInHandTick extends ElementsMagicWitc
 					? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getTagCompound()
 							.getString("Stored")
 					: "")).equals("SpectralFire")))) {
+				Stored = (String) (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+						.hasTagCompound()
+								? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+										.getTagCompound().getString("Stored")
+								: "");
+				Count = (double) (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+						.hasTagCompound()
+								? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+										.getTagCompound().getDouble("Count")
+								: -1);
+				if (entity instanceof EntityLivingBase) {
+					ItemStack _setstack = new ItemStack(ItemMagicalBottleEmpty.block, (int) (1));
+					_setstack.setCount(1);
+					((EntityLivingBase) entity).setHeldItem(EnumHand.MAIN_HAND, _setstack);
+					if (entity instanceof EntityPlayerMP)
+						((EntityPlayerMP) entity).inventory.markDirty();
+				}
+				{
+					ItemStack _stack = ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY);
+					if (!_stack.hasTagCompound())
+						_stack.setTagCompound(new NBTTagCompound());
+					_stack.getTagCompound().setDouble("Count", (Count));
+				}
+				{
+					ItemStack _stack = ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY);
+					if (!_stack.hasTagCompound())
+						_stack.setTagCompound(new NBTTagCompound());
+					_stack.getTagCompound().setString("Stored", (Stored));
+				}
+			}
+		} else if ((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+				.getItem() == new ItemStack(ItemMagicalBottleFilled0.block, (int) (1)).getItem())) {
+			if ((!(((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).hasTagCompound()
+					? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getTagCompound()
+							.getString("Stored")
+					: "")).equals("MagicalSap")))) {
 				Stored = (String) (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 						.hasTagCompound()
 								? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)

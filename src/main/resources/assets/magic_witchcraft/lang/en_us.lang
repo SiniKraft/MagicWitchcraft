@@ -76,6 +76,7 @@ item.magicalbottlefilled1.name=Magical bottle
 tile.tntmine.name=TNT mine
 advancements.obsidianmaker.descr=Get or make a special obsidian.
 item.magical_orb.name=Magical orb
+tile.sapextractor.name=Sap extractor
 potion.effect.cobweb=Cobweb potion
 advancements.troller.descr=Place an invisible mine.
 advancements.oneshoter.descr=Create a one shot sword.

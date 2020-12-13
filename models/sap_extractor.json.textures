@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "auto_block_remover_side",
+        "1": "oak_planks",
+        "2": "magical_log",
+        "3": "magical_stone"
+      },
+      "name": "default"
+    }
+  }
+}

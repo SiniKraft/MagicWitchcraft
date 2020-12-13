@@ -77,6 +77,7 @@ item.magicalbottlefilled1.name=Bouteille magique contenant : Feu spectral
 tile.tntmine.name=Mine de TNT
 advancements.obsidianmaker.descr=Créez une obsidienne spéciale.
 item.magical_orb.name=Orbe magique
+tile.sapextractor.name=Extracteur de sève
 potion.effect.cobweb=Potion de toile d'arraignée
 advancements.troller.descr=Fabriquez une mine invisible.
 advancements.oneshoter.descr=Créez une épée en un coup.

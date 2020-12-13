@@ -1,0 +1,11 @@
+{
+  "parent": "magic_witchcraft:custom/sap_extractor",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magical_stone",
+    "particle": "magic_witchcraft:blocks/magical_stone",
+    "0": "magic_witchcraft:blocks/auto_block_remover_side",
+    "1": "magic_witchcraft:blocks/oak_planks",
+    "2": "magic_witchcraft:blocks/magical_log",
+    "3": "magic_witchcraft:blocks/magical_stone"
+  }
+}
