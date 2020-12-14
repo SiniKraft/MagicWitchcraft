@@ -131,7 +131,7 @@ public class BlockSpectralPowerInfuser extends ElementsMagicWitchcraft.ModElemen
 
 		@Override
 		public int tickRate(World world) {
-			return 5;
+			return 100;
 		}
 
 		@Override

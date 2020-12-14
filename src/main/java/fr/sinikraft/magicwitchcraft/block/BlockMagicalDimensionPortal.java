@@ -71,6 +71,17 @@ public class BlockMagicalDimensionPortal extends ElementsMagicWitchcraft.ModElem
 		}
 
 		@Override
+		@javax.annotation.Nullable
+		public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+			return NULL_AABB;
+		}
+
+		@Override
+		public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
+			return true;
+		}
+
+		@Override
 		public boolean isFullCube(IBlockState state) {
 			return false;
 		}

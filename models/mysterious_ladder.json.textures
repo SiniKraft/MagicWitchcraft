@@ -5,6 +5,12 @@
         "0": "mysterious_ladder"
       },
       "name": "default"
+    },
+    "spectral_vines": {
+      "map": {
+        "0": "random_7"
+      },
+      "name": "spectral_vines"
     }
   }
 }

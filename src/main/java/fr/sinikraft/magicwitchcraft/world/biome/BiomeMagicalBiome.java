@@ -33,6 +33,7 @@ import net.minecraft.block.Block;
 import java.util.Random;
 
 import fr.sinikraft.magicwitchcraft.entity.EntityDangerousDragon;
+import fr.sinikraft.magicwitchcraft.block.BlockSpectralVines;
 import fr.sinikraft.magicwitchcraft.block.BlockSpectralLeaves;
 import fr.sinikraft.magicwitchcraft.block.BlockMagicalLog;
 import fr.sinikraft.magicwitchcraft.block.BlockMagicalGrass;
@@ -170,7 +171,7 @@ public class BiomeMagicalBiome extends ElementsMagicWitchcraft.ModElement {
 										BlockPos blockpos = new BlockPos(k1, genh, i2);
 										state = world.getBlockState(blockpos);
 										if (state.getBlock().isAir(state, world, blockpos) || state.getBlock().isLeaves(state, world, blockpos)
-												|| state.getBlock() == Blocks.AIR.getDefaultState().getBlock()
+												|| state.getBlock() == BlockSpectralVines.block.getDefaultState().getBlock()
 												|| state.getBlock() == BlockSpectralLeaves.block.getDefaultState().getBlock()) {
 											this.setBlockAndNotifyAdequately(world, blockpos, BlockSpectralLeaves.block.getDefaultState());
 										}
@@ -181,7 +182,8 @@ public class BiomeMagicalBiome extends ElementsMagicWitchcraft.ModElement {
 						for (int genh = 0; genh < height; genh++) {
 							BlockPos genhPos = position.up(genh);
 							state = world.getBlockState(genhPos);
-							if (state.getBlock().isAir(state, world, genhPos) || state.getBlock() == Blocks.AIR.getDefaultState().getBlock()
+							if (state.getBlock().isAir(state, world, genhPos)
+									|| state.getBlock() == BlockSpectralVines.block.getDefaultState().getBlock()
 									|| state.getBlock() == BlockSpectralLeaves.block.getDefaultState().getBlock()) {
 								this.setBlockAndNotifyAdequately(world, position.up(genh), BlockMagicalLog.block.getDefaultState());
 							}
@@ -209,10 +211,10 @@ public class BiomeMagicalBiome extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		private void addVines(World world, BlockPos pos) {
-			this.setBlockAndNotifyAdequately(world, pos, Blocks.AIR.getDefaultState());
+			this.setBlockAndNotifyAdequately(world, pos, BlockSpectralVines.block.getDefaultState());
 			int i = 5;
 			for (BlockPos blockpos = pos.down(); world.isAirBlock(blockpos) && i > 0; --i) {
-				this.setBlockAndNotifyAdequately(world, blockpos, Blocks.AIR.getDefaultState());
+				this.setBlockAndNotifyAdequately(world, blockpos, BlockSpectralVines.block.getDefaultState());
 				blockpos = blockpos.down();
 			}
 		}
