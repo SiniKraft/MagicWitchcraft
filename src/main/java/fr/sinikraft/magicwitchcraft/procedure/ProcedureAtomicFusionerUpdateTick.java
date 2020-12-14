@@ -189,7 +189,29 @@ public class ProcedureAtomicFusionerUpdateTick extends ElementsMagicWitchcraft.M
 						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
 					}
 				}
-			} else {
+			} else if ((!((((new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).hasTagCompound() ? (new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getTagCompound().getDouble("Energy") : -1) == 0) && ((new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))
+					.getItem() == new ItemStack(ItemRechargeableEnergyCrystal.block, (int) (1)).getItem())))) {
 				{
 					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 					if (inv instanceof TileEntityLockableLoot)

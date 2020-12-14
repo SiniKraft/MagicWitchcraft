@@ -1,14 +1,14 @@
 item.storagemodule.name=Storage module
 entity.dangerouswitch.name=Sorcière dangereuse
-advancements.mysteriousdimensiontraveler.descr=Entrez dans la dimension mystérieuse.
 item.creativedestroytool.name=Outil de minage créatif
+advancements.mysteriousdimensiontraveler.descr=Entrez dans la dimension mystérieuse.
 tile.magicalore.name=Minerai magique
 tile.mysterious_log.name=Bois mystérieux
 advancements.magicaldimensiontraveler.descr=Entrez dans la dimension magique.
 item.saverlegs.name=Jambières de sauvetage
-fluid.magicallava=Lave magique
-potion.effect.blockfly=Potion de bloc vol
 item.magicalnugget.name=Pépite magique
+potion.effect.blockfly=Potion de bloc vol
+fluid.magicallava=Lave magique
 tile.spectralleaves.name=Feuilles spectrales
 tile.magicalgrass.name=Herbe magique
 tile.mysteriouscobweb.name=Toile d'arraignée mystérieuse
