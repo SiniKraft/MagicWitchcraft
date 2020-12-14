@@ -212,24 +212,6 @@ public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchc
 						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
 					}
 				}
-				{
-					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
-					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
-						ItemStack _setstack = new ItemStack(ItemEnergyCrystalEmpty.block, (int) (1));
-						_setstack.setCount(((new Object() {
-							public int getAmount(BlockPos pos, int sltid) {
-								TileEntity inv = world.getTileEntity(pos);
-								if (inv instanceof TileEntityLockableLoot) {
-									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
-									if (stack != null)
-										return stack.getCount();
-								}
-								return 0;
-							}
-						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
-						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
-					}
-				}
 			} else {
 				{
 					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
@@ -445,24 +427,6 @@ public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchc
 						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
 					}
 				}
-				{
-					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
-					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
-						ItemStack _setstack = new ItemStack(ItemEnergyCrystalEmpty.block, (int) (1));
-						_setstack.setCount(((new Object() {
-							public int getAmount(BlockPos pos, int sltid) {
-								TileEntity inv = world.getTileEntity(pos);
-								if (inv instanceof TileEntityLockableLoot) {
-									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
-									if (stack != null)
-										return stack.getCount();
-								}
-								return 0;
-							}
-						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
-						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
-					}
-				}
 			} else {
 				{
 					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
@@ -668,24 +632,6 @@ public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchc
 							}
 						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (3))) + 1));
 						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
-					}
-				}
-				{
-					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
-					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
-						ItemStack _setstack = new ItemStack(ItemEnergyCrystalEmpty.block, (int) (1));
-						_setstack.setCount(((new Object() {
-							public int getAmount(BlockPos pos, int sltid) {
-								TileEntity inv = world.getTileEntity(pos);
-								if (inv instanceof TileEntityLockableLoot) {
-									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
-									if (stack != null)
-										return stack.getCount();
-								}
-								return 0;
-							}
-						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
-						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
 					}
 				}
 			} else {
@@ -946,24 +892,6 @@ public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchc
 							ItemStack _setstack = new ItemStack(ItemSolidMagicalSap.block, (int) (1));
 							_setstack.setCount(1);
 							((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
-						}
-					}
-					{
-						TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
-						if (inv != null && (inv instanceof TileEntityLockableLoot)) {
-							ItemStack _setstack = new ItemStack(ItemEnergyCrystalEmpty.block, (int) (1));
-							_setstack.setCount(((new Object() {
-								public int getAmount(BlockPos pos, int sltid) {
-									TileEntity inv = world.getTileEntity(pos);
-									if (inv instanceof TileEntityLockableLoot) {
-										ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
-										if (stack != null)
-											return stack.getCount();
-									}
-									return 0;
-								}
-							}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
-							((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
 						}
 					}
 				} else {
