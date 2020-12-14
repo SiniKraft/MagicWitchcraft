@@ -233,7 +233,9 @@ public class BlockAutoBlockRemover extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public boolean isItemValidForSlot(int index, ItemStack stack) {
-			if (index == 0)
+			if (index == 1)
+				return false;
+			if (index == 2)
 				return false;
 			return true;
 		}

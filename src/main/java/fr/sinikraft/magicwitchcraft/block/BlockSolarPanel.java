@@ -101,7 +101,7 @@ public class BlockSolarPanel extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		public int tickRate(World world) {
-			return 2400;
+			return 120;
 		}
 
 		@Override

@@ -39,7 +39,7 @@ public class BlockMagicalBushGrowing extends ElementsMagicWitchcraft.ModElement 
 	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbushgrowing")
 	public static final Block block = null;
 	public BlockMagicalBushGrowing(ElementsMagicWitchcraft instance) {
-		super(instance, 110);
+		super(instance, 150);
 	}
 
 	@Override
@@ -90,13 +90,6 @@ public class BlockMagicalBushGrowing extends ElementsMagicWitchcraft.ModElement 
 			return BlockFlower.EnumFlowerColor.YELLOW;
 		}
 
-		// set tick rate
-		@Override
-		public int tickRate(World world) {
-			return 3600;
-		}
-
-		// end of set tick rate
 		@SideOnly(Side.CLIENT)
 		@Override
 		public void getSubBlocks(CreativeTabs tab, net.minecraft.util.NonNullList<ItemStack> list) {

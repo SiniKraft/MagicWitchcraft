@@ -1,0 +1,10 @@
+{
+  "parent": "magic_witchcraft:custom/energy_crystal_charger",
+  "textures": {
+    "all": "magic_witchcraft:blocks/random_1",
+    "particle": "magic_witchcraft:blocks/random_1",
+    "0": "magic_witchcraft:blocks/auto_block_remover_side",
+    "1": "magic_witchcraft:blocks/random_1",
+    "2": "magic_witchcraft:blocks/end_sky"
+  }
+}

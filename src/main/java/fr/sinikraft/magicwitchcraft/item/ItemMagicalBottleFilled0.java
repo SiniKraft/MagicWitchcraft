@@ -20,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralPowerInfuserUpdateTickItemInInventoryTick;
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalBottleEmptyRightClickedOnBlock;
 import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalBottleEmptyItemInHandTick;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
@@ -104,6 +105,11 @@ public class ItemMagicalBottleFilled0 extends ElementsMagicWitchcraft.ModElement
 				$_dependencies.put("entity", entity);
 				$_dependencies.put("itemstack", itemstack);
 				ProcedureMagicalBottleEmptyItemInHandTick.executeProcedure($_dependencies);
+			}
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("itemstack", itemstack);
+				ProcedureSpectralPowerInfuserUpdateTickItemInInventoryTick.executeProcedure($_dependencies);
 			}
 		}
 	}

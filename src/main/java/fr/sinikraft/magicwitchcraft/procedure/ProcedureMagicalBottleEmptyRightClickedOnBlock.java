@@ -2,10 +2,13 @@ package fr.sinikraft.magicwitchcraft.procedure;
 
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.init.Blocks;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.block.state.IBlockState;
@@ -58,7 +61,6 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 		ItemStack itemstack = (ItemStack) dependencies.get("itemstack");
 		World world = (World) dependencies.get("world");
 		boolean IsSapExtracted = false;
-		IsSapExtracted = (boolean) (false);
 		if (((world.getBlockState(new BlockPos((int) x, (int) y, (int) z))).getBlock() == BlockSpectralFire.block.getDefaultState().getBlock())) {
 			if (((!((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).hasTagCompound()
 					? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getTagCompound()
@@ -145,6 +147,7 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
+						IsSapExtracted = (boolean) (true);
 					}
 				} else if (((new Object() {
 					public EnumFacing getEnumFacing(BlockPos pos) {
@@ -173,6 +176,7 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
+						IsSapExtracted = (boolean) (true);
 					}
 				} else if (((new Object() {
 					public EnumFacing getEnumFacing(BlockPos pos) {
@@ -201,6 +205,7 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
+						IsSapExtracted = (boolean) (true);
 					}
 				} else if (((new Object() {
 					public EnumFacing getEnumFacing(BlockPos pos) {
@@ -229,37 +234,43 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
+						IsSapExtracted = (boolean) (true);
 					}
 				}
-				if ((Math.random() < 0.2)) {
-					{
-						ItemStack _stack = ((entity instanceof EntityLivingBase)
-								? ((EntityLivingBase) entity).getHeldItemMainhand()
-								: ItemStack.EMPTY);
-						if (!_stack.hasTagCompound())
-							_stack.setTagCompound(new NBTTagCompound());
-						_stack.getTagCompound().setString("Stored", "MagicalSap");
-					}
-					{
-						ItemStack _stack = ((entity instanceof EntityLivingBase)
-								? ((EntityLivingBase) entity).getHeldItemMainhand()
-								: ItemStack.EMPTY);
-						if (!_stack.hasTagCompound())
-							_stack.setTagCompound(new NBTTagCompound());
-						_stack.getTagCompound().setDouble("Count", ((((entity instanceof EntityLivingBase)
+				if ((IsSapExtracted)) {
+					world.playSound((EntityPlayer) null, x, y, z, (net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY
+							.getObject(new ResourceLocation("item.bottle.fill")), SoundCategory.NEUTRAL, (float) 1, (float) 1);
+					if ((Math.random() < 0.2)) {
+						{
+							ItemStack _stack = ((entity instanceof EntityLivingBase)
+									? ((EntityLivingBase) entity).getHeldItemMainhand()
+									: ItemStack.EMPTY);
+							if (!_stack.hasTagCompound())
+								_stack.setTagCompound(new NBTTagCompound());
+							_stack.getTagCompound().setString("Stored", "MagicalSap");
+						}
+						{
+							ItemStack _stack = ((entity instanceof EntityLivingBase)
+									? ((EntityLivingBase) entity).getHeldItemMainhand()
+									: ItemStack.EMPTY);
+							if (!_stack.hasTagCompound())
+								_stack.setTagCompound(new NBTTagCompound());
+							_stack.getTagCompound().setDouble("Count",
+									((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+											.hasTagCompound()
+													? ((entity instanceof EntityLivingBase)
+															? ((EntityLivingBase) entity).getHeldItemMainhand()
+															: ItemStack.EMPTY).getTagCompound().getDouble("Count")
+													: -1)
+											+ 1));
+						}
+						itemstack.setItemDamage((int) (15 - (((entity instanceof EntityLivingBase)
 								? ((EntityLivingBase) entity).getHeldItemMainhand()
 								: ItemStack.EMPTY).hasTagCompound()
 										? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 												.getTagCompound().getDouble("Count")
-										: -1)
-								+ 1));
+										: -1)));
 					}
-					itemstack.setItemDamage((int) (15 - (((entity instanceof EntityLivingBase)
-							? ((EntityLivingBase) entity).getHeldItemMainhand()
-							: ItemStack.EMPTY).hasTagCompound()
-									? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
-											.getTagCompound().getDouble("Count")
-									: -1)));
 				}
 			}
 		} else if (((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).hasTagCompound()
@@ -310,6 +321,22 @@ public class ProcedureMagicalBottleEmptyRightClickedOnBlock extends ElementsMagi
 										? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 												.getTagCompound().getDouble("Count")
 										: -1)));
+			}
+		}
+		itemstack.setItemDamage((int) (15
+				- (((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).hasTagCompound()
+						? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY)
+								.getTagCompound().getDouble("Count")
+						: -1)));
+		if (((((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).hasTagCompound()
+				? ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY).getTagCompound()
+						.getDouble("Count")
+				: -1) == 0)) {
+			{
+				ItemStack _stack = ((entity instanceof EntityLivingBase) ? ((EntityLivingBase) entity).getHeldItemMainhand() : ItemStack.EMPTY);
+				if (!_stack.hasTagCompound())
+					_stack.setTagCompound(new NBTTagCompound());
+				_stack.getTagCompound().setString("Stored", "");
 			}
 		}
 	}

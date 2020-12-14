@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "auto_block_remover_side",
+        "1": "random_1",
+        "2": "end_sky"
+      },
+      "name": "default"
+    }
+  }
+}

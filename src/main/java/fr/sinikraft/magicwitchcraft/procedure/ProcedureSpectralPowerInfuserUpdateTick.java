@@ -4,12 +4,17 @@ import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.item.ItemStack;
 import net.minecraft.init.Items;
 import net.minecraft.init.Blocks;
 
+import java.util.Random;
+
 import fr.sinikraft.magicwitchcraft.item.ItemSpectralOrb;
 import fr.sinikraft.magicwitchcraft.item.ItemSolidTrollWater;
+import fr.sinikraft.magicwitchcraft.item.ItemSolidMagicalSap;
+import fr.sinikraft.magicwitchcraft.item.ItemMagicalBottleFilled0;
 import fr.sinikraft.magicwitchcraft.item.ItemFloatBoots;
 import fr.sinikraft.magicwitchcraft.item.ItemEnergyCrystalEmpty;
 import fr.sinikraft.magicwitchcraft.item.ItemEnergyCrystal;
@@ -366,6 +371,166 @@ public class ProcedureSpectralPowerInfuserUpdateTick extends ElementsMagicWitchc
 						}
 					}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
 					((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
+				}
+			}
+		} else if (((((new Object() {
+			public ItemStack getItemStack(BlockPos pos, int sltid) {
+				TileEntity inv = world.getTileEntity(pos);
+				if (inv instanceof TileEntityLockableLoot)
+					return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+				return ItemStack.EMPTY;
+			}
+		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == new ItemStack(ItemEnergyCrystal.block, (int) (1)).getItem())
+				&& ((new Object() {
+					public ItemStack getItemStack(BlockPos pos, int sltid) {
+						TileEntity inv = world.getTileEntity(pos);
+						if (inv instanceof TileEntityLockableLoot)
+							return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+						return ItemStack.EMPTY;
+					}
+				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == new ItemStack(ItemSpectralOrb.block, (int) (1))
+						.getItem()))
+				&& ((((new Object() {
+					public ItemStack getItemStack(BlockPos pos, int sltid) {
+						TileEntity inv = world.getTileEntity(pos);
+						if (inv instanceof TileEntityLockableLoot)
+							return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+						return ItemStack.EMPTY;
+					}
+				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2)))
+						.getItem() == new ItemStack(ItemMagicalBottleFilled0.block, (int) (1)).getItem()) && ((new Object() {
+							public ItemStack getItemStack(BlockPos pos, int sltid) {
+								TileEntity inv = world.getTileEntity(pos);
+								if (inv instanceof TileEntityLockableLoot)
+									return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+								return ItemStack.EMPTY;
+							}
+						}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == new ItemStack(Blocks.AIR, (int) (1))
+								.getItem()))
+						&& (((new Object() {
+							public int getAmount(BlockPos pos, int sltid) {
+								TileEntity inv = world.getTileEntity(pos);
+								if (inv instanceof TileEntityLockableLoot) {
+									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+									if (stack != null)
+										return stack.getCount();
+								}
+								return 0;
+							}
+						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (3))) != 1) && ((new Object() {
+							public int getAmount(BlockPos pos, int sltid) {
+								TileEntity inv = world.getTileEntity(pos);
+								if (inv instanceof TileEntityLockableLoot) {
+									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+									if (stack != null)
+										return stack.getCount();
+								}
+								return 0;
+							}
+						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) != 64))))) {
+			if (((((new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).hasTagCompound() ? (new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getTagCompound().getDouble("Count") : -1) >= 1) && ((((new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).hasTagCompound() ? (new Object() {
+				public ItemStack getItemStack(BlockPos pos, int sltid) {
+					TileEntity inv = world.getTileEntity(pos);
+					if (inv instanceof TileEntityLockableLoot)
+						return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+					return ItemStack.EMPTY;
+				}
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getTagCompound().getString("Stored") : "")).equals("MagicalSap")))) {
+				{
+					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+					if (inv instanceof TileEntityLockableLoot)
+						((TileEntityLockableLoot) inv).decrStackSize((int) (0), (int) (1));
+				}
+				{
+					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+					if (inv instanceof TileEntityLockableLoot)
+						((TileEntityLockableLoot) inv).decrStackSize((int) (1), (int) (1));
+				}
+				{
+					ItemStack _stack = (new Object() {
+						public ItemStack getItemStack(BlockPos pos, int sltid) {
+							TileEntity inv = world.getTileEntity(pos);
+							if (inv instanceof TileEntityLockableLoot)
+								return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+							return ItemStack.EMPTY;
+						}
+					}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2)));
+					if (!_stack.hasTagCompound())
+						_stack.setTagCompound(new NBTTagCompound());
+					_stack.getTagCompound().setDouble("Count", (((new Object() {
+						public ItemStack getItemStack(BlockPos pos, int sltid) {
+							TileEntity inv = world.getTileEntity(pos);
+							if (inv instanceof TileEntityLockableLoot)
+								return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+							return ItemStack.EMPTY;
+						}
+					}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).hasTagCompound() ? (new Object() {
+						public ItemStack getItemStack(BlockPos pos, int sltid) {
+							TileEntity inv = world.getTileEntity(pos);
+							if (inv instanceof TileEntityLockableLoot)
+								return ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+							return ItemStack.EMPTY;
+						}
+					}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getTagCompound().getDouble("Count") : -1) - 1));
+				}
+				{
+					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
+						ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot((int) (2));
+						if (stack != null) {
+							if (stack.attemptDamageItem((int) 1, new Random(), null)) {
+								stack.shrink(1);
+								stack.setItemDamage(0);
+							}
+						}
+					}
+				}
+				{
+					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
+						ItemStack _setstack = new ItemStack(ItemSolidMagicalSap.block, (int) (1));
+						_setstack.setCount(1);
+						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (3), _setstack);
+					}
+				}
+				{
+					TileEntity inv = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+					if (inv != null && (inv instanceof TileEntityLockableLoot)) {
+						ItemStack _setstack = new ItemStack(ItemEnergyCrystalEmpty.block, (int) (1));
+						_setstack.setCount(((new Object() {
+							public int getAmount(BlockPos pos, int sltid) {
+								TileEntity inv = world.getTileEntity(pos);
+								if (inv instanceof TileEntityLockableLoot) {
+									ItemStack stack = ((TileEntityLockableLoot) inv).getStackInSlot(sltid);
+									if (stack != null)
+										return stack.getCount();
+								}
+								return 0;
+							}
+						}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (4))) + 1));
+						((TileEntityLockableLoot) inv).setInventorySlotContents((int) (4), _setstack);
+					}
 				}
 			}
 		}

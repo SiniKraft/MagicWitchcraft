@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.io.IOException;
 
 import fr.sinikraft.magicwitchcraft.item.ItemMagicalOrb;
-import fr.sinikraft.magicwitchcraft.item.ItemEnergyCrystal;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -66,10 +65,6 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			if (ent instanceof IInventory)
 				this.internal = (IInventory) ent;
 			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 8, 30) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(ItemEnergyCrystal.block, (int) (1)).getItem() == stack.getItem());
-				}
 			}));
 			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 44, 12) {
 				@Override
