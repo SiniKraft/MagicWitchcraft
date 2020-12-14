@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:solidmagicalsap"
+    },
+    "1": {
+      "item": "magic_witchcraft:energycrystalempty"
+    },
+    "2": {
+      "item": "magic_witchcraft:solidmagicalsap"
+    },
+    "3": {
+      "item": "magic_witchcraft:energycrystalempty"
+    },
+    "4": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:energycrystalempty"
+    },
+    "6": {
+      "item": "magic_witchcraft:solidmagicalsap"
+    },
+    "7": {
+      "item": "magic_witchcraft:energycrystalempty"
+    },
+    "8": {
+      "item": "magic_witchcraft:solidmagicalsap"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:rechargeableenergycrystal",
+    "count": 1
+  }
+}

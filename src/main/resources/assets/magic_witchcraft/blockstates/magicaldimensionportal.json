@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicaldimensionportal"
+    "": {
+      "model": "magic_witchcraft:block/magicaldimensionportal"
     }
   }
 }

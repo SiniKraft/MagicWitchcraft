@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicalcompressoractivate"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:magicalcompressoractivate"
+      "model": "magic_witchcraft:block/magicalcompressoractivate"
     },
     "facing=east": {
-      "model": "magic_witchcraft:magicalcompressoractivate",
+      "model": "magic_witchcraft:block/magicalcompressoractivate",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:magicalcompressoractivate",
+      "model": "magic_witchcraft:block/magicalcompressoractivate",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:magicalcompressoractivate",
+      "model": "magic_witchcraft:block/magicalcompressoractivate",
       "y": 270
     }
   }

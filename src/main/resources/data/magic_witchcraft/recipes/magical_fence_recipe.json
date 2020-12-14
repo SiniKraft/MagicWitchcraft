@@ -1,0 +1,36 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 2",
+    "345",
+    "6 8"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "2": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "4": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "6": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "8": {
+      "item": "magic_witchcraft:magicalblock"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalfence",
+    "count": 4
+  }
+}

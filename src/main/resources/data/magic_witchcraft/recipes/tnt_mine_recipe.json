@@ -1,0 +1,20 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "1": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:tntmine",
+    "count": 1
+  }
+}

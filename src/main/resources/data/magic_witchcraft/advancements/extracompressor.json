@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:extracompressedspectralorb"
+    },
+    "title": {
+      "translate": "advancements.extracompressor.title"
+    },
+    "description": {
+      "translate": "advancements.extracompressor.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "extracompressor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "magic_witchcraft:extracompressedspectralorb",
+            "count": {
+              "min": 1,
+              "max": 37
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "magic_witchcraft:spectralorbmaker"
+}

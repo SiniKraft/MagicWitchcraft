@@ -1,13 +1,10 @@
 {
   "variants": {
     "axis=z": {
-      "model": "magic_witchcraft:obsidiandimension_portal_ew"
+      "model": "magic_witchcraft:block/obsidiandimension_portal_ew"
     },
     "axis=x": {
-      "model": "magic_witchcraft:obsidiandimension_portal_ns"
-    },
-    "inventory": {
-      "model": "magic_witchcraft:obsidiandimension_portal_ns"
+      "model": "magic_witchcraft:block/obsidiandimension_portal_ns"
     }
   }
 }

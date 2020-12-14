@@ -1,29 +1,26 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicallog"
-    },
     "facing=south": {
-      "model": "magic_witchcraft:magicallog"
+      "model": "magic_witchcraft:block/magicallog"
     },
     "facing=north": {
-      "model": "magic_witchcraft:magicallog"
+      "model": "magic_witchcraft:block/magicallog"
     },
     "facing=east": {
-      "model": "magic_witchcraft:magicallog",
+      "model": "magic_witchcraft:block/magicallog",
       "x": 90
     },
     "facing=west": {
-      "model": "magic_witchcraft:magicallog",
+      "model": "magic_witchcraft:block/magicallog",
       "x": 90
     },
     "facing=up": {
-      "model": "magic_witchcraft:magicallog",
+      "model": "magic_witchcraft:block/magicallog",
       "x": 90,
       "y": 90
     },
     "facing=down": {
-      "model": "magic_witchcraft:magicallog",
+      "model": "magic_witchcraft:block/magicallog",
       "x": 90,
       "y": 90
     }

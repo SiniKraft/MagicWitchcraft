@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "1": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "2": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "3": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "4": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "5": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "6": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "7": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "8": {
+      "item": "magic_witchcraft:spectralorb"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:spectralblock",
+    "count": 1
+  }
+}

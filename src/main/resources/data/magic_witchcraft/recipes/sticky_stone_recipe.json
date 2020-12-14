@@ -1,0 +1,24 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1",
+    "2"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "1": {
+      "tag": "forge:stone"
+    },
+    "2": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:stickystone",
+    "count": 3
+  }
+}

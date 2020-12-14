@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:iron_block"
+    },
+    "1": {
+      "item": "minecraft:oak_log"
+    },
+    "2": {
+      "item": "minecraft:iron_block"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "4": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "6": {
+      "item": "minecraft:iron_block"
+    },
+    "7": {
+      "item": "magic_witchcraft:magicalstone"
+    },
+    "8": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:sapextractor",
+    "count": 1
+  }
+}

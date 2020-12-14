@@ -1,0 +1,16 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalblock"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magical_orb",
+    "count": 9
+  }
+}

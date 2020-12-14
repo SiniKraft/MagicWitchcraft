@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:obsidian"
+    },
+    "1": {
+      "item": "magic_witchcraft:redobsidian"
+    },
+    "2": {
+      "item": "minecraft:obsidian"
+    },
+    "3": {
+      "item": "magic_witchcraft:blueobsidian"
+    },
+    "4": {
+      "item": "magic_witchcraft:yellowobsidian"
+    },
+    "5": {
+      "item": "magic_witchcraft:greenobsidian"
+    },
+    "6": {
+      "item": "minecraft:obsidian"
+    },
+    "7": {
+      "item": "magic_witchcraft:greyobsidian"
+    },
+    "8": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:purpleobsidian",
+    "count": 1
+  }
+}

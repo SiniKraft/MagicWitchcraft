@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:wheat"
+    },
+    "3": {
+      "item": "minecraft:wheat"
+    },
+    "4": {
+      "item": "magic_witchcraft:magical_orb"
+    },
+    "5": {
+      "item": "minecraft:wheat"
+    },
+    "7": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:saturationorb",
+    "count": 4
+  }
+}

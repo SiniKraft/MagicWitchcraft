@@ -4,6 +4,7 @@
     "0": "magic_witchcraft:blocks/magic_wand",
     "1": "magic_witchcraft:blocks/nether_portal",
     "2": "magic_witchcraft:blocks/magic_wand_2",
-    "missing": "magic_witchcraft:blocks/magic_wand"
+    "missing": "magic_witchcraft:blocks/magic_wand",
+    "particle": "magic_witchcraft:items/basic_magic_wand"
   }
 }

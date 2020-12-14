@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 4 ",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:ender_eye"
+    },
+    "1": {
+      "item": "minecraft:hopper"
+    },
+    "2": {
+      "item": "minecraft:ender_eye"
+    },
+    "4": {
+      "item": "minecraft:piston"
+    },
+    "7": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:fastbunkerplacer",
+    "count": 1
+  }
+}

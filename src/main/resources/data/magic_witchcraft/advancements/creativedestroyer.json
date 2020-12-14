@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:creativedestroytool"
+    },
+    "title": {
+      "translate": "advancements.creativedestroyer.title"
+    },
+    "description": {
+      "translate": "advancements.creativedestroyer.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "creativedestroyer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "magic_witchcraft:creativedestroytool",
+            "count": {
+              "min": 1,
+              "max": 37
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 300
+  },
+  "parent": "magic_witchcraft:extracompressor"
+}

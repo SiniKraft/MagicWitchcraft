@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 4 ",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:diamond_block"
+    },
+    "1": {
+      "item": "minecraft:diamond_block"
+    },
+    "2": {
+      "item": "minecraft:diamond_block"
+    },
+    "4": {
+      "item": "minecraft:diamond_block"
+    },
+    "7": {
+      "item": "magic_witchcraft:magicwand"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:dimensionalswitcher",
+    "count": 1
+  }
+}

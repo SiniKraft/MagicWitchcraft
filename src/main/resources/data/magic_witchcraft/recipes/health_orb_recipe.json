@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "1": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "2": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "3": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "4": {
+      "item": "magic_witchcraft:magical_orb"
+    },
+    "5": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "6": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "7": {
+      "item": "magic_witchcraft:saturationorb"
+    },
+    "8": {
+      "item": "magic_witchcraft:saturationorb"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:healthorb",
+    "count": 4
+  }
+}

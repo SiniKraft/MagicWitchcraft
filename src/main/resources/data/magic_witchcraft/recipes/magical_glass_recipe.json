@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:glass"
+    },
+    "1": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "2": {
+      "item": "minecraft:glass"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "4": {
+      "item": "minecraft:glass"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "6": {
+      "item": "minecraft:glass"
+    },
+    "7": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "8": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalglass",
+    "count": 4
+  }
+}

@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicalglass"
+    "": {
+      "model": "magic_witchcraft:block/magicalglass"
     }
   }
 }

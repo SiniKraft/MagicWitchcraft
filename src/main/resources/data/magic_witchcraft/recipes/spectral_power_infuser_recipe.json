@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "1": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "2": {
+      "item": "magic_witchcraft:spectralblock"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "4": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "6": {
+      "item": "minecraft:end_stone"
+    },
+    "7": {
+      "item": "minecraft:end_stone"
+    },
+    "8": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:spectralpowerinfuser",
+    "count": 1
+  }
+}

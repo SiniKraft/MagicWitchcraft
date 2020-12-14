@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:spectralvines"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:spectralvines"
+      "model": "magic_witchcraft:block/spectralvines"
     },
     "facing=east": {
-      "model": "magic_witchcraft:spectralvines",
+      "model": "magic_witchcraft:block/spectralvines",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:spectralvines",
+      "model": "magic_witchcraft:block/spectralvines",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:spectralvines",
+      "model": "magic_witchcraft:block/spectralvines",
       "y": 270
     }
   }

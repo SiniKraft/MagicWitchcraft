@@ -1,7 +1,7 @@
 {
   "variants": {
-    "type=dandelion": {
-      "model": "magic_witchcraft:magicalbushgrowing"
+    "": {
+      "model": "magic_witchcraft:block/magicalbushgrowing"
     }
   }
 }

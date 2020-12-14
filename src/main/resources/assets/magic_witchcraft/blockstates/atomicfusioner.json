@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:atomicfusioner"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:atomicfusioner"
+      "model": "magic_witchcraft:block/atomicfusioner"
     },
     "facing=east": {
-      "model": "magic_witchcraft:atomicfusioner",
+      "model": "magic_witchcraft:block/atomicfusioner",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:atomicfusioner",
+      "model": "magic_witchcraft:block/atomicfusioner",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:atomicfusioner",
+      "model": "magic_witchcraft:block/atomicfusioner",
       "y": 270
     }
   }

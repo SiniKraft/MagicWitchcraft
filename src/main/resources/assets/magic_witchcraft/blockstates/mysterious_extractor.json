@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:mysterious_extractor"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:mysterious_extractor"
+      "model": "magic_witchcraft:block/mysterious_extractor"
     },
     "facing=east": {
-      "model": "magic_witchcraft:mysterious_extractor",
+      "model": "magic_witchcraft:block/mysterious_extractor",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:mysterious_extractor",
+      "model": "magic_witchcraft:block/mysterious_extractor",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:mysterious_extractor",
+      "model": "magic_witchcraft:block/mysterious_extractor",
       "y": 270
     }
   }

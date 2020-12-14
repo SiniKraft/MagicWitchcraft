@@ -1,0 +1,12 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:smelting",
+  "experience": 0,
+  "cookingtime": 200,
+  "ingredient": {
+    "item": "magic_witchcraft:magicalcobblestone"
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalstone"
+  }
+}

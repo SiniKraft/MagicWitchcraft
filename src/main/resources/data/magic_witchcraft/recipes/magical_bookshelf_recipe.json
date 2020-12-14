@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:bookshelf"
+    },
+    "1": {
+      "item": "minecraft:bookshelf"
+    },
+    "2": {
+      "item": "minecraft:bookshelf"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "4": {
+      "item": "minecraft:diamond_block"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "6": {
+      "item": "minecraft:bookshelf"
+    },
+    "7": {
+      "item": "minecraft:bookshelf"
+    },
+    "8": {
+      "item": "minecraft:bookshelf"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalbookshelf",
+    "count": 1
+  }
+}

@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:mysterious_portal"
+    "": {
+      "model": "magic_witchcraft:block/mysterious_portal"
     }
   }
 }

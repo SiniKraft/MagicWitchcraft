@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0 2",
+    " 4 ",
+    "6 8"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:mysterious_orb"
+    },
+    "2": {
+      "item": "magic_witchcraft:mysterious_orb"
+    },
+    "4": {
+      "item": "minecraft:cobweb"
+    },
+    "6": {
+      "item": "magic_witchcraft:mysterious_orb"
+    },
+    "8": {
+      "item": "magic_witchcraft:mysterious_orb"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:mysteriouscobweb",
+    "count": 4
+  }
+}

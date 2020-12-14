@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:energycrystalcharger"
+    "": {
+      "model": "magic_witchcraft:block/energycrystalcharger"
     }
   }
 }

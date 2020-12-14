@@ -1,0 +1,30 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "3": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "4": {
+      "item": "magic_witchcraft:magical_orb"
+    },
+    "5": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "7": {
+      "item": "minecraft:flint_and_steel"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:fireorb",
+    "count": 4
+  }
+}

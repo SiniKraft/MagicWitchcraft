@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicalbookshelf"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:magicalbookshelf"
+      "model": "magic_witchcraft:block/magicalbookshelf"
     },
     "facing=east": {
-      "model": "magic_witchcraft:magicalbookshelf",
+      "model": "magic_witchcraft:block/magicalbookshelf",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:magicalbookshelf",
+      "model": "magic_witchcraft:block/magicalbookshelf",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:magicalbookshelf",
+      "model": "magic_witchcraft:block/magicalbookshelf",
       "y": 270
     }
   }
