@@ -15,10 +15,11 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureCreativeDestroyToolBlockDestroyed;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureCreativeDestroyToolToolInHandTick;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -36,21 +37,16 @@ public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement 
 	public void initElements() {
 		elements.items.add(() -> new ItemToolCustom() {
 			@Override
-			public boolean onBlockDestroyed(ItemStack itemstack, World world, IBlockState bl, BlockPos pos, EntityLivingBase entity) {
-				boolean retval = super.onBlockDestroyed(itemstack, world, bl, pos, entity);
-				int x = pos.getX();
-				int y = pos.getY();
-				int z = pos.getZ();
-				{
+			public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean par5) {
+				super.onUpdate(itemstack, world, entity, slot, par5);
+				int x = (int) entity.posX;
+				int y = (int) entity.posY;
+				int z = (int) entity.posZ;
+				if (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().equals(itemstack)) {
 					java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-					$_dependencies.put("entity", entity);
-					$_dependencies.put("x", x);
-					$_dependencies.put("y", y);
-					$_dependencies.put("z", z);
-					$_dependencies.put("world", world);
-					ProcedureCreativeDestroyToolBlockDestroyed.executeProcedure($_dependencies);
+					$_dependencies.put("itemstack", itemstack);
+					ProcedureCreativeDestroyToolToolInHandTick.executeProcedure($_dependencies);
 				}
-				return retval;
 			}
 
 			@Override

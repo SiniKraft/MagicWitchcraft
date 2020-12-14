@@ -1,6 +1,7 @@
 package fr.sinikraft.magicwitchcraft.procedure;
 
 import net.minecraft.util.DamageSource;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.Entity;
 
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
@@ -17,7 +18,7 @@ public class ProcedureMagicalBushReadyMobplayerCollidesWithPlant extends Element
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		if ((Math.random() < 0.01)) {
+		if (((Math.random() < 0.01) && (!((entity instanceof EntityPlayer) ? ((EntityPlayer) entity).capabilities.isCreativeMode : false)))) {
 			entity.attackEntityFrom(DamageSource.CACTUS, (float) 2);
 		}
 	}
