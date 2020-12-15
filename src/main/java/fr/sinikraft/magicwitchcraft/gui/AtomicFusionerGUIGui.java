@@ -338,10 +338,10 @@ public class AtomicFusionerGUIGui extends MagicWitchcraftModElements.ModElement 
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
 			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
-			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/capturer 2.png"));
+			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/spectral.png"));
 			this.blit(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256, 256, 256);
 			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.blit(this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
+			this.blit(this.guiLeft + 74, this.guiTop + 31, 0, 0, 256, 256, 256, 256);
 		}
 
 		@Override

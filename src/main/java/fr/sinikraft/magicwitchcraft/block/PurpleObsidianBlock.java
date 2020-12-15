@@ -72,7 +72,7 @@ public class PurpleObsidianBlock extends MagicWitchcraftModElements.ModElement {
 	public static class CustomBlock extends Block {
 		public static final DirectionProperty FACING = DirectionalBlock.FACING;
 		public CustomBlock() {
-			super(Block.Properties.create(Material.IRON).sound(SoundType.GROUND).hardnessAndResistance(100f, 3600f).lightValue(0).harvestLevel(3)
+			super(Block.Properties.create(Material.IRON).sound(SoundType.STONE).hardnessAndResistance(100f, 3600f).lightValue(0).harvestLevel(3)
 					.harvestTool(ToolType.PICKAXE));
 			this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
 			setRegistryName("purpleobsidian");

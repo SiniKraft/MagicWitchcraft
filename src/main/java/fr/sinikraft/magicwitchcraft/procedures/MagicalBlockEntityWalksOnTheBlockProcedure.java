@@ -19,7 +19,7 @@ public class MagicalBlockEntityWalksOnTheBlockProcedure extends MagicWitchcraftM
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		entity.setMotion((entity.getMotion().getX()), ((entity.getMotion().getY()) * (-0.5)), (entity.getMotion().getZ()));
+		entity.setMotion((entity.getMotion().getX()), ((entity.getMotion().getY()) * 0.5), (entity.getMotion().getZ()));
 		entity.fallDistance = (float) (0);
 	}
 }

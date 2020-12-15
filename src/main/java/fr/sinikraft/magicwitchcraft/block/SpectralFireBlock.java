@@ -14,12 +14,14 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.block.material.Material;
@@ -84,6 +86,11 @@ public class SpectralFireBlock extends MagicWitchcraftModElements.ModElement {
 		@Override
 		public boolean isReplaceable(BlockState state, BlockItemUseContext context) {
 			return true;
+		}
+
+		@Override
+		public PathNodeType getAiPathNodeType(BlockState state, IBlockReader world, BlockPos pos, MobEntity entity) {
+			return PathNodeType.DAMAGE_FIRE;
 		}
 
 		@Override

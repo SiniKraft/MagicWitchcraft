@@ -347,7 +347,7 @@ public class SpectralPowerInterfaceGui extends MagicWitchcraftModElements.ModEle
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Spectral power infuser", 38, 1, -1);
+			this.font.drawString("Spectral power infuser", 38, 2, -1);
 		}
 
 		@Override

@@ -19,7 +19,7 @@ public class SpectralBlockEntityWalksOnTheBlockProcedure extends MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		entity.setMotion((entity.getMotion().getX()), ((entity.getMotion().getY()) * (-0.8)), (entity.getMotion().getZ()));
+		entity.setMotion((entity.getMotion().getX()), ((entity.getMotion().getY()) * 0.8), (entity.getMotion().getZ()));
 		entity.fallDistance = (float) (0);
 	}
 }
