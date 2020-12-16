@@ -1,0 +1,23 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:web"
+    },
+    "1": {
+      "item": "minecraft:splash_potion"
+    }
+  },
+ "result": {
+  "type": "minecraft:item_nbt",
+  "item": "minecraft:splash_potion",
+  "nbt": {
+    "Potion": "magic_witchcraft:cobweb"
+  }
+}
+}
