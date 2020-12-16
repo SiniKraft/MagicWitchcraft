@@ -60,7 +60,7 @@ public class MagicalOreBlockDestroyedByPlayerProcedure extends MagicWitchcraftMo
 					world.getWorld().addEntity(new ExperienceOrbEntity(world.getWorld(), x, y, z, (int) 2));
 				}
 				if ((Math.random() <= 0.2)) {
-					if (world instanceof World && !world.getWorld().isRemote) {
+					if (!world.getWorld().isRemote) {
 						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
@@ -69,7 +69,7 @@ public class MagicalOreBlockDestroyedByPlayerProcedure extends MagicWitchcraftMo
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
 					if ((Math.random() <= 0.5)) {
-						if (world instanceof World && !world.getWorld().isRemote) {
+						if (!world.getWorld().isRemote) {
 							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
@@ -78,13 +78,13 @@ public class MagicalOreBlockDestroyedByPlayerProcedure extends MagicWitchcraftMo
 				}
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
-					if (world instanceof World && !world.getWorld().isRemote) {
+					if (!world.getWorld().isRemote) {
 						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
 					}
 					if ((Math.random() <= 0.3)) {
-						if (world instanceof World && !world.getWorld().isRemote) {
+						if (!world.getWorld().isRemote) {
 							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
@@ -93,19 +93,19 @@ public class MagicalOreBlockDestroyedByPlayerProcedure extends MagicWitchcraftMo
 				}
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
-					if (world instanceof World && !world.getWorld().isRemote) {
+					if (!world.getWorld().isRemote) {
 						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
 					}
 					if ((Math.random() <= 0.6)) {
-						if (world instanceof World && !world.getWorld().isRemote) {
+						if (!world.getWorld().isRemote) {
 							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalNuggetItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
 						}
 						if ((Math.random() <= 0.3)) {
-							if (world instanceof World && !world.getWorld().isRemote) {
+							if (!world.getWorld().isRemote) {
 								ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z,
 										new ItemStack(MagicalNuggetItem.block, (int) (1)));
 								entityToSpawn.setPickupDelay((int) 10);

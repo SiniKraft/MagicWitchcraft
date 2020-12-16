@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.ItemStack;
@@ -320,9 +319,8 @@ public class MagicalLeaves2UpdateTickProcedure extends MagicWitchcraftModElement
 																																																				3);
 																																																		if ((Math
 																																																				.random() <= 0.05)) {
-																																																			if (world instanceof World
-																																																					&& !world
-																																																							.getWorld().isRemote) {
+																																																			if (!world
+																																																					.getWorld().isRemote) {
 																																																				ItemEntity entityToSpawn = new ItemEntity(
 																																																						world.getWorld(),
 																																																						x,

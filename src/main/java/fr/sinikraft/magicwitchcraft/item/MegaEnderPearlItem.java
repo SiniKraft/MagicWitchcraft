@@ -64,7 +64,7 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void init(FMLCommonSetupEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(ArrowCustomEntity.class,
+		RenderingRegistry.registerEntityRenderingHandler(arrow,
 				renderManager -> new SpriteRenderer(renderManager, Minecraft.getInstance().getItemRenderer()));
 	}
 	public static class ItemRanged extends Item {
@@ -74,14 +74,14 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		}
 
 		@Override
-		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.BOW;
-		}
-
-		@Override
 		public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity entity, Hand hand) {
 			entity.setActiveHand(hand);
 			return new ActionResult(ActionResultType.SUCCESS, entity.getHeldItem(hand));
+		}
+
+		@Override
+		public UseAction getUseAction(ItemStack itemstack) {
+			return UseAction.BOW;
 		}
 
 		@Override
@@ -99,9 +99,9 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		public void onPlayerStoppedUsing(ItemStack itemstack, World world, LivingEntity entityLiving, int timeLeft) {
 			if (!world.isRemote && entityLiving instanceof ServerPlayerEntity) {
 				ServerPlayerEntity entity = (ServerPlayerEntity) entityLiving;
-				double x = entity.posX;
-				double y = entity.posY;
-				double z = entity.posZ;
+				double x = entity.getPosX();
+				double y = entity.getPosY();
+				double z = entity.getPosZ();
 				if (true) {
 					ItemStack stack = ShootableItem.getHeldAmmo(entity,
 							e -> e.getItem() == new ItemStack(EnergyCrystalItem.block, (int) (1)).getItem());
@@ -182,9 +182,9 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		public void onCollideWithPlayer(PlayerEntity entity) {
 			super.onCollideWithPlayer(entity);
 			Entity sourceentity = this.getShooter();
-			double x = this.posX;
-			double y = this.posY;
-			double z = this.posZ;
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
 			World world = this.world;
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
@@ -201,9 +201,9 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 			super.arrowHit(entity);
 			entity.setArrowCountInEntity(entity.getArrowCountInEntity() - 1);
 			Entity sourceentity = this.getShooter();
-			double x = this.posX;
-			double y = this.posY;
-			double z = this.posZ;
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
 			World world = this.world;
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
@@ -218,9 +218,9 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		@Override
 		public void tick() {
 			super.tick();
-			double x = this.posX;
-			double y = this.posY;
-			double z = this.posZ;
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
 			World world = this.world;
 			Entity entity = this.getShooter();
 			if (this.inGround) {
@@ -244,9 +244,9 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		entityarrow.setDamage(damage);
 		entityarrow.setKnockbackStrength(knockback);
 		world.addEntity(entityarrow);
-		double x = entity.posX;
-		double y = entity.posY;
-		double z = entity.posZ;
+		double x = entity.getPosX();
+		double y = entity.getPosY();
+		double z = entity.getPosZ();
 		world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
 				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_pearl.throw")),
 				SoundCategory.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
@@ -255,18 +255,18 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 
 	public static ArrowCustomEntity shoot(LivingEntity entity, LivingEntity target) {
 		ArrowCustomEntity entityarrow = new ArrowCustomEntity(arrow, entity, entity.world);
-		double d0 = target.posY + (double) target.getEyeHeight() - 1.1;
-		double d1 = target.posX - entity.posX;
-		double d3 = target.posZ - entity.posZ;
-		entityarrow.shoot(d1, d0 - entityarrow.posY + (double) MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F, d3, 5f * 2, 12.0F);
+		double d0 = target.getPosY() + (double) target.getEyeHeight() - 1.1;
+		double d1 = target.getPosX() - entity.getPosX();
+		double d3 = target.getPosZ() - entity.getPosZ();
+		entityarrow.shoot(d1, d0 - entityarrow.getPosY() + (double) MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F, d3, 5f * 2, 12.0F);
 		entityarrow.setSilent(true);
 		entityarrow.setDamage(0);
 		entityarrow.setKnockbackStrength(0);
 		entityarrow.setIsCritical(true);
 		entity.world.addEntity(entityarrow);
-		double x = entity.posX;
-		double y = entity.posY;
-		double z = entity.posZ;
+		double x = entity.getPosX();
+		double y = entity.getPosY();
+		double z = entity.getPosZ();
 		entity.world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
 				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_pearl.throw")),
 				SoundCategory.PLAYERS, 1, 1f / (new Random().nextFloat() * 0.5f + 1));
