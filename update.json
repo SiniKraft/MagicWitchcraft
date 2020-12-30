@@ -15,6 +15,10 @@
 	},
 	"promos": {
 		"1.12.2-latest": "pre-release_1.3-b1",
-		"1.12.2-recommended": "release_1.2"
+		"1.12.2-recommended": "release_1.2",
+		"1.14.4-latest": "release_1.0",
+		"1.14.4-recommended": "release_1.0",
+		"1.15.2-latest": "release_1.0",
+		"1.15.2-recommended": "release_1.0"
 	}
 }
