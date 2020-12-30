@@ -70,7 +70,7 @@ public class ItemSpectralOrb extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
 			super.addInformation(itemstack, world, list, flag);
-			list.add("A magical orb,but with mysterious powers.");
+			list.add("A magical orb, but with mysterious powers.");
 		}
 	}
 }

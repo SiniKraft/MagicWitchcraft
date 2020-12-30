@@ -48,6 +48,7 @@ public class ItemSaver extends ElementsMagicWitchcraft.ModElement {
 				int z = (int) entity.posZ;
 				{
 					java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+					$_dependencies.put("entity", entity);
 					ProcedureSaverLeggingsTickEvent.executeProcedure($_dependencies);
 				}
 			}

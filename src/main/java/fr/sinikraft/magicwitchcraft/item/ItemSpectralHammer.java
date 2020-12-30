@@ -15,38 +15,42 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureCreativeDestroyToolToolInHandTick;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralHammerBlockDestroyedWithTool;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 import com.google.common.collect.Multimap;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:creativedestroytool")
+public class ItemSpectralHammer extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:spectralhammer")
 	public static final Item block = null;
-	public ItemCreativeDestroyTool(ElementsMagicWitchcraft instance) {
-		super(instance, 291);
+	public ItemSpectralHammer(ElementsMagicWitchcraft instance) {
+		super(instance, 361);
 	}
 
 	@Override
 	public void initElements() {
 		elements.items.add(() -> new ItemToolCustom() {
 			@Override
-			public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean par5) {
-				super.onUpdate(itemstack, world, entity, slot, par5);
-				int x = (int) entity.posX;
-				int y = (int) entity.posY;
-				int z = (int) entity.posZ;
-				if (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().equals(itemstack)) {
+			public boolean onBlockDestroyed(ItemStack itemstack, World world, IBlockState bl, BlockPos pos, EntityLivingBase entity) {
+				boolean retval = super.onBlockDestroyed(itemstack, world, bl, pos, entity);
+				int x = pos.getX();
+				int y = pos.getY();
+				int z = pos.getZ();
+				{
 					java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-					$_dependencies.put("itemstack", itemstack);
-					ProcedureCreativeDestroyToolToolInHandTick.executeProcedure($_dependencies);
+					$_dependencies.put("entity", entity);
+					$_dependencies.put("x", x);
+					$_dependencies.put("y", y);
+					$_dependencies.put("z", z);
+					$_dependencies.put("world", world);
+					ProcedureSpectralHammerBlockDestroyedWithTool.executeProcedure($_dependencies);
 				}
+				return retval;
 			}
 
 			@Override
@@ -54,17 +58,17 @@ public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement 
 			public boolean hasEffect(ItemStack itemstack) {
 				return true;
 			}
-		}.setUnlocalizedName("creativedestroytool").setRegistryName("creativedestroytool").setCreativeTab(TabMagicWitchCraft.tab));
+		}.setUnlocalizedName("spectralhammer").setRegistryName("spectralhammer").setCreativeTab(TabMagicWitchCraft.tab));
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
-		ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation("magic_witchcraft:creativedestroytool", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation("magic_witchcraft:spectralhammer", "inventory"));
 	}
 	private static class ItemToolCustom extends Item {
 		protected ItemToolCustom() {
-			setMaxDamage(100000);
+			setMaxDamage(6000);
 			setMaxStackSize(1);
 		}
 
@@ -72,8 +76,8 @@ public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement 
 		public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
 			Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 			if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
-				multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", -4f, 0));
-				multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", -3, 0));
+				multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", 4f, 0));
+				multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", 0, 0));
 			}
 			return multimap;
 		}
@@ -85,7 +89,7 @@ public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement 
 
 		@Override
 		public float getDestroySpeed(ItemStack par1ItemStack, IBlockState par2Block) {
-			return 100000f;
+			return 14f;
 		}
 
 		@Override
@@ -107,7 +111,7 @@ public class ItemCreativeDestroyTool extends ElementsMagicWitchcraft.ModElement 
 
 		@Override
 		public int getItemEnchantability() {
-			return 0;
+			return 4;
 		}
 	}
 }

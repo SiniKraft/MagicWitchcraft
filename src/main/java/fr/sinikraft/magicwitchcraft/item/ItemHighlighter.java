@@ -8,28 +8,26 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 
 import net.minecraft.world.World;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.ActionResult;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalBottleEmptyRightClickedOnBlock;
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalBottleEmptyItemInHandTick;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureHighlighterRightClickedInAir;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureHighlighterItemInInventoryTick;
+import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:magicalbottlefilled1")
+public class ItemHighlighter extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:highlighter")
 	public static final Item block = null;
-	public ItemMagicalBottleFilled1(ElementsMagicWitchcraft instance) {
-		super(instance, 298);
+	public ItemHighlighter(ElementsMagicWitchcraft instance) {
+		super(instance, 359);
 	}
 
 	@Override
@@ -40,15 +38,16 @@ public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
-		ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation("magic_witchcraft:magicalbottlefilled1", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation("magic_witchcraft:highlighter", "inventory"));
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			setMaxDamage(15);
+			setMaxDamage(16);
 			maxStackSize = 1;
-			setUnlocalizedName("magicalbottlefilled1");
-			setRegistryName("magicalbottlefilled1");
-			setCreativeTab(null);
+			setUnlocalizedName("highlighter");
+			setRegistryName("highlighter");
+			setCreativeTab(TabMagicWitchCraft.tab);
+			setContainerItem(this);
 		}
 
 		@Override
@@ -58,12 +57,12 @@ public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement
 
 		@Override
 		public int getMaxItemUseDuration(ItemStack itemstack) {
-			return 15;
+			return 16;
 		}
 
 		@Override
 		public float getDestroySpeed(ItemStack par1ItemStack, IBlockState par2Block) {
-			return 1F;
+			return 2F;
 		}
 
 		@Override
@@ -73,13 +72,12 @@ public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement
 		}
 
 		@Override
-		public EnumActionResult onItemUseFirst(EntityPlayer entity, World world, BlockPos pos, EnumFacing direction, float hitX, float hitY,
-				float hitZ, EnumHand hand) {
-			EnumActionResult retval = super.onItemUseFirst(entity, world, pos, direction, hitX, hitY, hitZ, hand);
-			ItemStack itemstack = entity.getHeldItem(hand);
-			int x = pos.getX();
-			int y = pos.getY();
-			int z = pos.getZ();
+		public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer entity, EnumHand hand) {
+			ActionResult<ItemStack> ar = super.onItemRightClick(world, entity, hand);
+			ItemStack itemstack = ar.getResult();
+			int x = (int) entity.posX;
+			int y = (int) entity.posY;
+			int z = (int) entity.posZ;
 			{
 				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
 				$_dependencies.put("entity", entity);
@@ -88,9 +86,9 @@ public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement
 				$_dependencies.put("z", z);
 				$_dependencies.put("itemstack", itemstack);
 				$_dependencies.put("world", world);
-				ProcedureMagicalBottleEmptyRightClickedOnBlock.executeProcedure($_dependencies);
+				ProcedureHighlighterRightClickedInAir.executeProcedure($_dependencies);
 			}
-			return retval;
+			return ar;
 		}
 
 		@Override
@@ -99,11 +97,10 @@ public class ItemMagicalBottleFilled1 extends ElementsMagicWitchcraft.ModElement
 			int x = (int) entity.posX;
 			int y = (int) entity.posY;
 			int z = (int) entity.posZ;
-			if (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().equals(itemstack)) {
+			{
 				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-				$_dependencies.put("entity", entity);
 				$_dependencies.put("itemstack", itemstack);
-				ProcedureMagicalBottleEmptyItemInHandTick.executeProcedure($_dependencies);
+				ProcedureHighlighterItemInInventoryTick.executeProcedure($_dependencies);
 			}
 		}
 	}
