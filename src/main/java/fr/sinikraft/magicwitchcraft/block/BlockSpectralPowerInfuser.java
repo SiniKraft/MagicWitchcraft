@@ -276,10 +276,10 @@ public class BlockSpectralPowerInfuser extends ElementsMagicWitchcraft.ModElemen
 	}
 
 	public static class TileEntityCustom extends TileEntityLockableLoot {
-		private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
+		private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(10, ItemStack.EMPTY);
 		@Override
 		public int getSizeInventory() {
-			return 5;
+			return 10;
 		}
 
 		@Override

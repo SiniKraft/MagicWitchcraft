@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.IInventory;
@@ -30,17 +29,22 @@ import java.util.HashMap;
 
 import java.io.IOException;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralPowerInterfaceViewRecipesOnButtonClicked;
-import fr.sinikraft.magicwitchcraft.item.ItemSpectralOrb;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo6OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo5OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo4OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo3OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo2OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterInterfaceGoTo1OnButtonClicked;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElement {
-	public static int GUIID = 6;
+public class GuiTeleporterInterface extends ElementsMagicWitchcraft.ModElement {
+	public static int GUIID = 13;
 	public static HashMap guistate = new HashMap();
-	public GuiSpectralPowerInterface(ElementsMagicWitchcraft instance) {
-		super(instance, 208);
+	public GuiTeleporterInterface(ElementsMagicWitchcraft instance) {
+		super(instance, 337);
 	}
 
 	@Override
@@ -60,39 +64,7 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 			this.x = x;
 			this.y = y;
 			this.z = z;
-			this.internal = new InventoryBasic("", true, 5);
-			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
-			if (ent instanceof IInventory)
-				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 8, 30) {
-			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 44, 12) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(ItemSpectralOrb.block, (int) (1)).getItem() == stack.getItem());
-				}
-			}));
-			this.customSlots.put(2, this.addSlotToContainer(new Slot(internal, 2, 44, 48) {
-			}));
-			this.customSlots.put(3, this.addSlotToContainer(new Slot(internal, 3, 116, 30) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return false;
-				}
-			}));
-			this.customSlots.put(4, this.addSlotToContainer(new Slot(internal, 4, 152, 30) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return false;
-				}
-			}));
-			int si;
-			int sj;
-			for (si = 0; si < 3; ++si)
-				for (sj = 0; sj < 9; ++sj)
-					this.addSlotToContainer(new Slot(player.inventory, sj + (si + 1) * 9, 0 + 8 + sj * 18, 0 + 84 + si * 18));
-			for (si = 0; si < 9; ++si)
-				this.addSlotToContainer(new Slot(player.inventory, si, 0 + 8 + si * 18, 0 + 142));
+			this.internal = new InventoryBasic("", true, 0);
 		}
 
 		public Map<Integer, Slot> get() {
@@ -102,126 +74,6 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 		@Override
 		public boolean canInteractWith(EntityPlayer player) {
 			return internal.isUsableByPlayer(player);
-		}
-
-		@Override
-		public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-			ItemStack itemstack = ItemStack.EMPTY;
-			Slot slot = (Slot) this.inventorySlots.get(index);
-			if (slot != null && slot.getHasStack()) {
-				ItemStack itemstack1 = slot.getStack();
-				itemstack = itemstack1.copy();
-				if (index < 5) {
-					if (!this.mergeItemStack(itemstack1, 5, this.inventorySlots.size(), true)) {
-						return ItemStack.EMPTY;
-					}
-					slot.onSlotChange(itemstack1, itemstack);
-				} else if (!this.mergeItemStack(itemstack1, 0, 5, false)) {
-					if (index < 5 + 27) {
-						if (!this.mergeItemStack(itemstack1, 5 + 27, this.inventorySlots.size(), true)) {
-							return ItemStack.EMPTY;
-						}
-					} else {
-						if (!this.mergeItemStack(itemstack1, 5, 5 + 27, false)) {
-							return ItemStack.EMPTY;
-						}
-					}
-					return ItemStack.EMPTY;
-				}
-				if (itemstack1.getCount() == 0) {
-					slot.putStack(ItemStack.EMPTY);
-				} else {
-					slot.onSlotChanged();
-				}
-				if (itemstack1.getCount() == itemstack.getCount()) {
-					return ItemStack.EMPTY;
-				}
-				slot.onTake(playerIn, itemstack1);
-			}
-			return itemstack;
-		}
-
-		@Override /**
-					 * Merges provided ItemStack with the first avaliable one in the
-					 * container/player inventor between minIndex (included) and maxIndex
-					 * (excluded). Args : stack, minIndex, maxIndex, negativDirection. /!\ the
-					 * Container implementation do not check if the item is valid for the slot
-					 */
-		protected boolean mergeItemStack(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection) {
-			boolean flag = false;
-			int i = startIndex;
-			if (reverseDirection) {
-				i = endIndex - 1;
-			}
-			if (stack.isStackable()) {
-				while (!stack.isEmpty()) {
-					if (reverseDirection) {
-						if (i < startIndex) {
-							break;
-						}
-					} else if (i >= endIndex) {
-						break;
-					}
-					Slot slot = this.inventorySlots.get(i);
-					ItemStack itemstack = slot.getStack();
-					if (slot.isItemValid(itemstack) && !itemstack.isEmpty() && itemstack.getItem() == stack.getItem()
-							&& (!stack.getHasSubtypes() || stack.getMetadata() == itemstack.getMetadata())
-							&& ItemStack.areItemStackTagsEqual(stack, itemstack)) {
-						int j = itemstack.getCount() + stack.getCount();
-						int maxSize = Math.min(slot.getSlotStackLimit(), stack.getMaxStackSize());
-						if (j <= maxSize) {
-							stack.setCount(0);
-							itemstack.setCount(j);
-							slot.putStack(itemstack);
-							flag = true;
-						} else if (itemstack.getCount() < maxSize) {
-							stack.shrink(maxSize - itemstack.getCount());
-							itemstack.setCount(maxSize);
-							slot.putStack(itemstack);
-							flag = true;
-						}
-					}
-					if (reverseDirection) {
-						--i;
-					} else {
-						++i;
-					}
-				}
-			}
-			if (!stack.isEmpty()) {
-				if (reverseDirection) {
-					i = endIndex - 1;
-				} else {
-					i = startIndex;
-				}
-				while (true) {
-					if (reverseDirection) {
-						if (i < startIndex) {
-							break;
-						}
-					} else if (i >= endIndex) {
-						break;
-					}
-					Slot slot1 = this.inventorySlots.get(i);
-					ItemStack itemstack1 = slot1.getStack();
-					if (itemstack1.isEmpty() && slot1.isItemValid(stack)) {
-						if (stack.getCount() > slot1.getSlotStackLimit()) {
-							slot1.putStack(stack.splitStack(slot1.getSlotStackLimit()));
-						} else {
-							slot1.putStack(stack.splitStack(stack.getCount()));
-						}
-						slot1.onSlotChanged();
-						flag = true;
-						break;
-					}
-					if (reverseDirection) {
-						--i;
-					} else {
-						++i;
-					}
-				}
-			}
-			return flag;
 		}
 
 		@Override
@@ -251,10 +103,10 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 			this.y = y;
 			this.z = z;
 			this.entity = entity;
-			this.xSize = 176;
-			this.ySize = 166;
+			this.xSize = 256;
+			this.ySize = 213;
 		}
-		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/spectralpowerinterface.png");
+		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/teleporterinterface.png");
 		@Override
 		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 			this.drawDefaultBackground();
@@ -270,10 +122,6 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 			int l = (this.height - this.ySize) / 2;
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/icons_gui_spectral_power_infuser.png"));
-			this.drawTexturedModalRect(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256);
 		}
 
 		@Override
@@ -293,7 +141,47 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-			this.fontRenderer.drawString("Spectral power infuser", 39, 1, -1);
+			this.fontRenderer.drawString("Teleporter", 101, 8, -1);
+			this.fontRenderer.drawString("1. ", 11, 26, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 29, 26, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN1PosX) + "", 128, 26, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN1PosY) + "", 173, 26, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN1PosZ) + "", 209, 26, -1);
+			this.fontRenderer.drawString("2.", 11, 44, -1);
+			this.fontRenderer.drawString("3.", 11, 62, -1);
+			this.fontRenderer.drawString("4.", 11, 80, -1);
+			this.fontRenderer.drawString("5.", 11, 98, -1);
+			this.fontRenderer.drawString("6.", 11, 116, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 29, 44, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN2PosX) + "", 128, 44, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN2PosY) + "", 173, 44, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN2PosZ) + "", 209, 44, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 29, 62, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN3PosX) + "", 128, 62, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN3PosY) + "", 173, 62, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN3PosZ) + "", 209, 62, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 29, 80, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN4PosX) + "", 128, 80, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN4PosY) + "", 173, 80, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN4PosZ) + "", 209, 80, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 29, 98, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN5PosX) + "", 128, 98, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN5PosY) + "", 173, 98, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN5PosZ) + "", 209, 98, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 29, 116, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN6PosX) + "", 128, 116, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN6PosY) + "", 173, 116, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN6PosZ) + "", 209, 116, -1);
+			this.fontRenderer.drawString("Energy stored", 180, 143, -16738048);
+			this.fontRenderer.drawString("" + (new Object() {
+				public double getValue(BlockPos pos, String tag) {
+					TileEntity tileEntity = world.getTileEntity(pos);
+					if (tileEntity != null)
+						return tileEntity.getTileData().getDouble(tag);
+					return 0;
+				}
+			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 200, 170, -16711936);
+			this.fontRenderer.drawString("/ 1000 MER", 193, 179, -16711936);
 		}
 
 		@Override
@@ -305,11 +193,16 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 		@Override
 		public void initGui() {
 			super.initGui();
-			this.guiLeft = (this.width - 176) / 2;
-			this.guiTop = (this.height - 166) / 2;
+			this.guiLeft = (this.width - 256) / 2;
+			this.guiTop = (this.height - 213) / 2;
 			Keyboard.enableRepeatEvents(true);
 			this.buttonList.clear();
-			this.buttonList.add(new GuiButton(0, this.guiLeft + 88, this.guiTop + 56, 78, 20, "View recipes"));
+			this.buttonList.add(new GuiButton(0, this.guiLeft + 20, this.guiTop + 143, 45, 20, "Go to 1"));
+			this.buttonList.add(new GuiButton(1, this.guiLeft + 20, this.guiTop + 179, 45, 20, "Go to 2"));
+			this.buttonList.add(new GuiButton(2, this.guiLeft + 74, this.guiTop + 143, 45, 20, "Go to 3"));
+			this.buttonList.add(new GuiButton(3, this.guiLeft + 74, this.guiTop + 179, 45, 20, "Go to 4"));
+			this.buttonList.add(new GuiButton(4, this.guiLeft + 128, this.guiTop + 143, 45, 20, "Go to 5"));
+			this.buttonList.add(new GuiButton(5, this.guiLeft + 128, this.guiTop + 179, 45, 20, "Go to 6"));
 		}
 
 		@Override
@@ -432,7 +325,62 @@ public class GuiSpectralPowerInterface extends ElementsMagicWitchcraft.ModElemen
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
-				ProcedureSpectralPowerInterfaceViewRecipesOnButtonClicked.executeProcedure($_dependencies);
+				ProcedureTeleporterInterfaceGoTo1OnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
+		if (buttonID == 1) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterInterfaceGoTo2OnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
+		if (buttonID == 2) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterInterfaceGoTo3OnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
+		if (buttonID == 3) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterInterfaceGoTo4OnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
+		if (buttonID == 4) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterInterfaceGoTo5OnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
+		if (buttonID == 5) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterInterfaceGoTo6OnButtonClicked.executeProcedure($_dependencies);
 			}
 		}
 	}

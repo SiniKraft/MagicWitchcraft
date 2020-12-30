@@ -11,38 +11,33 @@ import net.minecraft.world.World;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.Entity;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.Block;
 
-import java.util.List;
-
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureInvisibleMineEntityCollidesInTheBlock;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureCreativeMinerOnBlockRightClicked;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
-// locked elements for changing the item texture,
-// see models\items\invisiblemine.json .
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:invisiblemine")
+public class BlockCreativeMiner extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:creativeminer")
 	public static final Block block = null;
-	public BlockInvisibleMine(ElementsMagicWitchcraft instance) {
-		super(instance, 169);
+	public BlockCreativeMiner(ElementsMagicWitchcraft instance) {
+		super(instance, 321);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("invisiblemine"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("creativeminer"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
@@ -50,30 +45,19 @@ public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:invisiblemine", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:creativeminer", "inventory"));
 	}
-	public static class BlockCustom extends Block {
+	public static class BlockCustom extends BlockFalling {
 		public BlockCustom() {
-			super(Material.TNT);
-			setUnlocalizedName("invisiblemine");
-			setSoundType(SoundType.PLANT);
-			setHardness(0F);
-			setResistance(10F);
+			super(Material.SNOW);
+			setUnlocalizedName("creativeminer");
+			setSoundType(SoundType.SNOW);
+			setHarvestLevel("shovel", 1);
+			setHardness(0.3F);
+			setResistance(10000F);
 			setLightLevel(0F);
 			setLightOpacity(0);
 			setCreativeTab(TabMagicWitchCraft.tab);
-		}
-
-		@Override
-		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-			super.addInformation(itemstack, world, list, flag);
-			list.add("Invisible mine for trolling xD !");
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public BlockRenderLayer getBlockLayer() {
-			return BlockRenderLayer.TRANSLUCENT;
 		}
 
 		@Override
@@ -93,35 +77,25 @@ public class BlockInvisibleMine extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
-		public boolean isOpaqueCube(IBlockState state) {
-			return false;
-		}
-
-		@Override
 		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 			return false;
 		}
 
 		@Override
-		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-			return new AxisAlignedBB(0D, 0D, 0D, 1D, 0.125D, 1D);
-		}
-
-		@Override
-		public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-			super.onEntityCollidedWithBlock(world, pos, state, entity);
+		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing direction,
+				float hitX, float hitY, float hitZ) {
+			super.onBlockActivated(world, pos, state, entity, hand, direction, hitX, hitY, hitZ);
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
 			{
 				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
 				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
-				$_dependencies.put("entity", entity);
-				ProcedureInvisibleMineEntityCollidesInTheBlock.executeProcedure($_dependencies);
+				ProcedureCreativeMinerOnBlockRightClicked.executeProcedure($_dependencies);
 			}
+			return true;
 		}
 	}
 }

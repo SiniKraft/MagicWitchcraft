@@ -9,35 +9,36 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 
 import net.minecraft.world.World;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.Block;
 
 import java.util.Random;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureSpectralLeavesBlockDestroyedByPlayer;
-import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureSaverBlockUpdateTick;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockSpectralLeaves extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:spectralleaves")
+public class BlockSaverBlockYellow extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:saverblockyellow")
 	public static final Block block = null;
-	public BlockSpectralLeaves(ElementsMagicWitchcraft instance) {
-		super(instance, 62);
+	public BlockSaverBlockYellow(ElementsMagicWitchcraft instance) {
+		super(instance, 356);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("spectralleaves"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("saverblockyellow"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
@@ -45,34 +46,34 @@ public class BlockSpectralLeaves extends ElementsMagicWitchcraft.ModElement {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:spectralleaves", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:saverblockyellow", "inventory"));
 	}
 	public static class BlockCustom extends Block {
 		public BlockCustom() {
-			super(Material.LEAVES);
-			setUnlocalizedName("spectralleaves");
-			setSoundType(SoundType.PLANT);
-			setHardness(0.3F);
-			setResistance(10F);
+			super(Material.CLOTH);
+			setUnlocalizedName("saverblockyellow");
+			setSoundType(SoundType.CLOTH);
+			setHardness(10000F);
+			setResistance(10000F);
 			setLightLevel(0F);
-			setLightOpacity(0);
-			setCreativeTab(TabMagicWitchCraft.tab);
-		}
-
-		@SideOnly(Side.CLIENT)
-		@Override
-		public BlockRenderLayer getBlockLayer() {
-			return BlockRenderLayer.CUTOUT_MIPPED;
+			setLightOpacity(255);
+			setCreativeTab(null);
+			setBlockUnbreakable();
 		}
 
 		@Override
-		public boolean isOpaqueCube(IBlockState state) {
-			return false;
+		public int tickRate(World world) {
+			return 30;
 		}
 
 		@Override
-		public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
-			return 60;
+		public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+			return new ItemStack(Blocks.AIR, (int) (1));
+		}
+
+		@Override
+		public MapColor getMapColor(IBlockState state, IBlockAccess blockAccess, BlockPos pos) {
+			return MapColor.GREEN;
 		}
 
 		@Override
@@ -86,21 +87,29 @@ public class BlockSpectralLeaves extends ElementsMagicWitchcraft.ModElement {
 		}
 
 		@Override
-		public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer entity, boolean willHarvest) {
-			boolean retval = super.removedByPlayer(state, world, pos, entity, willHarvest);
+		public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+			super.onBlockAdded(world, pos, state);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
+		}
+
+		@Override
+		public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+			super.updateTick(world, pos, state, random);
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
 			{
 				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-				$_dependencies.put("entity", entity);
 				$_dependencies.put("x", x);
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
-				ProcedureSpectralLeavesBlockDestroyedByPlayer.executeProcedure($_dependencies);
+				ProcedureSaverBlockUpdateTick.executeProcedure($_dependencies);
 			}
-			return retval;
+			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
 		}
 	}
 }

@@ -11,10 +11,10 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.Mirror;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.BlockRenderLayer;
@@ -27,15 +27,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.material.Material;
@@ -45,58 +43,48 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.Block;
 
 import java.util.Random;
-import java.util.List;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureMysteriousExtractorUpdateTick;
-import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalEnergyConduitUpdateTick;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
-import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:mysterious_extractor")
+public class BlockMagicalEnergyConduit extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:magicalenergyconduit")
 	public static final Block block = null;
-	public BlockMysteriousExtractor(ElementsMagicWitchcraft instance) {
-		super(instance, 8);
+	public BlockMagicalEnergyConduit(ElementsMagicWitchcraft instance) {
+		super(instance, 329);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("mysterious_extractor"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("magicalenergyconduit"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		GameRegistry.registerTileEntity(TileEntityCustom.class, "magic_witchcraft:tileentitymysterious_extractor");
+		GameRegistry.registerTileEntity(TileEntityCustom.class, "magic_witchcraft:tileentitymagicalenergyconduit");
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:mysterious_extractor", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:magicalenergyconduit", "inventory"));
 	}
 	public static class BlockCustom extends Block implements ITileEntityProvider {
 		public static final PropertyDirection FACING = BlockHorizontal.FACING;
 		public BlockCustom() {
-			super(Material.IRON);
-			setUnlocalizedName("mysterious_extractor");
-			setSoundType(SoundType.METAL);
-			setHarvestLevel("pickaxe", 1);
-			setHardness(5F);
-			setResistance(10F);
+			super(Material.GLASS);
+			setUnlocalizedName("magicalenergyconduit");
+			setSoundType(SoundType.GLASS);
+			setHardness(0.5F);
+			setResistance(5F);
 			setLightLevel(0F);
 			setLightOpacity(0);
 			setCreativeTab(TabMagicWitchCraft.tab);
 			this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		}
-
-		@Override
-		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-			super.addInformation(itemstack, world, list, flag);
-			list.add("A machine used to extract mysterious things ...");
 		}
 
 		@SideOnly(Side.CLIENT)
@@ -106,8 +94,25 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 		}
 
 		@Override
-		public int tickRate(World world) {
-			return 100;
+		public boolean isFullCube(IBlockState state) {
+			return false;
+		}
+
+		@Override
+		public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+			switch ((EnumFacing) state.getValue(BlockHorizontal.FACING)) {
+				case UP :
+				case DOWN :
+				case SOUTH :
+				default :
+					return new AxisAlignedBB(0.688D, 0.312D, 1D, 0.313D, 0.687D, 0D);
+				case NORTH :
+					return new AxisAlignedBB(0.312D, 0.312D, 0D, 0.687D, 0.687D, 1D);
+				case WEST :
+					return new AxisAlignedBB(0D, 0.312D, 0.688D, 1D, 0.687D, 0.313D);
+				case EAST :
+					return new AxisAlignedBB(1D, 0.312D, 0.312D, 0D, 0.687D, 0.687D);
+			}
 		}
 
 		@Override
@@ -147,11 +152,6 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 		}
 
 		@Override
-		public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
-			return BlockFaceShape.UNDEFINED;
-		}
-
-		@Override
 		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 			return false;
 		}
@@ -171,29 +171,6 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 		@Override
 		public EnumBlockRenderType getRenderType(IBlockState state) {
 			return EnumBlockRenderType.MODEL;
-		}
-
-		@Override
-		public void breakBlock(World world, BlockPos pos, IBlockState state) {
-			TileEntity tileentity = world.getTileEntity(pos);
-			if (tileentity instanceof TileEntityCustom)
-				InventoryHelper.dropInventoryItems(world, pos, (TileEntityCustom) tileentity);
-			world.removeTileEntity(pos);
-			super.breakBlock(world, pos, state);
-		}
-
-		@Override
-		public boolean hasComparatorInputOverride(IBlockState state) {
-			return true;
-		}
-
-		@Override
-		public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof TileEntityCustom)
-				return Container.calcRedstoneFromInventory((TileEntityCustom) tileentity);
-			else
-				return 0;
 		}
 
 		@Override
@@ -217,30 +194,17 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
-				ProcedureMysteriousExtractorUpdateTick.executeProcedure($_dependencies);
+				ProcedureMagicalEnergyConduitUpdateTick.executeProcedure($_dependencies);
 			}
 			world.scheduleUpdate(new BlockPos(x, y, z), this, this.tickRate(world));
-		}
-
-		@Override
-		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing direction,
-				float hitX, float hitY, float hitZ) {
-			super.onBlockActivated(world, pos, state, entity, hand, direction, hitX, hitY, hitZ);
-			int x = pos.getX();
-			int y = pos.getY();
-			int z = pos.getZ();
-			if (entity instanceof EntityPlayer) {
-				((EntityPlayer) entity).openGui(MagicWitchcraft.instance, GuiMysteriousExtractorGUI.GUIID, world, x, y, z);
-			}
-			return true;
 		}
 	}
 
 	public static class TileEntityCustom extends TileEntityLockableLoot {
-		private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(6, ItemStack.EMPTY);
+		private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 		@Override
 		public int getSizeInventory() {
-			return 6;
+			return 0;
 		}
 
 		@Override
@@ -253,8 +217,6 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 
 		@Override
 		public boolean isItemValidForSlot(int index, ItemStack stack) {
-			if (index == 1)
-				return false;
 			return true;
 		}
 
@@ -265,7 +227,7 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 
 		@Override
 		public String getName() {
-			return "container.mysterious_extractor";
+			return "container.magicalenergyconduit";
 		}
 
 		@Override
@@ -306,18 +268,18 @@ public class BlockMysteriousExtractor extends ElementsMagicWitchcraft.ModElement
 
 		@Override
 		public int getInventoryStackLimit() {
-			return 64;
+			return 1;
 		}
 
 		@Override
 		public String getGuiID() {
-			return "magic_witchcraft:mysterious_extractor";
+			return "magic_witchcraft:magicalenergyconduit";
 		}
 
 		@Override
 		public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-			return new GuiMysteriousExtractorGUI.GuiContainerMod(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(),
-					playerIn);
+			this.fillWithLoot(playerIn);
+			return new ContainerChest(playerInventory, this, playerIn);
 		}
 
 		@Override

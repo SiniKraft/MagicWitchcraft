@@ -8,35 +8,34 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 
 import net.minecraft.world.World;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.Block;
 
-import fr.sinikraft.magicwitchcraft.procedure.ProcedureMagicalGrassEntityWalksOnTheBlock;
+import fr.sinikraft.magicwitchcraft.gui.GuiTeleporterBeaconInterface;
 import fr.sinikraft.magicwitchcraft.creativetab.TabMagicWitchCraft;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class BlockMagicalGrass extends ElementsMagicWitchcraft.ModElement {
-	@GameRegistry.ObjectHolder("magic_witchcraft:magicalgrass")
+public class BlockTeleporterBeacon extends ElementsMagicWitchcraft.ModElement {
+	@GameRegistry.ObjectHolder("magic_witchcraft:teleporterbeacon")
 	public static final Block block = null;
-	public BlockMagicalGrass(ElementsMagicWitchcraft instance) {
-		super(instance, 57);
+	public BlockTeleporterBeacon(ElementsMagicWitchcraft instance) {
+		super(instance, 340);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("magicalgrass"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("teleporterbeacon"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
@@ -44,44 +43,37 @@ public class BlockMagicalGrass extends ElementsMagicWitchcraft.ModElement {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation("magic_witchcraft:magicalgrass", "inventory"));
+				new ModelResourceLocation("magic_witchcraft:teleporterbeacon", "inventory"));
 	}
 	public static class BlockCustom extends Block {
 		public BlockCustom() {
-			super(Material.GRASS);
-			setUnlocalizedName("magicalgrass");
-			setSoundType(SoundType.GROUND);
-			setHarvestLevel("shovel", 1);
-			setHardness(0.6F);
+			super(Material.IRON);
+			setUnlocalizedName("teleporterbeacon");
+			setSoundType(SoundType.METAL);
+			setHarvestLevel("pickaxe", 1);
+			setHardness(6F);
 			setResistance(10F);
 			setLightLevel(0F);
 			setLightOpacity(255);
 			setCreativeTab(TabMagicWitchCraft.tab);
-			setDefaultSlipperiness(0.5f);
 		}
 
 		@Override
-		public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
-				net.minecraftforge.common.IPlantable plantable) {
-			return true;
+		public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+			return false;
 		}
 
 		@Override
-		public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-			drops.add(new ItemStack(BlockMagicalDirt.block, (int) (1)));
-		}
-
-		@Override
-		public void onEntityWalk(World world, BlockPos pos, Entity entity) {
-			super.onEntityWalk(world, pos, entity);
+		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing direction,
+				float hitX, float hitY, float hitZ) {
+			super.onBlockActivated(world, pos, state, entity, hand, direction, hitX, hitY, hitZ);
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			{
-				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
-				$_dependencies.put("entity", entity);
-				ProcedureMagicalGrassEntityWalksOnTheBlock.executeProcedure($_dependencies);
+			if (entity instanceof EntityPlayer) {
+				((EntityPlayer) entity).openGui(MagicWitchcraft.instance, GuiTeleporterBeaconInterface.GUIID, world, x, y, z);
 			}
+			return true;
 		}
 	}
 }

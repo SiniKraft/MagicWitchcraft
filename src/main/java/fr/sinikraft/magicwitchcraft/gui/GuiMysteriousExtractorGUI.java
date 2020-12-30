@@ -30,6 +30,7 @@ import java.util.HashMap;
 
 import java.io.IOException;
 
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureMysteriousExtractorGUIViewRecipesOnButtonClicked;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
@@ -254,8 +255,6 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 			int l = (this.height - this.ySize) / 2;
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/mysterious_log.png"));
-			this.drawTexturedModalRect(this.guiLeft + 7, this.guiTop + 29, 0, 0, 256, 256);
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
 			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
 		}
@@ -293,6 +292,7 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 			this.guiTop = (this.height - 166) / 2;
 			Keyboard.enableRepeatEvents(true);
 			this.buttonList.clear();
+			this.buttonList.add(new GuiButton(0, this.guiLeft + 52, this.guiTop + 56, 72, 20, "View recipes"));
 		}
 
 		@Override
@@ -407,6 +407,17 @@ public class GuiMysteriousExtractorGUI extends ElementsMagicWitchcraft.ModElemen
 		// security measure to prevent arbitrary chunk generation
 		if (!world.isBlockLoaded(new BlockPos(x, y, z)))
 			return;
+		if (buttonID == 0) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureMysteriousExtractorGUIViewRecipesOnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
 	}
 
 	private static void handleSlotAction(EntityPlayer entity, int slotID, int changeType, int meta, int x, int y, int z) {

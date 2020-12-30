@@ -19,7 +19,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Container;
-import net.minecraft.init.Items;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -31,16 +30,15 @@ import java.util.HashMap;
 
 import java.io.IOException;
 
-import fr.sinikraft.magicwitchcraft.item.ItemMagicalOrb;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
-	public static int GUIID = 5;
+public class GuiMysteriousExtractorRecipe1 extends ElementsMagicWitchcraft.ModElement {
+	public static int GUIID = 16;
 	public static HashMap guistate = new HashMap();
-	public GuiAtomicFusionerGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 203);
+	public GuiMysteriousExtractorRecipe1(ElementsMagicWitchcraft instance) {
+		super(instance, 366);
 	}
 
 	@Override
@@ -60,31 +58,29 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			this.x = x;
 			this.y = y;
 			this.z = z;
-			this.internal = new InventoryBasic("", true, 5);
+			this.internal = new InventoryBasic("", true, 6);
 			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
 			if (ent instanceof IInventory)
 				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 8, 30) {
-			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 44, 12) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(ItemMagicalOrb.block, (int) (1)).getItem() == stack.getItem());
-				}
-			}));
-			this.customSlots.put(2, this.addSlotToContainer(new Slot(internal, 2, 44, 48) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(Items.DIAMOND, (int) (1)).getItem() == stack.getItem());
-				}
-			}));
-			this.customSlots.put(3, this.addSlotToContainer(new Slot(internal, 3, 116, 30) {
+			this.customSlots.put(5, this.addSlotToContainer(new Slot(internal, 5, 116, 30) {
 				@Override
 				public boolean isItemValid(ItemStack stack) {
 					return false;
 				}
 			}));
-			this.customSlots.put(4, this.addSlotToContainer(new Slot(internal, 4, 152, 30) {
+			this.customSlots.put(4, this.addSlotToContainer(new Slot(internal, 4, 44, 30) {
+				@Override
+				public boolean isItemValid(ItemStack stack) {
+					return false;
+				}
+			}));
+			this.customSlots.put(2, this.addSlotToContainer(new Slot(internal, 2, 44, 57) {
+				@Override
+				public boolean isItemValid(ItemStack stack) {
+					return false;
+				}
+			}));
+			this.customSlots.put(3, this.addSlotToContainer(new Slot(internal, 3, 116, 57) {
 				@Override
 				public boolean isItemValid(ItemStack stack) {
 					return false;
@@ -115,18 +111,18 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			if (slot != null && slot.getHasStack()) {
 				ItemStack itemstack1 = slot.getStack();
 				itemstack = itemstack1.copy();
-				if (index < 5) {
-					if (!this.mergeItemStack(itemstack1, 5, this.inventorySlots.size(), true)) {
+				if (index < 4) {
+					if (!this.mergeItemStack(itemstack1, 4, this.inventorySlots.size(), true)) {
 						return ItemStack.EMPTY;
 					}
 					slot.onSlotChange(itemstack1, itemstack);
-				} else if (!this.mergeItemStack(itemstack1, 0, 5, false)) {
-					if (index < 5 + 27) {
-						if (!this.mergeItemStack(itemstack1, 5 + 27, this.inventorySlots.size(), true)) {
+				} else if (!this.mergeItemStack(itemstack1, 0, 4, false)) {
+					if (index < 4 + 27) {
+						if (!this.mergeItemStack(itemstack1, 4 + 27, this.inventorySlots.size(), true)) {
 							return ItemStack.EMPTY;
 						}
 					} else {
-						if (!this.mergeItemStack(itemstack1, 5, 5 + 27, false)) {
+						if (!this.mergeItemStack(itemstack1, 4, 4 + 27, false)) {
 							return ItemStack.EMPTY;
 						}
 					}
@@ -258,7 +254,7 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			this.xSize = 176;
 			this.ySize = 166;
 		}
-		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/atomicfusionergui.png");
+		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/mysteriousextractorrecipe1.png");
 		@Override
 		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 			this.drawDefaultBackground();
@@ -276,7 +272,9 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			zLevel = 100.0F;
 			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
 			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/capturer_2.png"));
+			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
+			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 56, 0, 0, 256, 256);
+			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/mysteriousextractorrecipe1_ingredients.png"));
 			this.drawTexturedModalRect(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256);
 		}
 
@@ -297,7 +295,7 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-			this.fontRenderer.drawString("Atomic fusioner", 54, 2, -1);
+			this.fontRenderer.drawString("Recipes - Mysterious extractor", 16, 5, -1);
 		}
 
 		@Override

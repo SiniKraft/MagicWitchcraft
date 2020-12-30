@@ -13,16 +13,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Container;
-import net.minecraft.init.Items;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.GuiButton;
 
 import java.util.function.Supplier;
@@ -31,16 +29,17 @@ import java.util.HashMap;
 
 import java.io.IOException;
 
-import fr.sinikraft.magicwitchcraft.item.ItemMagicalOrb;
+import fr.sinikraft.magicwitchcraft.procedure.ProcedureTeleporterBeaconInterfaceSetOnButtonClicked;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraft;
 import fr.sinikraft.magicwitchcraft.ElementsMagicWitchcraft;
 
 @ElementsMagicWitchcraft.ModElement.Tag
-public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
-	public static int GUIID = 5;
+public class GuiTeleporterBeaconInterface extends ElementsMagicWitchcraft.ModElement {
+	public static int GUIID = 14;
 	public static HashMap guistate = new HashMap();
-	public GuiAtomicFusionerGUI(ElementsMagicWitchcraft instance) {
-		super(instance, 203);
+	public GuiTeleporterBeaconInterface(ElementsMagicWitchcraft instance) {
+		super(instance, 342);
 	}
 
 	@Override
@@ -60,43 +59,7 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			this.x = x;
 			this.y = y;
 			this.z = z;
-			this.internal = new InventoryBasic("", true, 5);
-			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
-			if (ent instanceof IInventory)
-				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 8, 30) {
-			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 44, 12) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(ItemMagicalOrb.block, (int) (1)).getItem() == stack.getItem());
-				}
-			}));
-			this.customSlots.put(2, this.addSlotToContainer(new Slot(internal, 2, 44, 48) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return (new ItemStack(Items.DIAMOND, (int) (1)).getItem() == stack.getItem());
-				}
-			}));
-			this.customSlots.put(3, this.addSlotToContainer(new Slot(internal, 3, 116, 30) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return false;
-				}
-			}));
-			this.customSlots.put(4, this.addSlotToContainer(new Slot(internal, 4, 152, 30) {
-				@Override
-				public boolean isItemValid(ItemStack stack) {
-					return false;
-				}
-			}));
-			int si;
-			int sj;
-			for (si = 0; si < 3; ++si)
-				for (sj = 0; sj < 9; ++sj)
-					this.addSlotToContainer(new Slot(player.inventory, sj + (si + 1) * 9, 0 + 8 + sj * 18, 0 + 84 + si * 18));
-			for (si = 0; si < 9; ++si)
-				this.addSlotToContainer(new Slot(player.inventory, si, 0 + 8 + si * 18, 0 + 142));
+			this.internal = new InventoryBasic("", true, 0);
 		}
 
 		public Map<Integer, Slot> get() {
@@ -106,126 +69,6 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public boolean canInteractWith(EntityPlayer player) {
 			return internal.isUsableByPlayer(player);
-		}
-
-		@Override
-		public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-			ItemStack itemstack = ItemStack.EMPTY;
-			Slot slot = (Slot) this.inventorySlots.get(index);
-			if (slot != null && slot.getHasStack()) {
-				ItemStack itemstack1 = slot.getStack();
-				itemstack = itemstack1.copy();
-				if (index < 5) {
-					if (!this.mergeItemStack(itemstack1, 5, this.inventorySlots.size(), true)) {
-						return ItemStack.EMPTY;
-					}
-					slot.onSlotChange(itemstack1, itemstack);
-				} else if (!this.mergeItemStack(itemstack1, 0, 5, false)) {
-					if (index < 5 + 27) {
-						if (!this.mergeItemStack(itemstack1, 5 + 27, this.inventorySlots.size(), true)) {
-							return ItemStack.EMPTY;
-						}
-					} else {
-						if (!this.mergeItemStack(itemstack1, 5, 5 + 27, false)) {
-							return ItemStack.EMPTY;
-						}
-					}
-					return ItemStack.EMPTY;
-				}
-				if (itemstack1.getCount() == 0) {
-					slot.putStack(ItemStack.EMPTY);
-				} else {
-					slot.onSlotChanged();
-				}
-				if (itemstack1.getCount() == itemstack.getCount()) {
-					return ItemStack.EMPTY;
-				}
-				slot.onTake(playerIn, itemstack1);
-			}
-			return itemstack;
-		}
-
-		@Override /**
-					 * Merges provided ItemStack with the first avaliable one in the
-					 * container/player inventor between minIndex (included) and maxIndex
-					 * (excluded). Args : stack, minIndex, maxIndex, negativDirection. /!\ the
-					 * Container implementation do not check if the item is valid for the slot
-					 */
-		protected boolean mergeItemStack(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection) {
-			boolean flag = false;
-			int i = startIndex;
-			if (reverseDirection) {
-				i = endIndex - 1;
-			}
-			if (stack.isStackable()) {
-				while (!stack.isEmpty()) {
-					if (reverseDirection) {
-						if (i < startIndex) {
-							break;
-						}
-					} else if (i >= endIndex) {
-						break;
-					}
-					Slot slot = this.inventorySlots.get(i);
-					ItemStack itemstack = slot.getStack();
-					if (slot.isItemValid(itemstack) && !itemstack.isEmpty() && itemstack.getItem() == stack.getItem()
-							&& (!stack.getHasSubtypes() || stack.getMetadata() == itemstack.getMetadata())
-							&& ItemStack.areItemStackTagsEqual(stack, itemstack)) {
-						int j = itemstack.getCount() + stack.getCount();
-						int maxSize = Math.min(slot.getSlotStackLimit(), stack.getMaxStackSize());
-						if (j <= maxSize) {
-							stack.setCount(0);
-							itemstack.setCount(j);
-							slot.putStack(itemstack);
-							flag = true;
-						} else if (itemstack.getCount() < maxSize) {
-							stack.shrink(maxSize - itemstack.getCount());
-							itemstack.setCount(maxSize);
-							slot.putStack(itemstack);
-							flag = true;
-						}
-					}
-					if (reverseDirection) {
-						--i;
-					} else {
-						++i;
-					}
-				}
-			}
-			if (!stack.isEmpty()) {
-				if (reverseDirection) {
-					i = endIndex - 1;
-				} else {
-					i = startIndex;
-				}
-				while (true) {
-					if (reverseDirection) {
-						if (i < startIndex) {
-							break;
-						}
-					} else if (i >= endIndex) {
-						break;
-					}
-					Slot slot1 = this.inventorySlots.get(i);
-					ItemStack itemstack1 = slot1.getStack();
-					if (itemstack1.isEmpty() && slot1.isItemValid(stack)) {
-						if (stack.getCount() > slot1.getSlotStackLimit()) {
-							slot1.putStack(stack.splitStack(slot1.getSlotStackLimit()));
-						} else {
-							slot1.putStack(stack.splitStack(stack.getCount()));
-						}
-						slot1.onSlotChanged();
-						flag = true;
-						break;
-					}
-					if (reverseDirection) {
-						--i;
-					} else {
-						++i;
-					}
-				}
-			}
-			return flag;
 		}
 
 		@Override
@@ -248,6 +91,8 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 		private World world;
 		private int x, y, z;
 		private EntityPlayer entity;
+		GuiTextField NewName;
+		GuiTextField NumberToSet;
 		public GuiWindow(World world, int x, int y, int z, EntityPlayer entity) {
 			super(new GuiContainerMod(world, x, y, z, entity));
 			this.world = world;
@@ -255,10 +100,10 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			this.y = y;
 			this.z = z;
 			this.entity = entity;
-			this.xSize = 176;
-			this.ySize = 166;
+			this.xSize = 187;
+			this.ySize = 187;
 		}
-		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/atomicfusionergui.png");
+		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/teleporterbeaconinterface.png");
 		@Override
 		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 			this.drawDefaultBackground();
@@ -274,30 +119,50 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 			int l = (this.height - this.ySize) / 2;
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 29, 0, 0, 256, 256);
-			this.mc.renderEngine.bindTexture(new ResourceLocation("magic_witchcraft:textures/capturer_2.png"));
-			this.drawTexturedModalRect(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256);
 		}
 
 		@Override
 		public void updateScreen() {
 			super.updateScreen();
+			NewName.updateCursorCounter();
+			NumberToSet.updateCursorCounter();
 		}
 
 		@Override
 		protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+			NewName.mouseClicked(mouseX - guiLeft, mouseY - guiTop, mouseButton);
+			NumberToSet.mouseClicked(mouseX - guiLeft, mouseY - guiTop, mouseButton);
 			super.mouseClicked(mouseX, mouseY, mouseButton);
 		}
 
 		@Override
 		protected void keyTyped(char typedChar, int keyCode) throws IOException {
+			NewName.textboxKeyTyped(typedChar, keyCode);
+			if (NewName.isFocused())
+				return;
+			NumberToSet.textboxKeyTyped(typedChar, keyCode);
+			if (NumberToSet.isFocused())
+				return;
 			super.keyTyped(typedChar, keyCode);
 		}
 
 		@Override
 		protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-			this.fontRenderer.drawString("Atomic fusioner", 54, 2, -1);
+			this.fontRenderer.drawString("Teleporter beacon", 48, 4, -1);
+			this.fontRenderer.drawString("1.", 12, 22, -1);
+			this.fontRenderer.drawString("2.", 93, 22, -1);
+			this.fontRenderer.drawString("3.", 12, 40, -1);
+			this.fontRenderer.drawString("4.", 93, 40, -1);
+			this.fontRenderer.drawString("5.", 12, 58, -1);
+			this.fontRenderer.drawString("6.", 93, 58, -1);
+			NewName.drawTextBox();
+			NumberToSet.drawTextBox();
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 111, 22, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 111, 40, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 111, 58, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 30, 22, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 30, 40, -1);
+			this.fontRenderer.drawString("" + (MagicWitchcraftVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 30, 58, -1);
 		}
 
 		@Override
@@ -309,10 +174,19 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 		@Override
 		public void initGui() {
 			super.initGui();
-			this.guiLeft = (this.width - 176) / 2;
-			this.guiTop = (this.height - 166) / 2;
+			this.guiLeft = (this.width - 187) / 2;
+			this.guiTop = (this.height - 187) / 2;
 			Keyboard.enableRepeatEvents(true);
 			this.buttonList.clear();
+			NewName = new GuiTextField(0, this.fontRenderer, 12, 85, 63, 20);
+			guistate.put("text:NewName", NewName);
+			NewName.setMaxStringLength(32767);
+			NewName.setText("Name");
+			NumberToSet = new GuiTextField(1, this.fontRenderer, 12, 112, 120, 20);
+			guistate.put("text:NumberToSet", NumberToSet);
+			NumberToSet.setMaxStringLength(32767);
+			NumberToSet.setText("Number to set");
+			this.buttonList.add(new GuiButton(0, this.guiLeft + 12, this.guiTop + 139, 30, 20, "Set"));
 		}
 
 		@Override
@@ -427,6 +301,18 @@ public class GuiAtomicFusionerGUI extends ElementsMagicWitchcraft.ModElement {
 		// security measure to prevent arbitrary chunk generation
 		if (!world.isBlockLoaded(new BlockPos(x, y, z)))
 			return;
+		if (buttonID == 0) {
+			{
+				java.util.HashMap<String, Object> $_dependencies = new java.util.HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("guistate", guistate);
+				$_dependencies.put("world", world);
+				ProcedureTeleporterBeaconInterfaceSetOnButtonClicked.executeProcedure($_dependencies);
+			}
+		}
 	}
 
 	private static void handleSlotAction(EntityPlayer entity, int slotID, int changeType, int meta, int x, int y, int z) {
