@@ -1,0 +1,20 @@
+{
+	"homepage": "https://github.com/SiniKraft/MagicWitchcraft/releases",
+	"1.12.2": {
+		"pre-release_1.3-b1": "Changelog avaible on releases page.",
+		"release_1.3": "Changelog avaible on releases page.",
+		"release_1.2": "Changelog avaible on releases page.",
+		"release_1.1": "Changelog avaible on releases page.",
+		"release_1.0": "Changelog avaible on releases page."
+	},
+	"1.14.4": {
+		"release_1.0": "Changelog avaible on releases page."
+	},
+	"1.15.2": {
+		"release_1.0": "Changelog avaible on releases page."
+	},
+	"promos": {
+		"1.12.2-latest": "pre-release_1.3-b1",
+		"1.12.2-recommended": "release_1.2"
+	}
+}
