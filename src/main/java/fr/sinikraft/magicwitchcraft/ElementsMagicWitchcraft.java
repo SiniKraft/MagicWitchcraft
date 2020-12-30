@@ -45,11 +45,21 @@ import java.util.ArrayList;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Retention;
 
+import fr.sinikraft.magicwitchcraft.gui.GuiTeleporterInterface;
+import fr.sinikraft.magicwitchcraft.gui.GuiTeleporterBeaconInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInterface;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInfuserRecipe4;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInfuserRecipe3;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInfuserRecipe2;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralPowerInfuserRecipe1;
+import fr.sinikraft.magicwitchcraft.gui.GuiSpectralFurnaceInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiSpectralChestInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiSolarPanelGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiRightClickerInterface;
+import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorRecipe1;
 import fr.sinikraft.magicwitchcraft.gui.GuiMysteriousExtractorGUI;
+import fr.sinikraft.magicwitchcraft.gui.GuiMagicalEnergyGeneratorInterface;
+import fr.sinikraft.magicwitchcraft.gui.GuiMagicalEnergyCubeInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiMagicalCompressorGUI;
 import fr.sinikraft.magicwitchcraft.gui.GuiEnergyCrystalChargerInterface;
 import fr.sinikraft.magicwitchcraft.gui.GuiDimensionalSwitcherGUI;
@@ -158,6 +168,26 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiAutoBlockRemoverInterface.GuiContainerMod(world, x, y, z, player);
 			if (id == GuiEnergyCrystalChargerInterface.GUIID)
 				return new GuiEnergyCrystalChargerInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiMagicalEnergyGeneratorInterface.GUIID)
+				return new GuiMagicalEnergyGeneratorInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiMagicalEnergyCubeInterface.GUIID)
+				return new GuiMagicalEnergyCubeInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiTeleporterInterface.GUIID)
+				return new GuiTeleporterInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiTeleporterBeaconInterface.GUIID)
+				return new GuiTeleporterBeaconInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralFurnaceInterface.GUIID)
+				return new GuiSpectralFurnaceInterface.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiMysteriousExtractorRecipe1.GUIID)
+				return new GuiMysteriousExtractorRecipe1.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe1.GUIID)
+				return new GuiSpectralPowerInfuserRecipe1.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe2.GUIID)
+				return new GuiSpectralPowerInfuserRecipe2.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe3.GUIID)
+				return new GuiSpectralPowerInfuserRecipe3.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe4.GUIID)
+				return new GuiSpectralPowerInfuserRecipe4.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
@@ -183,6 +213,26 @@ public class ElementsMagicWitchcraft implements IFuelHandler, IWorldGenerator {
 				return new GuiAutoBlockRemoverInterface.GuiWindow(world, x, y, z, player);
 			if (id == GuiEnergyCrystalChargerInterface.GUIID)
 				return new GuiEnergyCrystalChargerInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiMagicalEnergyGeneratorInterface.GUIID)
+				return new GuiMagicalEnergyGeneratorInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiMagicalEnergyCubeInterface.GUIID)
+				return new GuiMagicalEnergyCubeInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiTeleporterInterface.GUIID)
+				return new GuiTeleporterInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiTeleporterBeaconInterface.GUIID)
+				return new GuiTeleporterBeaconInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralFurnaceInterface.GUIID)
+				return new GuiSpectralFurnaceInterface.GuiWindow(world, x, y, z, player);
+			if (id == GuiMysteriousExtractorRecipe1.GUIID)
+				return new GuiMysteriousExtractorRecipe1.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe1.GUIID)
+				return new GuiSpectralPowerInfuserRecipe1.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe2.GUIID)
+				return new GuiSpectralPowerInfuserRecipe2.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe3.GUIID)
+				return new GuiSpectralPowerInfuserRecipe3.GuiWindow(world, x, y, z, player);
+			if (id == GuiSpectralPowerInfuserRecipe4.GUIID)
+				return new GuiSpectralPowerInfuserRecipe4.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

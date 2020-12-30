@@ -45,7 +45,7 @@ import java.util.function.Supplier;
 @Mod(modid = MagicWitchcraft.MODID, version = MagicWitchcraft.VERSION)
 public class MagicWitchcraft {
 	public static final String MODID = "magic_witchcraft";
-	public static final String VERSION = "release_1.2";
+	public static final String VERSION = "pre-release_1.3-b1";
 	public static final SimpleNetworkWrapper PACKET_HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel("magic_witchcraft:a");
 	@SidedProxy(clientSide = "fr.sinikraft.magicwitchcraft.ClientProxyMagicWitchcraft", serverSide = "fr.sinikraft.magicwitchcraft.ServerProxyMagicWitchcraft")
 	public static IProxyMagicWitchcraft proxy;

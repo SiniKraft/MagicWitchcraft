@@ -177,8 +177,10 @@ public class ProcedureMagicWandRightClickedInAir extends ElementsMagicWitchcraft
 								.getBlock() == Blocks.GRASS.getDefaultState().getBlock())
 								|| ((world.getBlockState(new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)))))
 										.getBlock() == Blocks.DIRT.getStateFromMeta(0).getBlock()))
-								|| ((world.getBlockState(new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)))))
-										.getBlock() == Blocks.SAND.getStateFromMeta(0).getBlock()))) {
+								|| (((world.getBlockState(new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)))))
+										.getBlock() == Blocks.STONE.getStateFromMeta(0).getBlock())
+										|| ((world.getBlockState(new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)))))
+												.getBlock() == Blocks.SAND.getStateFromMeta(0).getBlock())))) {
 							{
 								BlockPos _bp = new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)));
 								IBlockState _bs = Blocks.PACKED_ICE.getDefaultState();
