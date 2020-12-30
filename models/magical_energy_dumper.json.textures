@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "magical_energy_dumper_inside",
+        "1": "magical_energy_dumper_outside",
+        "2": "magical_energy_dumper_top",
+        "missing": "troll_water"
+      },
+      "name": "default"
+    }
+  }
+}

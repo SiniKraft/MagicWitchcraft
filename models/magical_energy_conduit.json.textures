@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "magical_energy",
+        "1": "magic_glass"
+      },
+      "name": "default"
+    }
+  }
+}
