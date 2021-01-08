@@ -1,0 +1,20 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1"
+  ],
+  "key": {
+    "0": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "1": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:magicalenergydumper",
+    "count": 1
+  }
+}

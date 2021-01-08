@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:magicalwheatstage6"
+    "": {
+      "model": "magic_witchcraft:block/magicalwheatstage6"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "parent": "block/half_slab",
+  "parent": "block/slab",
   "textures": {
     "bottom": "magic_witchcraft:blocks/magical_block",
     "top": "magic_witchcraft:blocks/magical_block",

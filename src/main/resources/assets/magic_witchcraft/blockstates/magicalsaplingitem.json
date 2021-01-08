@@ -1,7 +1,7 @@
 {
   "variants": {
-    "type=dandelion": {
-      "model": "magic_witchcraft:magicalsaplingitem"
+    "": {
+      "model": "magic_witchcraft:block/magicalsaplingitem"
     }
   }
 }

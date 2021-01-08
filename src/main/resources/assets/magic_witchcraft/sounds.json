@@ -1,11 +1,6 @@
 {
   "honey_pops": {
     "category": "record",
-    "sounds": [
-      {
-        "name": "magic_witchcraft:honey_pops",
-        "stream": true
-      }
-    ]
+    "sounds": []
   }
 }

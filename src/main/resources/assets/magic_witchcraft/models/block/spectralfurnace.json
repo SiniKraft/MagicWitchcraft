@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "magic_witchcraft:blocks/spectral_furnace_top",
+    "up": "magic_witchcraft:blocks/spectral_furnace_top",
+    "north": "magic_witchcraft:blocks/spectral_furnace_front_off",
+    "east": "magic_witchcraft:blocks/spectral_furnace_side",
+    "south": "magic_witchcraft:blocks/spectral_furnace_side",
+    "west": "magic_witchcraft:blocks/spectral_furnace_side",
+    "particle": "magic_witchcraft:blocks/spectral_furnace_top"
+  }
+}

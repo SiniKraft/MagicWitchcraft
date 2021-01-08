@@ -1,29 +1,26 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:deadlog"
-    },
     "facing=south": {
-      "model": "magic_witchcraft:deadlog"
+      "model": "magic_witchcraft:block/deadlog"
     },
     "facing=north": {
-      "model": "magic_witchcraft:deadlog"
+      "model": "magic_witchcraft:block/deadlog"
     },
     "facing=east": {
-      "model": "magic_witchcraft:deadlog",
+      "model": "magic_witchcraft:block/deadlog",
       "x": 90
     },
     "facing=west": {
-      "model": "magic_witchcraft:deadlog",
+      "model": "magic_witchcraft:block/deadlog",
       "x": 90
     },
     "facing=up": {
-      "model": "magic_witchcraft:deadlog",
+      "model": "magic_witchcraft:block/deadlog",
       "x": 90,
       "y": 90
     },
     "facing=down": {
-      "model": "magic_witchcraft:deadlog",
+      "model": "magic_witchcraft:block/deadlog",
       "x": 90,
       "y": 90
     }

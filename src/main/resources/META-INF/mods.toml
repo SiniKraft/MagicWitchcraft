@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+
+[[mods]]
+modId="magic_witchcraft"
+version="1.4.0"
+displayName="Magic Witchcraft"
+credits="You aren't allowed to distribute this mod without my agreement ! See license for more infos."
+displayURL="https://github.com/SiniKraft/MagicWitchcraft"
+updateJSONURL="https://raw.githubusercontent.com/SiniKraft/MagicWitchcraft/master/update.json"
+logoFile="logo.png"
+authors="SiniKraft"
+description='''
+A mysterious and magical mod !
+'''
+
+[[dependencies.magic_witchcraft]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

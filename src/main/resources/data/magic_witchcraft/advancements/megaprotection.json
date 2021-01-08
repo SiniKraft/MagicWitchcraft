@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:purpleobsidian"
+    },
+    "title": {
+      "translate": "advancements.megaprotection.title"
+    },
+    "description": {
+      "translate": "advancements.megaprotection.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "megaprotection": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "magic_witchcraft:purpleobsidian",
+            "count": {
+              "min": 1,
+              "max": 2304
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "magic_witchcraft:obsidianmaker"
+}

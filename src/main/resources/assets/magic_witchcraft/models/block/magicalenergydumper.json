@@ -1,0 +1,11 @@
+{
+  "parent": "magic_witchcraft:custom/magical_energy_dumper",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magical_energy_dumper_outside",
+    "particle": "magic_witchcraft:blocks/magical_energy_dumper_outside",
+    "0": "magic_witchcraft:blocks/magical_energy_dumper_inside",
+    "1": "magic_witchcraft:blocks/magical_energy_dumper_outside",
+    "2": "magic_witchcraft:blocks/magical_energy_dumper_top",
+    "missing": "magic_witchcraft:blocks/troll_water"
+  }
+}

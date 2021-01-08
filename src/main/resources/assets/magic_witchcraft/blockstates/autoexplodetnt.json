@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:autoexplodetnt"
+    "": {
+      "model": "magic_witchcraft:block/autoexplodetnt"
     }
   }
 }

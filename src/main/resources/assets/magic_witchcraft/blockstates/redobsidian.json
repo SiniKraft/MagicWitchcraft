@@ -1,29 +1,26 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:redobsidian"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:redobsidian"
+      "model": "magic_witchcraft:block/redobsidian"
     },
     "facing=east": {
-      "model": "magic_witchcraft:redobsidian",
+      "model": "magic_witchcraft:block/redobsidian",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:redobsidian",
+      "model": "magic_witchcraft:block/redobsidian",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:redobsidian",
+      "model": "magic_witchcraft:block/redobsidian",
       "y": 270
     },
     "facing=up": {
-      "model": "magic_witchcraft:redobsidian",
+      "model": "magic_witchcraft:block/redobsidian",
       "x": 270
     },
     "facing=down": {
-      "model": "magic_witchcraft:redobsidian",
+      "model": "magic_witchcraft:block/redobsidian",
       "x": 90
     }
   }

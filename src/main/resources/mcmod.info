@@ -3,12 +3,12 @@
     "modid": "magic_witchcraft",
     "name": "Magic Witchcraft",
     "description": "A mysterious and magical mod !",
-    "version": "release_1.2",
+    "version": "1.4.0",
     "credits": "You aren't allowed to distribute this mod without my agreement ! See license for more infos.",
-    "logoFile": "",
+    "logoFile": "assets/magic_witchcraft/textures/agicitchcraft_logo_resized.png",
     "mcversion": "1.12.2",
     "url": "https://github.com/SiniKraft/MagicWitchcraft",
-    "updateUrl": "",
+    "updateUrl": "https://raw.githubusercontent.com/SiniKraft/MagicWitchcraft/master/update.json",
     "authorList": [
       "SiniKraft"
     ],

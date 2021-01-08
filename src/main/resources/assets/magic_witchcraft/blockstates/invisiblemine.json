@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:invisiblemine"
+    "": {
+      "model": "magic_witchcraft:block/invisiblemine"
     }
   }
 }

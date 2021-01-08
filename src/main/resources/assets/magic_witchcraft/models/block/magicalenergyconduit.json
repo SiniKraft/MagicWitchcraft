@@ -1,0 +1,9 @@
+{
+  "parent": "magic_witchcraft:custom/magical_energy_conduit",
+  "textures": {
+    "all": "magic_witchcraft:blocks/magical_energy",
+    "particle": "magic_witchcraft:blocks/magical_energy",
+    "0": "magic_witchcraft:blocks/magical_energy",
+    "1": "magic_witchcraft:blocks/magic_glass"
+  }
+}

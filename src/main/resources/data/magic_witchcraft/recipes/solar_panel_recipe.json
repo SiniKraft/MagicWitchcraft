@@ -1,0 +1,42 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:glass"
+    },
+    "1": {
+      "item": "minecraft:glass"
+    },
+    "2": {
+      "item": "minecraft:glass"
+    },
+    "3": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "4": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "5": {
+      "item": "magic_witchcraft:magicalblock"
+    },
+    "6": {
+      "item": "minecraft:daylight_detector"
+    },
+    "7": {
+      "item": "minecraft:daylight_detector"
+    },
+    "8": {
+      "item": "minecraft:daylight_detector"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:solarpanel",
+    "count": 1
+  }
+}

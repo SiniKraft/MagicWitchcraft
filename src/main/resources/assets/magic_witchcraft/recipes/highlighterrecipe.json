@@ -1,0 +1,38 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:quartz_block",
+      "data": 0
+    },
+    "1": {
+      "item": "minecraft:stick"
+    },
+    "2": {
+      "item": "minecraft:quartz_block",
+      "data": 0
+    },
+    "3": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "4": {
+      "item": "minecraft:stick"
+    },
+    "5": {
+      "item": "magic_witchcraft:spectralorb"
+    },
+    "7": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:highlighter",
+    "count": 1
+  }
+}

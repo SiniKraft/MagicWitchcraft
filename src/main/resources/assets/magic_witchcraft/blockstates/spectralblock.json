@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:spectralblock"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:spectralblock"
+      "model": "magic_witchcraft:block/spectralblock"
     },
     "facing=east": {
-      "model": "magic_witchcraft:spectralblock",
+      "model": "magic_witchcraft:block/spectralblock",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:spectralblock",
+      "model": "magic_witchcraft:block/spectralblock",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:spectralblock",
+      "model": "magic_witchcraft:block/spectralblock",
       "y": 270
     }
   }

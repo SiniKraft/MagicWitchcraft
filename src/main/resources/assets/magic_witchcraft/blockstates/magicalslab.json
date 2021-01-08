@@ -1,10 +1,13 @@
 {
   "variants": {
-    "half=bottom,variant=default": {
-      "model": "magic_witchcraft:magicalslab"
+    "type=bottom": {
+      "model": "magic_witchcraft:block/magicalslab"
     },
-    "half=top,variant=default": {
-      "model": "magic_witchcraft:magicalslab_top"
+    "type=top": {
+      "model": "magic_witchcraft:block/magicalslab_top"
+    },
+    "type=double": {
+      "model": "magic_witchcraft:block/magicalslab_full"
     }
   }
 }

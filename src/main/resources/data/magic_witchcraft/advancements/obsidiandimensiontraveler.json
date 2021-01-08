@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "magic_witchcraft:greyobsidian"
+    },
+    "title": {
+      "translate": "advancements.obsidiandimensiontraveler.title"
+    },
+    "description": {
+      "translate": "advancements.obsidiandimensiontraveler.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obsidiandimensiontraveler": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "magic_witchcraft:magicaldimensiontraveler"
+}

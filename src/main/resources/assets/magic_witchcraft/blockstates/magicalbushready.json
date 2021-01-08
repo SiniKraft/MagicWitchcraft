@@ -1,7 +1,7 @@
 {
   "variants": {
-    "type=dandelion": {
-      "model": "magic_witchcraft:magicalbushready"
+    "": {
+      "model": "magic_witchcraft:block/magicalbushready"
     }
   }
 }

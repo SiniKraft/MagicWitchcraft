@@ -1,21 +1,18 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:mysteriousloot"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:mysteriousloot"
+      "model": "magic_witchcraft:block/mysteriousloot"
     },
     "facing=east": {
-      "model": "magic_witchcraft:mysteriousloot",
+      "model": "magic_witchcraft:block/mysteriousloot",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:mysteriousloot",
+      "model": "magic_witchcraft:block/mysteriousloot",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:mysteriousloot",
+      "model": "magic_witchcraft:block/mysteriousloot",
       "y": 270
     }
   }

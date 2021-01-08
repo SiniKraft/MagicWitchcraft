@@ -9,11 +9,11 @@ build/
 # MCreator workspace
 .mcreator/
 elements/
-arrow_gui.png
-icons_gui_spectral_power_infuser.png
 
 # Minecraft client/server files
 run/
 
 # Mcreator file
 magic_witchcraft.mcreator
+
+textures_backup/

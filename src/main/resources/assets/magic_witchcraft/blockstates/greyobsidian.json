@@ -1,29 +1,26 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:greyobsidian"
-    },
     "facing=north": {
-      "model": "magic_witchcraft:greyobsidian"
+      "model": "magic_witchcraft:block/greyobsidian"
     },
     "facing=east": {
-      "model": "magic_witchcraft:greyobsidian",
+      "model": "magic_witchcraft:block/greyobsidian",
       "y": 90
     },
     "facing=south": {
-      "model": "magic_witchcraft:greyobsidian",
+      "model": "magic_witchcraft:block/greyobsidian",
       "y": 180
     },
     "facing=west": {
-      "model": "magic_witchcraft:greyobsidian",
+      "model": "magic_witchcraft:block/greyobsidian",
       "y": 270
     },
     "facing=up": {
-      "model": "magic_witchcraft:greyobsidian",
+      "model": "magic_witchcraft:block/greyobsidian",
       "x": 270
     },
     "facing=down": {
-      "model": "magic_witchcraft:greyobsidian",
+      "model": "magic_witchcraft:block/greyobsidian",
       "x": 90
     }
   }

@@ -1,7 +1,7 @@
 {
   "variants": {
-    "normal": {
-      "model": "magic_witchcraft:spectralleaves"
+    "": {
+      "model": "magic_witchcraft:block/spectralleaves"
     }
   }
 }

@@ -1,0 +1,26 @@
+{
+  "group": "magic_witchcraft",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345"
+  ],
+  "key": {
+    "1": {
+      "item": "magic_witchcraft:magical_orb"
+    },
+    "3": {
+      "item": "magic_witchcraft:magical_orb"
+    },
+    "4": {
+      "item": "magic_witchcraft:basicmagicwand"
+    },
+    "5": {
+      "item": "magic_witchcraft:magical_orb"
+    }
+  },
+  "result": {
+    "item": "magic_witchcraft:chunkanalyser",
+    "count": 2
+  }
+}
