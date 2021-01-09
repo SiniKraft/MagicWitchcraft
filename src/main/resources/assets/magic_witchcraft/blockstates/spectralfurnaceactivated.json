@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "magic_witchcraft:block/spectralfurnaceactivated"
+    },
+    "facing=east": {
+      "model": "magic_witchcraft:block/spectralfurnaceactivated",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "magic_witchcraft:block/spectralfurnaceactivated",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "magic_witchcraft:block/spectralfurnaceactivated",
+      "y": 270
     }
   }
 }

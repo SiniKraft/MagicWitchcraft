@@ -25,12 +25,17 @@ public class StickyStoneEntityWalksOnTheBlockProcedure extends MagicWitchcraftMo
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
-		if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
-			if ((!(((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
-					.getItem() == new ItemStack(SaverItem.legs, (int) (1)).getItem()))) {
-				if (entity instanceof LivingEntity)
-					((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SLOWNESS, (int) 1, (int) 254, (true), (false)));
+		if ((entity instanceof PlayerEntity)) {
+			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
+				if ((!(((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
+						.getItem() == new ItemStack(SaverItem.legs, (int) (1)).getItem()))) {
+					if (entity instanceof LivingEntity)
+						((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SLOWNESS, (int) 1, (int) 254, (true), (false)));
+				}
 			}
+		} else {
+			if (entity instanceof LivingEntity)
+				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SLOWNESS, (int) 1, (int) 254, (true), (false)));
 		}
 	}
 }

@@ -1,14 +1,18 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Direction;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.state.IProperty;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.item.crafting.IRecipeType;
@@ -490,8 +494,65 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 		if (((world.getBlockState(new BlockPos((int) x, (int) y, (int) z))).getBlock() == SpectralFurnaceActivatedBlock.block.getDefaultState()
 				.getBlock())) {
 			if ((Math.random() < 0.15)) {
-				if (world instanceof ServerWorld) {
-					((ServerWorld) world).spawnParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.2), z, (int) 1, 0.3, 0.2, 0.001, 0.01);
+				if (((new Object() {
+					public Direction getDirection(BlockPos pos) {
+						try {
+							BlockState _bs = world.getBlockState(pos);
+							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
+							return _bs.get(property);
+						} catch (Exception e) {
+							return Direction.NORTH;
+						}
+					}
+				}.getDirection(new BlockPos((int) x, (int) y, (int) z))) == Direction.NORTH)) {
+					world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.2), (z - 0.1), 0, 0, 0);
+				} else if (((new Object() {
+					public Direction getDirection(BlockPos pos) {
+						try {
+							BlockState _bs = world.getBlockState(pos);
+							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
+							return _bs.get(property);
+						} catch (Exception e) {
+							return Direction.NORTH;
+						}
+					}
+				}.getDirection(new BlockPos((int) x, (int) y, (int) z))) == Direction.SOUTH)) {
+					world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.2), (z + 1.1), 0, 0, 0);
+				} else if (((new Object() {
+					public Direction getDirection(BlockPos pos) {
+						try {
+							BlockState _bs = world.getBlockState(pos);
+							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
+							return _bs.get(property);
+						} catch (Exception e) {
+							return Direction.NORTH;
+						}
+					}
+				}.getDirection(new BlockPos((int) x, (int) y, (int) z))) == Direction.WEST)) {
+					world.addParticle(ParticleTypes.FLAME, (x - 0.1), (y + 0.2), (z + 0.5), 0, 0, 0);
+				} else if (((new Object() {
+					public Direction getDirection(BlockPos pos) {
+						try {
+							BlockState _bs = world.getBlockState(pos);
+							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
+							return _bs.get(property);
+						} catch (Exception e) {
+							return Direction.NORTH;
+						}
+					}
+				}.getDirection(new BlockPos((int) x, (int) y, (int) z))) == Direction.EAST)) {
+					world.addParticle(ParticleTypes.FLAME, (x + 1.1), (y + 0.2), (z + 0.5), 0, 0, 0);
+				}
+				if ((Math.random() < 0.05)) {
+					if (!world.getWorld().isRemote) {
+						world.playSound(null, new BlockPos((int) x, (int) y, (int) z), (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
+								.getValue(new ResourceLocation("block.furnace.fire_crackle")), SoundCategory.NEUTRAL, (float) 1, (float) 1);
+					} else {
+						world.getWorld().playSound(x, y, z,
+								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
+										.getValue(new ResourceLocation("block.furnace.fire_crackle")),
+								SoundCategory.NEUTRAL, (float) 1, (float) 1, false);
+					}
 				}
 			}
 		}
