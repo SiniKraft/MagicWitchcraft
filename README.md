@@ -1,4 +1,4 @@
-![](http://cf.way2muchnoise.eu/author/full_SiniKraft_downloads.svg)  
+[![](http://cf.way2muchnoise.eu/author/full_SiniKraft_downloads.svg)  ](https://www.curseforge.com/minecraft/mc-mods/magic-witchcraft)
 # About  
 Magic Witchcraft is a [Minecraft Forge](http://files.minecraftforge.net/) mod that adds mysterious things ...  
 Magic Witchcraft is avaible (or will be avaible) in 1.12.2, 1.14.4, 1.15.2 and 1.16.4.
