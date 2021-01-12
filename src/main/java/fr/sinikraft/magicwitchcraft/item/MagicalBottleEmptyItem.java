@@ -83,9 +83,9 @@ public class MagicalBottleEmptyItem extends MagicWitchcraftModElements.ModElemen
 		@Override
 		public void inventoryTick(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
 			super.inventoryTick(itemstack, world, entity, slot, selected);
-			double x = entity.posX;
-			double y = entity.posY;
-			double z = entity.posZ;
+			double x = entity.getPosX();
+			double y = entity.getPosY();
+			double z = entity.getPosZ();
 			if (selected) {
 				Map<String, Object> $_dependencies = new HashMap<>();
 				$_dependencies.put("entity", entity);

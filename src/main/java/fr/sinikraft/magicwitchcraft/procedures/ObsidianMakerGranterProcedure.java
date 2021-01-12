@@ -78,9 +78,9 @@ public class ObsidianMakerGranterProcedure extends MagicWitchcraftModElements.Mo
 		if (event.phase == TickEvent.Phase.END) {
 			Entity entity = event.player;
 			World world = entity.world;
-			double i = entity.posX;
-			double j = entity.posY;
-			double k = entity.posZ;
+			double i = entity.getPosX();
+			double j = entity.getPosY();
+			double k = entity.getPosZ();
 			Map<String, Object> dependencies = new HashMap<>();
 			dependencies.put("x", i);
 			dependencies.put("y", j);

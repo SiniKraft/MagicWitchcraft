@@ -5,15 +5,19 @@ import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
 
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.placement.LakeChanceConfig;
+import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.feature.LakesFeature;
-import net.minecraft.world.gen.feature.LakesConfig;
+import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.dimension.DimensionType;
@@ -28,6 +32,8 @@ import net.minecraft.item.BucketItem;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.BlockState;
@@ -64,6 +70,13 @@ public class MagicalLavaBlock extends MagicWitchcraftModElements.ModElement {
 	}
 
 	@Override
+	@OnlyIn(Dist.CLIENT)
+	public void clientLoad(FMLClientSetupEvent event) {
+		RenderTypeLookup.setRenderLayer(still, RenderType.getTranslucent());
+		RenderTypeLookup.setRenderLayer(flowing, RenderType.getTranslucent());
+	}
+
+	@Override
 	public void initElements() {
 		fluidproperties = new ForgeFlowingFluid.Properties(() -> still, () -> flowing,
 				FluidAttributes.builder(new ResourceLocation("magic_witchcraft:blocks/magical_lava_still"),
@@ -73,7 +86,7 @@ public class MagicalLavaBlock extends MagicWitchcraftModElements.ModElement {
 		flowing = (FlowingFluid) new ForgeFlowingFluid.Flowing(fluidproperties).setRegistryName("magicallava_flowing");
 		elements.blocks.add(() -> new FlowingFluidBlock(still, Block.Properties.create(Material.LAVA)) {
 			@Override
-			public void tick(BlockState state, World world, BlockPos pos, Random random) {
+			public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 				super.tick(state, world, pos, random);
 				int x = pos.getX();
 				int y = pos.getY();
@@ -110,9 +123,9 @@ public class MagicalLavaBlock extends MagicWitchcraftModElements.ModElement {
 	@Override
 	public void init(FMLCommonSetupEvent event) {
 		for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-			biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Biome.createDecoratedFeature(new LakesFeature(LakesConfig::deserialize) {
+			biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, new LakesFeature(BlockStateFeatureConfig::deserialize) {
 				@Override
-				public boolean place(IWorld world, ChunkGenerator generator, Random rand, BlockPos pos, LakesConfig config) {
+				public boolean place(IWorld world, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
 					DimensionType dimensionType = world.getDimension().getType();
 					boolean dimensionCriteria = false;
 					if (dimensionType == MysteriousDimensionDimension.type)
@@ -121,7 +134,8 @@ public class MagicalLavaBlock extends MagicWitchcraftModElements.ModElement {
 						return false;
 					return super.place(world, generator, rand, pos, config);
 				}
-			}, new LakesConfig(block.getDefaultState()), Placement.WATER_LAKE, new LakeChanceConfig(1)));
+			}.withConfiguration(new BlockStateFeatureConfig(block.getDefaultState()))
+					.withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(1))));
 		}
 	}
 }

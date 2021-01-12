@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.player.PlayerEntity;
@@ -51,24 +50,24 @@ public class MagicalWheatStage7BlockDestroyedByPlayerProcedure extends MagicWitc
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
 		if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
-			if (world instanceof World && !world.getWorld().isRemote) {
+			if (!world.getWorld().isRemote) {
 				ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatItem.block, (int) (1)));
 				entityToSpawn.setPickupDelay((int) 10);
 				world.addEntity(entityToSpawn);
 			}
-			if (world instanceof World && !world.getWorld().isRemote) {
+			if (!world.getWorld().isRemote) {
 				ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatSeedsItem.block, (int) (1)));
 				entityToSpawn.setPickupDelay((int) 10);
 				world.addEntity(entityToSpawn);
 			}
 			if ((Math.random() < 0.3)) {
-				if (world instanceof World && !world.getWorld().isRemote) {
+				if (!world.getWorld().isRemote) {
 					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatItem.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);
 				}
 				if ((Math.random() < 0.1)) {
-					if (world instanceof World && !world.getWorld().isRemote) {
+					if (!world.getWorld().isRemote) {
 						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
@@ -76,13 +75,13 @@ public class MagicalWheatStage7BlockDestroyedByPlayerProcedure extends MagicWitc
 				}
 			}
 			if ((Math.random() < 0.3)) {
-				if (world instanceof World && !world.getWorld().isRemote) {
+				if (!world.getWorld().isRemote) {
 					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatSeedsItem.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);
 				}
 				if ((Math.random() < 0.1)) {
-					if (world instanceof World && !world.getWorld().isRemote) {
+					if (!world.getWorld().isRemote) {
 						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatSeedsItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);

@@ -59,7 +59,7 @@ public class RedObsidianBlockDestroyedByPlayerProcedure extends MagicWitchcraftM
 					((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)
 					&& (((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem()
 							.canHarvestBlock(Blocks.OBSIDIAN.getDefaultState())))) {
-				if (world instanceof World && !world.getWorld().isRemote) {
+				if (!world.getWorld().isRemote) {
 					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(RedObsidianBlock.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);

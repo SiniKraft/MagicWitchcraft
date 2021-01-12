@@ -137,6 +137,15 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 		}
 
 		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
+		}
+
+		@Override
 		public void tick() {
 			super.tick();
 		}
@@ -184,15 +193,6 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 199, 169, -16711936);
 			this.font.drawString("/ 1000 MER", 192, 178, -16711936);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

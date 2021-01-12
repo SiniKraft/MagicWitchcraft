@@ -325,6 +325,15 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
+		}
+
+		@Override
 		public void tick() {
 			super.tick();
 		}
@@ -332,15 +341,6 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		@Override
 		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 			this.font.drawString("Mysterious extractor", 38, 2, -1);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

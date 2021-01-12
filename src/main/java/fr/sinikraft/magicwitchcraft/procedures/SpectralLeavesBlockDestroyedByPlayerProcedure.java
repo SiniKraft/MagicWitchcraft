@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.Items;
@@ -54,7 +53,7 @@ public class SpectralLeavesBlockDestroyedByPlayerProcedure extends MagicWitchcra
 		if ((((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 				.getItem() == new ItemStack(Items.SHEARS, (int) (1)).getItem())) {
 			world.destroyBlock(new BlockPos((int) x, (int) y, (int) z), false);
-			if (world instanceof World && !world.getWorld().isRemote) {
+			if (!world.getWorld().isRemote) {
 				ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(SpectralLeavesBlock.block, (int) (1)));
 				entityToSpawn.setPickupDelay((int) 10);
 				world.addEntity(entityToSpawn);

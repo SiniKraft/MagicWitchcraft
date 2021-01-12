@@ -9,14 +9,12 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.feature.structure.PillagerOutpostConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityClassification;
 
@@ -53,9 +51,9 @@ public class ObsidianBiomeBiome extends MagicWitchcraftModElements.ModElement {
 			DefaultBiomeFeatures.addStructures(this);
 			DefaultBiomeFeatures.addOres(this);
 			DefaultBiomeFeatures.addLakes(this);
-			this.addStructure(Feature.STRONGHOLD, IFeatureConfig.NO_FEATURE_CONFIG);
-			this.addStructure(Feature.MINESHAFT, new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL));
-			this.addStructure(Feature.PILLAGER_OUTPOST, new PillagerOutpostConfig(0.004D));
+			this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+			this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
+			this.addStructure(Feature.PILLAGER_OUTPOST.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 			this.addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(DangerousWitchEntity.entity, 15, 1, 15));
 			this.addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.CREEPER, 15, 1, 15));
 			this.addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.SLIME, 15, 1, 15));
@@ -64,19 +62,19 @@ public class ObsidianBiomeBiome extends MagicWitchcraftModElements.ModElement {
 
 		@OnlyIn(Dist.CLIENT)
 		@Override
-		public int getGrassColor(BlockPos pos) {
+		public int getGrassColor(double posX, double posZ) {
 			return -13261999;
 		}
 
 		@OnlyIn(Dist.CLIENT)
 		@Override
-		public int getFoliageColor(BlockPos pos) {
+		public int getFoliageColor() {
 			return -13261999;
 		}
 
 		@OnlyIn(Dist.CLIENT)
 		@Override
-		public int getSkyColorByTemp(float currentTemperature) {
+		public int getSkyColor() {
 			return -5916161;
 		}
 	}

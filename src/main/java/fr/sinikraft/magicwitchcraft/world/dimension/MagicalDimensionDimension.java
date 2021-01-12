@@ -18,10 +18,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 import net.minecraft.world.gen.layer.ZoomLayer;
-import net.minecraft.world.gen.layer.VoroniZoomLayer;
 import net.minecraft.world.gen.layer.Layer;
 import net.minecraft.world.gen.layer.IslandLayer;
-import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraft.world.gen.carver.CaveWorldCarver;
 import net.minecraft.world.gen.area.LazyArea;
@@ -54,19 +52,16 @@ import javax.annotation.Nullable;
 
 import java.util.function.LongFunction;
 import java.util.function.BiFunction;
-import java.util.Set;
-import java.util.Random;
 import java.util.Map;
-import java.util.List;
+import java.util.HashSet;
 import java.util.HashMap;
-import java.util.Collections;
+import java.util.Arrays;
 
 import fr.sinikraft.magicwitchcraft.procedures.MagicalDimensionPlayerEntersDimensionProcedure;
 import fr.sinikraft.magicwitchcraft.block.MagicalStoneBlock;
 import fr.sinikraft.magicwitchcraft.block.MagicalLavaBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 
-import com.google.common.collect.Sets;
 import com.google.common.collect.ImmutableSet;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -113,7 +108,7 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 	public static class CustomDimension extends Dimension {
 		private BiomeProviderCustom biomeProviderCustom = null;
 		public CustomDimension(World world, DimensionType type) {
-			super(world, type);
+			super(world, type, 0.5f);
 			this.nether = false;
 		}
 
@@ -181,15 +176,6 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 		}
 
 		@Override
-		protected void generateLightBrightnessTable() {
-			float f = 0.5f;
-			for (int i = 0; i <= 15; ++i) {
-				float f1 = 1 - (float) i / 15f;
-				this.lightBrightnessTable[i] = (1 - f1) / (f1 * 3 + 1) * (1 - f) + f;
-			}
-		}
-
-		@Override
 		public boolean doesWaterVaporize() {
 			return true;
 		}
@@ -208,9 +194,9 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 	public void onPlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
 		Entity entity = event.getPlayer();
 		World world = entity.world;
-		double x = entity.posX;
-		double y = entity.posY;
-		double z = entity.posZ;
+		double x = entity.getPosX();
+		double y = entity.getPosY();
+		double z = entity.getPosZ();
 		if (event.getTo() == type) {
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
@@ -246,15 +232,11 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 	}
 
 	public static class BiomeProviderCustom extends BiomeProvider {
-		private final Layer genBiomes;
-		private final Layer biomeFactoryLayer;
-		private final Biome[] biomes;
+		private Layer genBiomes;
 		private static boolean biomesPatched = false;
 		public BiomeProviderCustom(World world) {
-			Layer[] aLayer = makeTheWorld(world.getSeed());
-			this.genBiomes = aLayer[0];
-			this.biomeFactoryLayer = aLayer[1];
-			this.biomes = dimensionBiomes;
+			super(new HashSet<Biome>(Arrays.asList(dimensionBiomes)));
+			this.genBiomes = getBiomeLayer(world.getSeed());
 			if (!biomesPatched) {
 				for (Biome biome : this.biomes) {
 					biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(new CaveWorldCarver(ProbabilityConfig::deserialize, 256) {
@@ -269,7 +251,11 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 			}
 		}
 
-		private Layer[] makeTheWorld(long seed) {
+		public Biome getNoiseBiome(int x, int y, int z) {
+			return this.genBiomes.func_215738_a(x, z);
+		}
+
+		private Layer getBiomeLayer(long seed) {
 			LongFunction<IExtendedNoiseRandom<LazyArea>> contextFactory = l -> new LazyAreaLayerContext(25, seed, l);
 			IAreaFactory<LazyArea> parentLayer = IslandLayer.INSTANCE.apply(contextFactory.apply(1));
 			IAreaFactory<LazyArea> biomeLayer = (new BiomeLayerCustom()).apply(contextFactory.apply(200), parentLayer);
@@ -279,85 +265,7 @@ public class MagicalDimensionDimension extends MagicWitchcraftModElements.ModEle
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1003), biomeLayer);
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1004), biomeLayer);
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1005), biomeLayer);
-			IAreaFactory<LazyArea> voronoizoom = VoroniZoomLayer.INSTANCE.apply(contextFactory.apply(10), biomeLayer);
-			return new Layer[]{new Layer(biomeLayer), new Layer(voronoizoom)};
-		}
-
-		@Override /**
-					 * Gets the biome from the provided coordinates
-					 */
-		public Biome getBiome(int x, int y) {
-			return this.biomeFactoryLayer.func_215738_a(x, y);
-		}
-
-		@Override
-		public Biome func_222366_b(int p_222366_1_, int p_222366_2_) {
-			return this.genBiomes.func_215738_a(p_222366_1_, p_222366_2_);
-		}
-
-		@Override
-		public Biome[] getBiomes(int x, int z, int width, int length, boolean cacheFlag) {
-			return this.biomeFactoryLayer.generateBiomes(x, z, width, length);
-		}
-
-		@Override
-		public Set<Biome> getBiomesInSquare(int centerX, int centerZ, int sideLength) {
-			int i = centerX - sideLength >> 2;
-			int j = centerZ - sideLength >> 2;
-			int k = centerX + sideLength >> 2;
-			int l = centerZ + sideLength >> 2;
-			int i1 = k - i + 1;
-			int j1 = l - j + 1;
-			Set<Biome> set = Sets.newHashSet();
-			Collections.addAll(set, this.genBiomes.generateBiomes(i, j, i1, j1));
-			return set;
-		}
-
-		@Override
-		@Nullable
-		public BlockPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random random) {
-			int i = x - range >> 2;
-			int j = z - range >> 2;
-			int k = x + range >> 2;
-			int l = z + range >> 2;
-			int i1 = k - i + 1;
-			int j1 = l - j + 1;
-			Biome[] abiome = this.genBiomes.generateBiomes(i, j, i1, j1);
-			BlockPos blockpos = null;
-			int k1 = 0;
-			for (int l1 = 0; l1 < i1 * j1; ++l1) {
-				int i2 = i + l1 % i1 << 2;
-				int j2 = j + l1 / i1 << 2;
-				if (biomes.contains(abiome[l1])) {
-					if (blockpos == null || random.nextInt(k1 + 1) == 0) {
-						blockpos = new BlockPos(i2, 0, j2);
-					}
-					++k1;
-				}
-			}
-			return blockpos;
-		}
-
-		@Override
-		public boolean hasStructure(Structure<?> structureIn) {
-			return this.hasStructureCache.computeIfAbsent(structureIn, (p_205006_1_) -> {
-				for (Biome biome : this.biomes) {
-					if (biome.hasStructure(p_205006_1_)) {
-						return true;
-					}
-				}
-				return false;
-			});
-		}
-
-		@Override
-		public Set<BlockState> getSurfaceBlocks() {
-			if (this.topBlocksCache.isEmpty()) {
-				for (Biome biome : this.biomes) {
-					this.topBlocksCache.add(biome.getSurfaceBuilderConfig().getTop());
-				}
-			}
-			return this.topBlocksCache;
+			return new Layer(biomeLayer);
 		}
 	}
 }

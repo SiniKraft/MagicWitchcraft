@@ -3,19 +3,17 @@ package fr.sinikraft.magicwitchcraft.world.dimension;
 
 import org.jline.terminal.Size;
 
-import org.apache.logging.log4j.util.Supplier;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
 import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.DimensionManager;
@@ -26,10 +24,8 @@ import net.minecraft.world.server.TicketType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 import net.minecraft.world.gen.layer.ZoomLayer;
-import net.minecraft.world.gen.layer.VoroniZoomLayer;
 import net.minecraft.world.gen.layer.Layer;
 import net.minecraft.world.gen.layer.IslandLayer;
-import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraft.world.gen.carver.CaveWorldCarver;
 import net.minecraft.world.gen.area.LazyArea;
@@ -46,27 +42,26 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.World;
-import net.minecraft.world.Teleporter;
 import net.minecraft.world.IWorld;
+import net.minecraft.village.PointOfInterestType;
+import net.minecraft.village.PointOfInterestManager;
+import net.minecraft.village.PointOfInterest;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.ColumnPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Direction;
 import net.minecraft.util.CachedBlockInfo;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.network.play.server.SPlayerAbilitiesPacket;
-import net.minecraft.network.play.server.SPlaySoundEventPacket;
-import net.minecraft.network.play.server.SPlayEntityEffectPacket;
-import net.minecraft.network.play.server.SChangeGameStatePacket;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SoundType;
@@ -77,17 +72,21 @@ import net.minecraft.block.Block;
 
 import javax.annotation.Nullable;
 
+import java.util.stream.Collectors;
 import java.util.function.LongFunction;
+import java.util.function.Function;
 import java.util.function.BiFunction;
 import java.util.Set;
 import java.util.Random;
+import java.util.Optional;
 import java.util.Map;
 import java.util.List;
+import java.util.HashSet;
 import java.util.HashMap;
-import java.util.Collections;
+import java.util.Comparator;
+import java.util.Arrays;
 
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.lang.reflect.Method;
 
 import fr.sinikraft.magicwitchcraft.procedures.MysteriousDimensionPlayerEntersDimensionProcedure;
 import fr.sinikraft.magicwitchcraft.item.MysteriousDimensionItem;
@@ -95,7 +94,6 @@ import fr.sinikraft.magicwitchcraft.block.MysteriousPortalBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 
 import com.google.common.collect.Sets;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.cache.LoadingCache;
 
@@ -136,6 +134,12 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 		elements.blocks.add(() -> new CustomPortalBlock());
 		elements.items.add(() -> new MysteriousDimensionItem().setRegistryName("mysterious_dimension"));
 	}
+
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public void clientLoad(FMLClientSetupEvent event) {
+		RenderTypeLookup.setRenderLayer(portal, RenderType.getTranslucent());
+	}
 	public static class CustomPortalBlock extends NetherPortalBlock {
 		public CustomPortalBlock() {
 			super(Block.Properties.create(Material.PORTAL).doesNotBlockMovement().tickRandomly().hardnessAndResistance(-1.0F).sound(SoundType.GLASS)
@@ -144,7 +148,7 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 		}
 
 		@Override
-		public void tick(BlockState state, World world, BlockPos pos, Random random) {
+		public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		}
 
 		public void portalSpawn(World world, BlockPos pos) {
@@ -154,27 +158,26 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 		}
 
 		@Nullable
-		public CustomPortalBlock.Size isValid(IWorld p_201816_1_, BlockPos p_201816_2_) {
-			CustomPortalBlock.Size netherportalblock$size = new CustomPortalBlock.Size(p_201816_1_, p_201816_2_, Direction.Axis.X);
+		public CustomPortalBlock.Size isValid(IWorld worldIn, BlockPos pos) {
+			CustomPortalBlock.Size netherportalblock$size = new CustomPortalBlock.Size(worldIn, pos, Direction.Axis.X);
 			if (netherportalblock$size.isValid() && netherportalblock$size.portalBlockCount == 0) {
 				return netherportalblock$size;
 			} else {
-				CustomPortalBlock.Size netherportalblock$size1 = new CustomPortalBlock.Size(p_201816_1_, p_201816_2_, Direction.Axis.Z);
+				CustomPortalBlock.Size netherportalblock$size1 = new CustomPortalBlock.Size(worldIn, pos, Direction.Axis.Z);
 				return netherportalblock$size1.isValid() && netherportalblock$size1.portalBlockCount == 0 ? netherportalblock$size1 : null;
 			}
 		}
 
-		@Override
-		public BlockPattern.PatternHelper createPatternHelper(IWorld worldIn, BlockPos p_181089_2_) {
+		public static BlockPattern.PatternHelper createPatternHelper(IWorld p_181089_0_, BlockPos worldIn) {
 			Direction.Axis direction$axis = Direction.Axis.Z;
-			CustomPortalBlock.Size netherportalblock$size = new CustomPortalBlock.Size(worldIn, p_181089_2_, Direction.Axis.X);
-			LoadingCache<BlockPos, CachedBlockInfo> loadingcache = BlockPattern.createLoadingCache(worldIn, true);
+			CustomPortalBlock.Size netherportalblock$size = new CustomPortalBlock.Size(p_181089_0_, worldIn, Direction.Axis.X);
+			LoadingCache<BlockPos, CachedBlockInfo> loadingcache = BlockPattern.createLoadingCache(p_181089_0_, true);
 			if (!netherportalblock$size.isValid()) {
 				direction$axis = Direction.Axis.X;
-				netherportalblock$size = new CustomPortalBlock.Size(worldIn, p_181089_2_, Direction.Axis.Z);
+				netherportalblock$size = new CustomPortalBlock.Size(p_181089_0_, worldIn, Direction.Axis.Z);
 			}
 			if (!netherportalblock$size.isValid()) {
-				return new BlockPattern.PatternHelper(p_181089_2_, Direction.NORTH, Direction.UP, loadingcache, 1, 1, 1);
+				return new BlockPattern.PatternHelper(worldIn, Direction.NORTH, Direction.UP, loadingcache, 1, 1, 1);
 			} else {
 				int[] aint = new int[Direction.AxisDirection.values().length];
 				Direction direction = netherportalblock$size.rightDir.rotateYCCW();
@@ -253,48 +256,34 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 						SoundCategory.BLOCKS, 0.5f, random.nextFloat() * 0.4F + 0.8F, false);
 		}
 
+		@Override
 		public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-			if (!world.isRemote && !entity.isPassenger() && !entity.isBeingRidden() && entity instanceof ServerPlayerEntity && true) {
-				ServerPlayerEntity player = (ServerPlayerEntity) entity;
-				if (player.timeUntilPortal > 0) {
-					player.timeUntilPortal = 10;
-				} else if (player.dimension != type) {
-					player.timeUntilPortal = 10;
-					teleportToDimension(player, type);
+			if (!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss() && !entity.world.isRemote && true) {
+				if (entity.timeUntilPortal > 0) {
+					entity.timeUntilPortal = entity.getPortalCooldown();
+				} else if (entity.dimension != type) {
+					entity.timeUntilPortal = entity.getPortalCooldown();
+					teleportToDimension(entity, pos, type);
 				} else {
-					player.timeUntilPortal = 10;
-					teleportToDimension(player, DimensionType.OVERWORLD);
+					entity.timeUntilPortal = entity.getPortalCooldown();
+					teleportToDimension(entity, pos, DimensionType.OVERWORLD);
 				}
 			}
 		}
 
-		private void teleportToDimension(ServerPlayerEntity player, DimensionType destinationType) {
-			ObfuscationReflectionHelper.setPrivateValue(ServerPlayerEntity.class, player, true, "field_184851_cj");
-			ServerWorld nextWorld = player.getServer().getWorld(destinationType);
-			TeleporterDimensionMod teleporter = getTeleporterForDimension(player, player.getPosition(), nextWorld);
-			player.connection.sendPacket(new SChangeGameStatePacket(4, 0));
-			if (!teleporter.func_222268_a(player, player.rotationYaw)) {
-				teleporter.makePortal(player);
-				teleporter.func_222268_a(player, player.rotationYaw);
-			}
-			player.teleport(nextWorld, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), player.rotationYaw,
-					player.rotationPitch);
-			player.connection.sendPacket(new SPlayerAbilitiesPacket(player.abilities));
-			for (EffectInstance effectinstance : player.getActivePotionEffects()) {
-				player.connection.sendPacket(new SPlayEntityEffectPacket(player.getEntityId(), effectinstance));
-			}
-			player.connection.sendPacket(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+		private void teleportToDimension(Entity entity, BlockPos pos, DimensionType destinationType) {
+			entity.changeDimension(destinationType, getTeleporterForDimension(entity, pos, entity.getServer().getWorld(destinationType)));
 		}
 
 		private TeleporterDimensionMod getTeleporterForDimension(Entity entity, BlockPos pos, ServerWorld nextWorld) {
-			BlockPattern.PatternHelper bph = portal.createPatternHelper(entity.world, new BlockPos(pos));
+			BlockPattern.PatternHelper bph = MysteriousDimensionDimension.CustomPortalBlock.createPatternHelper(entity.world, pos);
 			double d0 = bph.getForwards().getAxis() == Direction.Axis.X
 					? (double) bph.getFrontTopLeft().getZ()
 					: (double) bph.getFrontTopLeft().getX();
-			double d1 = bph.getForwards().getAxis() == Direction.Axis.X ? entity.posZ : entity.posX;
+			double d1 = bph.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX();
 			d1 = Math.abs(MathHelper.pct(d1 - (double) (bph.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0),
 					d0, d0 - (double) bph.getWidth()));
-			double d2 = MathHelper.pct(entity.posY - 1, (double) bph.getFrontTopLeft().getY(),
+			double d2 = MathHelper.pct(entity.getPosY() - 1, (double) bph.getFrontTopLeft().getY(),
 					(double) (bph.getFrontTopLeft().getY() - bph.getHeight()));
 			return new TeleporterDimensionMod(nextWorld, new Vec3d(d1, d2, 0), bph.getForwards());
 		}
@@ -308,23 +297,23 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			private BlockPos bottomLeft;
 			private int height;
 			private int width;
-			public Size(IWorld p_i48740_1_, BlockPos p_i48740_2_, Direction.Axis p_i48740_3_) {
-				this.world = p_i48740_1_;
-				this.axis = p_i48740_3_;
-				if (p_i48740_3_ == Direction.Axis.X) {
+			public Size(IWorld worldIn, BlockPos pos, Direction.Axis axisIn) {
+				this.world = worldIn;
+				this.axis = axisIn;
+				if (axisIn == Direction.Axis.X) {
 					this.leftDir = Direction.EAST;
 					this.rightDir = Direction.WEST;
 				} else {
 					this.leftDir = Direction.NORTH;
 					this.rightDir = Direction.SOUTH;
 				}
-				for (BlockPos blockpos = p_i48740_2_; p_i48740_2_.getY() > blockpos.getY() - 21 && p_i48740_2_.getY() > 0
-						&& this.func_196900_a(p_i48740_1_.getBlockState(p_i48740_2_.down())); p_i48740_2_ = p_i48740_2_.down()) {
+				for (BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 21 && pos.getY() > 0
+						&& this.func_196900_a(worldIn.getBlockState(pos.down())); pos = pos.down()) {
 					;
 				}
-				int i = this.getDistanceUntilEdge(p_i48740_2_, this.leftDir) - 1;
+				int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
 				if (i >= 0) {
-					this.bottomLeft = p_i48740_2_.offset(this.leftDir, i);
+					this.bottomLeft = pos.offset(this.leftDir, i);
 					this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
 					if (this.width < 2 || this.width > 21) {
 						this.bottomLeft = null;
@@ -336,16 +325,16 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 				}
 			}
 
-			protected int getDistanceUntilEdge(BlockPos p_180120_1_, Direction p_180120_2_) {
+			protected int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
 				int i;
 				for (i = 0; i < 22; ++i) {
-					BlockPos blockpos = p_180120_1_.offset(p_180120_2_, i);
+					BlockPos blockpos = pos.offset(directionIn, i);
 					if (!this.func_196900_a(this.world.getBlockState(blockpos))
 							|| !(this.world.getBlockState(blockpos.down()).getBlock() == MysteriousPortalBlock.block.getDefaultState().getBlock())) {
 						break;
 					}
 				}
-				BlockPos framePos = p_180120_1_.offset(p_180120_2_, i);
+				BlockPos framePos = pos.offset(directionIn, i);
 				return (this.world.getBlockState(framePos).getBlock() == MysteriousPortalBlock.block.getDefaultState().getBlock()) ? i : 0;
 			}
 
@@ -399,9 +388,9 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 				}
 			}
 
-			protected boolean func_196900_a(BlockState p_196900_1_) {
-				Block block = p_196900_1_.getBlock();
-				return p_196900_1_.isAir() || block == Blocks.FIRE || block == portal;
+			protected boolean func_196900_a(BlockState pos) {
+				Block block = pos.getBlock();
+				return pos.isAir() || block == Blocks.FIRE || block == portal;
 			}
 
 			public boolean isValid() {
@@ -426,44 +415,91 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			}
 		}
 	}
-
-	public static class TeleporterDimensionMod extends Teleporter {
-		private static final Logger LOGGER = LogManager.getLogger();
+	private static PointOfInterestType poi = null;
+	public static final TicketType<BlockPos> CUSTOM_PORTAL = TicketType.create("mysterious_dimension_portal", Vec3i::compareTo, 300);
+	@SubscribeEvent
+	public void registerPointOfInterest(RegistryEvent.Register<PointOfInterestType> event) {
+		try {
+			Method method = ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "func_226359_a_", String.class, Set.class, int.class,
+					int.class);
+			method.setAccessible(true);
+			poi = (PointOfInterestType) method.invoke(null, "mysterious_dimension_portal",
+					Sets.newHashSet(ImmutableSet.copyOf(portal.getStateContainer().getValidStates())), 0, 1);
+			event.getRegistry().register(poi);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static class TeleporterDimensionMod implements ITeleporter {
 		private Vec3d lastPortalVec;
 		private Direction teleportDirection;
 		protected final ServerWorld world;
 		protected final Random random;
-		protected final Map<ColumnPos, TeleporterDimensionMod.PortalPosition> destinationCoordinateCache = Maps.newHashMapWithExpectedSize(4096);
-		private final Object2LongMap<ColumnPos> field_222275_f = new Object2LongOpenHashMap();
 		public TeleporterDimensionMod(ServerWorld worldServer, Vec3d lastPortalVec, Direction teleportDirection) {
-			super(worldServer);
 			this.world = worldServer;
 			this.random = new Random(worldServer.getSeed());
 			this.lastPortalVec = lastPortalVec;
 			this.teleportDirection = teleportDirection;
-			worldServer.customTeleporters.add(this);
 		}
 
-		@Override
+		@Nullable
+		public BlockPattern.PortalInfo placeInExistingPortal(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction directionIn, double p_222272_4_,
+				double p_222272_6_, boolean p_222272_8_) {
+			PointOfInterestManager pointofinterestmanager = this.world.getPointOfInterestManager();
+			pointofinterestmanager.ensureLoadedAndValid(this.world, p_222272_1_, 128);
+			List<PointOfInterest> list = pointofinterestmanager.getInSquare((p_226705_0_) -> {
+				return p_226705_0_ == poi;
+			}, p_222272_1_, 128, PointOfInterestManager.Status.ANY).collect(Collectors.toList());
+			Optional<PointOfInterest> optional = list.stream().min(Comparator.<PointOfInterest>comparingDouble((p_226706_1_) -> {
+				return p_226706_1_.getPos().distanceSq(p_222272_1_);
+			}).thenComparingInt((p_226704_0_) -> {
+				return p_226704_0_.getPos().getY();
+			}));
+			return optional.map((p_226707_7_) -> {
+				BlockPos blockpos = p_226707_7_.getPos();
+				this.world.getChunkProvider().registerTicket(CUSTOM_PORTAL, new ChunkPos(blockpos), 3, blockpos);
+				BlockPattern.PatternHelper blockpattern$patternhelper = MysteriousDimensionDimension.CustomPortalBlock.createPatternHelper(this.world,
+						blockpos);
+				return blockpattern$patternhelper.getPortalInfo(directionIn, blockpos, p_222272_6_, p_222272_2_, p_222272_4_);
+			}).orElse((BlockPattern.PortalInfo) null);
+		}
+
+		public boolean placeInPortal(Entity p_222268_1_, float p_222268_2_) {
+			Vec3d vec3d = lastPortalVec;
+			Direction direction = teleportDirection;
+			BlockPattern.PortalInfo blockpattern$portalinfo = this.placeInExistingPortal(new BlockPos(p_222268_1_), p_222268_1_.getMotion(),
+					direction, vec3d.x, vec3d.y, p_222268_1_ instanceof PlayerEntity);
+			if (blockpattern$portalinfo == null) {
+				return false;
+			} else {
+				Vec3d vec3d1 = blockpattern$portalinfo.pos;
+				Vec3d vec3d2 = blockpattern$portalinfo.motion;
+				p_222268_1_.setMotion(vec3d2);
+				p_222268_1_.rotationYaw = p_222268_2_ + (float) blockpattern$portalinfo.rotation;
+				p_222268_1_.moveForced(vec3d1.x, vec3d1.y, vec3d1.z);
+				return true;
+			}
+		}
+
 		public boolean makePortal(Entity entityIn) {
 			int i = 16;
 			double d0 = -1.0D;
-			int j = MathHelper.floor(entityIn.posX);
-			int k = MathHelper.floor(entityIn.posY);
-			int l = MathHelper.floor(entityIn.posZ);
+			int j = MathHelper.floor(entityIn.getPosX());
+			int k = MathHelper.floor(entityIn.getPosY());
+			int l = MathHelper.floor(entityIn.getPosZ());
 			int i1 = j;
 			int j1 = k;
 			int k1 = l;
 			int l1 = 0;
 			int i2 = this.random.nextInt(4);
-			BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+			BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 			for (int j2 = j - 16; j2 <= j + 16; ++j2) {
-				double d1 = (double) j2 + 0.5D - entityIn.posX;
+				double d1 = (double) j2 + 0.5D - entityIn.getPosX();
 				for (int l2 = l - 16; l2 <= l + 16; ++l2) {
-					double d2 = (double) l2 + 0.5D - entityIn.posZ;
+					double d2 = (double) l2 + 0.5D - entityIn.getPosZ();
 					label276 : for (int j3 = this.world.getActualHeight() - 1; j3 >= 0; --j3) {
-						if (this.world.isAirBlock(blockpos$mutableblockpos.setPos(j2, j3, l2))) {
-							while (j3 > 0 && this.world.isAirBlock(blockpos$mutableblockpos.setPos(j2, j3 - 1, l2))) {
+						if (this.world.isAirBlock(blockpos$mutable.setPos(j2, j3, l2))) {
+							while (j3 > 0 && this.world.isAirBlock(blockpos$mutable.setPos(j2, j3 - 1, l2))) {
 								--j3;
 							}
 							for (int k3 = i2; k3 < i2 + 4; ++k3) {
@@ -479,15 +515,15 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 											int i5 = j2 + (k4 - 1) * l3 + j4 * i4;
 											int j5 = j3 + l4;
 											int k5 = l2 + (k4 - 1) * i4 - j4 * l3;
-											blockpos$mutableblockpos.setPos(i5, j5, k5);
-											if (l4 < 0 && !this.world.getBlockState(blockpos$mutableblockpos).getMaterial().isSolid()
-													|| l4 >= 0 && !this.world.isAirBlock(blockpos$mutableblockpos)) {
+											blockpos$mutable.setPos(i5, j5, k5);
+											if (l4 < 0 && !this.world.getBlockState(blockpos$mutable).getMaterial().isSolid()
+													|| l4 >= 0 && !this.world.isAirBlock(blockpos$mutable)) {
 												continue label276;
 											}
 										}
 									}
 								}
-								double d5 = (double) j3 + 0.5D - entityIn.posY;
+								double d5 = (double) j3 + 0.5D - entityIn.getPosY();
 								double d7 = d1 * d1 + d5 * d5 + d2 * d2;
 								if (d0 < 0.0D || d7 < d0) {
 									d0 = d7;
@@ -503,12 +539,12 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			}
 			if (d0 < 0.0D) {
 				for (int l5 = j - 16; l5 <= j + 16; ++l5) {
-					double d3 = (double) l5 + 0.5D - entityIn.posX;
+					double d3 = (double) l5 + 0.5D - entityIn.getPosX();
 					for (int j6 = l - 16; j6 <= l + 16; ++j6) {
-						double d4 = (double) j6 + 0.5D - entityIn.posZ;
+						double d4 = (double) j6 + 0.5D - entityIn.getPosZ();
 						label214 : for (int i7 = this.world.getActualHeight() - 1; i7 >= 0; --i7) {
-							if (this.world.isAirBlock(blockpos$mutableblockpos.setPos(l5, i7, j6))) {
-								while (i7 > 0 && this.world.isAirBlock(blockpos$mutableblockpos.setPos(l5, i7 - 1, j6))) {
+							if (this.world.isAirBlock(blockpos$mutable.setPos(l5, i7, j6))) {
+								while (i7 > 0 && this.world.isAirBlock(blockpos$mutable.setPos(l5, i7 - 1, j6))) {
 									--i7;
 								}
 								for (int l7 = i2; l7 < i2 + 2; ++l7) {
@@ -519,14 +555,14 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 											int i11 = l5 + (i10 - 1) * l8;
 											int j11 = i7 + k10;
 											int k11 = j6 + (i10 - 1) * k9;
-											blockpos$mutableblockpos.setPos(i11, j11, k11);
-											if (k10 < 0 && !this.world.getBlockState(blockpos$mutableblockpos).getMaterial().isSolid()
-													|| k10 >= 0 && !this.world.isAirBlock(blockpos$mutableblockpos)) {
+											blockpos$mutable.setPos(i11, j11, k11);
+											if (k10 < 0 && !this.world.getBlockState(blockpos$mutable).getMaterial().isSolid()
+													|| k10 >= 0 && !this.world.isAirBlock(blockpos$mutable)) {
 												continue label214;
 											}
 										}
 									}
-									double d6 = (double) i7 + 0.5D - entityIn.posY;
+									double d6 = (double) i7 + 0.5D - entityIn.getPosY();
 									double d8 = d3 * d3 + d6 * d6 + d4 * d4;
 									if (d0 < 0.0D || d8 < d0) {
 										d0 = d8;
@@ -560,8 +596,8 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 							int j10 = k2 + i9;
 							int l10 = k6 + (i8 - 1) * i3 - j7 * l6;
 							boolean flag = i9 < 0;
-							blockpos$mutableblockpos.setPos(l9, j10, l10);
-							this.world.setBlockState(blockpos$mutableblockpos,
+							blockpos$mutable.setPos(l9, j10, l10);
+							this.world.setBlockState(blockpos$mutable,
 									flag ? MysteriousPortalBlock.block.getDefaultState().getBlock().getDefaultState() : Blocks.AIR.getDefaultState());
 						}
 					}
@@ -570,113 +606,57 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			for (int k7 = -1; k7 < 3; ++k7) {
 				for (int j8 = -1; j8 < 4; ++j8) {
 					if (k7 == -1 || k7 == 2 || j8 == -1 || j8 == 3) {
-						blockpos$mutableblockpos.setPos(i6 + k7 * l6, k2 + j8, k6 + k7 * i3);
-						this.world.setBlockState(blockpos$mutableblockpos, MysteriousPortalBlock.block.getDefaultState().getBlock().getDefaultState(),
-								3);
+						blockpos$mutable.setPos(i6 + k7 * l6, k2 + j8, k6 + k7 * i3);
+						this.world.setBlockState(blockpos$mutable, MysteriousPortalBlock.block.getDefaultState().getBlock().getDefaultState(), 3);
 					}
 				}
 			}
 			BlockState blockstate = portal.getDefaultState().with(NetherPortalBlock.AXIS, l6 == 0 ? Direction.Axis.Z : Direction.Axis.X);
 			for (int k8 = 0; k8 < 2; ++k8) {
 				for (int j9 = 0; j9 < 3; ++j9) {
-					blockpos$mutableblockpos.setPos(i6 + k8 * l6, k2 + j9, k6 + k8 * i3);
-					this.world.setBlockState(blockpos$mutableblockpos, blockstate, 18);
+					blockpos$mutable.setPos(i6 + k8 * l6, k2 + j9, k6 + k8 * i3);
+					this.world.setBlockState(blockpos$mutable, blockstate, 18);
+					this.world.getPointOfInterestManager().add(blockpos$mutable, poi);
 				}
 			}
 			return true;
 		}
 
 		@Override
-		@Nullable
-		public BlockPattern.PortalInfo func_222272_a(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction p_222272_3_, double p_222272_4_,
-				double p_222272_6_, boolean p_222272_8_) {
-			int i = 128;
-			boolean flag = true;
-			BlockPos blockpos = null;
-			ColumnPos columnpos = new ColumnPos(p_222272_1_);
-			if (!p_222272_8_ && this.field_222275_f.containsKey(columnpos)) {
-				return null;
-			} else {
-				TeleporterDimensionMod.PortalPosition teleporter$portalposition = this.destinationCoordinateCache.get(columnpos);
-				if (teleporter$portalposition != null) {
-					blockpos = teleporter$portalposition.field_222267_a;
-					teleporter$portalposition.lastUpdateTime = this.world.getGameTime();
-					flag = false;
-				} else {
-					double d0 = Double.MAX_VALUE;
-					for (int j = -128; j <= 128; ++j) {
-						BlockPos blockpos2;
-						for (int k = -128; k <= 128; ++k) {
-							for (BlockPos blockpos1 = p_222272_1_.add(j, this.world.getActualHeight() - 1 - p_222272_1_.getY(), k); blockpos1
-									.getY() >= 0; blockpos1 = blockpos2) {
-								blockpos2 = blockpos1.down();
-								if (this.world.getBlockState(blockpos1).getBlock() == portal) {
-									for (blockpos2 = blockpos1.down(); this.world.getBlockState(blockpos2).getBlock() == portal; blockpos2 = blockpos2
-											.down()) {
-										blockpos1 = blockpos2;
-									}
-									double d1 = blockpos1.distanceSq(p_222272_1_);
-									if (d0 < 0.0D || d1 < d0) {
-										d0 = d1;
-										blockpos = blockpos1;
-									}
-								}
-							}
-						}
-					}
+		public Entity placeEntity(Entity entity, ServerWorld serverworld, ServerWorld serverworld1, float yaw,
+				Function<Boolean, Entity> repositionEntity) {
+			double d0 = entity.getPosX();
+			double d1 = entity.getPosY();
+			double d2 = entity.getPosZ();
+			if (entity instanceof ServerPlayerEntity) {
+				entity.setLocationAndAngles(d0, d1, d2, yaw, entity.rotationPitch);
+				if (!this.placeInPortal(entity, yaw)) {
+					this.makePortal(entity);
+					this.placeInPortal(entity, yaw);
 				}
-				if (blockpos == null) {
-					long l = this.world.getGameTime() + 300L;
-					this.field_222275_f.put(columnpos, l);
+				entity.setWorld(serverworld1);
+				serverworld1.addDuringPortalTeleport((ServerPlayerEntity) entity);
+				((ServerPlayerEntity) entity).connection.setPlayerLocation(entity.getPosX(), entity.getPosY(), entity.getPosZ(), yaw,
+						entity.rotationPitch);
+				return entity;
+			} else {
+				Vec3d vec3d = entity.getMotion();
+				BlockPos blockpos = new BlockPos(d0, d1, d2);
+				BlockPattern.PortalInfo blockpattern$portalinfo = this.placeInExistingPortal(blockpos, vec3d, teleportDirection, lastPortalVec.x,
+						lastPortalVec.y, entity instanceof PlayerEntity);
+				if (blockpattern$portalinfo == null)
 					return null;
-				} else {
-					if (flag) {
-						this.destinationCoordinateCache.put(columnpos, new TeleporterDimensionMod.PortalPosition(blockpos, this.world.getGameTime()));
-						Logger logger = LOGGER;
-						Supplier[] asupplier = new Supplier[2];
-						Dimension dimension = this.world.getDimension();
-						asupplier[0] = dimension::getType;
-						asupplier[1] = () -> {
-							return columnpos;
-						};
-						logger.debug("Adding nether portal ticket for {}:{}", asupplier);
-						this.world.getChunkProvider().func_217228_a(TicketType.PORTAL, new ChunkPos(blockpos), 3, columnpos);
-					}
-					BlockPattern.PatternHelper blockpattern$patternhelper = portal.createPatternHelper(this.world, blockpos);
-					return blockpattern$patternhelper.func_222504_a(p_222272_3_, blockpos, p_222272_6_, p_222272_2_, p_222272_4_);
+				blockpos = new BlockPos(blockpattern$portalinfo.pos);
+				vec3d = blockpattern$portalinfo.motion;
+				float f = (float) blockpattern$portalinfo.rotation;
+				Entity entityNew = entity.getType().create(serverworld1);
+				if (entityNew != null) {
+					entityNew.copyDataFromOld(entity);
+					entityNew.moveToBlockPosAndAngles(blockpos, entityNew.rotationYaw + f, entityNew.rotationPitch);
+					entityNew.setMotion(vec3d);
+					serverworld1.addFromAnotherDimension(entityNew);
 				}
-			}
-		}
-
-		@Override
-		public boolean func_222268_a(Entity p_222268_1_, float p_222268_2_) {
-			Vec3d vec3d = lastPortalVec;
-			Direction direction = teleportDirection;
-			BlockPattern.PortalInfo blockpattern$portalinfo = this.func_222272_a(new BlockPos(p_222268_1_), p_222268_1_.getMotion(), direction,
-					vec3d.x, vec3d.y, p_222268_1_ instanceof PlayerEntity);
-			if (blockpattern$portalinfo == null) {
-				return false;
-			} else {
-				Vec3d vec3d1 = blockpattern$portalinfo.field_222505_a;
-				Vec3d vec3d2 = blockpattern$portalinfo.field_222506_b;
-				p_222268_1_.setMotion(vec3d2);
-				p_222268_1_.rotationYaw = p_222268_2_ + (float) blockpattern$portalinfo.field_222507_c;
-				if (p_222268_1_ instanceof ServerPlayerEntity) {
-					((ServerPlayerEntity) p_222268_1_).connection.setPlayerLocation(vec3d1.x, vec3d1.y, vec3d1.z, p_222268_1_.rotationYaw,
-							p_222268_1_.rotationPitch);
-					((ServerPlayerEntity) p_222268_1_).connection.captureCurrentPosition();
-				} else {
-					p_222268_1_.setLocationAndAngles(vec3d1.x, vec3d1.y, vec3d1.z, p_222268_1_.rotationYaw, p_222268_1_.rotationPitch);
-				}
-				return true;
-			}
-		}
-		public static class PortalPosition {
-			public final BlockPos field_222267_a;
-			public long lastUpdateTime;
-			public PortalPosition(BlockPos p_i50813_1_, long p_i50813_2_) {
-				this.field_222267_a = p_i50813_1_;
-				this.lastUpdateTime = p_i50813_2_;
+				return entityNew;
 			}
 		}
 	}
@@ -691,7 +671,7 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 	public static class CustomDimension extends Dimension {
 		private BiomeProviderCustom biomeProviderCustom = null;
 		public CustomDimension(World world, DimensionType type) {
-			super(world, type);
+			super(world, type, 0.5f);
 			this.nether = false;
 		}
 
@@ -741,15 +721,6 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 		}
 
 		@Override
-		protected void generateLightBrightnessTable() {
-			float f = 0.5f;
-			for (int i = 0; i <= 15; ++i) {
-				float f1 = 1 - (float) i / 15f;
-				this.lightBrightnessTable[i] = (1 - f1) / (f1 * 3 + 1) * (1 - f) + f;
-			}
-		}
-
-		@Override
 		public boolean doesWaterVaporize() {
 			return false;
 		}
@@ -768,9 +739,9 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 	public void onPlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event) {
 		Entity entity = event.getPlayer();
 		World world = entity.world;
-		double x = entity.posX;
-		double y = entity.posY;
-		double z = entity.posZ;
+		double x = entity.getPosX();
+		double y = entity.getPosY();
+		double z = entity.getPosZ();
 		if (event.getTo() == type) {
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
@@ -806,15 +777,11 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 	}
 
 	public static class BiomeProviderCustom extends BiomeProvider {
-		private final Layer genBiomes;
-		private final Layer biomeFactoryLayer;
-		private final Biome[] biomes;
+		private Layer genBiomes;
 		private static boolean biomesPatched = false;
 		public BiomeProviderCustom(World world) {
-			Layer[] aLayer = makeTheWorld(world.getSeed());
-			this.genBiomes = aLayer[0];
-			this.biomeFactoryLayer = aLayer[1];
-			this.biomes = dimensionBiomes;
+			super(new HashSet<Biome>(Arrays.asList(dimensionBiomes)));
+			this.genBiomes = getBiomeLayer(world.getSeed());
 			if (!biomesPatched) {
 				for (Biome biome : this.biomes) {
 					biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(new CaveWorldCarver(ProbabilityConfig::deserialize, 256) {
@@ -829,7 +796,11 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			}
 		}
 
-		private Layer[] makeTheWorld(long seed) {
+		public Biome getNoiseBiome(int x, int y, int z) {
+			return this.genBiomes.func_215738_a(x, z);
+		}
+
+		private Layer getBiomeLayer(long seed) {
 			LongFunction<IExtendedNoiseRandom<LazyArea>> contextFactory = l -> new LazyAreaLayerContext(25, seed, l);
 			IAreaFactory<LazyArea> parentLayer = IslandLayer.INSTANCE.apply(contextFactory.apply(1));
 			IAreaFactory<LazyArea> biomeLayer = (new BiomeLayerCustom()).apply(contextFactory.apply(200), parentLayer);
@@ -839,85 +810,7 @@ public class MysteriousDimensionDimension extends MagicWitchcraftModElements.Mod
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1003), biomeLayer);
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1004), biomeLayer);
 			biomeLayer = ZoomLayer.NORMAL.apply(contextFactory.apply(1005), biomeLayer);
-			IAreaFactory<LazyArea> voronoizoom = VoroniZoomLayer.INSTANCE.apply(contextFactory.apply(10), biomeLayer);
-			return new Layer[]{new Layer(biomeLayer), new Layer(voronoizoom)};
-		}
-
-		@Override /**
-					 * Gets the biome from the provided coordinates
-					 */
-		public Biome getBiome(int x, int y) {
-			return this.biomeFactoryLayer.func_215738_a(x, y);
-		}
-
-		@Override
-		public Biome func_222366_b(int p_222366_1_, int p_222366_2_) {
-			return this.genBiomes.func_215738_a(p_222366_1_, p_222366_2_);
-		}
-
-		@Override
-		public Biome[] getBiomes(int x, int z, int width, int length, boolean cacheFlag) {
-			return this.biomeFactoryLayer.generateBiomes(x, z, width, length);
-		}
-
-		@Override
-		public Set<Biome> getBiomesInSquare(int centerX, int centerZ, int sideLength) {
-			int i = centerX - sideLength >> 2;
-			int j = centerZ - sideLength >> 2;
-			int k = centerX + sideLength >> 2;
-			int l = centerZ + sideLength >> 2;
-			int i1 = k - i + 1;
-			int j1 = l - j + 1;
-			Set<Biome> set = Sets.newHashSet();
-			Collections.addAll(set, this.genBiomes.generateBiomes(i, j, i1, j1));
-			return set;
-		}
-
-		@Override
-		@Nullable
-		public BlockPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random random) {
-			int i = x - range >> 2;
-			int j = z - range >> 2;
-			int k = x + range >> 2;
-			int l = z + range >> 2;
-			int i1 = k - i + 1;
-			int j1 = l - j + 1;
-			Biome[] abiome = this.genBiomes.generateBiomes(i, j, i1, j1);
-			BlockPos blockpos = null;
-			int k1 = 0;
-			for (int l1 = 0; l1 < i1 * j1; ++l1) {
-				int i2 = i + l1 % i1 << 2;
-				int j2 = j + l1 / i1 << 2;
-				if (biomes.contains(abiome[l1])) {
-					if (blockpos == null || random.nextInt(k1 + 1) == 0) {
-						blockpos = new BlockPos(i2, 0, j2);
-					}
-					++k1;
-				}
-			}
-			return blockpos;
-		}
-
-		@Override
-		public boolean hasStructure(Structure<?> structureIn) {
-			return this.hasStructureCache.computeIfAbsent(structureIn, (p_205006_1_) -> {
-				for (Biome biome : this.biomes) {
-					if (biome.hasStructure(p_205006_1_)) {
-						return true;
-					}
-				}
-				return false;
-			});
-		}
-
-		@Override
-		public Set<BlockState> getSurfaceBlocks() {
-			if (this.topBlocksCache.isEmpty()) {
-				for (Biome biome : this.biomes) {
-					this.topBlocksCache.add(biome.getSurfaceBuilderConfig().getTop());
-				}
-			}
-			return this.topBlocksCache;
+			return new Layer(biomeLayer);
 		}
 	}
 }

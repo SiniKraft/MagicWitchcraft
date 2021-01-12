@@ -347,7 +347,16 @@ public class SpectralPowerInfuserRecipe4Gui extends MagicWitchcraftModElements.M
 			this.blit(this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
 			Minecraft.getInstance().getTextureManager()
 					.bindTexture(new ResourceLocation("magic_witchcraft:textures/spectralpowerinfuserrecipe4_ingredients.png"));
-			this.blit(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256, 256, 256);
+			this.blit(this.guiLeft + -1, this.guiTop + 0, 0, 0, 256, 256, 256, 256);
+		}
+
+		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
 		}
 
 		@Override
@@ -358,15 +367,6 @@ public class SpectralPowerInfuserRecipe4Gui extends MagicWitchcraftModElements.M
 		@Override
 		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 			this.font.drawString("Recipes - spectral power infuser", 6, 4, -1);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

@@ -136,6 +136,19 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 		}
 
 		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			if (NewName.isFocused())
+				return NewName.keyPressed(key, b, c);
+			if (NumberToSet.isFocused())
+				return NumberToSet.keyPressed(key, b, c);
+			return super.keyPressed(key, b, c);
+		}
+
+		@Override
 		public void tick() {
 			super.tick();
 			NewName.tick();
@@ -157,19 +170,6 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 30, 21, -1);
 			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 30, 39, -1);
 			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 30, 57, -1);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			if (NewName.isFocused())
-				return NewName.keyPressed(key, b, c);
-			if (NumberToSet.isFocused())
-				return NumberToSet.keyPressed(key, b, c);
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

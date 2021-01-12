@@ -167,36 +167,6 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 		}
 
 		@Override
-		public void tick() {
-			super.tick();
-			FirstBlockPosX.tick();
-			FirstBlockPosY.tick();
-			FirstBlockPosZ.tick();
-			FirstBlockName.tick();
-			SecondBlockPosX.tick();
-			SecondBlockPosY.tick();
-			SecondBlockPosZ.tick();
-			SecondBlockName.tick();
-			ThirdBlockPosX.tick();
-			ThirdBlockPosY.tick();
-			ThirdBlockPosZ.tick();
-			ThirdBlockName.tick();
-			FourthBlockPosX.tick();
-			FourthBlockPosY.tick();
-			FourthBlockPosZ.tick();
-			FourthBlockName.tick();
-		}
-
-		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Right clicker", 73, 24, -1);
-			this.font.drawString("First block", 10, 33, -1);
-			this.font.drawString("Second block", 10, 78, -1);
-			this.font.drawString("Third block", 10, 123, -1);
-			this.font.drawString("Fourth block", 10, 168, -1);
-		}
-
-		@Override
 		public boolean keyPressed(int key, int b, int c) {
 			if (key == 256) {
 				this.minecraft.player.closeScreen();
@@ -235,6 +205,36 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			if (FourthBlockName.isFocused())
 				return FourthBlockName.keyPressed(key, b, c);
 			return super.keyPressed(key, b, c);
+		}
+
+		@Override
+		public void tick() {
+			super.tick();
+			FirstBlockPosX.tick();
+			FirstBlockPosY.tick();
+			FirstBlockPosZ.tick();
+			FirstBlockName.tick();
+			SecondBlockPosX.tick();
+			SecondBlockPosY.tick();
+			SecondBlockPosZ.tick();
+			SecondBlockName.tick();
+			ThirdBlockPosX.tick();
+			ThirdBlockPosY.tick();
+			ThirdBlockPosZ.tick();
+			ThirdBlockName.tick();
+			FourthBlockPosX.tick();
+			FourthBlockPosY.tick();
+			FourthBlockPosZ.tick();
+			FourthBlockName.tick();
+		}
+
+		@Override
+		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+			this.font.drawString("Right clicker", 73, 24, -1);
+			this.font.drawString("First block", 10, 33, -1);
+			this.font.drawString("Second block", 10, 78, -1);
+			this.font.drawString("Third block", 10, 123, -1);
+			this.font.drawString("Fourth block", 10, 168, -1);
 		}
 
 		@Override

@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.item.ItemEntity;
@@ -41,7 +40,7 @@ public class MagicalBerriesBlockDestroyedByExplosionProcedure extends MagicWitch
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
-		if (world instanceof World && !world.getWorld().isRemote) {
+		if (!world.getWorld().isRemote) {
 			ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalBerriesItem.block, (int) (1)));
 			entityToSpawn.setPickupDelay((int) 10);
 			world.addEntity(entityToSpawn);

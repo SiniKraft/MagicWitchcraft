@@ -324,6 +324,15 @@ public class AutoBlockRemoverInterfaceGui extends MagicWitchcraftModElements.Mod
 		}
 
 		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
+		}
+
+		@Override
 		public void tick() {
 			super.tick();
 		}
@@ -334,15 +343,6 @@ public class AutoBlockRemoverInterfaceGui extends MagicWitchcraftModElements.Mod
 			this.font.drawString("Tool", 78, 20, -6684673);
 			this.font.drawString("Storage", 15, 20, -256);
 			this.font.drawString("Module", 132, 20, -13369600);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

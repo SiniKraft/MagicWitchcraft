@@ -36,8 +36,7 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.client.renderer.model.ModelBox;
-import net.minecraft.client.renderer.entity.model.RendererModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.block.BlockState;
@@ -47,6 +46,9 @@ import java.util.HashMap;
 
 import fr.sinikraft.magicwitchcraft.procedures.MagicCarpetEntityDiesProcedure;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
@@ -67,10 +69,10 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public void registerModels(ModelRegistryEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(CustomEntity.class, renderManager -> {
+		RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
 			return new MobRenderer(renderManager, new Model_magic_carpet(), 0.5f) {
 				@Override
-				protected ResourceLocation getEntityTexture(Entity entity) {
+				public ResourceLocation getEntityTexture(Entity entity) {
 					return new ResourceLocation("magic_witchcraft:textures/magic_carpet.png");
 				}
 			};
@@ -88,7 +90,7 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 			setCustomName(new StringTextComponent("Magic carpet"));
 			setCustomNameVisible(true);
 			enablePersistence();
-			this.moveController = new FlyingMovementController(this);
+			this.moveController = new FlyingMovementController(this, 10, true);
 			this.navigator = new FlyingPathNavigator(this, this.world);
 		}
 
@@ -125,7 +127,8 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 		}
 
 		@Override
-		public void fall(float l, float d) {
+		public boolean onLivingFall(float l, float d) {
+			return false;
 		}
 
 		@Override
@@ -144,10 +147,10 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 		@Override
 		public void onDeath(DamageSource source) {
 			super.onDeath(source);
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
 			Entity sourceentity = source.getTrueSource();
-			double x = this.posX;
-			double y = this.posY;
-			double z = this.posZ;
 			Entity entity = this;
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
@@ -165,9 +168,9 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 			boolean retval = true;
 			super.processInteract(sourceentity, hand);
 			sourceentity.startRiding(this);
-			double x = this.posX;
-			double y = this.posY;
-			double z = this.posZ;
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
 			Entity entity = this;
 			return retval;
 		}
@@ -208,8 +211,8 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 					super.travel(new Vec3d(strafe, 0, forward));
 				}
 				this.prevLimbSwingAmount = this.limbSwingAmount;
-				double d1 = this.posX - this.prevPosX;
-				double d0 = this.posZ - this.prevPosZ;
+				double d1 = this.getPosX() - this.prevPosX;
+				double d0 = this.getPosZ() - this.prevPosZ;
 				float f1 = MathHelper.sqrt(d1 * d1 + d0 * d0) * 4.0F;
 				if (f1 > 1.0F)
 					f1 = 1.0F;
@@ -238,28 +241,38 @@ public class MagicCarpetEntity extends MagicWitchcraftModElements.ModElement {
 	}
 
 	public static class Model_magic_carpet extends EntityModel<Entity> {
-		private final RendererModel carpet;
+		private final ModelRenderer carpet;
 		public Model_magic_carpet() {
 			textureWidth = 16;
 			textureHeight = 16;
-			carpet = new RendererModel(this);
+			carpet = new ModelRenderer(this);
 			carpet.setRotationPoint(0.0F, 24.0F, 0.0F);
-			carpet.cubeList.add(new ModelBox(carpet, 0, 0, -11.0F, -1.0F, -18.0F, 22, 1, 34, 0.0F, false));
+			addBoxHelper(carpet, 0, 0, -11.0F, -1.0F, -18.0F, 22, 1, 34, 0.0F, false);
 		}
 
 		@Override
-		public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-			carpet.render(f5);
+		public void render(MatrixStack ms, IVertexBuilder vb, int i1, int i2, float f1, float f2, float f3, float f4) {
+			carpet.render(ms, vb, i1, i2, f1, f2, f3, f4);
 		}
 
-		public void setRotationAngle(RendererModel modelRenderer, float x, float y, float z) {
+		public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 			modelRenderer.rotateAngleX = x;
 			modelRenderer.rotateAngleY = y;
 			modelRenderer.rotateAngleZ = z;
 		}
 
-		public void setRotationAngles(Entity e, float f, float f1, float f2, float f3, float f4, float f5) {
-			super.setRotationAngles(e, f, f1, f2, f3, f4, f5);
+		public void setRotationAngles(Entity e, float f, float f1, float f2, float f3, float f4) {
 		}
+	}
+	@OnlyIn(Dist.CLIENT)
+	public static void addBoxHelper(ModelRenderer renderer, int texU, int texV, float x, float y, float z, int dx, int dy, int dz, float delta) {
+		addBoxHelper(renderer, texU, texV, x, y, z, dx, dy, dz, delta, renderer.mirror);
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static void addBoxHelper(ModelRenderer renderer, int texU, int texV, float x, float y, float z, int dx, int dy, int dz, float delta,
+			boolean mirror) {
+		renderer.mirror = mirror;
+		renderer.addBox("", x, y, z, dx, dy, dz, delta, texU, texV);
 	}
 }

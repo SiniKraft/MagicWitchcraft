@@ -4,7 +4,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.common.MinecraftForge;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.ItemStack;
@@ -60,7 +59,7 @@ public class MagicalWheatSeedsSpawningProcedure extends MagicWitchcraftModElemen
 		if ((((world.getBlockState(new BlockPos((int) x, (int) y, (int) z))).getBlock() == Blocks.GRASS.getDefaultState().getBlock())
 				&& (!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false)))) {
 			if ((Math.random() < 0.03)) {
-				if (world instanceof World && !world.getWorld().isRemote) {
+				if (!world.getWorld().isRemote) {
 					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalWheatSeedsItem.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);
@@ -77,9 +76,9 @@ public class MagicalWheatSeedsSpawningProcedure extends MagicWitchcraftModElemen
 		dependencies.put("x", (int) event.getPos().getX());
 		dependencies.put("y", (int) event.getPos().getY());
 		dependencies.put("z", (int) event.getPos().getZ());
-		dependencies.put("px", entity.posX);
-		dependencies.put("py", entity.posY);
-		dependencies.put("pz", entity.posZ);
+		dependencies.put("px", entity.getPosX());
+		dependencies.put("py", entity.getPosY());
+		dependencies.put("pz", entity.getPosZ());
 		dependencies.put("world", event.getWorld().getWorld());
 		dependencies.put("entity", entity);
 		dependencies.put("event", event);

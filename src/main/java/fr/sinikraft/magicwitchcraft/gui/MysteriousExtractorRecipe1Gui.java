@@ -340,7 +340,16 @@ public class MysteriousExtractorRecipe1Gui extends MagicWitchcraftModElements.Mo
 			this.blit(this.guiLeft + 78, this.guiTop + 56, 0, 0, 256, 256, 256, 256);
 			Minecraft.getInstance().getTextureManager()
 					.bindTexture(new ResourceLocation("magic_witchcraft:textures/mysteriousextractorrecipe1_ingredients.png"));
-			this.blit(this.guiLeft + 0, this.guiTop + 0, 0, 0, 256, 256, 256, 256);
+			this.blit(this.guiLeft + -1, this.guiTop + 0, 0, 0, 256, 256, 256, 256);
+		}
+
+		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
 		}
 
 		@Override
@@ -351,15 +360,6 @@ public class MysteriousExtractorRecipe1Gui extends MagicWitchcraftModElements.Mo
 		@Override
 		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 			this.font.drawString("Recipes - Mysterious extractor", 15, 5, -1);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

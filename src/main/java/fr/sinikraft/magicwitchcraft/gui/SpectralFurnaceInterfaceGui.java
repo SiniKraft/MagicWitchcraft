@@ -323,6 +323,15 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 		}
 
 		@Override
+		public boolean keyPressed(int key, int b, int c) {
+			if (key == 256) {
+				this.minecraft.player.closeScreen();
+				return true;
+			}
+			return super.keyPressed(key, b, c);
+		}
+
+		@Override
 		public void tick() {
 			super.tick();
 		}
@@ -340,15 +349,6 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 87, 65, -16711936);
 			this.font.drawString("/ 1000 MER", 114, 65, -16711936);
 			this.font.drawString("Spectral furnace", 51, 5, -1);
-		}
-
-		@Override
-		public boolean keyPressed(int key, int b, int c) {
-			if (key == 256) {
-				this.minecraft.player.closeScreen();
-				return true;
-			}
-			return super.keyPressed(key, b, c);
 		}
 
 		@Override

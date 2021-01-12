@@ -26,6 +26,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
@@ -159,8 +160,9 @@ public class AutoBlockRemoverBlock extends MagicWitchcraftModElements.ModElement
 		}
 
 		@Override
-		public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult hit) {
-			boolean retval = super.onBlockActivated(state, world, pos, entity, hand, hit);
+		public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand,
+				BlockRayTraceResult hit) {
+			super.onBlockActivated(state, world, pos, entity, hand, hit);
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
@@ -174,7 +176,7 @@ public class AutoBlockRemoverBlock extends MagicWitchcraftModElements.ModElement
 				$_dependencies.put("world", world);
 				AutoBlockRemoverOnBlockRightClickedProcedure.executeProcedure($_dependencies);
 			}
-			return true;
+			return ActionResultType.SUCCESS;
 		}
 
 		@Override
@@ -236,10 +238,10 @@ public class AutoBlockRemoverBlock extends MagicWitchcraftModElements.ModElement
 		@Override
 		public void read(CompoundNBT compound) {
 			super.read(compound);
-			this.stacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 			if (!this.checkLootAndRead(compound)) {
-				ItemStackHelper.loadAllItems(compound, this.stacks);
+				this.stacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 			}
+			ItemStackHelper.loadAllItems(compound, this.stacks);
 		}
 
 		@Override

@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.item.ItemEntity;
@@ -42,7 +41,7 @@ public class MagicalLeavesBlockDestroyedByExplosionProcedure extends MagicWitchc
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
 		if ((Math.random() <= 0.05)) {
-			if (world instanceof World && !world.getWorld().isRemote) {
+			if (!world.getWorld().isRemote) {
 				ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MagicalSaplingBlock.block, (int) (1)));
 				entityToSpawn.setPickupDelay((int) 10);
 				world.addEntity(entityToSpawn);

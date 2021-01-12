@@ -4,6 +4,7 @@ package fr.sinikraft.magicwitchcraft.block;
 import net.minecraftforge.registries.ObjectHolder;
 
 import net.minecraft.world.storage.loot.LootContext;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.ItemStack;
@@ -70,7 +71,7 @@ public class AutoExplodeTNTBlock extends MagicWitchcraftModElements.ModElement {
 		}
 
 		@Override
-		public void tick(BlockState state, World world, BlockPos pos, Random random) {
+		public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 			super.tick(state, world, pos, random);
 			int x = pos.getX();
 			int y = pos.getY();

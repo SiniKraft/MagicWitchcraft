@@ -79,12 +79,12 @@ public class SaverLeggingsPlaceBlockOnKeyPressedProcedure extends MagicWitchcraf
 					((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
 							.getOrCreateTag().putDouble("Cooldown", 600);
 					if (!world.getWorld().isRemote) {
-						world.playSound(null, new BlockPos((int) (entity.posX), (int) (entity.posY), (int) (entity.posZ)),
+						world.playSound(null, new BlockPos((int) (entity.getPosX()), (int) (entity.getPosY()), (int) (entity.getPosZ())),
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
 										.getValue(new ResourceLocation("block.metal_pressure_plate.click_on")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1);
 					} else {
-						world.getWorld().playSound((entity.posX), (entity.posY), (entity.posZ),
+						world.getWorld().playSound((entity.getPosX()), (entity.getPosY()), (entity.getPosZ()),
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
 										.getValue(new ResourceLocation("block.metal_pressure_plate.click_on")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1, false);

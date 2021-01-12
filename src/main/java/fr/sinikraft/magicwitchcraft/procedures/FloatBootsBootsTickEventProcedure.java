@@ -63,10 +63,10 @@ public class FloatBootsBootsTickEventProcedure extends MagicWitchcraftModElement
 										.getDefaultState().getBlock()))))) {
 			{
 				Entity _ent = entity;
-				_ent.setPositionAndUpdate((entity.posX), ((entity.posY) + 0.3), (entity.posZ));
+				_ent.setPositionAndUpdate((entity.getPosX()), ((entity.getPosY()) + 0.3), (entity.getPosZ()));
 				if (_ent instanceof ServerPlayerEntity) {
-					((ServerPlayerEntity) _ent).connection.setPlayerLocation((entity.posX), ((entity.posY) + 0.3), (entity.posZ), _ent.rotationYaw,
-							_ent.rotationPitch, Collections.emptySet());
+					((ServerPlayerEntity) _ent).connection.setPlayerLocation((entity.getPosX()), ((entity.getPosY()) + 0.3), (entity.getPosZ()),
+							_ent.rotationYaw, _ent.rotationPitch, Collections.emptySet());
 				}
 			}
 			if (entity instanceof LivingEntity)

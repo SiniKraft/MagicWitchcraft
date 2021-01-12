@@ -80,9 +80,9 @@ public class MagicalItem extends MagicWitchcraftModElements.ModElement {
 			@Override
 			public void onArmorTick(ItemStack itemstack, World world, PlayerEntity entity) {
 				super.onArmorTick(itemstack, world, entity);
-				double x = entity.posX;
-				double y = entity.posY;
-				double z = entity.posZ;
+				double x = entity.getPosX();
+				double y = entity.getPosY();
+				double z = entity.getPosZ();
 				{
 					Map<String, Object> $_dependencies = new HashMap<>();
 					$_dependencies.put("entity", entity);

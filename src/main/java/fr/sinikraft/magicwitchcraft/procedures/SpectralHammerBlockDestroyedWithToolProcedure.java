@@ -4,7 +4,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Direction;
 import net.minecraft.entity.Entity;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.Block;
 
 import java.util.Map;
@@ -57,14 +56,20 @@ public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcra
 			posZ = (double) (z - 2);
 			for (int index0 = 0; index0 < (int) (5); index0++) {
 				for (int index1 = 0; index1 < (int) (5); index1++) {
-					if (((((((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.ROCK)
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.SAND))
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.CLAY))
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.EARTH))
-							|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.ORGANIC)
-									|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.WOOD)
+					if (((((((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+							.getMaterial() == net.minecraft.block.material.Material.ROCK)
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.SAND))
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.CLAY))
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.EARTH))
+							|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.ORGANIC)
+									|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+											.getMaterial() == net.minecraft.block.material.Material.WOOD)
 											|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
-													.getMaterial() == Material.IRON))))) {
+													.getMaterial() == net.minecraft.block.material.Material.IRON))))) {
 						Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), world.getWorld(),
 								new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
 						world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);
@@ -80,14 +85,20 @@ public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcra
 			posZ = (double) z;
 			for (int index2 = 0; index2 < (int) (5); index2++) {
 				for (int index3 = 0; index3 < (int) (5); index3++) {
-					if (((((((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.ROCK)
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.SAND))
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.CLAY))
-							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.EARTH))
-							|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.ORGANIC)
-									|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ)))).getMaterial() == Material.WOOD)
+					if (((((((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+							.getMaterial() == net.minecraft.block.material.Material.ROCK)
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.SAND))
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.CLAY))
+							|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.EARTH))
+							|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+									.getMaterial() == net.minecraft.block.material.Material.ORGANIC)
+									|| (((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
+											.getMaterial() == net.minecraft.block.material.Material.WOOD)
 											|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
-													.getMaterial() == Material.IRON))))) {
+													.getMaterial() == net.minecraft.block.material.Material.IRON))))) {
 						Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), world.getWorld(),
 								new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
 						world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);

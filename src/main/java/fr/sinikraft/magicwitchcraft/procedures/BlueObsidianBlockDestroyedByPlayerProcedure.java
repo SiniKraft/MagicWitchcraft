@@ -1,6 +1,5 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
-import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.ItemStack;
@@ -59,7 +58,7 @@ public class BlueObsidianBlockDestroyedByPlayerProcedure extends MagicWitchcraft
 					((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)
 					&& (((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem()
 							.canHarvestBlock(Blocks.OBSIDIAN.getDefaultState())))) {
-				if (world instanceof World && !world.getWorld().isRemote) {
+				if (!world.getWorld().isRemote) {
 					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(BlueObsidianBlock.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);

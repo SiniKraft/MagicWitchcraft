@@ -496,21 +496,21 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		@Override
-		public void tick() {
-			super.tick();
-		}
-
-		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		}
-
-		@Override
 		public boolean keyPressed(int key, int b, int c) {
 			if (key == 256) {
 				this.minecraft.player.closeScreen();
 				return true;
 			}
 			return super.keyPressed(key, b, c);
+		}
+
+		@Override
+		public void tick() {
+			super.tick();
+		}
+
+		@Override
+		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		}
 
 		@Override

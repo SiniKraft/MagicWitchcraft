@@ -1,9 +1,9 @@
 modLoader="javafml"
-loaderVersion="[28,)"
+loaderVersion="[31,)"
 
 [[mods]]
 modId="magic_witchcraft"
-version="1.1.0"
+version="1.1.1"
 displayName="Magic Witchcraft"
 credits="You aren't allowed to distribute this mod without my agreement ! See license for more infos."
 displayURL="https://github.com/SiniKraft/MagicWitchcraft"
@@ -17,7 +17,7 @@ A mysterious and magical mod !
 [[dependencies.magic_witchcraft]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.4]"
+    versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"
 
