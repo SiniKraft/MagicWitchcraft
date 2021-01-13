@@ -15,6 +15,7 @@ import java.util.Map;
 import fr.sinikraft.magicwitchcraft.item.EnergyCrystalItem;
 import fr.sinikraft.magicwitchcraft.item.EnergyCrystalEmptyItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SolarPanelUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -25,22 +26,22 @@ public class SolarPanelUpdateTickProcedure extends MagicWitchcraftModElements.Mo
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SolarPanelUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SolarPanelUpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SolarPanelUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SolarPanelUpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SolarPanelUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SolarPanelUpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SolarPanelUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SolarPanelUpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");

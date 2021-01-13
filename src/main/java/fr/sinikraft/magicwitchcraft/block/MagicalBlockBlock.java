@@ -6,9 +6,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.loot.LootContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
@@ -25,11 +25,11 @@ import java.util.Collections;
 import fr.sinikraft.magicwitchcraft.itemgroup.MagicWitchCraftItemGroup;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 
-//ADDED IMPORTS
+// ADDED IMPORTS
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
-import net.minecraft.util.math.Vec3d;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalBlockBlock extends MagicWitchcraftModElements.ModElement {
@@ -53,25 +53,23 @@ public class MagicalBlockBlock extends MagicWitchcraftModElements.ModElement {
 	}
 	public static class CustomBlock extends Block {
 		public CustomBlock() {
-			super(Block.Properties.create(Material.MISCELLANEOUS).sound(SoundType.SLIME).hardnessAndResistance(1.5f, 10f).lightValue(0)
-					.slipperiness(0.7999999999999999f).notSolid());
+			super(Block.Properties.create(Material.MISCELLANEOUS).sound(SoundType.SLIME).hardnessAndResistance(1.5f, 10f).setLightLevel(s -> 0)
+					.slipperiness(0.7999999999999999f).notSolid().setOpaque((bs, br, bp) -> false));
 			setRegistryName("magicalblock");
 		}
-		
-		/**
+	/**
     * Block's chance to react to a living entity falling on it.
     */
-    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-       if (entityIn.isSuppressingBounce()) {
-          super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
-       } else {
-          entityIn.onLivingFall(fallDistance, 0.0F);
-       }
+   public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+      if (entityIn.isSuppressingBounce()) {
+         super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+      } else {
+         entityIn.onLivingFall(fallDistance, 0.0F);
+      }
 
-    }
+   }
 
-
-    /**
+   /**
     * Called when an Entity lands on this Block. This method *must* update motionY because the entity will not do that
     * on its own
     */
@@ -79,16 +77,16 @@ public class MagicalBlockBlock extends MagicWitchcraftModElements.ModElement {
       if (entityIn.isSuppressingBounce()) {
          super.onLanded(worldIn, entityIn);
       } else {
-         this.func_226946_a_(entityIn);
+         this.bounceEntity(entityIn);
       }
 
    }
 
-   private void func_226946_a_(Entity p_226946_1_) {
-      Vec3d vec3d = p_226946_1_.getMotion();
-      if (vec3d.y < 0.0D) {
-         double d0 = p_226946_1_ instanceof LivingEntity ? 1.0D : 0.8D;
-         p_226946_1_.setMotion(vec3d.x, -vec3d.y * d0, vec3d.z);
+   private void bounceEntity(Entity entity) {
+      Vector3d vector3d = entity.getMotion();
+      if (vector3d.y < 0.0D) {
+         double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
+         entity.setMotion(vector3d.x, -vector3d.y * d0, vector3d.z);
       }
 
    }
@@ -105,12 +103,6 @@ public class MagicalBlockBlock extends MagicWitchcraftModElements.ModElement {
 
       super.onEntityWalk(worldIn, pos, entityIn);
    }
-
-		@Override
-		public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
-			return false;
-		}
-
 		@Override
 		public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
 			return true;

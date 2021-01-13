@@ -12,6 +12,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.item.ChunkAnalyserItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class ChunkAnalyserRightClickedInAirProcedure extends MagicWitchcraftModElements.ModElement {
@@ -22,22 +23,22 @@ public class ChunkAnalyserRightClickedInAirProcedure extends MagicWitchcraftModE
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure ChunkAnalyserRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure ChunkAnalyserRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure ChunkAnalyserRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure ChunkAnalyserRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure ChunkAnalyserRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure ChunkAnalyserRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure ChunkAnalyserRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure ChunkAnalyserRightClickedInAir!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -50,13 +51,14 @@ public class ChunkAnalyserRightClickedInAirProcedure extends MagicWitchcraftModE
 		if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 			if (entity instanceof PlayerEntity) {
 				ItemStack _stktoremove = new ItemStack(ChunkAnalyserItem.block, (int) (1));
-				((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+				((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+						((PlayerEntity) entity).container.func_234641_j_());
 			}
 		}
-		if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 			((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aStarting \u00A7achunk \u00A7aanalyser..."), (true));
 		}
-		if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 			((PlayerEntity) entity)
 					.sendStatusMessage(new StringTextComponent("\u00A7a[ChunkAnalyser]: ----------------Start-of-analysis----------------"), (false));
 		}
@@ -74,7 +76,7 @@ public class ChunkAnalyserRightClickedInAirProcedure extends MagicWitchcraftModE
 									.getDefaultState().getBlock())
 									|| ((world.getBlockState(new BlockPos((int) (varX), (int) (varY), (int) (varZ)))).getBlock() == Blocks.BEDROCK
 											.getDefaultState().getBlock()))))) {
-						if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+						if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 							((PlayerEntity) entity)
 									.sendStatusMessage(
 											new StringTextComponent((("\u00A7e[ChunkAnalyser]: ") + ""
@@ -91,10 +93,10 @@ public class ChunkAnalyserRightClickedInAirProcedure extends MagicWitchcraftModE
 			varY = (double) ((varY) - 1);
 			varZ = (double) ((varZ) - 16);
 		}
-		if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 			((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aDone \u00A7a! \u00A7aSee \u00A7ayour \u00A7alogs."), (true));
 		}
-		if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 			((PlayerEntity) entity)
 					.sendStatusMessage(new StringTextComponent("\u00A7a[ChunkAnalyser]: ----------------End-of-analysis----------------"), (false));
 		}

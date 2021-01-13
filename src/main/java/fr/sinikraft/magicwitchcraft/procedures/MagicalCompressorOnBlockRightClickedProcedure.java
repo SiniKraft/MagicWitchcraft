@@ -3,6 +3,7 @@ package fr.sinikraft.magicwitchcraft.procedures;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
@@ -10,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.state.IProperty;
+import net.minecraft.state.Property;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -28,6 +29,7 @@ import io.netty.buffer.Unpooled;
 import fr.sinikraft.magicwitchcraft.gui.MagicalCompressorGUIGui;
 import fr.sinikraft.magicwitchcraft.block.MagicalCompressorActivateBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalCompressorOnBlockRightClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -38,27 +40,27 @@ public class MagicalCompressorOnBlockRightClickedProcedure extends MagicWitchcra
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalCompressorOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalCompressorOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalCompressorOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalCompressorOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalCompressorOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalCompressorOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalCompressorOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalCompressorOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalCompressorOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalCompressorOnBlockRightClicked!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -90,10 +92,13 @@ public class MagicalCompressorOnBlockRightClickedProcedure extends MagicWitchcra
 				BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 				BlockState _bs = MagicalCompressorActivateBlock.block.getDefaultState();
 				BlockState _bso = world.getBlockState(_bp);
-				for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-					IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-					if (_bs.has(_property))
-						_bs = _bs.with(_property, (Comparable) entry.getValue());
+				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+					Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+					if (_property != null && _bs.get(_property) != null)
+						try {
+							_bs = _bs.with(_property, (Comparable) entry.getValue());
+						} catch (Exception e) {
+						}
 				}
 				TileEntity _te = world.getTileEntity(_bp);
 				CompoundNBT _bnbt = null;
@@ -106,18 +111,18 @@ public class MagicalCompressorOnBlockRightClickedProcedure extends MagicWitchcra
 					_te = world.getTileEntity(_bp);
 					if (_te != null) {
 						try {
-							_te.read(_bnbt);
+							_te.read(_bso, _bnbt);
 						} catch (Exception ignored) {
 						}
 					}
 				}
 			}
-			if (!world.getWorld().isRemote) {
-				world.playSound(null, new BlockPos((int) x, (int) y, (int) z),
+			if (world instanceof World && !world.isRemote()) {
+				((World) world).playSound(null, new BlockPos((int) x, (int) y, (int) z),
 						(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone_button.click_on")),
 						SoundCategory.NEUTRAL, (float) 1, (float) 1);
 			} else {
-				world.getWorld().playSound(x, y, z,
+				((World) world).playSound(x, y, z,
 						(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone_button.click_on")),
 						SoundCategory.NEUTRAL, (float) 1, (float) 1, false);
 			}

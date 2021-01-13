@@ -181,7 +181,7 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		@Override
 		public void onCollideWithPlayer(PlayerEntity entity) {
 			super.onCollideWithPlayer(entity);
-			Entity sourceentity = this.getShooter();
+			Entity sourceentity = this.func_234616_v_();
 			double x = this.getPosX();
 			double y = this.getPosY();
 			double z = this.getPosZ();
@@ -200,7 +200,7 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 		protected void arrowHit(LivingEntity entity) {
 			super.arrowHit(entity);
 			entity.setArrowCountInEntity(entity.getArrowCountInEntity() - 1);
-			Entity sourceentity = this.getShooter();
+			Entity sourceentity = this.func_234616_v_();
 			double x = this.getPosX();
 			double y = this.getPosY();
 			double z = this.getPosZ();
@@ -222,7 +222,7 @@ public class MegaEnderPearlItem extends MagicWitchcraftModElements.ModElement {
 			double y = this.getPosY();
 			double z = this.getPosZ();
 			World world = this.world;
-			Entity entity = this.getShooter();
+			Entity entity = this.func_234616_v_();
 			if (this.inGround) {
 				{
 					Map<String, Object> $_dependencies = new HashMap<>();

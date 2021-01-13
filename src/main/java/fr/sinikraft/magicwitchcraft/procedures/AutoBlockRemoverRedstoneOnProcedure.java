@@ -3,10 +3,12 @@ package fr.sinikraft.magicwitchcraft.procedures;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Direction;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.item.ItemStack;
 import net.minecraft.block.Blocks;
@@ -20,6 +22,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.item.StorageModuleItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModElements.ModElement {
@@ -30,22 +33,22 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure AutoBlockRemoverRedstoneOn!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure AutoBlockRemoverRedstoneOn!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure AutoBlockRemoverRedstoneOn!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure AutoBlockRemoverRedstoneOn!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure AutoBlockRemoverRedstoneOn!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure AutoBlockRemoverRedstoneOn!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure AutoBlockRemoverRedstoneOn!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure AutoBlockRemoverRedstoneOn!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -57,7 +60,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 				try {
 					BlockState _bs = world.getBlockState(pos);
 					DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-					return _bs.get(property);
+					if (property != null)
+						return _bs.get(property);
+					return Direction.getFacingFromAxisDirection(
+							_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+							Direction.AxisDirection.POSITIVE);
 				} catch (Exception e) {
 					return Direction.NORTH;
 				}
@@ -172,9 +179,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 						}
 					}
 				} else {
-					Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) z)), world.getWorld(),
-							new BlockPos((int) x, (int) (y + 1), (int) z));
-					world.destroyBlock(new BlockPos((int) x, (int) (y + 1), (int) z), false);
+					if (world instanceof World) {
+						Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) (y + 1), (int) z)), (World) world,
+								new BlockPos((int) x, (int) (y + 1), (int) z));
+						world.destroyBlock(new BlockPos((int) x, (int) (y + 1), (int) z), false);
+					}
 					{
 						TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 						if (_ent != null) {
@@ -200,7 +209,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 					try {
 						BlockState _bs = world.getBlockState(pos);
 						DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-						return _bs.get(property);
+						if (property != null)
+							return _bs.get(property);
+						return Direction.getFacingFromAxisDirection(
+								_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+								Direction.AxisDirection.POSITIVE);
 					} catch (Exception e) {
 						return Direction.NORTH;
 					}
@@ -316,9 +329,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 							}
 						}
 					} else {
-						Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z)), world.getWorld(),
-								new BlockPos((int) x, (int) (y - 1), (int) z));
-						world.destroyBlock(new BlockPos((int) x, (int) (y - 1), (int) z), false);
+						if (world instanceof World) {
+							Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z)), (World) world,
+									new BlockPos((int) x, (int) (y - 1), (int) z));
+							world.destroyBlock(new BlockPos((int) x, (int) (y - 1), (int) z), false);
+						}
 						{
 							TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 							if (_ent != null) {
@@ -344,7 +359,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -460,9 +479,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 								}
 							}
 						} else {
-							Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) y, (int) (z - 1))), world.getWorld(),
-									new BlockPos((int) x, (int) y, (int) (z - 1)));
-							world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z - 1)), false);
+							if (world instanceof World) {
+								Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) y, (int) (z - 1))), (World) world,
+										new BlockPos((int) x, (int) y, (int) (z - 1)));
+								world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z - 1)), false);
+							}
 							{
 								TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 								if (_ent != null) {
@@ -488,7 +509,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 							try {
 								BlockState _bs = world.getBlockState(pos);
 								DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-								return _bs.get(property);
+								if (property != null)
+									return _bs.get(property);
+								return Direction.getFacingFromAxisDirection(
+										_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+										Direction.AxisDirection.POSITIVE);
 							} catch (Exception e) {
 								return Direction.NORTH;
 							}
@@ -605,9 +630,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 									}
 								}
 							} else {
-								Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1))), world.getWorld(),
-										new BlockPos((int) x, (int) y, (int) (z + 1)));
-								world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z + 1)), false);
+								if (world instanceof World) {
+									Block.spawnDrops(world.getBlockState(new BlockPos((int) x, (int) y, (int) (z + 1))), (World) world,
+											new BlockPos((int) x, (int) y, (int) (z + 1)));
+									world.destroyBlock(new BlockPos((int) x, (int) y, (int) (z + 1)), false);
+								}
 								{
 									TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 									if (_ent != null) {
@@ -633,7 +660,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 								try {
 									BlockState _bs = world.getBlockState(pos);
 									DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-									return _bs.get(property);
+									if (property != null)
+										return _bs.get(property);
+									return Direction.getFacingFromAxisDirection(
+											_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+											Direction.AxisDirection.POSITIVE);
 								} catch (Exception e) {
 									return Direction.NORTH;
 								}
@@ -751,9 +782,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 										}
 									}
 								} else {
-									Block.spawnDrops(world.getBlockState(new BlockPos((int) (x + 1), (int) y, (int) z)), world.getWorld(),
-											new BlockPos((int) (x + 1), (int) y, (int) z));
-									world.destroyBlock(new BlockPos((int) (x + 1), (int) y, (int) z), false);
+									if (world instanceof World) {
+										Block.spawnDrops(world.getBlockState(new BlockPos((int) (x + 1), (int) y, (int) z)), (World) world,
+												new BlockPos((int) (x + 1), (int) y, (int) z));
+										world.destroyBlock(new BlockPos((int) (x + 1), (int) y, (int) z), false);
+									}
 									{
 										TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 										if (_ent != null) {
@@ -779,7 +812,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 									try {
 										BlockState _bs = world.getBlockState(pos);
 										DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-										return _bs.get(property);
+										if (property != null)
+											return _bs.get(property);
+										return Direction.getFacingFromAxisDirection(
+												_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+												Direction.AxisDirection.POSITIVE);
 									} catch (Exception e) {
 										return Direction.NORTH;
 									}
@@ -897,9 +934,11 @@ public class AutoBlockRemoverRedstoneOnProcedure extends MagicWitchcraftModEleme
 											}
 										}
 									} else {
-										Block.spawnDrops(world.getBlockState(new BlockPos((int) (x - 1), (int) y, (int) z)), world.getWorld(),
-												new BlockPos((int) (x - 1), (int) y, (int) z));
-										world.destroyBlock(new BlockPos((int) (x - 1), (int) y, (int) z), false);
+										if (world instanceof World) {
+											Block.spawnDrops(world.getBlockState(new BlockPos((int) (x - 1), (int) y, (int) z)), (World) world,
+													new BlockPos((int) (x - 1), (int) y, (int) z));
+											world.destroyBlock(new BlockPos((int) (x - 1), (int) y, (int) z), false);
+										}
 										{
 											TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 											if (_ent != null) {

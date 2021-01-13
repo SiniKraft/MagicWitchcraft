@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -21,32 +22,32 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("guistate") == null) {
 			if (!dependencies.containsKey("guistate"))
-				System.err.println("Failed to load dependency guistate for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency guistate for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure TeleporterBeaconInterfaceSetOnButtonClicked!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -90,7 +91,7 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else if ((new Object() {
@@ -128,7 +129,7 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else if ((new Object() {
@@ -166,7 +167,7 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else if ((new Object() {
@@ -204,7 +205,7 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else if ((new Object() {
@@ -242,7 +243,7 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else if ((new Object() {
@@ -280,11 +281,11 @@ public class TeleporterBeaconInterfaceSetOnButtonClickedProcedure extends MagicW
 			MagicWitchcraftModVariables.WorldVariables.get(world).syncData(world);
 			if (entity instanceof PlayerEntity)
 				((PlayerEntity) entity).closeScreen();
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aSet !"), (false));
 			}
 		} else {
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7cNumber must be valid and between 1 and 6 !"), (false));
 			}
 		}

@@ -4,7 +4,6 @@ package fr.sinikraft.magicwitchcraft.block;
 import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.common.ToolType;
 
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.World;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -12,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.loot.LootContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
@@ -47,8 +47,8 @@ public class CreativeMinerBlock extends MagicWitchcraftModElements.ModElement {
 	}
 	public static class CustomBlock extends FallingBlock {
 		public CustomBlock() {
-			super(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.3f, 10000f).lightValue(0).harvestLevel(1)
-					.harvestTool(ToolType.SHOVEL).doesNotBlockMovement());
+			super(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.3f, 10000f).setLightLevel(s -> 0)
+					.harvestLevel(1).harvestTool(ToolType.SHOVEL).doesNotBlockMovement());
 			setRegistryName("creativeminer");
 		}
 

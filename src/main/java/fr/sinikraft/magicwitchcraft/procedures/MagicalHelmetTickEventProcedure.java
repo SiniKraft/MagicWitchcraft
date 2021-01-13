@@ -14,6 +14,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.block.MagicalBlockBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalHelmetTickEventProcedure extends MagicWitchcraftModElements.ModElement {
@@ -24,27 +25,27 @@ public class MagicalHelmetTickEventProcedure extends MagicWitchcraftModElements.
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalHelmetTickEvent!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalHelmetTickEvent!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalHelmetTickEvent!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalHelmetTickEvent!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalHelmetTickEvent!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalHelmetTickEvent!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalHelmetTickEvent!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalHelmetTickEvent!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalHelmetTickEvent!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalHelmetTickEvent!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

@@ -17,6 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.World;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -42,6 +43,8 @@ import java.util.HashMap;
 import fr.sinikraft.magicwitchcraft.procedures.MysteriousExtractorGUIViewRecipesOnButtonClickedProcedure;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModElement {
@@ -283,7 +286,7 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		private void slotChanged(int slotid, int ctype, int meta) {
-			if (this.world != null && this.world.isRemote) {
+			if (this.world != null && this.world.isRemote()) {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new GUISlotChangedMessage(slotid, x, y, z, ctype, meta));
 				handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 			}
@@ -307,21 +310,21 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/mysterious_extractor_gui.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.blit(this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
+			this.blit(ms, this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
 		}
 
 		@Override
@@ -339,13 +342,13 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Mysterious extractor", 38, 2, -1);
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Mysterious extractor", 38, 2, -1);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 
@@ -353,7 +356,7 @@ public class MysteriousExtractorGUIGui extends MagicWitchcraftModElements.ModEle
 		public void init(Minecraft minecraft, int width, int height) {
 			super.init(minecraft, width, height);
 			minecraft.keyboardListener.enableRepeatEvents(true);
-			this.addButton(new Button(this.guiLeft + 51, this.guiTop + 56, 72, 20, "View recipes", e -> {
+			this.addButton(new Button(this.guiLeft + 51, this.guiTop + 56, 72, 20, new StringTextComponent("View recipes"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(0, x, y, z));
 				handleButtonAction(entity, 0, x, y, z);
 			}));

@@ -2,7 +2,7 @@ package fr.sinikraft.magicwitchcraft.procedures;
 
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.state.IProperty;
+import net.minecraft.state.Property;
 import net.minecraft.potion.Effects;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.item.ItemStack;
@@ -20,6 +20,7 @@ import fr.sinikraft.magicwitchcraft.item.FrozenOrbItem;
 import fr.sinikraft.magicwitchcraft.item.FireOrbItem;
 import fr.sinikraft.magicwitchcraft.item.BasicMagicWandItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.ModElement {
@@ -30,27 +31,27 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure Magicwandrightclickcop!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure Magicwandrightclickcop!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure Magicwandrightclickcop!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure Magicwandrightclickcop!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure Magicwandrightclickcop!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure Magicwandrightclickcop!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure Magicwandrightclickcop!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure Magicwandrightclickcop!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure Magicwandrightclickcop!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure Magicwandrightclickcop!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -68,11 +69,13 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(FireOrbItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(BasicMagicWandItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			posX = (double) 1;
@@ -158,11 +161,13 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(SaturationOrbItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(BasicMagicWandItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			if (entity instanceof LivingEntity)
@@ -173,11 +178,13 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(FrozenOrbItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(BasicMagicWandItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			posX = (double) (-5);
@@ -194,10 +201,13 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 								BlockPos _bp = new BlockPos((int) (x + (posX)), (int) (y + (posY)), (int) (z + (posZ)));
 								BlockState _bs = Blocks.PACKED_ICE.getDefaultState();
 								BlockState _bso = world.getBlockState(_bp);
-								for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-									IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-									if (_bs.has(_property))
-										_bs = _bs.with(_property, (Comparable) entry.getValue());
+								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+									Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+									if (_property != null && _bs.get(_property) != null)
+										try {
+											_bs = _bs.with(_property, (Comparable) entry.getValue());
+										} catch (Exception e) {
+										}
 								}
 								world.setBlockState(_bp, _bs, 3);
 							}
@@ -216,11 +226,13 @@ public class MagicwandrightclickcopProcedure extends MagicWitchcraftModElements.
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(HealthOrbItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(BasicMagicWandItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			if (entity instanceof LivingEntity)

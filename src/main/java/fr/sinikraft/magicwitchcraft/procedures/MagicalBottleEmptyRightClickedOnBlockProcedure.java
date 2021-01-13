@@ -2,12 +2,14 @@ package fr.sinikraft.magicwitchcraft.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Direction;
-import net.minecraft.state.IProperty;
+import net.minecraft.state.Property;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.LivingEntity;
@@ -22,6 +24,7 @@ import fr.sinikraft.magicwitchcraft.block.SapExtractorBlock;
 import fr.sinikraft.magicwitchcraft.block.MagicalLogBlock;
 import fr.sinikraft.magicwitchcraft.block.DeadLogBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcraftModElements.ModElement {
@@ -32,32 +35,32 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("itemstack") == null) {
 			if (!dependencies.containsKey("itemstack"))
-				System.err.println("Failed to load dependency itemstack for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency itemstack for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalBottleEmptyRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalBottleEmptyRightClickedOnBlock!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -97,7 +100,11 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -109,10 +116,13 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 							BlockPos _bp = new BlockPos((int) x, (int) y, (int) (z + 1));
 							BlockState _bs = DeadLogBlock.block.getDefaultState();
 							BlockState _bso = world.getBlockState(_bp);
-							for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-								IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-								if (_bs.has(_property))
-									_bs = _bs.with(_property, (Comparable) entry.getValue());
+							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+								Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+								if (_property != null && _bs.get(_property) != null)
+									try {
+										_bs = _bs.with(_property, (Comparable) entry.getValue());
+									} catch (Exception e) {
+									}
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
@@ -123,7 +133,11 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -135,10 +149,13 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 							BlockPos _bp = new BlockPos((int) x, (int) y, (int) (z - 1));
 							BlockState _bs = DeadLogBlock.block.getDefaultState();
 							BlockState _bso = world.getBlockState(_bp);
-							for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-								IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-								if (_bs.has(_property))
-									_bs = _bs.with(_property, (Comparable) entry.getValue());
+							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+								Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+								if (_property != null && _bs.get(_property) != null)
+									try {
+										_bs = _bs.with(_property, (Comparable) entry.getValue());
+									} catch (Exception e) {
+									}
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
@@ -149,7 +166,11 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -161,10 +182,13 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 							BlockPos _bp = new BlockPos((int) (x - 1), (int) y, (int) z);
 							BlockState _bs = DeadLogBlock.block.getDefaultState();
 							BlockState _bso = world.getBlockState(_bp);
-							for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-								IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-								if (_bs.has(_property))
-									_bs = _bs.with(_property, (Comparable) entry.getValue());
+							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+								Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+								if (_property != null && _bs.get(_property) != null)
+									try {
+										_bs = _bs.with(_property, (Comparable) entry.getValue());
+									} catch (Exception e) {
+									}
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
@@ -175,7 +199,11 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -187,10 +215,13 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 							BlockPos _bp = new BlockPos((int) (x + 1), (int) y, (int) z);
 							BlockState _bs = DeadLogBlock.block.getDefaultState();
 							BlockState _bso = world.getBlockState(_bp);
-							for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-								IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-								if (_bs.has(_property))
-									_bs = _bs.with(_property, (Comparable) entry.getValue());
+							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+								Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+								if (_property != null && _bs.get(_property) != null)
+									try {
+										_bs = _bs.with(_property, (Comparable) entry.getValue());
+									} catch (Exception e) {
+									}
 							}
 							world.setBlockState(_bp, _bs, 3);
 						}
@@ -198,12 +229,12 @@ public class MagicalBottleEmptyRightClickedOnBlockProcedure extends MagicWitchcr
 					}
 				}
 				if ((IsSapExtracted)) {
-					if (!world.getWorld().isRemote) {
-						world.playSound(null, new BlockPos((int) x, (int) y, (int) z),
+					if (world instanceof World && !world.isRemote()) {
+						((World) world).playSound(null, new BlockPos((int) x, (int) y, (int) z),
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bottle.fill")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1);
 					} else {
-						world.getWorld().playSound(x, y, z,
+						((World) world).playSound(x, y, z,
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bottle.fill")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1, false);
 					}

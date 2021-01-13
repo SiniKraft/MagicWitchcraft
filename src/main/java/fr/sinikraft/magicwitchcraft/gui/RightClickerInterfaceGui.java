@@ -15,6 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.World;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -41,6 +42,8 @@ import fr.sinikraft.magicwitchcraft.procedures.RightClickerCall3OnButtonClickedP
 import fr.sinikraft.magicwitchcraft.procedures.RightClickerCall2OnButtonClickedProcedure;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElement {
@@ -135,35 +138,35 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/rightclickerinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
-			FirstBlockPosX.render(mouseX, mouseY, partialTicks);
-			FirstBlockPosY.render(mouseX, mouseY, partialTicks);
-			FirstBlockPosZ.render(mouseX, mouseY, partialTicks);
-			FirstBlockName.render(mouseX, mouseY, partialTicks);
-			SecondBlockPosX.render(mouseX, mouseY, partialTicks);
-			SecondBlockPosY.render(mouseX, mouseY, partialTicks);
-			SecondBlockPosZ.render(mouseX, mouseY, partialTicks);
-			SecondBlockName.render(mouseX, mouseY, partialTicks);
-			ThirdBlockPosX.render(mouseX, mouseY, partialTicks);
-			ThirdBlockPosY.render(mouseX, mouseY, partialTicks);
-			ThirdBlockPosZ.render(mouseX, mouseY, partialTicks);
-			ThirdBlockName.render(mouseX, mouseY, partialTicks);
-			FourthBlockPosX.render(mouseX, mouseY, partialTicks);
-			FourthBlockPosY.render(mouseX, mouseY, partialTicks);
-			FourthBlockPosZ.render(mouseX, mouseY, partialTicks);
-			FourthBlockName.render(mouseX, mouseY, partialTicks);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
+			FirstBlockPosX.render(ms, mouseX, mouseY, partialTicks);
+			FirstBlockPosY.render(ms, mouseX, mouseY, partialTicks);
+			FirstBlockPosZ.render(ms, mouseX, mouseY, partialTicks);
+			FirstBlockName.render(ms, mouseX, mouseY, partialTicks);
+			SecondBlockPosX.render(ms, mouseX, mouseY, partialTicks);
+			SecondBlockPosY.render(ms, mouseX, mouseY, partialTicks);
+			SecondBlockPosZ.render(ms, mouseX, mouseY, partialTicks);
+			SecondBlockName.render(ms, mouseX, mouseY, partialTicks);
+			ThirdBlockPosX.render(ms, mouseX, mouseY, partialTicks);
+			ThirdBlockPosY.render(ms, mouseX, mouseY, partialTicks);
+			ThirdBlockPosZ.render(ms, mouseX, mouseY, partialTicks);
+			ThirdBlockName.render(ms, mouseX, mouseY, partialTicks);
+			FourthBlockPosX.render(ms, mouseX, mouseY, partialTicks);
+			FourthBlockPosY.render(ms, mouseX, mouseY, partialTicks);
+			FourthBlockPosZ.render(ms, mouseX, mouseY, partialTicks);
+			FourthBlockName.render(ms, mouseX, mouseY, partialTicks);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 		}
 
 		@Override
@@ -229,17 +232,17 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Right clicker", 73, 24, -1);
-			this.font.drawString("First block", 10, 33, -1);
-			this.font.drawString("Second block", 10, 78, -1);
-			this.font.drawString("Third block", 10, 123, -1);
-			this.font.drawString("Fourth block", 10, 168, -1);
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Right clicker", 73, 24, -1);
+			this.font.drawString(ms, "First block", 10, 33, -1);
+			this.font.drawString(ms, "Second block", 10, 78, -1);
+			this.font.drawString(ms, "Third block", 10, 123, -1);
+			this.font.drawString(ms, "Fourth block", 10, 168, -1);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 
@@ -247,7 +250,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 		public void init(Minecraft minecraft, int width, int height) {
 			super.init(minecraft, width, height);
 			minecraft.keyboardListener.enableRepeatEvents(true);
-			FirstBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 51, 18, 20, "X") {
+			FirstBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 51, 18, 20, new StringTextComponent("X")) {
 				{
 					setSuggestion("X");
 				}
@@ -272,7 +275,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FirstBlockPosX", FirstBlockPosX);
 			FirstBlockPosX.setMaxStringLength(32767);
 			this.children.add(this.FirstBlockPosX);
-			FirstBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 51, 18, 20, "Y") {
+			FirstBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 51, 18, 20, new StringTextComponent("Y")) {
 				{
 					setSuggestion("Y");
 				}
@@ -297,7 +300,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FirstBlockPosY", FirstBlockPosY);
 			FirstBlockPosY.setMaxStringLength(32767);
 			this.children.add(this.FirstBlockPosY);
-			FirstBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 51, 18, 20, "Z") {
+			FirstBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 51, 18, 20, new StringTextComponent("Z")) {
 				{
 					setSuggestion("Z");
 				}
@@ -322,11 +325,11 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FirstBlockPosZ", FirstBlockPosZ);
 			FirstBlockPosZ.setMaxStringLength(32767);
 			this.children.add(this.FirstBlockPosZ);
-			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 52, 40, 20, "Call1", e -> {
+			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 52, 40, 20, new StringTextComponent("Call1"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(0, x, y, z));
 				handleButtonAction(entity, 0, x, y, z);
 			}));
-			FirstBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 51, 54, 20, "Name") {
+			FirstBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 51, 54, 20, new StringTextComponent("Name")) {
 				{
 					setSuggestion("Name");
 				}
@@ -351,7 +354,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FirstBlockName", FirstBlockName);
 			FirstBlockName.setMaxStringLength(32767);
 			this.children.add(this.FirstBlockName);
-			SecondBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 96, 18, 20, "X") {
+			SecondBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 96, 18, 20, new StringTextComponent("X")) {
 				{
 					setSuggestion("X");
 				}
@@ -376,7 +379,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:SecondBlockPosX", SecondBlockPosX);
 			SecondBlockPosX.setMaxStringLength(32767);
 			this.children.add(this.SecondBlockPosX);
-			SecondBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 96, 18, 20, "Y") {
+			SecondBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 96, 18, 20, new StringTextComponent("Y")) {
 				{
 					setSuggestion("Y");
 				}
@@ -401,7 +404,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:SecondBlockPosY", SecondBlockPosY);
 			SecondBlockPosY.setMaxStringLength(32767);
 			this.children.add(this.SecondBlockPosY);
-			SecondBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 96, 18, 20, "Z") {
+			SecondBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 96, 18, 20, new StringTextComponent("Z")) {
 				{
 					setSuggestion("Z");
 				}
@@ -426,7 +429,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:SecondBlockPosZ", SecondBlockPosZ);
 			SecondBlockPosZ.setMaxStringLength(32767);
 			this.children.add(this.SecondBlockPosZ);
-			SecondBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 96, 54, 20, "Name") {
+			SecondBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 96, 54, 20, new StringTextComponent("Name")) {
 				{
 					setSuggestion("Name");
 				}
@@ -451,11 +454,11 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:SecondBlockName", SecondBlockName);
 			SecondBlockName.setMaxStringLength(32767);
 			this.children.add(this.SecondBlockName);
-			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 96, 40, 20, "Call2", e -> {
+			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 96, 40, 20, new StringTextComponent("Call2"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(1, x, y, z));
 				handleButtonAction(entity, 1, x, y, z);
 			}));
-			ThirdBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 141, 18, 20, "X") {
+			ThirdBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 141, 18, 20, new StringTextComponent("X")) {
 				{
 					setSuggestion("X");
 				}
@@ -480,7 +483,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:ThirdBlockPosX", ThirdBlockPosX);
 			ThirdBlockPosX.setMaxStringLength(32767);
 			this.children.add(this.ThirdBlockPosX);
-			ThirdBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 141, 18, 20, "Y") {
+			ThirdBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 141, 18, 20, new StringTextComponent("Y")) {
 				{
 					setSuggestion("Y");
 				}
@@ -505,7 +508,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:ThirdBlockPosY", ThirdBlockPosY);
 			ThirdBlockPosY.setMaxStringLength(32767);
 			this.children.add(this.ThirdBlockPosY);
-			ThirdBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 141, 18, 20, "Z") {
+			ThirdBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 141, 18, 20, new StringTextComponent("Z")) {
 				{
 					setSuggestion("Z");
 				}
@@ -530,7 +533,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:ThirdBlockPosZ", ThirdBlockPosZ);
 			ThirdBlockPosZ.setMaxStringLength(32767);
 			this.children.add(this.ThirdBlockPosZ);
-			ThirdBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 141, 54, 20, "Name") {
+			ThirdBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 141, 54, 20, new StringTextComponent("Name")) {
 				{
 					setSuggestion("Name");
 				}
@@ -555,11 +558,11 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:ThirdBlockName", ThirdBlockName);
 			ThirdBlockName.setMaxStringLength(32767);
 			this.children.add(this.ThirdBlockName);
-			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 141, 40, 20, "Call3", e -> {
+			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 141, 40, 20, new StringTextComponent("Call3"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(2, x, y, z));
 				handleButtonAction(entity, 2, x, y, z);
 			}));
-			FourthBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 186, 18, 20, "X") {
+			FourthBlockPosX = new TextFieldWidget(this.font, this.guiLeft + 10, this.guiTop + 186, 18, 20, new StringTextComponent("X")) {
 				{
 					setSuggestion("X");
 				}
@@ -584,7 +587,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FourthBlockPosX", FourthBlockPosX);
 			FourthBlockPosX.setMaxStringLength(32767);
 			this.children.add(this.FourthBlockPosX);
-			FourthBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 186, 18, 20, "Y") {
+			FourthBlockPosY = new TextFieldWidget(this.font, this.guiLeft + 37, this.guiTop + 186, 18, 20, new StringTextComponent("Y")) {
 				{
 					setSuggestion("Y");
 				}
@@ -609,7 +612,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FourthBlockPosY", FourthBlockPosY);
 			FourthBlockPosY.setMaxStringLength(32767);
 			this.children.add(this.FourthBlockPosY);
-			FourthBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 186, 18, 20, "Z") {
+			FourthBlockPosZ = new TextFieldWidget(this.font, this.guiLeft + 64, this.guiTop + 186, 18, 20, new StringTextComponent("Z")) {
 				{
 					setSuggestion("Z");
 				}
@@ -634,7 +637,7 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FourthBlockPosZ", FourthBlockPosZ);
 			FourthBlockPosZ.setMaxStringLength(32767);
 			this.children.add(this.FourthBlockPosZ);
-			FourthBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 186, 54, 20, "Name") {
+			FourthBlockName = new TextFieldWidget(this.font, this.guiLeft + 91, this.guiTop + 186, 54, 20, new StringTextComponent("Name")) {
 				{
 					setSuggestion("Name");
 				}
@@ -659,11 +662,11 @@ public class RightClickerInterfaceGui extends MagicWitchcraftModElements.ModElem
 			guistate.put("text:FourthBlockName", FourthBlockName);
 			FourthBlockName.setMaxStringLength(32767);
 			this.children.add(this.FourthBlockName);
-			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 186, 40, 20, "Call4", e -> {
+			this.addButton(new Button(this.guiLeft + 154, this.guiTop + 186, 40, 20, new StringTextComponent("Call4"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(3, x, y, z));
 				handleButtonAction(entity, 3, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 155, this.guiTop + 22, 40, 20, "Save", e -> {
+			this.addButton(new Button(this.guiLeft + 155, this.guiTop + 22, 40, 20, new StringTextComponent("Save"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(4, x, y, z));
 				handleButtonAction(entity, 4, x, y, z);
 			}));

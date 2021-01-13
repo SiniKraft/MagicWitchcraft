@@ -24,6 +24,7 @@ import fr.sinikraft.magicwitchcraft.block.RedObsidianBlock;
 import fr.sinikraft.magicwitchcraft.block.GreenObsidianBlock;
 import fr.sinikraft.magicwitchcraft.block.BlueObsidianBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class ObsidianMakerGranterProcedure extends MagicWitchcraftModElements.ModElement {
@@ -35,7 +36,7 @@ public class ObsidianMakerGranterProcedure extends MagicWitchcraftModElements.Mo
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure ObsidianMakerGranter!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure ObsidianMakerGranter!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntity;
@@ -8,6 +9,7 @@ import net.minecraft.block.BlockState;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalEnergyDumperUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -18,22 +20,22 @@ public class MagicalEnergyDumperUpdateTickProcedure extends MagicWitchcraftModEl
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalEnergyDumperUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalEnergyDumperUpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalEnergyDumperUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalEnergyDumperUpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalEnergyDumperUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalEnergyDumperUpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalEnergyDumperUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalEnergyDumperUpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -55,7 +57,7 @@ public class MagicalEnergyDumperUpdateTickProcedure extends MagicWitchcraftModEl
 				return -1;
 			}
 		}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) == 0))) {
-			if (!world.getWorld().isRemote) {
+			if (!world.isRemote()) {
 				BlockPos _bp = new BlockPos((int) x, (int) (y + 1), (int) z);
 				TileEntity _tileEntity = world.getTileEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
@@ -68,15 +70,17 @@ public class MagicalEnergyDumperUpdateTickProcedure extends MagicWitchcraftModEl
 							return -1;
 						}
 					}.getValue(new BlockPos((int) x, (int) (y + 1), (int) z), "EnergyStored")) - 10));
-				world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (world instanceof World)
+					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 			}
-			if (!world.getWorld().isRemote) {
+			if (!world.isRemote()) {
 				BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 				TileEntity _tileEntity = world.getTileEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_tileEntity != null)
 					_tileEntity.getTileData().putDouble("EnergyStored", 10);
-				world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (world instanceof World)
+					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 			}
 		}
 	}

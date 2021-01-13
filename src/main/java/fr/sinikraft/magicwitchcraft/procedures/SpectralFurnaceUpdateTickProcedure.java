@@ -11,7 +11,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Direction;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.state.IProperty;
+import net.minecraft.state.Property;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundNBT;
@@ -30,6 +31,7 @@ import fr.sinikraft.magicwitchcraft.block.SpectralFurnaceBlock;
 import fr.sinikraft.magicwitchcraft.block.SpectralFurnaceActivatedBlock;
 import fr.sinikraft.magicwitchcraft.block.MagicalEnergyConduitBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -40,22 +42,22 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SpectralFurnaceUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SpectralFurnaceUpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SpectralFurnaceUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SpectralFurnaceUpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SpectralFurnaceUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SpectralFurnaceUpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SpectralFurnaceUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SpectralFurnaceUpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -79,7 +81,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					return -1;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10) > 1000))) {
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
@@ -92,15 +94,17 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10));
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) (x + 1), (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_tileEntity != null)
 						_tileEntity.getTileData().putDouble("EnergyStored", 0);
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
 			}
 		}
@@ -121,7 +125,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					return -1;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10) > 1000))) {
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
@@ -134,15 +138,17 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10));
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) (x - 1), (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_tileEntity != null)
 						_tileEntity.getTileData().putDouble("EnergyStored", 0);
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
 			}
 		}
@@ -163,7 +169,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					return -1;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10) > 1000))) {
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
@@ -176,15 +182,17 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10));
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) (z + 1));
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_tileEntity != null)
 						_tileEntity.getTileData().putDouble("EnergyStored", 0);
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
 			}
 		}
@@ -205,7 +213,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					return -1;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10) > 1000))) {
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
@@ -218,15 +226,17 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 10));
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) (z - 1));
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_tileEntity != null)
 						_tileEntity.getTileData().putDouble("EnergyStored", 0);
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
 			}
 		}
@@ -238,7 +248,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 				return -1;
 			}
 		}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) >= 10)) {
-			if ((world.getWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
+			if (((world instanceof World) ? ((World) world).getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
 				public ItemStack getItemStack(BlockPos pos, int sltid) {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					TileEntity _ent = world.getTileEntity(pos);
@@ -249,7 +259,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					}
 					return _retval.get();
 				}
-			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), world.getWorld()).isPresent())) {
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), (World) world).isPresent() : false)) {
 				if (((new Object() {
 					public int getAmount(BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
@@ -273,8 +283,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 							}
 							return _retval.get();
 						}
-					}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1)))
-							.getItem() == (world.getWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
+					}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == ((world instanceof World
+							&& ((World) world).getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
 								public ItemStack getItemStack(BlockPos pos, int sltid) {
 									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 									TileEntity _ent = world.getTileEntity(pos);
@@ -285,8 +295,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 									}
 									return _retval.get();
 								}
-							}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), world.getWorld()).isPresent()
-									? world.getWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
+							}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), ((World) world)).isPresent())
+									? ((World) world).getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
 										public ItemStack getItemStack(BlockPos pos, int sltid) {
 											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 											TileEntity _ent = world.getTileEntity(pos);
@@ -297,7 +307,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 											}
 											return _retval.get();
 										}
-									}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), world.getWorld()).get().getRecipeOutput()
+									}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), (World) world).get().getRecipeOutput()
 											.copy()
 									: ItemStack.EMPTY).getItem())
 							|| ((new Object() {
@@ -317,8 +327,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 							TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 							if (_ent != null) {
 								final int _sltid = (int) (1);
-								final ItemStack _setstack = (world.getWorld().getRecipeManager()
-										.getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
+								final ItemStack _setstack = ((world instanceof World
+										&& ((World) world).getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
 											public ItemStack getItemStack(BlockPos pos, int sltid) {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												TileEntity _ent = world.getTileEntity(pos);
@@ -329,8 +339,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 												}
 												return _retval.get();
 											}
-										}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), world.getWorld()).isPresent()
-												? world.getWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
+										}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), ((World) world)).isPresent())
+												? ((World) world).getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory((new Object() {
 													public ItemStack getItemStack(BlockPos pos, int sltid) {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														TileEntity _ent = world.getTileEntity(pos);
@@ -342,7 +352,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 														}
 														return _retval.get();
 													}
-												}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), world.getWorld()).get()
+												}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0)))), (World) world).get()
 														.getRecipeOutput().copy()
 												: ItemStack.EMPTY);
 								_setstack.setCount((int) ((new Object() {
@@ -378,18 +388,19 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 								});
 							}
 						}
-						if (world instanceof World && !world.getWorld().isRemote) {
-							world.getWorld().addEntity(new ExperienceOrbEntity(world.getWorld(), x, y, z, (int) 1));
+						if (world instanceof World && !world.isRemote()) {
+							((World) world).addEntity(new ExperienceOrbEntity(((World) world), x, y, z, (int) 1));
 						}
-						if (!world.getWorld().isRemote) {
+						if (!world.isRemote()) {
 							BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 							TileEntity _tileEntity = world.getTileEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_tileEntity != null)
 								_tileEntity.getTileData().putDouble("IgnitedTime", 501);
-							world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+							if (world instanceof World)
+								((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 						}
-						if (!world.getWorld().isRemote) {
+						if (!world.isRemote()) {
 							BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 							TileEntity _tileEntity = world.getTileEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
@@ -402,7 +413,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 										return -1;
 									}
 								}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) - 10));
-							world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+							if (world instanceof World)
+								((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 						}
 					}
 				}
@@ -416,7 +428,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 				return -1;
 			}
 		}.getValue(new BlockPos((int) x, (int) y, (int) z), "IgnitedTime")) == 0))) {
-			if (!world.getWorld().isRemote) {
+			if (!world.isRemote()) {
 				BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 				TileEntity _tileEntity = world.getTileEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
@@ -429,7 +441,8 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 							return -1;
 						}
 					}.getValue(new BlockPos((int) x, (int) y, (int) z), "IgnitedTime")) - 1));
-				world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (world instanceof World)
+					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 			}
 			if (((world.getBlockState(new BlockPos((int) x, (int) y, (int) z))).getBlock() == SpectralFurnaceBlock.block.getDefaultState()
 					.getBlock())) {
@@ -437,10 +450,13 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					BlockState _bs = SpectralFurnaceActivatedBlock.block.getDefaultState();
 					BlockState _bso = world.getBlockState(_bp);
-					for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-						IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-						if (_bs.has(_property))
-							_bs = _bs.with(_property, (Comparable) entry.getValue());
+					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+						Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+						if (_property != null && _bs.get(_property) != null)
+							try {
+								_bs = _bs.with(_property, (Comparable) entry.getValue());
+							} catch (Exception e) {
+							}
 					}
 					TileEntity _te = world.getTileEntity(_bp);
 					CompoundNBT _bnbt = null;
@@ -453,7 +469,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						_te = world.getTileEntity(_bp);
 						if (_te != null) {
 							try {
-								_te.read(_bnbt);
+								_te.read(_bso, _bnbt);
 							} catch (Exception ignored) {
 							}
 						}
@@ -467,10 +483,13 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					BlockState _bs = SpectralFurnaceBlock.block.getDefaultState();
 					BlockState _bso = world.getBlockState(_bp);
-					for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-						IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-						if (_bs.has(_property))
-							_bs = _bs.with(_property, (Comparable) entry.getValue());
+					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+						Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+						if (_property != null && _bs.get(_property) != null)
+							try {
+								_bs = _bs.with(_property, (Comparable) entry.getValue());
+							} catch (Exception e) {
+							}
 					}
 					TileEntity _te = world.getTileEntity(_bp);
 					CompoundNBT _bnbt = null;
@@ -483,7 +502,7 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						_te = world.getTileEntity(_bp);
 						if (_te != null) {
 							try {
-								_te.read(_bnbt);
+								_te.read(_bso, _bnbt);
 							} catch (Exception ignored) {
 							}
 						}
@@ -499,7 +518,11 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -511,7 +534,11 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -523,7 +550,11 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -535,7 +566,11 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 						try {
 							BlockState _bs = world.getBlockState(pos);
 							DirectionProperty property = (DirectionProperty) _bs.getBlock().getStateContainer().getProperty("facing");
-							return _bs.get(property);
+							if (property != null)
+								return _bs.get(property);
+							return Direction.getFacingFromAxisDirection(
+									_bs.get((EnumProperty<Direction.Axis>) _bs.getBlock().getStateContainer().getProperty("axis")),
+									Direction.AxisDirection.POSITIVE);
 						} catch (Exception e) {
 							return Direction.NORTH;
 						}
@@ -544,11 +579,14 @@ public class SpectralFurnaceUpdateTickProcedure extends MagicWitchcraftModElemen
 					world.addParticle(ParticleTypes.FLAME, (x + 1.1), (y + 0.2), (z + 0.5), 0, 0, 0);
 				}
 				if ((Math.random() < 0.05)) {
-					if (!world.getWorld().isRemote) {
-						world.playSound(null, new BlockPos((int) x, (int) y, (int) z), (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
-								.getValue(new ResourceLocation("block.furnace.fire_crackle")), SoundCategory.NEUTRAL, (float) 1, (float) 1);
+					if (world instanceof World && !world.isRemote()) {
+						((World) world)
+								.playSound(null, new BlockPos((int) x, (int) y, (int) z),
+										(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
+												.getValue(new ResourceLocation("block.furnace.fire_crackle")),
+										SoundCategory.NEUTRAL, (float) 1, (float) 1);
 					} else {
-						world.getWorld().playSound(x, y, z,
+						((World) world).playSound(x, y, z,
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
 										.getValue(new ResourceLocation("block.furnace.fire_crackle")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1, false);

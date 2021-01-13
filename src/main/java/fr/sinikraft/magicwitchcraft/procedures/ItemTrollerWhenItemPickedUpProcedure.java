@@ -11,6 +11,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.item.ItemTrollerItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class ItemTrollerWhenItemPickedUpProcedure extends MagicWitchcraftModElements.ModElement {
@@ -21,32 +22,32 @@ public class ItemTrollerWhenItemPickedUpProcedure extends MagicWitchcraftModElem
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		if (dependencies.get("itemstack") == null) {
 			if (!dependencies.containsKey("itemstack"))
-				System.err.println("Failed to load dependency itemstack for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency itemstack for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure ItemTrollerWhenItemPickedUp!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure ItemTrollerWhenItemPickedUp!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -61,10 +62,11 @@ public class ItemTrollerWhenItemPickedUpProcedure extends MagicWitchcraftModElem
 			if ((!((((itemstack).getOrCreateTag().getString("Owner"))).equals((entity.getDisplayName().getString()))))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(ItemTrollerItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
-				if (world instanceof World && !world.getWorld().isRemote) {
-					world.getWorld().createExplosion(null, (int) x, (int) y, (int) z, (float) 5, Explosion.Mode.BREAK);
+				if (world instanceof World && !world.isRemote()) {
+					((World) world).createExplosion(null, (int) x, (int) y, (int) z, (float) 5, Explosion.Mode.BREAK);
 				}
 			}
 		}

@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class HighlighterItemInInventoryTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -15,7 +16,7 @@ public class HighlighterItemInInventoryTickProcedure extends MagicWitchcraftModE
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("itemstack") == null) {
 			if (!dependencies.containsKey("itemstack"))
-				System.err.println("Failed to load dependency itemstack for procedure HighlighterItemInInventoryTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency itemstack for procedure HighlighterItemInInventoryTick!");
 			return;
 		}
 		ItemStack itemstack = (ItemStack) dependencies.get("itemstack");

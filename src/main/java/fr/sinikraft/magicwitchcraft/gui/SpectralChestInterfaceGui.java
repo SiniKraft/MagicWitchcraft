@@ -17,6 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.World;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -43,6 +44,8 @@ import fr.sinikraft.magicwitchcraft.procedures.SpectralChestInterfaceUpOnButtonC
 import fr.sinikraft.magicwitchcraft.procedures.SpectralChestInterfaceDownOnButtonClickedProcedure;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModElement {
@@ -456,7 +459,7 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		private void slotChanged(int slotid, int ctype, int meta) {
-			if (this.world != null && this.world.isRemote) {
+			if (this.world != null && this.world.isRemote()) {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new GUISlotChangedMessage(slotid, x, y, z, ctype, meta));
 				handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 			}
@@ -480,19 +483,19 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/spectralchestinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 		}
 
 		@Override
@@ -510,12 +513,12 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 
@@ -523,11 +526,11 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 		public void init(Minecraft minecraft, int width, int height) {
 			super.init(minecraft, width, height);
 			minecraft.keyboardListener.enableRepeatEvents(true);
-			this.addButton(new Button(this.guiLeft + 100, this.guiTop + 101, 18, 20, "Up", e -> {
+			this.addButton(new Button(this.guiLeft + 100, this.guiTop + 101, 18, 20, new StringTextComponent("Up"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(0, x, y, z));
 				handleButtonAction(entity, 0, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 136, this.guiTop + 101, 27, 20, "Down", e -> {
+			this.addButton(new Button(this.guiLeft + 136, this.guiTop + 101, 27, 20, new StringTextComponent("Down"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(1, x, y, z));
 				handleButtonAction(entity, 1, x, y, z);
 			}));
@@ -627,7 +630,6 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 				$_dependencies.put("x", x);
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
 				SpectralChestInterfaceUpOnButtonClickedProcedure.executeProcedure($_dependencies);
 			}
 		}
@@ -638,7 +640,6 @@ public class SpectralChestInterfaceGui extends MagicWitchcraftModElements.ModEle
 				$_dependencies.put("x", x);
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
 				SpectralChestInterfaceDownOnButtonClickedProcedure.executeProcedure($_dependencies);
 			}
 		}

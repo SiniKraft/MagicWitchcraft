@@ -41,6 +41,8 @@ import java.util.HashMap;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
+
 @MagicWitchcraftModElements.ModElement.Tag
 public class SolarPanelGUIGui extends MagicWitchcraftModElements.ModElement {
 	public static HashMap guistate = new HashMap();
@@ -281,7 +283,7 @@ public class SolarPanelGUIGui extends MagicWitchcraftModElements.ModElement {
 		}
 
 		private void slotChanged(int slotid, int ctype, int meta) {
-			if (this.world != null && this.world.isRemote) {
+			if (this.world != null && this.world.isRemote()) {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new GUISlotChangedMessage(slotid, x, y, z, ctype, meta));
 				handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 			}
@@ -305,23 +307,23 @@ public class SolarPanelGUIGui extends MagicWitchcraftModElements.ModElement {
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/solarpanelgui.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/energy_cystal_empty.png"));
-			this.blit(this.guiLeft + 33, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
+			this.blit(ms, this.guiLeft + 33, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
 			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.blit(this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
+			this.blit(ms, this.guiLeft + 78, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
 		}
 
 		@Override
@@ -339,13 +341,13 @@ public class SolarPanelGUIGui extends MagicWitchcraftModElements.ModElement {
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Solar panel", 60, 3, -1);
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Solar panel", 60, 3, -1);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 

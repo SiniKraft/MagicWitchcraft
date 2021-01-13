@@ -15,6 +15,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.item.MysteriousOrbItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchcraftModElements.ModElement {
@@ -25,27 +26,27 @@ public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchc
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MysteriousOrbOreBlockDestroyedByPlayer!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -56,12 +57,12 @@ public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchc
 		if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 			if ((!((EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH,
 					((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1))) {
-				if (world instanceof World && !world.getWorld().isRemote) {
-					world.getWorld().addEntity(new ExperienceOrbEntity(world.getWorld(), x, y, z, (int) 2));
+				if (world instanceof World && !world.isRemote()) {
+					((World) world).addEntity(new ExperienceOrbEntity(((World) world), x, y, z, (int) 2));
 				}
 				if ((Math.random() <= 0.2)) {
-					if (!world.getWorld().isRemote) {
-						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+					if (world instanceof World && !world.isRemote()) {
+						ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
 					}
@@ -69,8 +70,8 @@ public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchc
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)) {
 					if ((Math.random() <= 0.5)) {
-						if (!world.getWorld().isRemote) {
-							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+						if (world instanceof World && !world.isRemote()) {
+							ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
 						}
@@ -78,14 +79,14 @@ public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchc
 				}
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 2)) {
-					if (!world.getWorld().isRemote) {
-						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+					if (world instanceof World && !world.isRemote()) {
+						ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
 					}
 					if ((Math.random() <= 0.3)) {
-						if (!world.getWorld().isRemote) {
-							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+						if (world instanceof World && !world.isRemote()) {
+							ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
 						}
@@ -93,21 +94,20 @@ public class MysteriousOrbOreBlockDestroyedByPlayerProcedure extends MagicWitchc
 				}
 				if (((EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
 						((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 3)) {
-					if (!world.getWorld().isRemote) {
-						ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+					if (world instanceof World && !world.isRemote()) {
+						ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 						entityToSpawn.setPickupDelay((int) 10);
 						world.addEntity(entityToSpawn);
 					}
 					if ((Math.random() <= 0.6)) {
-						if (!world.getWorld().isRemote) {
-							ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
+						if (world instanceof World && !world.isRemote()) {
+							ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 							entityToSpawn.setPickupDelay((int) 10);
 							world.addEntity(entityToSpawn);
 						}
 						if ((Math.random() <= 0.3)) {
-							if (!world.getWorld().isRemote) {
-								ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z,
-										new ItemStack(MysteriousOrbItem.block, (int) (1)));
+							if (world instanceof World && !world.isRemote()) {
+								ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(MysteriousOrbItem.block, (int) (1)));
 								entityToSpawn.setPickupDelay((int) 10);
 								world.addEntity(entityToSpawn);
 							}

@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalEnergyDumperOnBlockRightClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -20,27 +21,27 @@ public class MagicalEnergyDumperOnBlockRightClickedProcedure extends MagicWitchc
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalEnergyDumperOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalEnergyDumperOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalEnergyDumperOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalEnergyDumperOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalEnergyDumperOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalEnergyDumperOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalEnergyDumperOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalEnergyDumperOnBlockRightClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalEnergyDumperOnBlockRightClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalEnergyDumperOnBlockRightClicked!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -48,7 +49,7 @@ public class MagicalEnergyDumperOnBlockRightClickedProcedure extends MagicWitchc
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
-		if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 			((PlayerEntity) entity).sendStatusMessage(new StringTextComponent((("Energy Stored : ") + "" + ((new Object() {
 				public double getValue(BlockPos pos, String tag) {
 					TileEntity tileEntity = world.getTileEntity(pos);

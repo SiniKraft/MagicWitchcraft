@@ -3,6 +3,7 @@ package fr.sinikraft.magicwitchcraft.procedures;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntity;
@@ -16,6 +17,7 @@ import java.util.Map;
 import fr.sinikraft.magicwitchcraft.item.SpectralOrbItem;
 import fr.sinikraft.magicwitchcraft.item.MagicalOrbItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -26,22 +28,22 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalEnergyGeneratorUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalEnergyGeneratorUpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalEnergyGeneratorUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalEnergyGeneratorUpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalEnergyGeneratorUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalEnergyGeneratorUpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalEnergyGeneratorUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalEnergyGeneratorUpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -116,7 +118,7 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 50) >= 1001))) {
-							if (!world.getWorld().isRemote) {
+							if (!world.isRemote()) {
 								BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 								TileEntity _tileEntity = world.getTileEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
@@ -129,7 +131,8 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 											return -1;
 										}
 									}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 50));
-								world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+								if (world instanceof World)
+									((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 							}
 							IsGenerated = (boolean) (true);
 						}
@@ -154,7 +157,7 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 100) >= 1001))) {
-							if (!world.getWorld().isRemote) {
+							if (!world.isRemote()) {
 								BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 								TileEntity _tileEntity = world.getTileEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
@@ -167,7 +170,8 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 											return -1;
 										}
 									}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + 100));
-								world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+								if (world instanceof World)
+									((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 							}
 							IsGenerated = (boolean) (true);
 						}
@@ -195,16 +199,17 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 									});
 								}
 							}
-							if (!world.getWorld().isRemote) {
+							if (!world.isRemote()) {
 								BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 								TileEntity _tileEntity = world.getTileEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_tileEntity != null)
 									_tileEntity.getTileData().putDouble("BurnTime", 5);
-								world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+								if (world instanceof World)
+									((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 							}
 						}
-						if (!world.getWorld().isRemote) {
+						if (!world.isRemote()) {
 							BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 							TileEntity _tileEntity = world.getTileEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
@@ -217,7 +222,8 @@ public class MagicalEnergyGeneratorUpdateTickProcedure extends MagicWitchcraftMo
 										return -1;
 									}
 								}.getValue(new BlockPos((int) x, (int) y, (int) z), "BurnTime")) - 1));
-							world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+							if (world instanceof World)
+								((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 						}
 						{
 							TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));

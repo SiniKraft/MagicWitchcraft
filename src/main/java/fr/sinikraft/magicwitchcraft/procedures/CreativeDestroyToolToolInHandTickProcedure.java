@@ -7,6 +7,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class CreativeDestroyToolToolInHandTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -17,7 +18,7 @@ public class CreativeDestroyToolToolInHandTickProcedure extends MagicWitchcraftM
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("itemstack") == null) {
 			if (!dependencies.containsKey("itemstack"))
-				System.err.println("Failed to load dependency itemstack for procedure CreativeDestroyToolToolInHandTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency itemstack for procedure CreativeDestroyToolToolInHandTick!");
 			return;
 		}
 		ItemStack itemstack = (ItemStack) dependencies.get("itemstack");

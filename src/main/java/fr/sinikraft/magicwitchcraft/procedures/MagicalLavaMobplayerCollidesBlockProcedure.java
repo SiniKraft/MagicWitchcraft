@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalLavaMobplayerCollidesBlockProcedure extends MagicWitchcraftModElements.ModElement {
@@ -18,7 +19,7 @@ public class MagicalLavaMobplayerCollidesBlockProcedure extends MagicWitchcraftM
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalLavaMobplayerCollidesBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalLavaMobplayerCollidesBlock!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

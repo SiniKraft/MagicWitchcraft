@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Iterator;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalDimensionPlayerEntersDimensionProcedure extends MagicWitchcraftModElements.ModElement {
@@ -21,7 +22,7 @@ public class MagicalDimensionPlayerEntersDimensionProcedure extends MagicWitchcr
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalDimensionPlayerEntersDimension!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalDimensionPlayerEntersDimension!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

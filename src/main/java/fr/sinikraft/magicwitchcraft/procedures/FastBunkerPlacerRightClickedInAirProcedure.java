@@ -14,6 +14,7 @@ import java.util.Collections;
 
 import fr.sinikraft.magicwitchcraft.item.BunkerOrbItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class FastBunkerPlacerRightClickedInAirProcedure extends MagicWitchcraftModElements.ModElement {
@@ -24,27 +25,27 @@ public class FastBunkerPlacerRightClickedInAirProcedure extends MagicWitchcraftM
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure FastBunkerPlacerRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure FastBunkerPlacerRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure FastBunkerPlacerRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure FastBunkerPlacerRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure FastBunkerPlacerRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure FastBunkerPlacerRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure FastBunkerPlacerRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure FastBunkerPlacerRightClickedInAir!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure FastBunkerPlacerRightClickedInAir!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure FastBunkerPlacerRightClickedInAir!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -57,7 +58,8 @@ public class FastBunkerPlacerRightClickedInAirProcedure extends MagicWitchcraftM
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(BunkerOrbItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			if (((world.getBlockState(new BlockPos((int) x, (int) (y + 2), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())) {

@@ -6,7 +6,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -15,12 +17,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.World;
 import net.minecraft.world.BossInfo;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.network.IPacket;
 import net.minecraft.item.SpawnEggItem;
@@ -42,7 +45,10 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.FollowMobGoal;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.controller.FlyingMovementController;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.IRendersAsItem;
 import net.minecraft.entity.IRangedAttackMob;
@@ -77,7 +83,7 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 	public static final EntityType arrow = null;
 	public DangerousDragonEntity(MagicWitchcraftModElements instance) {
 		super(instance, 25);
-		FMLJavaModLoadingContext.get().getModEventBus().register(this);
+		FMLJavaModLoadingContext.get().getModEventBus().register(new ModelRegisterHandler());
 	}
 
 	@Override
@@ -93,19 +99,34 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 				.size(0.5f, 0.5f)).build("entitybulletdangerousdragon").setRegistryName("entitybulletdangerousdragon"));
 	}
 
-	@SubscribeEvent
-	@OnlyIn(Dist.CLIENT)
-	public void registerModels(ModelRegistryEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
-			return new MobRenderer(renderManager, new Model_dangerous_dragon(), 0.5f) {
-				@Override
-				public ResourceLocation getEntityTexture(Entity entity) {
-					return new ResourceLocation("magic_witchcraft:textures/dangerous_dragon.png");
-				}
-			};
-		});
-		RenderingRegistry.registerEntityRenderingHandler(arrow,
-				renderManager -> new SpriteRenderer(renderManager, Minecraft.getInstance().getItemRenderer()));
+	@Override
+	public void init(FMLCommonSetupEvent event) {
+		DeferredWorkQueue.runLater(this::setupAttributes);
+	}
+	private static class ModelRegisterHandler {
+		@SubscribeEvent
+		@OnlyIn(Dist.CLIENT)
+		public void registerModels(ModelRegistryEvent event) {
+			RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
+				return new MobRenderer(renderManager, new Model_dangerous_dragon(), 0.5f) {
+					@Override
+					public ResourceLocation getEntityTexture(Entity entity) {
+						return new ResourceLocation("magic_witchcraft:textures/dangerous_dragon.png");
+					}
+				};
+			});
+			RenderingRegistry.registerEntityRenderingHandler(arrow,
+					renderManager -> new SpriteRenderer(renderManager, Minecraft.getInstance().getItemRenderer()));
+		}
+	}
+	private void setupAttributes() {
+		AttributeModifierMap.MutableAttribute ammma = MobEntity.func_233666_p_();
+		ammma = ammma.createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.6);
+		ammma = ammma.createMutableAttribute(Attributes.MAX_HEALTH, 200);
+		ammma = ammma.createMutableAttribute(Attributes.ARMOR, 0);
+		ammma = ammma.createMutableAttribute(Attributes.ATTACK_DAMAGE, 15);
+		ammma = ammma.createMutableAttribute(Attributes.FLYING_SPEED, 0.6);
+		GlobalEntityTypeAttributes.put(entity, ammma.create());
 	}
 	public static class CustomEntity extends MonsterEntity implements IRangedAttackMob {
 		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
@@ -131,12 +152,12 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 			super.registerGoals();
 			this.goalSelector.addGoal(1, new RandomWalkingGoal(this, 0.8, 20) {
 				@Override
-				protected Vec3d getPosition() {
+				protected Vector3d getPosition() {
 					Random random = CustomEntity.this.getRNG();
 					double dir_x = CustomEntity.this.getPosX() + ((random.nextFloat() * 2 - 1) * 16);
 					double dir_y = CustomEntity.this.getPosY() + ((random.nextFloat() * 2 - 1) * 16);
 					double dir_z = CustomEntity.this.getPosZ() + ((random.nextFloat() * 2 - 1) * 16);
-					return new Vec3d(dir_x, dir_y, dir_z);
+					return new Vector3d(dir_x, dir_y, dir_z);
 				}
 			});
 			this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
@@ -163,7 +184,7 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 				@Override
 				public void startExecuting() {
 					LivingEntity livingentity = CustomEntity.this.getAttackTarget();
-					Vec3d vec3d = livingentity.getEyePosition(1);
+					Vector3d vec3d = livingentity.getEyePosition(1);
 					CustomEntity.this.moveController.setMoveTo(vec3d.x, vec3d.y, vec3d.z, 1);
 				}
 
@@ -175,7 +196,7 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 					} else {
 						double d0 = CustomEntity.this.getDistanceSq(livingentity);
 						if (d0 < 300) {
-							Vec3d vec3d = livingentity.getEyePosition(1);
+							Vector3d vec3d = livingentity.getEyePosition(1);
 							CustomEntity.this.moveController.setMoveTo(vec3d.x, vec3d.y, vec3d.z, 1);
 						}
 					}
@@ -255,33 +276,16 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 		}
 
 		@Override
-		public boolean processInteract(PlayerEntity sourceentity, Hand hand) {
+		public ActionResultType func_230254_b_(PlayerEntity sourceentity, Hand hand) {
 			ItemStack itemstack = sourceentity.getHeldItem(hand);
-			boolean retval = true;
-			super.processInteract(sourceentity, hand);
+			ActionResultType retval = ActionResultType.func_233537_a_(this.world.isRemote());
+			super.func_230254_b_(sourceentity, hand);
 			sourceentity.startRiding(this);
 			double x = this.getPosX();
 			double y = this.getPosY();
 			double z = this.getPosZ();
 			Entity entity = this;
 			return retval;
-		}
-
-		@Override
-		protected void registerAttributes() {
-			super.registerAttributes();
-			if (this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) != null)
-				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
-			if (this.getAttribute(SharedMonsterAttributes.MAX_HEALTH) != null)
-				this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200);
-			if (this.getAttribute(SharedMonsterAttributes.ARMOR) != null)
-				this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0);
-			if (this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE) == null)
-				this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-			this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(15);
-			if (this.getAttribute(SharedMonsterAttributes.FLYING_SPEED) == null)
-				this.getAttributes().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-			this.getAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
 		}
 
 		public void attackEntityWithRangedAttack(LivingEntity target, float flval) {
@@ -317,7 +321,7 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 		}
 
 		@Override
-		public void travel(Vec3d dir) {
+		public void travel(Vector3d dir) {
 			Entity entity = this.getPassengers().isEmpty() ? null : (Entity) this.getPassengers().get(0);
 			if (this.isBeingRidden()) {
 				this.rotationYaw = entity.rotationYaw;
@@ -329,10 +333,10 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 				this.rotationYawHead = entity.rotationYaw;
 				this.stepHeight = 1.0F;
 				if (entity instanceof LivingEntity) {
-					this.setAIMoveSpeed((float) this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue());
+					this.setAIMoveSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 					float forward = ((LivingEntity) entity).moveForward;
 					float strafe = ((LivingEntity) entity).moveStrafing;
-					super.travel(new Vec3d(strafe, 0, forward));
+					super.travel(new Vector3d(strafe, 0, forward));
 				}
 				this.prevLimbSwingAmount = this.limbSwingAmount;
 				double d1 = this.getPosX() - this.prevPosX;

@@ -3,13 +3,12 @@ package fr.sinikraft.magicwitchcraft.block;
 
 import net.minecraftforge.registries.ObjectHolder;
 
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.loot.LootContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
@@ -45,13 +44,8 @@ public class SaverBlockYellowBlock extends MagicWitchcraftModElements.ModElement
 	}
 	public static class CustomBlock extends Block {
 		public CustomBlock() {
-			super(Block.Properties.create(Material.WOOL).sound(SoundType.CLOTH).hardnessAndResistance(-1, 3600000).lightValue(0));
+			super(Block.Properties.create(Material.WOOL).sound(SoundType.CLOTH).hardnessAndResistance(-1, 3600000).setLightLevel(s -> 0));
 			setRegistryName("saverblockyellow");
-		}
-
-		@Override
-		public int tickRate(IWorldReader world) {
-			return 30;
 		}
 
 		@Override
@@ -60,7 +54,7 @@ public class SaverBlockYellowBlock extends MagicWitchcraftModElements.ModElement
 		}
 
 		@Override
-		public MaterialColor getMaterialColor(BlockState state, IBlockReader blockAccess, BlockPos pos) {
+		public MaterialColor getMaterialColor() {
 			return MaterialColor.GREEN;
 		}
 
@@ -78,7 +72,7 @@ public class SaverBlockYellowBlock extends MagicWitchcraftModElements.ModElement
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			world.getPendingBlockTicks().scheduleTick(new BlockPos(x, y, z), this, this.tickRate(world));
+			world.getPendingBlockTicks().scheduleTick(new BlockPos(x, y, z), this, 30);
 		}
 
 		@Override
@@ -95,7 +89,7 @@ public class SaverBlockYellowBlock extends MagicWitchcraftModElements.ModElement
 				$_dependencies.put("world", world);
 				SaverBlockUpdateTickProcedure.executeProcedure($_dependencies);
 			}
-			world.getPendingBlockTicks().scheduleTick(new BlockPos(x, y, z), this, this.tickRate(world));
+			world.getPendingBlockTicks().scheduleTick(new BlockPos(x, y, z), this, 30);
 		}
 	}
 }

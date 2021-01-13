@@ -15,6 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.World;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -38,6 +39,8 @@ import fr.sinikraft.magicwitchcraft.procedures.TeleporterBeaconInterfaceSetOnBut
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.ModElement {
@@ -118,21 +121,21 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/teleporterbeaconinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
-			NewName.render(mouseX, mouseY, partialTicks);
-			NumberToSet.render(mouseX, mouseY, partialTicks);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
+			NewName.render(ms, mouseX, mouseY, partialTicks);
+			NumberToSet.render(ms, mouseX, mouseY, partialTicks);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 		}
 
 		@Override
@@ -156,25 +159,25 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Teleporter beacon", 48, 3, -1);
-			this.font.drawString("1.", 12, 21, -1);
-			this.font.drawString("2.", 93, 21, -1);
-			this.font.drawString("3.", 12, 39, -1);
-			this.font.drawString("4.", 93, 39, -1);
-			this.font.drawString("5.", 12, 57, -1);
-			this.font.drawString("6.", 93, 57, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 111, 21, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 111, 39, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 111, 57, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 30, 21, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 30, 39, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 30, 57, -1);
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Teleporter beacon", 48, 3, -1);
+			this.font.drawString(ms, "1.", 12, 21, -1);
+			this.font.drawString(ms, "2.", 93, 21, -1);
+			this.font.drawString(ms, "3.", 12, 39, -1);
+			this.font.drawString(ms, "4.", 93, 39, -1);
+			this.font.drawString(ms, "5.", 12, 57, -1);
+			this.font.drawString(ms, "6.", 93, 57, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 111, 21, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 111, 39, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 111, 57, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 30, 21, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 30, 39, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 30, 57, -1);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 
@@ -182,7 +185,7 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 		public void init(Minecraft minecraft, int width, int height) {
 			super.init(minecraft, width, height);
 			minecraft.keyboardListener.enableRepeatEvents(true);
-			NewName = new TextFieldWidget(this.font, this.guiLeft + 12, this.guiTop + 84, 63, 20, "Name") {
+			NewName = new TextFieldWidget(this.font, this.guiLeft + 12, this.guiTop + 84, 63, 20, new StringTextComponent("Name")) {
 				{
 					setSuggestion("Name");
 				}
@@ -207,7 +210,7 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 			guistate.put("text:NewName", NewName);
 			NewName.setMaxStringLength(32767);
 			this.children.add(this.NewName);
-			NumberToSet = new TextFieldWidget(this.font, this.guiLeft + 12, this.guiTop + 111, 120, 20, "Number to set") {
+			NumberToSet = new TextFieldWidget(this.font, this.guiLeft + 12, this.guiTop + 111, 120, 20, new StringTextComponent("Number to set")) {
 				{
 					setSuggestion("Number to set");
 				}
@@ -232,7 +235,7 @@ public class TeleporterBeaconInterfaceGui extends MagicWitchcraftModElements.Mod
 			guistate.put("text:NumberToSet", NumberToSet);
 			NumberToSet.setMaxStringLength(32767);
 			this.children.add(this.NumberToSet);
-			this.addButton(new Button(this.guiLeft + 12, this.guiTop + 138, 30, 20, "Set", e -> {
+			this.addButton(new Button(this.guiLeft + 12, this.guiTop + 138, 30, 20, new StringTextComponent("Set"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(0, x, y, z));
 				handleButtonAction(entity, 0, x, y, z);
 			}));

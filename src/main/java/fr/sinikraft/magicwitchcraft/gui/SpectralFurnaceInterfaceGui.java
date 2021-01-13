@@ -41,6 +41,8 @@ import java.util.HashMap;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
+
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModElement {
 	public static HashMap guistate = new HashMap();
@@ -281,7 +283,7 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 		}
 
 		private void slotChanged(int slotid, int ctype, int meta) {
-			if (this.world != null && this.world.isRemote) {
+			if (this.world != null && this.world.isRemote()) {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new GUISlotChangedMessage(slotid, x, y, z, ctype, meta));
 				handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 			}
@@ -305,21 +307,21 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/spectralfurnaceinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 			Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("magic_witchcraft:textures/arrow_gui.png"));
-			this.blit(this.guiLeft + 69, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
+			this.blit(ms, this.guiLeft + 69, this.guiTop + 29, 0, 0, 256, 256, 256, 256);
 		}
 
 		@Override
@@ -337,9 +339,9 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Energy stored :", 6, 65, -16738048);
-			this.font.drawString("" + (new Object() {
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Energy stored :", 6, 65, -16738048);
+			this.font.drawString(ms, "" + (new Object() {
 				public double getValue(BlockPos pos, String tag) {
 					TileEntity tileEntity = world.getTileEntity(pos);
 					if (tileEntity != null)
@@ -347,13 +349,13 @@ public class SpectralFurnaceInterfaceGui extends MagicWitchcraftModElements.ModE
 					return 0;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 87, 65, -16711936);
-			this.font.drawString("/ 1000 MER", 114, 65, -16711936);
-			this.font.drawString("Spectral furnace", 51, 5, -1);
+			this.font.drawString(ms, "/ 1000 MER", 114, 65, -16711936);
+			this.font.drawString(ms, "Spectral furnace", 51, 5, -1);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 

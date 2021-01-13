@@ -20,6 +20,7 @@ import io.netty.buffer.Unpooled;
 
 import fr.sinikraft.magicwitchcraft.gui.SpectralPowerInfuserRecipe1Gui;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralPowerInfuserRecipe4NextRecipeOnButtonClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -30,27 +31,28 @@ public class SpectralPowerInfuserRecipe4NextRecipeOnButtonClickedProcedure exten
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER
+						.warn("Failed to load dependency entity for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SpectralPowerInfuserRecipe4NextRecipeOnButtonClicked!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

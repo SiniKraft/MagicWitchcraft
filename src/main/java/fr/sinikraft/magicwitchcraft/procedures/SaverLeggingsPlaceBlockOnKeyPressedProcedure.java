@@ -2,14 +2,17 @@ package fr.sinikraft.magicwitchcraft.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.block.Blocks;
 
@@ -19,6 +22,7 @@ import java.util.Collections;
 import fr.sinikraft.magicwitchcraft.item.SaverItem;
 import fr.sinikraft.magicwitchcraft.block.SaverBlockGreenBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SaverLeggingsPlaceBlockOnKeyPressedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -29,27 +33,27 @@ public class SaverLeggingsPlaceBlockOnKeyPressedProcedure extends MagicWitchcraf
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SaverLeggingsPlaceBlockOnKeyPressed!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -57,10 +61,12 @@ public class SaverLeggingsPlaceBlockOnKeyPressedProcedure extends MagicWitchcraf
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
-		if ((((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
-				.getItem() == new ItemStack(SaverItem.legs, (int) (1)).getItem())) {
-			if (((((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
-					.getOrCreateTag().getDouble("Cooldown")) == 0)) {
+		if ((((entity instanceof LivingEntity)
+				? ((LivingEntity) entity).getItemStackFromSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1))
+				: ItemStack.EMPTY).getItem() == new ItemStack(SaverItem.legs, (int) (1)).getItem())) {
+			if (((((entity instanceof LivingEntity)
+					? ((LivingEntity) entity).getItemStackFromSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1))
+					: ItemStack.EMPTY).getOrCreateTag().getDouble("Cooldown")) == 0)) {
 				if (((((world.getBlockState(new BlockPos((int) x, (int) (y + 15), (int) z))).getBlock() == Blocks.AIR.getDefaultState().getBlock())
 						&& ((world.getBlockState(new BlockPos((int) x, (int) (y + 16), (int) z))).getBlock() == Blocks.AIR.getDefaultState()
 								.getBlock()))
@@ -76,25 +82,29 @@ public class SaverLeggingsPlaceBlockOnKeyPressedProcedure extends MagicWitchcraf
 									_ent.rotationPitch, Collections.emptySet());
 						}
 					}
-					((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
-							.getOrCreateTag().putDouble("Cooldown", 600);
-					if (!world.getWorld().isRemote) {
-						world.playSound(null, new BlockPos((int) (entity.getPosX()), (int) (entity.getPosY()), (int) (entity.getPosZ())),
+					((entity instanceof LivingEntity)
+							? ((LivingEntity) entity)
+									.getItemStackFromSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1))
+							: ItemStack.EMPTY).getOrCreateTag().putDouble("Cooldown", 600);
+					if (world instanceof World && !world.isRemote()) {
+						((World) world).playSound(null, new BlockPos((int) (entity.getPosX()), (int) (entity.getPosY()), (int) (entity.getPosZ())),
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
 										.getValue(new ResourceLocation("block.metal_pressure_plate.click_on")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1);
 					} else {
-						world.getWorld().playSound((entity.getPosX()), (entity.getPosY()), (entity.getPosZ()),
+						((World) world).playSound((entity.getPosX()), (entity.getPosY()), (entity.getPosZ()),
 								(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS
 										.getValue(new ResourceLocation("block.metal_pressure_plate.click_on")),
 								SoundCategory.NEUTRAL, (float) 1, (float) 1, false);
 					}
 				}
 			} else {
-				if (entity instanceof PlayerEntity && !entity.world.isRemote) {
-					((PlayerEntity) entity).sendStatusMessage(new StringTextComponent((("\u00A7cPlease wait ") + "" + (Math.round(
-							((((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).inventory.armorInventory.get((int) 1) : ItemStack.EMPTY)
-									.getOrCreateTag().getDouble("Cooldown")) / 20)))
+				if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
+					((PlayerEntity) entity).sendStatusMessage(new StringTextComponent((("\u00A7cPlease wait ") + ""
+							+ (Math.round(((((entity instanceof LivingEntity)
+									? ((LivingEntity) entity)
+											.getItemStackFromSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1))
+									: ItemStack.EMPTY).getOrCreateTag().getDouble("Cooldown")) / 20)))
 							+ "" + (" \u00A7cseconds before using this item !"))), (false));
 				}
 			}

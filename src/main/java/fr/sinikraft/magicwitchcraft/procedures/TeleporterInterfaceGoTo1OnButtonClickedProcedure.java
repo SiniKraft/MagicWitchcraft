@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.math.BlockPos;
@@ -15,6 +16,7 @@ import java.util.Collections;
 import fr.sinikraft.magicwitchcraft.block.TeleporterBeaconBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class TeleporterInterfaceGoTo1OnButtonClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -25,27 +27,27 @@ public class TeleporterInterfaceGoTo1OnButtonClickedProcedure extends MagicWitch
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure TeleporterInterfaceGoTo1OnButtonClicked!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -65,7 +67,7 @@ public class TeleporterInterfaceGoTo1OnButtonClickedProcedure extends MagicWitch
 					(int) (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosY),
 					(int) (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosZ))))
 							.getBlock() == TeleporterBeaconBlock.block.getDefaultState().getBlock())) {
-				if (!world.getWorld().isRemote) {
+				if (!world.isRemote()) {
 					BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 					TileEntity _tileEntity = world.getTileEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
@@ -78,7 +80,8 @@ public class TeleporterInterfaceGoTo1OnButtonClickedProcedure extends MagicWitch
 								return -1;
 							}
 						}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) - 100));
-					world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+					if (world instanceof World)
+						((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 				}
 				if (entity instanceof PlayerEntity)
 					((PlayerEntity) entity).closeScreen();
@@ -95,16 +98,16 @@ public class TeleporterInterfaceGoTo1OnButtonClickedProcedure extends MagicWitch
 								_ent.rotationPitch, Collections.emptySet());
 					}
 				}
-				if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+				if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 					((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7aTeleported !"), (false));
 				}
 			} else {
-				if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+				if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 					((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7cThere isn't a teleporter beacon here !"), (false));
 				}
 			}
 		} else {
-			if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+			if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
 				((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("\u00A7cNot enough energy !"), (false));
 			}
 		}

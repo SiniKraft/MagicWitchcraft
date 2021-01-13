@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftModElements.ModElement {
@@ -20,27 +22,27 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("guistate") == null) {
 			if (!dependencies.containsKey("guistate"))
-				System.err.println("Failed to load dependency guistate for procedure RightClickerSaveOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency guistate for procedure RightClickerSaveOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure RightClickerSaveOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure RightClickerSaveOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure RightClickerSaveOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure RightClickerSaveOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure RightClickerSaveOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure RightClickerSaveOnButtonClicked!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure RightClickerSaveOnButtonClicked!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure RightClickerSaveOnButtonClicked!");
 			return;
 		}
 		HashMap guistate = (HashMap) dependencies.get("guistate");
@@ -48,7 +50,7 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
 		IWorld world = (IWorld) dependencies.get("world");
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -62,9 +64,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -78,9 +81,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -94,9 +98,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -110,9 +115,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -126,9 +132,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -142,9 +149,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -158,9 +166,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -174,9 +183,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -190,9 +200,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -206,9 +217,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -222,9 +234,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -238,9 +251,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -254,9 +268,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -270,9 +285,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -286,9 +302,10 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
-		if (!world.getWorld().isRemote) {
+		if (!world.isRemote()) {
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			TileEntity _tileEntity = world.getTileEntity(_bp);
 			BlockState _bs = world.getBlockState(_bp);
@@ -302,7 +319,8 @@ public class RightClickerSaveOnButtonClickedProcedure extends MagicWitchcraftMod
 						return "";
 					}
 				}.getText()));
-			world.getWorld().notifyBlockUpdate(_bp, _bs, _bs, 3);
+			if (world instanceof World)
+				((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
 		}
 	}
 }

@@ -16,6 +16,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.block.RedObsidianBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class RedObsidianBlockDestroyedByPlayerProcedure extends MagicWitchcraftModElements.ModElement {
@@ -26,27 +27,27 @@ public class RedObsidianBlockDestroyedByPlayerProcedure extends MagicWitchcraftM
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure RedObsidianBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure RedObsidianBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure RedObsidianBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure RedObsidianBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure RedObsidianBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure RedObsidianBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure RedObsidianBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure RedObsidianBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure RedObsidianBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure RedObsidianBlockDestroyedByPlayer!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -59,14 +60,14 @@ public class RedObsidianBlockDestroyedByPlayerProcedure extends MagicWitchcraftM
 					((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY))) == 1)
 					&& (((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY).getItem()
 							.canHarvestBlock(Blocks.OBSIDIAN.getDefaultState())))) {
-				if (!world.getWorld().isRemote) {
-					ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(RedObsidianBlock.block, (int) (1)));
+				if (world instanceof World && !world.isRemote()) {
+					ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(RedObsidianBlock.block, (int) (1)));
 					entityToSpawn.setPickupDelay((int) 10);
 					world.addEntity(entityToSpawn);
 				}
 			} else {
-				if (world instanceof World && !world.getWorld().isRemote) {
-					world.getWorld().createExplosion(null, (int) x, (int) y, (int) z, (float) 8, Explosion.Mode.BREAK);
+				if (world instanceof World && !world.isRemote()) {
+					((World) world).createExplosion(null, (int) x, (int) y, (int) z, (float) 8, Explosion.Mode.BREAK);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Direction;
@@ -9,6 +10,7 @@ import net.minecraft.block.Block;
 import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcraftModElements.ModElement {
@@ -19,27 +21,27 @@ public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcra
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure SpectralHammerBlockDestroyedWithTool!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure SpectralHammerBlockDestroyedWithTool!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SpectralHammerBlockDestroyedWithTool!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SpectralHammerBlockDestroyedWithTool!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SpectralHammerBlockDestroyedWithTool!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SpectralHammerBlockDestroyedWithTool!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SpectralHammerBlockDestroyedWithTool!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SpectralHammerBlockDestroyedWithTool!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SpectralHammerBlockDestroyedWithTool!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SpectralHammerBlockDestroyedWithTool!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -70,9 +72,11 @@ public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcra
 											.getMaterial() == net.minecraft.block.material.Material.WOOD)
 											|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
 													.getMaterial() == net.minecraft.block.material.Material.IRON))))) {
-						Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), world.getWorld(),
-								new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
-						world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);
+						if (world instanceof World) {
+							Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), (World) world,
+									new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
+							world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);
+						}
 					}
 					posZ = (double) ((posZ) + 1);
 				}
@@ -99,9 +103,11 @@ public class SpectralHammerBlockDestroyedWithToolProcedure extends MagicWitchcra
 											.getMaterial() == net.minecraft.block.material.Material.WOOD)
 											|| ((world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))))
 													.getMaterial() == net.minecraft.block.material.Material.IRON))))) {
-						Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), world.getWorld(),
-								new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
-						world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);
+						if (world instanceof World) {
+							Block.spawnDrops(world.getBlockState(new BlockPos((int) (posX), (int) (posY), (int) (posZ))), (World) world,
+									new BlockPos((int) (posX), (int) (posY), (int) (posZ)));
+							world.destroyBlock(new BlockPos((int) (posX), (int) (posY), (int) (posZ)), false);
+						}
 					}
 					posX = (double) ((posX) + 1);
 				}

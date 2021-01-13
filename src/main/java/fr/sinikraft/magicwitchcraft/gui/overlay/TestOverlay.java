@@ -40,7 +40,8 @@ public class TestOverlay extends MagicWitchcraftModElements.ModElement {
 			double y = entity.getPosY();
 			double z = entity.getPosZ();
 			if (TestDisplayOverlayIngameProcedure.executeProcedure(ImmutableMap.of("entity", entity))) {
-				Minecraft.getInstance().fontRenderer.drawString("You're at " + x + " " + y + " " + z + "", posX + 109, posY + -119, -1);
+				Minecraft.getInstance().fontRenderer.drawString(event.getMatrixStack(), "You're at " + x + " " + y + " " + z + "", posX + -210,
+						posY + -117, -1);
 			}
 		}
 	}

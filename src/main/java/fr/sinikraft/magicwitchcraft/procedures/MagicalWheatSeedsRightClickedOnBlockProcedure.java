@@ -12,6 +12,7 @@ import java.util.Map;
 import fr.sinikraft.magicwitchcraft.item.MagicalWheatSeedsItem;
 import fr.sinikraft.magicwitchcraft.block.MagicalWheatStage0Block;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalWheatSeedsRightClickedOnBlockProcedure extends MagicWitchcraftModElements.ModElement {
@@ -22,27 +23,27 @@ public class MagicalWheatSeedsRightClickedOnBlockProcedure extends MagicWitchcra
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure MagicalWheatSeedsRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure MagicalWheatSeedsRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalWheatSeedsRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalWheatSeedsRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalWheatSeedsRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalWheatSeedsRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalWheatSeedsRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalWheatSeedsRightClickedOnBlock!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalWheatSeedsRightClickedOnBlock!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalWheatSeedsRightClickedOnBlock!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -54,7 +55,8 @@ public class MagicalWheatSeedsRightClickedOnBlockProcedure extends MagicWitchcra
 			if ((!((entity instanceof PlayerEntity) ? ((PlayerEntity) entity).abilities.isCreativeMode : false))) {
 				if (entity instanceof PlayerEntity) {
 					ItemStack _stktoremove = new ItemStack(MagicalWheatSeedsItem.block, (int) (1));
-					((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+					((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
+							((PlayerEntity) entity).container.func_234641_j_());
 				}
 			}
 			world.setBlockState(new BlockPos((int) x, (int) (y + 1), (int) z), MagicalWheatStage0Block.block.getDefaultState(), 3);

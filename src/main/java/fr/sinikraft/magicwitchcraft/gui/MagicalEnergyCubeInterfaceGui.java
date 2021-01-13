@@ -40,6 +40,8 @@ import java.util.HashMap;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
+
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalEnergyCubeInterfaceGui extends MagicWitchcraftModElements.ModElement {
 	public static HashMap guistate = new HashMap();
@@ -272,7 +274,7 @@ public class MagicalEnergyCubeInterfaceGui extends MagicWitchcraftModElements.Mo
 		}
 
 		private void slotChanged(int slotid, int ctype, int meta) {
-			if (this.world != null && this.world.isRemote) {
+			if (this.world != null && this.world.isRemote()) {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new GUISlotChangedMessage(slotid, x, y, z, ctype, meta));
 				handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 			}
@@ -296,19 +298,19 @@ public class MagicalEnergyCubeInterfaceGui extends MagicWitchcraftModElements.Mo
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/magicalenergycubeinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 		}
 
 		@Override
@@ -326,10 +328,10 @@ public class MagicalEnergyCubeInterfaceGui extends MagicWitchcraftModElements.Mo
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Magical Energy cube", 42, 11, -1);
-			this.font.drawString("Energy stored :", 48, 27, -16738048);
-			this.font.drawString("" + (new Object() {
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Magical Energy cube", 42, 11, -1);
+			this.font.drawString(ms, "Energy stored :", 48, 27, -16738048);
+			this.font.drawString(ms, "" + (new Object() {
 				public double getValue(BlockPos pos, String tag) {
 					TileEntity tileEntity = world.getTileEntity(pos);
 					if (tileEntity != null)
@@ -337,12 +339,12 @@ public class MagicalEnergyCubeInterfaceGui extends MagicWitchcraftModElements.Mo
 					return 0;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 33, 47, -16724992);
-			this.font.drawString("/ 10 000 MER", 87, 47, -13369549);
+			this.font.drawString(ms, "/ 10 000 MER", 87, 47, -13369549);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 

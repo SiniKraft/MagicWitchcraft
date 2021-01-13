@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.Items;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import fr.sinikraft.magicwitchcraft.block.SpectralLeavesBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class SpectralLeavesBlockDestroyedByPlayerProcedure extends MagicWitchcraftModElements.ModElement {
@@ -22,27 +24,27 @@ public class SpectralLeavesBlockDestroyedByPlayerProcedure extends MagicWitchcra
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
-				System.err.println("Failed to load dependency entity for procedure SpectralLeavesBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure SpectralLeavesBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure SpectralLeavesBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure SpectralLeavesBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure SpectralLeavesBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure SpectralLeavesBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure SpectralLeavesBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure SpectralLeavesBlockDestroyedByPlayer!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure SpectralLeavesBlockDestroyedByPlayer!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SpectralLeavesBlockDestroyedByPlayer!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -53,8 +55,8 @@ public class SpectralLeavesBlockDestroyedByPlayerProcedure extends MagicWitchcra
 		if ((((entity instanceof LivingEntity) ? ((LivingEntity) entity).getHeldItemMainhand() : ItemStack.EMPTY)
 				.getItem() == new ItemStack(Items.SHEARS, (int) (1)).getItem())) {
 			world.destroyBlock(new BlockPos((int) x, (int) y, (int) z), false);
-			if (!world.getWorld().isRemote) {
-				ItemEntity entityToSpawn = new ItemEntity(world.getWorld(), x, y, z, new ItemStack(SpectralLeavesBlock.block, (int) (1)));
+			if (world instanceof World && !world.isRemote()) {
+				ItemEntity entityToSpawn = new ItemEntity((World) world, x, y, z, new ItemStack(SpectralLeavesBlock.block, (int) (1)));
 				entityToSpawn.setPickupDelay((int) 10);
 				world.addEntity(entityToSpawn);
 			}

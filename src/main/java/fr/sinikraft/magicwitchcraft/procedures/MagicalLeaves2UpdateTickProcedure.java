@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import java.util.Map;
 import fr.sinikraft.magicwitchcraft.block.MysteriousLogBlock;
 import fr.sinikraft.magicwitchcraft.block.MagicalSaplingBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalLeaves2UpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -21,22 +23,22 @@ public class MagicalLeaves2UpdateTickProcedure extends MagicWitchcraftModElement
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalLeaves2UpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalLeaves2UpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalLeaves2UpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalLeaves2UpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalLeaves2UpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalLeaves2UpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalLeaves2UpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalLeaves2UpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -319,10 +321,11 @@ public class MagicalLeaves2UpdateTickProcedure extends MagicWitchcraftModElement
 																																																				3);
 																																																		if ((Math
 																																																				.random() <= 0.05)) {
-																																																			if (!world
-																																																					.getWorld().isRemote) {
+																																																			if (world instanceof World
+																																																					&& !world
+																																																							.isRemote()) {
 																																																				ItemEntity entityToSpawn = new ItemEntity(
-																																																						world.getWorld(),
+																																																						(World) world,
 																																																						x,
 																																																						y,
 																																																						z,

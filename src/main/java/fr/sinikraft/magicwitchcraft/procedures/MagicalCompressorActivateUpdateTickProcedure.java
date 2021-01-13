@@ -4,12 +4,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.state.IProperty;
+import net.minecraft.state.Property;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.item.ItemStack;
 import net.minecraft.block.BlockState;
@@ -23,6 +24,7 @@ import fr.sinikraft.magicwitchcraft.item.MagicalOrbItem;
 import fr.sinikraft.magicwitchcraft.item.MagicalBerriesItem;
 import fr.sinikraft.magicwitchcraft.block.MagicalCompressorBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class MagicalCompressorActivateUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
@@ -33,22 +35,22 @@ public class MagicalCompressorActivateUpdateTickProcedure extends MagicWitchcraf
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
-				System.err.println("Failed to load dependency x for procedure MagicalCompressorActivateUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency x for procedure MagicalCompressorActivateUpdateTick!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
 			if (!dependencies.containsKey("y"))
-				System.err.println("Failed to load dependency y for procedure MagicalCompressorActivateUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency y for procedure MagicalCompressorActivateUpdateTick!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
 			if (!dependencies.containsKey("z"))
-				System.err.println("Failed to load dependency z for procedure MagicalCompressorActivateUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency z for procedure MagicalCompressorActivateUpdateTick!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
-				System.err.println("Failed to load dependency world for procedure MagicalCompressorActivateUpdateTick!");
+				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MagicalCompressorActivateUpdateTick!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -206,10 +208,13 @@ public class MagicalCompressorActivateUpdateTickProcedure extends MagicWitchcraf
 			BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
 			BlockState _bs = MagicalCompressorBlock.block.getDefaultState();
 			BlockState _bso = world.getBlockState(_bp);
-			for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-				IProperty _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
-				if (_bs.has(_property))
-					_bs = _bs.with(_property, (Comparable) entry.getValue());
+			for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
+				Property _property = _bs.getBlock().getStateContainer().getProperty(entry.getKey().getName());
+				if (_property != null && _bs.get(_property) != null)
+					try {
+						_bs = _bs.with(_property, (Comparable) entry.getValue());
+					} catch (Exception e) {
+					}
 			}
 			TileEntity _te = world.getTileEntity(_bp);
 			CompoundNBT _bnbt = null;
@@ -222,18 +227,18 @@ public class MagicalCompressorActivateUpdateTickProcedure extends MagicWitchcraf
 				_te = world.getTileEntity(_bp);
 				if (_te != null) {
 					try {
-						_te.read(_bnbt);
+						_te.read(_bso, _bnbt);
 					} catch (Exception ignored) {
 					}
 				}
 			}
 		}
-		if (!world.getWorld().isRemote) {
-			world.playSound(null, new BlockPos((int) x, (int) y, (int) z),
+		if (world instanceof World && !world.isRemote()) {
+			((World) world).playSound(null, new BlockPos((int) x, (int) y, (int) z),
 					(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone_button.click_off")),
 					SoundCategory.NEUTRAL, (float) 1, (float) 1);
 		} else {
-			world.getWorld().playSound(x, y, z,
+			((World) world).playSound(x, y, z,
 					(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone_button.click_off")),
 					SoundCategory.NEUTRAL, (float) 1, (float) 1, false);
 		}

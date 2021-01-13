@@ -15,6 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.World;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -43,6 +44,8 @@ import fr.sinikraft.magicwitchcraft.procedures.TeleporterInterfaceGoTo1OnButtonC
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModVariables;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 @MagicWitchcraftModElements.ModElement.Tag
 public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElement {
@@ -121,19 +124,19 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 		}
 		private static final ResourceLocation texture = new ResourceLocation("magic_witchcraft:textures/teleporterinterface.png");
 		@Override
-		public void render(int mouseX, int mouseY, float partialTicks) {
-			this.renderBackground();
-			super.render(mouseX, mouseY, partialTicks);
-			this.renderHoveredToolTip(mouseX, mouseY);
+		public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
+			this.renderBackground(ms);
+			super.render(ms, mouseX, mouseY, partialTicks);
+			this.renderHoveredTooltip(ms, mouseX, mouseY);
 		}
 
 		@Override
-		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+		protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float par1, int par2, int par3) {
 			GL11.glColor4f(1, 1, 1, 1);
 			Minecraft.getInstance().getTextureManager().bindTexture(texture);
 			int k = (this.width - this.xSize) / 2;
 			int l = (this.height - this.ySize) / 2;
-			this.blit(k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+			this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
 		}
 
 		@Override
@@ -151,40 +154,40 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 		}
 
 		@Override
-		protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-			this.font.drawString("Teleporter", 100, 7, -1);
-			this.font.drawString("1. ", 10, 25, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 28, 25, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosX) + "", 127, 25, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosY) + "", 172, 25, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosZ) + "", 208, 25, -1);
-			this.font.drawString("2.", 10, 43, -1);
-			this.font.drawString("3.", 10, 61, -1);
-			this.font.drawString("4.", 10, 79, -1);
-			this.font.drawString("5.", 10, 97, -1);
-			this.font.drawString("6.", 10, 115, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 28, 43, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosX) + "", 127, 43, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosY) + "", 172, 43, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosZ) + "", 208, 43, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 28, 61, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosX) + "", 127, 61, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosY) + "", 172, 61, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosZ) + "", 208, 61, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 28, 79, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosX) + "", 127, 79, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosY) + "", 172, 79, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosZ) + "", 208, 79, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 28, 97, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosX) + "", 127, 97, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosY) + "", 172, 97, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosZ) + "", 208, 97, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 28, 115, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosX) + "", 127, 115, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosY) + "", 172, 115, -1);
-			this.font.drawString("" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosZ) + "", 208, 115, -1);
-			this.font.drawString("Energy stored", 180, 142, -16738048);
-			this.font.drawString("" + (new Object() {
+		protected void drawGuiContainerForegroundLayer(MatrixStack ms, int mouseX, int mouseY) {
+			this.font.drawString(ms, "Teleporter", 100, 7, -1);
+			this.font.drawString(ms, "1. ", 10, 25, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1Name) + "", 28, 25, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosX) + "", 127, 25, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosY) + "", 172, 25, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN1PosZ) + "", 208, 25, -1);
+			this.font.drawString(ms, "2.", 10, 43, -1);
+			this.font.drawString(ms, "3.", 10, 61, -1);
+			this.font.drawString(ms, "4.", 10, 79, -1);
+			this.font.drawString(ms, "5.", 10, 97, -1);
+			this.font.drawString(ms, "6.", 10, 115, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2Name) + "", 28, 43, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosX) + "", 127, 43, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosY) + "", 172, 43, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN2PosZ) + "", 208, 43, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3Name) + "", 28, 61, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosX) + "", 127, 61, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosY) + "", 172, 61, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN3PosZ) + "", 208, 61, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4Name) + "", 28, 79, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosX) + "", 127, 79, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosY) + "", 172, 79, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN4PosZ) + "", 208, 79, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5Name) + "", 28, 97, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosX) + "", 127, 97, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosY) + "", 172, 97, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN5PosZ) + "", 208, 97, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6Name) + "", 28, 115, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosX) + "", 127, 115, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosY) + "", 172, 115, -1);
+			this.font.drawString(ms, "" + (MagicWitchcraftModVariables.WorldVariables.get(world).TeleporterPublicN6PosZ) + "", 208, 115, -1);
+			this.font.drawString(ms, "Energy stored", 180, 142, -16738048);
+			this.font.drawString(ms, "" + (new Object() {
 				public double getValue(BlockPos pos, String tag) {
 					TileEntity tileEntity = world.getTileEntity(pos);
 					if (tileEntity != null)
@@ -192,12 +195,12 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 					return 0;
 				}
 			}.getValue(new BlockPos((int) x, (int) y, (int) z), "EnergyStored")) + "", 199, 169, -16711936);
-			this.font.drawString("/ 1000 MER", 192, 178, -16711936);
+			this.font.drawString(ms, "/ 1000 MER", 192, 178, -16711936);
 		}
 
 		@Override
-		public void removed() {
-			super.removed();
+		public void onClose() {
+			super.onClose();
 			Minecraft.getInstance().keyboardListener.enableRepeatEvents(false);
 		}
 
@@ -205,27 +208,27 @@ public class TeleporterInterfaceGui extends MagicWitchcraftModElements.ModElemen
 		public void init(Minecraft minecraft, int width, int height) {
 			super.init(minecraft, width, height);
 			minecraft.keyboardListener.enableRepeatEvents(true);
-			this.addButton(new Button(this.guiLeft + 19, this.guiTop + 142, 45, 20, "Go to 1", e -> {
+			this.addButton(new Button(this.guiLeft + 19, this.guiTop + 142, 45, 20, new StringTextComponent("Go to 1"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(0, x, y, z));
 				handleButtonAction(entity, 0, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 19, this.guiTop + 178, 45, 20, "Go to 2", e -> {
+			this.addButton(new Button(this.guiLeft + 19, this.guiTop + 178, 45, 20, new StringTextComponent("Go to 2"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(1, x, y, z));
 				handleButtonAction(entity, 1, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 73, this.guiTop + 142, 45, 20, "Go to 3", e -> {
+			this.addButton(new Button(this.guiLeft + 73, this.guiTop + 142, 45, 20, new StringTextComponent("Go to 3"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(2, x, y, z));
 				handleButtonAction(entity, 2, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 73, this.guiTop + 178, 45, 20, "Go to 4", e -> {
+			this.addButton(new Button(this.guiLeft + 73, this.guiTop + 178, 45, 20, new StringTextComponent("Go to 4"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(3, x, y, z));
 				handleButtonAction(entity, 3, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 127, this.guiTop + 142, 45, 20, "Go to 5", e -> {
+			this.addButton(new Button(this.guiLeft + 127, this.guiTop + 142, 45, 20, new StringTextComponent("Go to 5"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(4, x, y, z));
 				handleButtonAction(entity, 4, x, y, z);
 			}));
-			this.addButton(new Button(this.guiLeft + 127, this.guiTop + 178, 45, 20, "Go to 6", e -> {
+			this.addButton(new Button(this.guiLeft + 127, this.guiTop + 178, 45, 20, new StringTextComponent("Go to 6"), e -> {
 				MagicWitchcraftMod.PACKET_HANDLER.sendToServer(new ButtonPressedMessage(5, x, y, z));
 				handleButtonAction(entity, 5, x, y, z);
 			}));

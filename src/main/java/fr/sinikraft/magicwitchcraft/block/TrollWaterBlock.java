@@ -45,15 +45,15 @@ public class TrollWaterBlock extends MagicWitchcraftModElements.ModElement {
 	private ForgeFlowingFluid.Properties fluidproperties = null;
 	public TrollWaterBlock(MagicWitchcraftModElements instance) {
 		super(instance, 48);
-		FMLJavaModLoadingContext.get().getModEventBus().register(this);
+		FMLJavaModLoadingContext.get().getModEventBus().register(new FluidRegisterHandler());
 	}
-
-	@SubscribeEvent
-	public void registerFluids(RegistryEvent.Register<Fluid> event) {
-		event.getRegistry().register(still);
-		event.getRegistry().register(flowing);
+	private static class FluidRegisterHandler {
+		@SubscribeEvent
+		public void registerFluids(RegistryEvent.Register<Fluid> event) {
+			event.getRegistry().register(still);
+			event.getRegistry().register(flowing);
+		}
 	}
-
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void clientLoad(FMLClientSetupEvent event) {
