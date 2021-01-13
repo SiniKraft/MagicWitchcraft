@@ -24,6 +24,7 @@ import fr.sinikraft.magicwitchcraft.block.RedObsidianBlock;
 import fr.sinikraft.magicwitchcraft.block.GreenObsidianBlock;
 import fr.sinikraft.magicwitchcraft.block.BlueObsidianBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -37,6 +38,20 @@ public class ObsidianMakerGranterProcedure extends MagicWitchcraftModElements.Mo
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure ObsidianMakerGranter!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class ObsidianMakerGranterProcedure extends MagicWitchcraftModElements.ModElement {
+	public ObsidianMakerGranterProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 264);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure ObsidianMakerGranter!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

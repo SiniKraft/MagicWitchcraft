@@ -12,6 +12,7 @@ import fr.sinikraft.magicwitchcraft.item.MagicalBottleFilled1Item;
 import fr.sinikraft.magicwitchcraft.item.MagicalBottleFilled0Item;
 import fr.sinikraft.magicwitchcraft.item.MagicalBottleEmptyItem;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -29,6 +30,24 @@ public class MagicalBottleEmptyItemInHandTickProcedure extends MagicWitchcraftMo
 		if (dependencies.get("itemstack") == null) {
 			if (!dependencies.containsKey("itemstack"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency itemstack for procedure MagicalBottleEmptyItemInHandTick!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class MagicalBottleEmptyItemInHandTickProcedure extends MagicWitchcraftModElements.ModElement {
+	public MagicalBottleEmptyItemInHandTickProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 301);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure MagicalBottleEmptyItemInHandTick!");
+			return;
+		}
+		if (dependencies.get("itemstack") == null) {
+			if (!dependencies.containsKey("itemstack"))
+				System.err.println("Failed to load dependency itemstack for procedure MagicalBottleEmptyItemInHandTick!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+<<<<<<< HEAD
 import net.minecraft.item.ItemStack;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.entity.LivingEntity;
@@ -46,5 +47,18 @@ public class SaverLeggingsTickEventProcedure extends MagicWitchcraftModElements.
 						: ItemStack.EMPTY).getOrCreateTag().putDouble("Cooldown", 0);
 			}
 		}
+=======
+import java.util.Map;
+
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class SaverLeggingsTickEventProcedure extends MagicWitchcraftModElements.ModElement {
+	public SaverLeggingsTickEventProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 246);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 	}
 }

@@ -17,6 +17,7 @@ import fr.sinikraft.magicwitchcraft.item.MysteriousOrbItem;
 import fr.sinikraft.magicwitchcraft.item.MagicalOrbItem;
 import fr.sinikraft.magicwitchcraft.block.MysteriousLogBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -44,6 +45,34 @@ public class MysteriousExtractorUpdateTickProcedure extends MagicWitchcraftModEl
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure MysteriousExtractorUpdateTick!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class MysteriousExtractorUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
+	public MysteriousExtractorUpdateTickProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 79);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("x") == null) {
+			if (!dependencies.containsKey("x"))
+				System.err.println("Failed to load dependency x for procedure MysteriousExtractorUpdateTick!");
+			return;
+		}
+		if (dependencies.get("y") == null) {
+			if (!dependencies.containsKey("y"))
+				System.err.println("Failed to load dependency y for procedure MysteriousExtractorUpdateTick!");
+			return;
+		}
+		if (dependencies.get("z") == null) {
+			if (!dependencies.containsKey("z"))
+				System.err.println("Failed to load dependency z for procedure MysteriousExtractorUpdateTick!");
+			return;
+		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				System.err.println("Failed to load dependency world for procedure MysteriousExtractorUpdateTick!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");

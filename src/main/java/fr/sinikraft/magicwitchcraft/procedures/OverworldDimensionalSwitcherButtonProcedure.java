@@ -1,5 +1,6 @@
 package fr.sinikraft.magicwitchcraft.procedures;
 
+<<<<<<< HEAD
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
@@ -49,6 +50,57 @@ public class OverworldDimensionalSwitcherButtonProcedure extends MagicWitchcraft
 				RegistryKey<World> destinationType = World.OVERWORLD;
 				ServerWorld nextWorld = _ent.getServer().getWorld(destinationType);
 				((ServerPlayerEntity) _ent).connection.sendPacket(new SChangeGameStatePacket(SChangeGameStatePacket.field_241768_e_, 0));
+=======
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+
+import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.network.play.server.SPlayerAbilitiesPacket;
+import net.minecraft.network.play.server.SPlaySoundEventPacket;
+import net.minecraft.network.play.server.SPlayEntityEffectPacket;
+import net.minecraft.network.play.server.SChangeGameStatePacket;
+import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.advancements.Advancement;
+
+import java.util.Map;
+import java.util.Iterator;
+
+import fr.sinikraft.magicwitchcraft.item.DimensionalOrbItem;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class OverworldDimensionalSwitcherButtonProcedure extends MagicWitchcraftModElements.ModElement {
+	public OverworldDimensionalSwitcherButtonProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 104);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure OverworldDimensionalSwitcherButton!");
+			return;
+		}
+		Entity entity = (Entity) dependencies.get("entity");
+		if (entity instanceof PlayerEntity) {
+			ItemStack _stktoremove = new ItemStack(DimensionalOrbItem.block, (int) (1));
+			((PlayerEntity) entity).inventory.clearMatchingItems(p -> _stktoremove.getItem() == p.getItem(), (int) 1);
+		}
+		{
+			Entity _ent = entity;
+			if (!_ent.world.isRemote && _ent instanceof ServerPlayerEntity) {
+				DimensionType destinationType = DimensionType.OVERWORLD;
+				ObfuscationReflectionHelper.setPrivateValue(ServerPlayerEntity.class, (ServerPlayerEntity) _ent, true, "field_184851_cj");
+				ServerWorld nextWorld = _ent.getServer().getWorld(destinationType);
+				((ServerPlayerEntity) _ent).connection.sendPacket(new SChangeGameStatePacket(4, 0));
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 				((ServerPlayerEntity) _ent).teleport(nextWorld, nextWorld.getSpawnPoint().getX(), nextWorld.getSpawnPoint().getY() + 1,
 						nextWorld.getSpawnPoint().getZ(), _ent.rotationYaw, _ent.rotationPitch);
 				((ServerPlayerEntity) _ent).connection.sendPacket(new SPlayerAbilitiesPacket(((ServerPlayerEntity) _ent).abilities));

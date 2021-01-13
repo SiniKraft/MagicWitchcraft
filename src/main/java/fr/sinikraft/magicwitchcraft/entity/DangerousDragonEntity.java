@@ -6,6 +6,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+<<<<<<< HEAD
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -337,6 +338,335 @@ public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement
 					float forward = ((LivingEntity) entity).moveForward;
 					float strafe = ((LivingEntity) entity).moveStrafing;
 					super.travel(new Vector3d(strafe, 0, forward));
+=======
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+
+import net.minecraft.world.server.ServerBossInfo;
+import net.minecraft.world.World;
+import net.minecraft.world.BossInfo;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Hand;
+import net.minecraft.util.DamageSource;
+import net.minecraft.pathfinding.FlyingPathNavigator;
+import net.minecraft.network.IPacket;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.entity.ai.goal.RandomWalkingGoal;
+import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.LeapAtTargetGoal;
+import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.FollowMobGoal;
+import net.minecraft.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.entity.ai.controller.FlyingMovementController;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.IRendersAsItem;
+import net.minecraft.entity.IRangedAttackMob;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.block.BlockState;
+
+import java.util.Random;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.EnumSet;
+
+import fr.sinikraft.magicwitchcraft.procedures.DangerousDragonEntityDiesProcedure;
+import fr.sinikraft.magicwitchcraft.itemgroup.MagicWitchCraftItemGroup;
+import fr.sinikraft.magicwitchcraft.block.MysteriousLootBlock;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.blaze3d.matrix.MatrixStack;
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class DangerousDragonEntity extends MagicWitchcraftModElements.ModElement {
+	public static EntityType entity = null;
+	@ObjectHolder("magic_witchcraft:entitybulletdangerousdragon")
+	public static final EntityType arrow = null;
+	public DangerousDragonEntity(MagicWitchcraftModElements instance) {
+		super(instance, 25);
+		FMLJavaModLoadingContext.get().getModEventBus().register(this);
+	}
+
+	@Override
+	public void initElements() {
+		entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
+				.setTrackingRange(500).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(8.2f, 0.75f)).build("dangerousdragon")
+						.setRegistryName("dangerousdragon");
+		elements.entities.add(() -> entity);
+		elements.items.add(() -> new SpawnEggItem(entity, -16777216, -10027009, new Item.Properties().group(MagicWitchCraftItemGroup.tab))
+				.setRegistryName("dangerousdragon_spawn_egg"));
+		elements.entities.add(() -> (EntityType.Builder.<ArrowCustomEntity>create(ArrowCustomEntity::new, EntityClassification.MISC)
+				.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).setCustomClientFactory(ArrowCustomEntity::new)
+				.size(0.5f, 0.5f)).build("entitybulletdangerousdragon").setRegistryName("entitybulletdangerousdragon"));
+	}
+
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public void registerModels(ModelRegistryEvent event) {
+		RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
+			return new MobRenderer(renderManager, new Model_dangerous_dragon(), 0.5f) {
+				@Override
+				public ResourceLocation getEntityTexture(Entity entity) {
+					return new ResourceLocation("magic_witchcraft:textures/dangerous_dragon.png");
+				}
+			};
+		});
+		RenderingRegistry.registerEntityRenderingHandler(arrow,
+				renderManager -> new SpriteRenderer(renderManager, Minecraft.getInstance().getItemRenderer()));
+	}
+	public static class CustomEntity extends MonsterEntity implements IRangedAttackMob {
+		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
+			this(entity, world);
+		}
+
+		public CustomEntity(EntityType<CustomEntity> type, World world) {
+			super(type, world);
+			experienceValue = 25;
+			setNoAI(false);
+			enablePersistence();
+			this.moveController = new FlyingMovementController(this, 10, true);
+			this.navigator = new FlyingPathNavigator(this, this.world);
+		}
+
+		@Override
+		public IPacket<?> createSpawnPacket() {
+			return NetworkHooks.getEntitySpawningPacket(this);
+		}
+
+		@Override
+		protected void registerGoals() {
+			super.registerGoals();
+			this.goalSelector.addGoal(1, new RandomWalkingGoal(this, 0.8, 20) {
+				@Override
+				protected Vec3d getPosition() {
+					Random random = CustomEntity.this.getRNG();
+					double dir_x = CustomEntity.this.getPosX() + ((random.nextFloat() * 2 - 1) * 16);
+					double dir_y = CustomEntity.this.getPosY() + ((random.nextFloat() * 2 - 1) * 16);
+					double dir_z = CustomEntity.this.getPosZ() + ((random.nextFloat() * 2 - 1) * 16);
+					return new Vec3d(dir_x, dir_y, dir_z);
+				}
+			});
+			this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
+			this.goalSelector.addGoal(3, new SwimGoal(this));
+			this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, (float) 0.8));
+			this.goalSelector.addGoal(5, new Goal() {
+				{
+					this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE));
+				}
+				public boolean shouldExecute() {
+					if (CustomEntity.this.getAttackTarget() != null && !CustomEntity.this.getMoveHelper().isUpdating()) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+
+				@Override
+				public boolean shouldContinueExecuting() {
+					return CustomEntity.this.getMoveHelper().isUpdating() && CustomEntity.this.getAttackTarget() != null
+							&& CustomEntity.this.getAttackTarget().isAlive();
+				}
+
+				@Override
+				public void startExecuting() {
+					LivingEntity livingentity = CustomEntity.this.getAttackTarget();
+					Vec3d vec3d = livingentity.getEyePosition(1);
+					CustomEntity.this.moveController.setMoveTo(vec3d.x, vec3d.y, vec3d.z, 1);
+				}
+
+				@Override
+				public void tick() {
+					LivingEntity livingentity = CustomEntity.this.getAttackTarget();
+					if (CustomEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
+						CustomEntity.this.attackEntityAsMob(livingentity);
+					} else {
+						double d0 = CustomEntity.this.getDistanceSq(livingentity);
+						if (d0 < 300) {
+							Vec3d vec3d = livingentity.getEyePosition(1);
+							CustomEntity.this.moveController.setMoveTo(vec3d.x, vec3d.y, vec3d.z, 1);
+						}
+					}
+				}
+			});
+			this.targetSelector.addGoal(6, new HurtByTargetGoal(this));
+			this.goalSelector.addGoal(7, new AvoidEntityGoal(this, DangerousWitchEntity.CustomEntity.class, (float) 24, 1, 1.2));
+			this.goalSelector.addGoal(8, new FollowMobGoal(this, (float) 1, 10, 5));
+			this.goalSelector.addGoal(9, new LookAtGoal(this, PlayerEntity.class, (float) 32));
+			this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 20, 10) {
+				@Override
+				public boolean shouldContinueExecuting() {
+					return this.shouldExecute();
+				}
+			});
+		}
+
+		@Override
+		public CreatureAttribute getCreatureAttribute() {
+			return CreatureAttribute.UNDEFINED;
+		}
+
+		@Override
+		public boolean canDespawn(double distanceToClosestPlayer) {
+			return false;
+		}
+
+		protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
+			super.dropSpecialItems(source, looting, recentlyHitIn);
+			this.entityDropItem(new ItemStack(MysteriousLootBlock.block, (int) (1)));
+		}
+
+		@Override
+		public net.minecraft.util.SoundEvent getAmbientSound() {
+			return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_dragon.ambient"));
+		}
+
+		@Override
+		public net.minecraft.util.SoundEvent getHurtSound(DamageSource ds) {
+			return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_dragon.hurt"));
+		}
+
+		@Override
+		public net.minecraft.util.SoundEvent getDeathSound() {
+			return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_dragon.death"));
+		}
+
+		@Override
+		public boolean onLivingFall(float l, float d) {
+			return false;
+		}
+
+		@Override
+		public boolean attackEntityFrom(DamageSource source, float amount) {
+			if (source == DamageSource.FALL)
+				return false;
+			return super.attackEntityFrom(source, amount);
+		}
+
+		@Override
+		public void onDeath(DamageSource source) {
+			super.onDeath(source);
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
+			Entity sourceentity = source.getTrueSource();
+			Entity entity = this;
+			{
+				Map<String, Object> $_dependencies = new HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				DangerousDragonEntityDiesProcedure.executeProcedure($_dependencies);
+			}
+		}
+
+		@Override
+		public boolean processInteract(PlayerEntity sourceentity, Hand hand) {
+			ItemStack itemstack = sourceentity.getHeldItem(hand);
+			boolean retval = true;
+			super.processInteract(sourceentity, hand);
+			sourceentity.startRiding(this);
+			double x = this.getPosX();
+			double y = this.getPosY();
+			double z = this.getPosZ();
+			Entity entity = this;
+			return retval;
+		}
+
+		@Override
+		protected void registerAttributes() {
+			super.registerAttributes();
+			if (this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED) != null)
+				this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.6);
+			if (this.getAttribute(SharedMonsterAttributes.MAX_HEALTH) != null)
+				this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200);
+			if (this.getAttribute(SharedMonsterAttributes.ARMOR) != null)
+				this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0);
+			if (this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE) == null)
+				this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+			this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(15);
+			if (this.getAttribute(SharedMonsterAttributes.FLYING_SPEED) == null)
+				this.getAttributes().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
+			this.getAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
+		}
+
+		public void attackEntityWithRangedAttack(LivingEntity target, float flval) {
+			ArrowCustomEntity entityarrow = new ArrowCustomEntity(arrow, this, this.world);
+			double d0 = target.getPosY() + (double) target.getEyeHeight() - 1.1;
+			double d1 = target.getPosX() - this.getPosX();
+			double d3 = target.getPosZ() - this.getPosZ();
+			entityarrow.shoot(d1, d0 - entityarrow.getPosY() + (double) MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F, d3, 1.6F, 12.0F);
+			world.addEntity(entityarrow);
+		}
+
+		@Override
+		public boolean isNonBoss() {
+			return false;
+		}
+		private final ServerBossInfo bossInfo = new ServerBossInfo(this.getDisplayName(), BossInfo.Color.BLUE, BossInfo.Overlay.PROGRESS);
+		@Override
+		public void addTrackingPlayer(ServerPlayerEntity player) {
+			super.addTrackingPlayer(player);
+			this.bossInfo.addPlayer(player);
+		}
+
+		@Override
+		public void removeTrackingPlayer(ServerPlayerEntity player) {
+			super.removeTrackingPlayer(player);
+			this.bossInfo.removePlayer(player);
+		}
+
+		@Override
+		public void updateAITasks() {
+			super.updateAITasks();
+			this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+		}
+
+		@Override
+		public void travel(Vec3d dir) {
+			Entity entity = this.getPassengers().isEmpty() ? null : (Entity) this.getPassengers().get(0);
+			if (this.isBeingRidden()) {
+				this.rotationYaw = entity.rotationYaw;
+				this.prevRotationYaw = this.rotationYaw;
+				this.rotationPitch = entity.rotationPitch * 0.5F;
+				this.setRotation(this.rotationYaw, this.rotationPitch);
+				this.jumpMovementFactor = this.getAIMoveSpeed() * 0.15F;
+				this.renderYawOffset = entity.rotationYaw;
+				this.rotationYawHead = entity.rotationYaw;
+				this.stepHeight = 1.0F;
+				if (entity instanceof LivingEntity) {
+					this.setAIMoveSpeed((float) this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue());
+					float forward = ((LivingEntity) entity).moveForward;
+					float strafe = ((LivingEntity) entity).moveStrafing;
+					super.travel(new Vec3d(strafe, 0, forward));
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 				}
 				this.prevLimbSwingAmount = this.limbSwingAmount;
 				double d1 = this.getPosX() - this.prevPosX;

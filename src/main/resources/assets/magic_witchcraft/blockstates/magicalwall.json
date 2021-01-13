@@ -23,6 +23,7 @@
       },
       "apply": {
         "model": "magic_witchcraft:block/magicalwall",
+<<<<<<< HEAD
         "y": 90,
         "uvlock": true
       }
@@ -33,6 +34,8 @@
       },
       "apply": {
         "model": "magic_witchcraft:block/magicalwall",
+=======
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
         "y": 180,
         "uvlock": true
       }
@@ -52,6 +55,7 @@
         "north": "tall"
       },
       "apply": {
+<<<<<<< HEAD
         "model": "magic_witchcraft:block/magicalwall_side_tall",
         "uvlock": true
       }
@@ -62,6 +66,9 @@
       },
       "apply": {
         "model": "magic_witchcraft:block/magicalwall_side_tall",
+=======
+        "model": "magic_witchcraft:block/magicalwall",
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
         "y": 90,
         "uvlock": true
       }

@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Iterator;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -56,6 +57,49 @@ public class DangerousDragonEntityDiesProcedure extends MagicWitchcraftModElemen
 		for (int index0 = 0; index0 < (int) (10); index0++) {
 			if (world instanceof World && !world.isRemote()) {
 				((World) world).addEntity(new ExperienceOrbEntity(((World) world), x, y, z, (int) 1200));
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class DangerousDragonEntityDiesProcedure extends MagicWitchcraftModElements.ModElement {
+	public DangerousDragonEntityDiesProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 111);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure DangerousDragonEntityDies!");
+			return;
+		}
+		if (dependencies.get("x") == null) {
+			if (!dependencies.containsKey("x"))
+				System.err.println("Failed to load dependency x for procedure DangerousDragonEntityDies!");
+			return;
+		}
+		if (dependencies.get("y") == null) {
+			if (!dependencies.containsKey("y"))
+				System.err.println("Failed to load dependency y for procedure DangerousDragonEntityDies!");
+			return;
+		}
+		if (dependencies.get("z") == null) {
+			if (!dependencies.containsKey("z"))
+				System.err.println("Failed to load dependency z for procedure DangerousDragonEntityDies!");
+			return;
+		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				System.err.println("Failed to load dependency world for procedure DangerousDragonEntityDies!");
+			return;
+		}
+		Entity entity = (Entity) dependencies.get("entity");
+		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
+		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
+		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
+		IWorld world = (IWorld) dependencies.get("world");
+		for (int index0 = 0; index0 < (int) (10); index0++) {
+			if (world instanceof World && !world.getWorld().isRemote) {
+				world.getWorld().addEntity(new ExperienceOrbEntity(world.getWorld(), x, y, z, (int) 1200));
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			}
 		}
 		if (entity instanceof ServerPlayerEntity) {

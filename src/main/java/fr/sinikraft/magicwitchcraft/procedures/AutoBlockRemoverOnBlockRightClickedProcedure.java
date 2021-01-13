@@ -20,6 +20,7 @@ import io.netty.buffer.Unpooled;
 
 import fr.sinikraft.magicwitchcraft.gui.AutoBlockRemoverInterfaceGui;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -52,6 +53,39 @@ public class AutoBlockRemoverOnBlockRightClickedProcedure extends MagicWitchcraf
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure AutoBlockRemoverOnBlockRightClicked!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class AutoBlockRemoverOnBlockRightClickedProcedure extends MagicWitchcraftModElements.ModElement {
+	public AutoBlockRemoverOnBlockRightClickedProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 271);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure AutoBlockRemoverOnBlockRightClicked!");
+			return;
+		}
+		if (dependencies.get("x") == null) {
+			if (!dependencies.containsKey("x"))
+				System.err.println("Failed to load dependency x for procedure AutoBlockRemoverOnBlockRightClicked!");
+			return;
+		}
+		if (dependencies.get("y") == null) {
+			if (!dependencies.containsKey("y"))
+				System.err.println("Failed to load dependency y for procedure AutoBlockRemoverOnBlockRightClicked!");
+			return;
+		}
+		if (dependencies.get("z") == null) {
+			if (!dependencies.containsKey("z"))
+				System.err.println("Failed to load dependency z for procedure AutoBlockRemoverOnBlockRightClicked!");
+			return;
+		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				System.err.println("Failed to load dependency world for procedure AutoBlockRemoverOnBlockRightClicked!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

@@ -29,6 +29,7 @@ public class TestOverlay extends MagicWitchcraftModElements.ModElement {
 	}
 
 	@OnlyIn(Dist.CLIENT)
+<<<<<<< HEAD
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void eventHandler(RenderGameOverlayEvent event) {
 		if (!event.isCancelable() && event.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
@@ -42,6 +43,20 @@ public class TestOverlay extends MagicWitchcraftModElements.ModElement {
 			if (TestDisplayOverlayIngameProcedure.executeProcedure(ImmutableMap.of("entity", entity))) {
 				Minecraft.getInstance().fontRenderer.drawString(event.getMatrixStack(), "You're at " + x + " " + y + " " + z + "", posX + -210,
 						posY + -117, -1);
+=======
+	@SubscribeEvent(priority = EventPriority.NORMAL)
+	public void eventHandler(RenderGameOverlayEvent event) {
+		if (!event.isCancelable() && event.getType() == RenderGameOverlayEvent.ElementType.HELMET) {
+			int posX = (event.getWindow().getScaledWidth()) / 2;
+			int posY = (event.getWindow().getScaledHeight()) / 2;
+			PlayerEntity entity = Minecraft.getInstance().player;
+			World world = entity.world;
+			double x = entity.getPosX();
+			double y = entity.getPosY();
+			double z = entity.getPosZ();
+			if (TestDisplayOverlayIngameProcedure.executeProcedure(ImmutableMap.of("entity", entity))) {
+				Minecraft.getInstance().fontRenderer.drawString("You're at " + x + " " + y + " " + z + "", posX + 109, posY + -119, -1);
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			}
 		}
 	}

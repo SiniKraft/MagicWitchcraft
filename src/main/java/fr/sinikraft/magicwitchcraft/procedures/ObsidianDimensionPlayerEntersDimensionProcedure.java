@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Iterator;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -23,6 +24,19 @@ public class ObsidianDimensionPlayerEntersDimensionProcedure extends MagicWitchc
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure ObsidianDimensionPlayerEntersDimension!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class ObsidianDimensionPlayerEntersDimensionProcedure extends MagicWitchcraftModElements.ModElement {
+	public ObsidianDimensionPlayerEntersDimensionProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 262);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure ObsidianDimensionPlayerEntersDimension!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

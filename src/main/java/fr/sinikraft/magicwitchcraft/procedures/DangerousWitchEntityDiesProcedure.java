@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Iterator;
 
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -23,6 +24,19 @@ public class DangerousWitchEntityDiesProcedure extends MagicWitchcraftModElement
 		if (dependencies.get("entity") == null) {
 			if (!dependencies.containsKey("entity"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency entity for procedure DangerousWitchEntityDies!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class DangerousWitchEntityDiesProcedure extends MagicWitchcraftModElements.ModElement {
+	public DangerousWitchEntityDiesProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 113);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure DangerousWitchEntityDies!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

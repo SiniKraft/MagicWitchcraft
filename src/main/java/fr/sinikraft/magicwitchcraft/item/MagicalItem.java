@@ -42,6 +42,7 @@ public class MagicalItem extends MagicWitchcraftModElements.ModElement {
 	@Override
 	public void initElements() {
 		IArmorMaterial armormaterial = new IArmorMaterial() {
+<<<<<<< HEAD
 			@Override
 			public int getDurability(EquipmentSlotType slot) {
 				return new int[]{13, 15, 16, 11}[slot.getIndex()] * 50;
@@ -81,6 +82,35 @@ public class MagicalItem extends MagicWitchcraftModElements.ModElement {
 			@Override
 			public float getKnockbackResistance() {
 				return 0f;
+=======
+			public int getDurability(EquipmentSlotType slot) {
+				return new int[]{13, 15, 16, 11}[slot.getIndex()] * 50;
+			}
+
+			public int getDamageReductionAmount(EquipmentSlotType slot) {
+				return new int[]{4, 10, 12, 4}[slot.getIndex()];
+			}
+
+			public int getEnchantability() {
+				return 18;
+			}
+
+			public net.minecraft.util.SoundEvent getSoundEvent() {
+				return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.slime_block.place"));
+			}
+
+			public Ingredient getRepairMaterial() {
+				return Ingredient.fromStacks(new ItemStack(MagicalBlockBlock.block, (int) (1)));
+			}
+
+			@OnlyIn(Dist.CLIENT)
+			public String getName() {
+				return "magical";
+			}
+
+			public float getToughness() {
+				return 3f;
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			}
 		};
 		elements.items.add(() -> new ArmorItem(armormaterial, EquipmentSlotType.HEAD, new Item.Properties().group(MagicWitchCraftItemGroup.tab)) {

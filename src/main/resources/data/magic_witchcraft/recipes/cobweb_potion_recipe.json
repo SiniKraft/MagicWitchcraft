@@ -13,7 +13,11 @@
       "item": "minecraft:potion"
     }
   },
+<<<<<<< HEAD
   "result": {
+=======
+ "result": {
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
   "type": "minecraft:item_nbt",
   "item": "minecraft:potion",
   "nbt": {

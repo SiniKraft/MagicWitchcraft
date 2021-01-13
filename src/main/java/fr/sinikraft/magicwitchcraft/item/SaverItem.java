@@ -41,6 +41,7 @@ public class SaverItem extends MagicWitchcraftModElements.ModElement {
 	@Override
 	public void initElements() {
 		IArmorMaterial armormaterial = new IArmorMaterial() {
+<<<<<<< HEAD
 			@Override
 			public int getDurability(EquipmentSlotType slot) {
 				return new int[]{13, 15, 16, 11}[slot.getIndex()] * 50;
@@ -96,6 +97,50 @@ public class SaverItem extends MagicWitchcraftModElements.ModElement {
 				{
 					Map<String, Object> $_dependencies = new HashMap<>();
 					$_dependencies.put("entity", entity);
+=======
+			public int getDurability(EquipmentSlotType slot) {
+				return new int[]{13, 15, 16, 11}[slot.getIndex()] * 50;
+			}
+
+			public int getDamageReductionAmount(EquipmentSlotType slot) {
+				return new int[]{4, 10, 12, 4}[slot.getIndex()];
+			}
+
+			public int getEnchantability() {
+				return 18;
+			}
+
+			public net.minecraft.util.SoundEvent getSoundEvent() {
+				return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.armor.equip_leather"));
+			}
+
+			public Ingredient getRepairMaterial() {
+				return Ingredient.EMPTY;
+			}
+
+			@OnlyIn(Dist.CLIENT)
+			public String getName() {
+				return "saver";
+			}
+
+			public float getToughness() {
+				return 3f;
+			}
+		};
+		elements.items.add(() -> new ArmorItem(armormaterial, EquipmentSlotType.LEGS, new Item.Properties().group(MagicWitchCraftItemGroup.tab)) {
+			@Override
+			public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
+				return "magic_witchcraft:textures/models/armor/saver_leggings_layer_" + (slot == EquipmentSlotType.LEGS ? "2" : "1") + ".png";
+			}
+
+			@Override
+			public void onArmorTick(ItemStack itemstack, World world, PlayerEntity entity) {
+				double x = entity.getPosX();
+				double y = entity.getPosY();
+				double z = entity.getPosZ();
+				{
+					Map<String, Object> $_dependencies = new HashMap<>();
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 					SaverLeggingsTickEventProcedure.executeProcedure($_dependencies);
 				}
 			}

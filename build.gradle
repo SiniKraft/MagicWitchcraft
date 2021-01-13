@@ -18,7 +18,11 @@ archivesBaseName = 'modid'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
+<<<<<<< HEAD
     mappings channel: 'snapshot', version: '20201028-1.16.3'
+=======
+    mappings channel: 'snapshot', version: '20200514-1.15.1'
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 
     runs {
         client {
@@ -50,7 +54,11 @@ minecraft {
 }
 
 dependencies {
+<<<<<<< HEAD
     minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
+=======
+    minecraft 'net.minecraftforge:forge:1.15.2-31.2.0'
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 }
 
 apply from: 'mcreator.gradle'

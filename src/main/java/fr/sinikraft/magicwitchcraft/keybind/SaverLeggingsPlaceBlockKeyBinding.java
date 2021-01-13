@@ -93,10 +93,13 @@ public class SaverLeggingsPlaceBlockKeyBinding extends MagicWitchcraftModElement
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
 				$_dependencies.put("entity", entity);
+<<<<<<< HEAD
 				$_dependencies.put("x", x);
 				$_dependencies.put("y", y);
 				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
+=======
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 				SaverLeggingsPlaceBlockOnKeyPressedProcedure.executeProcedure($_dependencies);
 			}
 		}

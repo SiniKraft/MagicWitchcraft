@@ -26,6 +26,7 @@ import fr.sinikraft.magicwitchcraft.item.EnergyCrystalEmptyItem;
 import fr.sinikraft.magicwitchcraft.block.TNTMineBlock;
 import fr.sinikraft.magicwitchcraft.block.InvisibleMineBlock;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -53,6 +54,34 @@ public class SpectralPowerInfuserUpdateTickProcedure extends MagicWitchcraftModE
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure SpectralPowerInfuserUpdateTick!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class SpectralPowerInfuserUpdateTickProcedure extends MagicWitchcraftModElements.ModElement {
+	public SpectralPowerInfuserUpdateTickProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 209);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("x") == null) {
+			if (!dependencies.containsKey("x"))
+				System.err.println("Failed to load dependency x for procedure SpectralPowerInfuserUpdateTick!");
+			return;
+		}
+		if (dependencies.get("y") == null) {
+			if (!dependencies.containsKey("y"))
+				System.err.println("Failed to load dependency y for procedure SpectralPowerInfuserUpdateTick!");
+			return;
+		}
+		if (dependencies.get("z") == null) {
+			if (!dependencies.containsKey("z"))
+				System.err.println("Failed to load dependency z for procedure SpectralPowerInfuserUpdateTick!");
+			return;
+		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				System.err.println("Failed to load dependency world for procedure SpectralPowerInfuserUpdateTick!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");

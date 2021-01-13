@@ -4,6 +4,7 @@ package fr.sinikraft.magicwitchcraft.block;
 import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.common.ToolType;
 
+<<<<<<< HEAD
 import net.minecraft.loot.LootContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
@@ -36,6 +37,40 @@ public class MysteriousPortalBlock extends MagicWitchcraftModElements.ModElement
 	public static class CustomBlock extends Block {
 		public CustomBlock() {
 			super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(5f, 15f).setLightLevel(s -> 0).harvestLevel(1)
+=======
+import net.minecraft.world.storage.loot.LootContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
+import net.minecraft.item.BlockItem;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Block;
+
+import java.util.List;
+import java.util.Collections;
+
+import fr.sinikraft.magicwitchcraft.itemgroup.MagicWitchCraftItemGroup;
+import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class MysteriousPortalBlock extends MagicWitchcraftModElements.ModElement {
+	@ObjectHolder("magic_witchcraft:mysterious_portal")
+	public static final Block block = null;
+	public MysteriousPortalBlock(MagicWitchcraftModElements instance) {
+		super(instance, 5);
+	}
+
+	@Override
+	public void initElements() {
+		elements.blocks.add(() -> new CustomBlock());
+		elements.items
+				.add(() -> new BlockItem(block, new Item.Properties().group(MagicWitchCraftItemGroup.tab)).setRegistryName(block.getRegistryName()));
+	}
+	public static class CustomBlock extends Block {
+		public CustomBlock() {
+			super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(5f, 15f).lightValue(0).harvestLevel(1)
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 					.harvestTool(ToolType.PICKAXE));
 			setRegistryName("mysterious_portal");
 		}

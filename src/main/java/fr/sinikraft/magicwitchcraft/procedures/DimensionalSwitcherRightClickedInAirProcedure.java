@@ -23,6 +23,7 @@ import io.netty.buffer.Unpooled;
 import fr.sinikraft.magicwitchcraft.item.DimensionalOrbItem;
 import fr.sinikraft.magicwitchcraft.gui.DimensionalSwitcherGUIGui;
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftModElements;
+<<<<<<< HEAD
 import fr.sinikraft.magicwitchcraft.MagicWitchcraftMod;
 
 @MagicWitchcraftModElements.ModElement.Tag
@@ -55,6 +56,39 @@ public class DimensionalSwitcherRightClickedInAirProcedure extends MagicWitchcra
 		if (dependencies.get("world") == null) {
 			if (!dependencies.containsKey("world"))
 				MagicWitchcraftMod.LOGGER.warn("Failed to load dependency world for procedure DimensionalSwitcherRightClickedInAir!");
+=======
+
+@MagicWitchcraftModElements.ModElement.Tag
+public class DimensionalSwitcherRightClickedInAirProcedure extends MagicWitchcraftModElements.ModElement {
+	public DimensionalSwitcherRightClickedInAirProcedure(MagicWitchcraftModElements instance) {
+		super(instance, 102);
+	}
+
+	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("entity") == null) {
+			if (!dependencies.containsKey("entity"))
+				System.err.println("Failed to load dependency entity for procedure DimensionalSwitcherRightClickedInAir!");
+			return;
+		}
+		if (dependencies.get("x") == null) {
+			if (!dependencies.containsKey("x"))
+				System.err.println("Failed to load dependency x for procedure DimensionalSwitcherRightClickedInAir!");
+			return;
+		}
+		if (dependencies.get("y") == null) {
+			if (!dependencies.containsKey("y"))
+				System.err.println("Failed to load dependency y for procedure DimensionalSwitcherRightClickedInAir!");
+			return;
+		}
+		if (dependencies.get("z") == null) {
+			if (!dependencies.containsKey("z"))
+				System.err.println("Failed to load dependency z for procedure DimensionalSwitcherRightClickedInAir!");
+			return;
+		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				System.err.println("Failed to load dependency world for procedure DimensionalSwitcherRightClickedInAir!");
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

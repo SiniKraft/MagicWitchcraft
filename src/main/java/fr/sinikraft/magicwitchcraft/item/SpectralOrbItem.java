@@ -61,7 +61,11 @@ public class SpectralOrbItem extends MagicWitchcraftModElements.ModElement {
 		@Override
 		public void addInformation(ItemStack itemstack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 			super.addInformation(itemstack, world, list, flag);
+<<<<<<< HEAD
 			list.add(new StringTextComponent("A magical orb, but with mysterious powers."));
+=======
+			list.add(new StringTextComponent("A magical orb,but with mysterious powers."));
+>>>>>>> branch '1.15.2-master' of https://github.com/SiniKraft/MagicWitchcraft
 		}
 	}
 }
