@@ -9,6 +9,6 @@ Download the releases here :
 - [1.12.2 ](https://github.com/SiniKraft/MagicWitchcraft/releases/download/1.4/1.12.2.MagicWitchcraft-release_1.4.jar)
 - [1.14.4](https://github.com/SiniKraft/MagicWitchcraft/releases/download/1.1-1.14.4/1.14.4.MagicWitchcraft-release_1.1.jar)
 - [1.15.2](https://github.com/SiniKraft/MagicWitchcraft/releases/download/1.15.2/1.15.2.MagicWitchcraft-release_1.0.jar)
-- 1.16.4
+- [1.16.4](https://github.com/SiniKraft/MagicWitchcraft/releases/download/1.16.4-1.1.1/1.16.4.MagicWitchcraft-release_1.1.1.jar)
 # Credits and licence
 You can redistribute your own modifications of my mod only if you say that it's me who created this mod.
