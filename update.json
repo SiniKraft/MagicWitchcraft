@@ -26,6 +26,9 @@
 		"1.5.1": "Changelog available on the CurseForge page.",
 		"2.0.0": "Changelog available on the CurseForge page."
 	},
+	"1.20.1": {
+		"2.1.0": "Changelog available on the CurseForge page."
+	},
 	"promos": {
 		"1.12.2-latest": "1.3.1",
 		"1.12.2-recommended": "1.3.1",
@@ -36,6 +39,8 @@
 		"1.16.4-latest": "1.1.1",
 		"1.16.4-recommended": "1.1.1",
 		"1.16.5-latest": "2.0.0",
-		"1.16.5-recommended": "2.0.0"
+		"1.16.5-recommended": "2.0.0",
+		"1.20.1-latest": "2.1.0",
+		"1.20.1-recommended": "2.1.0"
 	}
 }
